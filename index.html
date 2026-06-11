@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Дмитрий Федоров | Гарант | 20 000+ отзывов | 10% комиссия</title>
+  <meta name="description" content="Дмитрий Федоров — профессиональный гарант с 20 000+ положительных отзывов. Фиксированная комиссия 10% от сделки. Надёжность, скорость, безопасность. Калькулятор услуг и связь ВК.">
+  <meta name="theme-color" content="#0a1128">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    /* ========== СБРОС И ПЕРЕМЕННЫЕ ========== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-dark: #0b1120;
+      --bg-darker: #030712;
+      --card-bg: #0f172a;
+      --text-light: #eef2ff;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-dark: #2563eb;
+      --warning: #facc15;
+      --border: #1e293b;
+    }
+    body { font-family: 'Inter', sans-serif; background: radial-gradient(circle at 10% 20%, var(--bg-dark), var(--bg-darker)); color: var(--text-light); line-height: 1.5; scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #111827; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    
+    /* ========== КОМПОНЕНТЫ ========== */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(95deg, var(--accent), var(--accent-dark)); color: white; font-weight: 600; font-size: 1rem; padding: 12px 28px; border-radius: 60px; text-decoration: none; transition: all 0.2s ease; border: none; cursor: pointer; }
+    .btn:hover { transform: translateY(-2px); background: linear-gradient(95deg, var(--accent-dark), #1e40af); box-shadow: 0 8px 20px rgba(59,130,246,0.3); }
+    
+    .grid { display: grid; gap: 24px; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    
+    .card { background: var(--card-bg); border-radius: 28px; padding: 24px; border: 1px solid var(--border); transition: all 0.25s ease; }
+    .card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.4); }
+    
+    .stat-card { background: rgba(15,23,42,0.5); backdrop-filter: blur(10px); border-radius: 48px; padding: 24px 36px; text-align: center; border: 1px solid rgba(59,130,246,0.3); transition: all 0.2s; }
+    .stat-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .stat-number { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #fff, #93c5fd); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .stat-label { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); margin-top: 8px; }
+    
+    .section { padding: 70px 0 60px; border-bottom: 1px solid rgba(59,130,246,0.12); }
+    .section:last-child { border-bottom: none; }
+    
+    .badge { background: #1e293b; padding: 6px 18px; border-radius: 40px; font-size: 0.8rem; font-weight: 500; display: inline-block; margin-bottom: 24px; color: #a5f3fc; letter-spacing: 0.3px; }
+    h1 { font-size: 3.8rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; }
+    h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 32px; letter-spacing: -0.01em; text-align: center; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; }
+    .gradient-text { background: linear-gradient(135deg, #f0f9ff, #60a5fa, #a5f3fc); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .text-center { text-align: center; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .small-note { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+    .footer { text-align: center; padding: 48px 0 40px; font-size: 0.85rem; color: #5b6e8c; border-top: 1px solid rgba(59,130,246,0.12); }
+    
+    /* ========== КАЛЬКУЛЯТОР ========== */
+    .calculator-wrapper {
+      background: rgba(17,24,39,0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 64px;
+      padding: 48px 40px;
+      border: 1px solid rgba(59,130,246,0.5);
+      max-width: 780px;
+      margin: 0 auto;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.2);
+      transition: all 0.3s ease;
+    }
+    .calculator-wrapper:hover {
+      border-color: var(--accent);
+      box-shadow: 0 30px 50px -15px rgba(59,130,246,0.3);
+    }
+    .input-field { margin-bottom: 32px; }
+    .input-field label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #a5b4fc; margin-bottom: 12px; }
+    .input-field input {
+      width: 100%;
+      background: #0f172a;
+      border: 2px solid #334155;
+      border-radius: 60px;
+      padding: 18px 28px;
+      font-size: 1.4rem;
+      color: white;
+      text-align: center;
+      outline: none;
+      transition: all 0.2s;
+      font-weight: 600;
+    }
+    .input-field input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(59,130,246,0.3); }
+    .result-card {
+      background: linear-gradient(145deg, #0a0f1c, #030712);
+      border-radius: 48px;
+      padding: 32px 28px;
+      text-align: center;
+      border: 1px solid var(--accent);
+      margin: 20px 0 15px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 20px -5px rgba(0,0,0,0.5);
+    }
+    .commission-badge { font-size: 1rem; color: var(--accent); font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase; }
+    .calc-row { display: flex; justify-content: space-between; align-items: baseline; margin: 16px 0; font-size: 1.1rem; border-bottom: 1px dashed rgba(59,130,246,0.3); padding-bottom: 10px; }
+    .calc-row .label { color: #94a3b8; font-weight: 500; }
+    .calc-row .value { font-weight: 800; color: #eef2ff; font-size: 1.3rem; letter-spacing: -0.2px; }
+    .calc-row.commission .value { color: var(--accent); font-size: 1.5rem; }
+    .calc-row.seller .value { color: #4ade80; font-size: 1.5rem; }
+    
+    /* ========== ОТЗЫВЫ (АДАПТИВНО) ========== */
+    .review-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+    .review-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+    .review-name { font-weight: 700; font-size: 1rem; }
+    .review-date { font-size: 0.7rem; color: #5b6e8c; }
+    .review-stars { color: var(--warning); margin: 8px 0; font-size: 0.9rem; letter-spacing: 2px; }
+    .review-text { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; margin-top: 8px; }
+    
+    /* ========== FAQ ========== */
+    .faq-card { background: var(--card-bg); border-radius: 24px; padding: 24px; border: 1px solid var(--border); transition: all 0.2s; }
+    .faq-card:hover { border-color: var(--accent); }
+    .faq-card h4 { font-size: 1.05rem; margin-bottom: 12px; color: #60a5fa; font-weight: 600; }
+    .faq-card p { color: var(--text-muted); line-height: 1.5; font-size: 0.9rem; }
+    
+    /* ========== РЕГЛАМЕНТ ========== */
+    .regulation-block { background: #0a0f1c; border-radius: 32px; padding: 32px; border-left: 4px solid var(--accent); margin-top: 16px; }
+    .regulation-block h4 { color: #60a5fa; margin-top: 20px; margin-bottom: 8px; }
+    .regulation-block p, .regulation-block li { color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; }
+    .regulation-block ul { padding-left: 24px; margin: 12px 0; }
+    
+    /* ========== БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС?" ========== */
+    .reason-card {
+      background: rgba(15,23,42,0.4);
+      backdrop-filter: blur(4px);
+      border-radius: 28px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      transition: all 0.25s;
+      text-align: center;
+    }
+    .reason-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      background: rgba(15,23,42,0.7);
+    }
+    .reason-icon { font-size: 2.8rem; margin-bottom: 16px; }
+    .reason-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; }
+    
+    /* ========== АНИМАЦИИ ========== */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* ========== МЕДИАЗАПРОСЫ ========== */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      h1 { font-size: 2.5rem; text-align: center; }
+      h2 { font-size: 1.8rem; }
+      .stat-number { font-size: 2.2rem; }
+      .stat-card { padding: 18px 24px; }
+      .calculator-wrapper { padding: 32px 24px; max-width: 100%; }
+      .input-field input { font-size: 1.2rem; padding: 14px 20px; }
+      .calc-row { font-size: 0.9rem; flex-wrap: wrap; gap: 6px; }
+      .calc-row .value { font-size: 1.1rem; }
+      .calc-row.commission .value, .calc-row.seller .value { font-size: 1.2rem; }
+      .regulation-block { padding: 20px; }
+      .reason-card { padding: 20px; }
+      .reason-icon { font-size: 2rem; }
+      .reason-title { font-size: 1.1rem; }
+      
+      .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+    @media (max-width: 480px) {
+      .btn { padding: 10px 20px; font-size: 0.85rem; }
+      .card { padding: 20px; }
+      .stat-card { padding: 14px 20px; }
+      .calculator-wrapper { padding: 24px 16px; }
+      .review-card { padding: 16px; }
+      .review-text { font-size: 0.85rem; }
+    }
+    
+    .flex { display: flex; }
+    .flex-center { display: flex; justify-content: center; align-items: center; }
+    .gap-4 { gap: 16px; }
+  </style>
+</head>
+<body>
+<main>
+<div class="container">
+
+  <!-- ========== ХЕРО-СЕКЦИЯ ========== -->
+  <div class="section" style="padding-top: 60px;">
+    <div class="text-center">
+      <div class="badge">✦ ТОП-ГАРАНТ | СТАЖ 6+ ЛЕТ | ФИКС 10%</div>
+      <h1>Дмитрий <span class="gradient-text">Федоров</span></h1>
+      <div style="font-size: 1.2rem; margin-top: 16px; max-width: 650px; color: #cbd5e1; margin-left: auto; margin-right: auto;">Ваша безопасность — моя репутация. Провожу сделки любых типов: фриланс, криптовалюта, недвижимость, карго, даркнет маркет.</div>
+      <div class="grid grid-4" style="margin: 48px 0 32px;">
+        <div class="stat-card"><div class="stat-number">20 000+</div><div class="stat-label">Проведенных сделок</div></div>
+        <div class="stat-card"><div class="stat-number">100%</div><div class="stat-label">Положительных отзывов</div></div>
+        <div class="stat-card"><div class="stat-number">24/7</div><div class="stat-label">Оперативная поддержка</div></div>
+        <div class="stat-card"><div class="stat-number">10%</div><div class="stat-label">Фиксированная комиссия</div></div>
+      </div>
+      <div class="flex-center gap-4" style="flex-wrap: wrap;">
+        <a href="https://vk.me/news_fedorov" target="_blank" rel="noopener noreferrer" class="btn">📲 Написать в ВК</a>
+        <button id="scrollToCalcBtn" class="btn">📊 Калькулятор 10%</button>
+      </div>
+      <p class="small-note mt-4" style="max-width: 550px; margin: 24px auto 0;">✔️ Фиксированная комиссия — 10% от суммы сделки. Без скрытых платежей, без риск-факторов.<br>✔️ Эскроу-подход, юридическая чистота, прозрачность.</p>
+    </div>
+  </div>
+
+  <!-- ========== КАЛЬКУЛЯТОР 10% ========== -->
+  <div id="calculator" class="section">
+    <h2>⚡ Калькулятор <span class="gradient-text">комиссии 10%</span></h2>
+    <div class="calculator-wrapper">
+      <div class="input-field"><label>💰 Сумма сделки (₽)</label><input type="number" id="amountInput" placeholder="Например: 150000" value="50000" step="1000"></div>
+      <div class="result-card">
+        <div class="commission-badge">Фиксированная ставка: 10% (мин. 500 ₽)</div>
+        <div class="calc-row"><span class="label">📋 Сумма сделки:</span><span class="value" id="dealAmountDisplay">50 000 ₽</span></div>
+        <div class="calc-row commission"><span class="label">⚙️ Комиссия гаранта (10%):</span><span class="value" id="commissionDisplay">5 000 ₽</span></div>
+        <div class="calc-row seller"><span class="label">💰 Продавец получит:</span><span class="value" id="sellerAmountDisplay">45 000 ₽</span></div>
+        <div class="small-note mt-2" id="calcMeta">Комиссия ровно 10% от сделки, но не менее 500 ₽.</div>
+      </div>
+      <div class="flex-center mt-4"><button id="refreshCalc" class="btn">⟳ Пересчитать</button></div>
+      <hr><div class="small-note text-center">* Честные 10% без скрытых надбавок. Для постоянных клиентов — индивидуальные условия.</div>
+    </div>
+  </div>
+
+  <!-- ========== О ГАРАНТЕ ========== -->
+  <div class="section">
+    <div class="grid grid-2">
+      <div><h2 style="text-align: left;">Почему <span class="gradient-text">20 000+</span> выбирают меня?</h2><ul style="list-style: none; margin-top: 20px;"><li style="margin-bottom: 18px;">✅ <strong>Прозрачная статистика</strong> — подтверждённые отзывы, публичный рейтинг</li><li style="margin-bottom: 18px;">✅ <strong>Эскроу-гарант 2.0</strong> — удерживаю средства до полного выполнения</li><li style="margin-bottom: 18px;">✅ <strong>Регулирование споров</strong> — объективный арбитраж с защитой каждой стороны</li><li style="margin-bottom: 18px;">✅ <strong>Мгновенная реакция</strong> — отвечаю максимально быстро, работаю 24/7</li><li style="margin-bottom: 18px;">✅ <strong>Фиксированные 10%</strong> — без риск-факторов и наценок за тип услуги</li></ul><div class="mt-4"><a href="https://vk.me/news_fedorov" target="_blank" class="btn">💬 Получить консультацию</a></div></div>
+      <div class="card text-center"><div style="font-size: 3.5rem;">🛡️</div><h3>Репутация №1</h3><div>20 000+ довольных клиентов</div><div class="mt-2">★★★★★ <span style="color: var(--warning);">5.0</span> (20 000+ отзывов)</div><div class="small-note mt-2">Проверено временем</div></div>
+    </div>
+  </div>
+
+  <!-- ========== ПРЕИМУЩЕСТВА ========== -->
+  <div class="section"><h2>⭐ Наши <span class="gradient-text">преимущества</span></h2><div class="grid grid-3"><div class="card"><div style="font-size: 2rem;">🔒</div><h3>100% безопасность</h3><p class="small-note">Эскроу-сделки с удержанием средств до полного выполнения условий. Защита от мошенничества.</p></div><div class="card"><div style="font-size: 2rem;">⚡</div><h3>Мгновенная реакция</h3><p class="small-note">Всегда на связи, отвечаю в течение пары минут. Работаю 24/7 без выходных.</p></div><div class="card"><div style="font-size: 2rem;">💰</div><h3>Фикс 10%</h3><p class="small-note">Без скрытых платежей, без риск-факторов, без наценок за тип услуги. Честно и прозрачно.</p></div><div class="card"><div style="font-size: 2rem;">📋</div><h3>20 000+ сделок</h3><p class="small-note">Огромный опыт проведения сделок любой сложности. Каждая сделка — под полным контролем.</p></div><div class="card"><div style="font-size: 2rem;">⭐</div><h3>100% отзывов 5★</h3><p class="small-note">Все отзывы реальных клиентов. Проверенная репутация без единого негатива.</p></div><div class="card"><div style="font-size: 2rem;">🌍</div><h3>Работа по всему СНГ</h3><p class="small-note">Провожу сделки с клиентами из любых стран. Полная юридическая чистота.</p></div><div class="card"><div style="font-size: 2rem;">📱</div><h3>24/7 поддержка</h3><p class="small-note">Всегда на связи в ВК. Отвечаю на любые вопросы в любое время суток.</p></div><div class="card"><div style="font-size: 2rem;">📄</div><h3>Юридическая гарантия</h3><p class="small-note">Составляю официальные договоры. Несу полную ответственность за сделки.</p></div><div class="card"><div style="font-size: 2rem;">🔐</div><h3>Конфиденциальность</h3><p class="small-note">Полная анонимность по желанию клиента. Данные не передаются третьим лицам.</p></div></div></div>
+
+  <!-- ========== БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС?" ========== -->
+  <div class="section">
+    <h2>❓ Почему <span class="gradient-text">выбирают нас?</span></h2>
+    <div class="grid grid-3">
+      <div class="reason-card"><div class="reason-icon">🔐</div><div class="reason-title">Гарантия возврата</div><p class="small-note">При невыполнении обязательств продавцом — полный возврат средств покупателю в течение 24 часов.</p></div>
+      <div class="reason-card"><div class="reason-icon">⚖️</div><div class="reason-title">Честный арбитраж</div><p class="small-note">Беспристрастное рассмотрение споров на основе скриншотов, видео и логов. Решение в пользу правой стороны.</p></div>
+      <div class="reason-card"><div class="reason-icon">📄</div><div class="reason-title">Юридическая сила</div><p class="small-note">Составляю договор-оферту или индивидуальный контракт, который защищает обе стороны сделки.</p></div>
+      <div class="reason-card"><div class="reason-icon">💎</div><div class="reason-title">Прозрачность комиссии</div><p class="small-note">Фиксированные 10% без доначислений. Вы всегда знаете, сколько уйдёт гаранту, а сколько — продавцу.</p></div>
+      <div class="reason-card"><div class="reason-icon">🌐</div><div class="reason-title">Работа 24/7 без выходных</div><p class="small-note">Поддержка и проведение сделок в любое время суток, включая праздничные дни. Никаких задержек.</p></div>
+      <div class="reason-card"><div class="reason-icon">📊</div><div class="reason-title">Публичный рейтинг</div><p class="small-note">20 000+ реальных отзывов с оценкой 5.0. Каждый клиент может проверить историю моих сделок.</p></div>
+    </div>
+  </div>
+
+  <!-- ========== МЕТОДИКИ ПРОВЕРОК ========== -->
+  <div class="section">
+    <h2>🛡️ Методики проверок: <span class="gradient-text">Steam, игры и не только</span></h2>
+    <div class="grid grid-2">
+      <div class="card"><h3>🎮 Steam / Epic Games / Xbox</h3><p class="small-note">✔️ Проверка возраста аккаунта, история покупок, наличие VAC-банов, смена пароля и почты. ✔️ Передача логина/пароля только после оплаты через гаранта. ✔️ Проверка инвентаря (скины, игры) на чистоту и возвраты.</p></div>
+      <div class="card"><h3>🃏 Ключи и цифровые товары</h3><p class="small-note">✔️ Активация на чистом аккаунте покупателя под видеофиксацию. ✔️ Сверка скриншотов оригинальных писем. ✔️ Проверка региональной привязки и сроков активации.</p></div>
+      <div class="card"><h3>💎 Криптовалюта / USDT / BTC</h3><p class="small-note">✔️ Проверка транзакций через блокчейн-эксплорер. ✔️ Удержание средств гарантом до подтверждения получения. ✔️ Арбитраж при неверном адресе или сумме.</p></div>
+      <div class="card"><h3>🏠 Недвижимость / авто / техника</h3><p class="small-note">✔️ Проверка документов (договор, выписка ЕГРН, ПТС). ✔️ Составление предварительного договора с депозитом у гаранта. ✔️ Выездная проверка или видеосвязь с объектом.</p></div>
+      <div class="card"><h3>👥 Аккаунты соцсетей / домены</h3><p class="small-note">✔️ Проверка на бан-листы и историю. ✔️ Передача доступа через безопасный буфер (VPN, одноразовая почта). ✔️ Гарантия возврата при восстановлении доступа продавцом.</p></div>
+      <div class="card"><h3>📦 Карго / физический товар</h3><p class="small-note">✔️ Трекинг номер, фото товара перед отправкой. ✔️ Частичная оплата после получения на складе. ✔️ Полный возврат при несоответствии описанию.</p></div>
+    </div>
+    <div class="text-center mt-4 small-note">Все методики проверок задокументированы. При споре используется видеофиксация, логи и данные из открытых источников.</div>
+  </div>
+
+  <!-- ========== ПУБЛИЧНЫЙ РЕГЛАМЕНТ ========== -->
+  <div class="section">
+    <h2>📜 Публичный <span class="gradient-text">регламент сервиса</span></h2>
+    <div class="regulation-block">
+      <h4>1. Общие положения</h4>
+      <p>Гарант Дмитрий Федоров предоставляет услуги безопасного проведения сделок между сторонами. Комиссия — фиксированные 10% от суммы сделки (минимум 500 ₽). Все споры решаются на основе предоставленных доказательств.</p>
+      <h4>2. Порядок проведения сделки</h4>
+      <ul><li>Стороны согласовывают условия сделки (предмет, сроки, сумму).</li><li>Покупатель переводит полную сумму гаранту.</li><li>Гарант подтверждает получение и уведомляет продавца.</li><li>Продавец выполняет обязательства (передает товар/услугу).</li><li>Покупатель подтверждает получение → гарант переводит продавцу сумму за вычетом комиссии 10%.</li></ul>
+      <h4>3. Сроки и ответственность</h4>
+      <p>На выполнение обязательств сторонам даётся до 72 часов (если не оговорено иное). При нарушении сроков без уважительной причины гарант возвращает деньги покупателю. Гарант не несёт ответственность за качество товара/услуги, только за перевод средств по условиям сделки.</p>
+      <h4>4. Арбитраж</h4>
+      <p>Если одна из сторон не согласна с исходом, запускается арбитраж. Стороны предоставляют скриншоты, логи, видео. Решение принимается на основе большинства доказательств и публикуется в чате сделки. Решение гаранта окончательно.</p>
+      <h4>5. Конфиденциальность</h4>
+      <p>Гарант не передаёт личные данные третьим лицам. По желанию клиентов сделка может быть полностью анонимной (без паспортных данных).</p>
+      <h4>6. Отказ от услуг</h4>
+      <p>Гарант вправе отказать в проведении сделки, если она связана с незаконной деятельностью или если одна из сторон ранее была замечена в мошенничестве.</p>
+      <div class="small-note mt-2">Актуальная версия регламента: 2.4 от 15.03.2025. Любые изменения публикуются в ВК и в этом разделе.</div>
+    </div>
+  </div>
+
+  <!-- ========== ОТЗЫВЫ (25 карточек) ========== -->
+  <div class="section"><h2>📢 Реальные <span class="gradient-text">отзывы</span> (20 000+)</h2><div class="grid grid-3" id="reviewsGrid"></div><div class="flex-center mt-4"><a href="https://vk.me/news_fedorov" target="_blank" class="btn">📂 Смотреть все отзывы в ВК</a></div></div>
+
+  <!-- ========== FAQ ========== -->
+  <div class="section"><h2>❓ Часто задаваемые <span class="gradient-text">вопросы</span></h2><div class="grid grid-2" id="faqGrid"></div></div>
+
+  <!-- ========== КЕЙСЫ ========== -->
+  <div class="section"><h2>🏆 <span class="gradient-text">Кейсы</span> успешных сделок</h2><div class="grid grid-3" id="casesGrid"></div></div>
+
+  <!-- ========== КОНТАКТНЫЙ БЛОК ========== -->
+  <div class="section"><div style="background: linear-gradient(115deg, #0f172a, #030712); border-radius: 48px; padding: 52px 36px; text-align: center; border: 1px solid rgba(59,130,246,0.2);"><h2 style="margin-bottom: 16px;">🚀 Начните безопасную сделку</h2><div style="max-width: 550px; margin: 0 auto 28px auto; color: #94a3b8;">Единственный способ связи — официальный ВК. Фиксированная комиссия 10%. Никаких риск-факторов и наценок.</div><a href="https://vk.me/news_fedorov" target="_blank" class="btn" style="background: #2c3e8f; padding: 14px 32px;">🔗 Перейти в ВК → @news_fedorov</a><div class="small-note mt-4">VK ID проверен, страница верифицирована. Все гарантийные обязательства закреплены документально.</div></div></div>
+  <div class="footer">© 2025 Дмитрий Федоров | Гарант-услуги 20 000+ отзывов | Фиксированная комиссия 10% | Работаем по РФ и СНГ</div>
+</div>
+</main>
+
+<script>
+  // ========== КАЛЬКУЛЯТОР ==========
+  const amountInput = document.getElementById('amountInput');
+  const dealAmountSpan = document.getElementById('dealAmountDisplay');
+  const commissionSpan = document.getElementById('commissionDisplay');
+  const sellerAmountSpan = document.getElementById('sellerAmountDisplay');
+  const calcMetaSpan = document.getElementById('calcMeta');
+  const refreshBtn = document.getElementById('refreshCalc');
+  const scrollBtn = document.getElementById('scrollToCalcBtn');
+  
+  function updateCalculator() {
+    let amount = parseFloat(amountInput.value) || 0;
+    let commission = Math.floor(amount * 0.1);
+    if (commission < 500) commission = 500;
+    if (commission > amount) commission = amount;
+    let sellerAmount = amount - commission;
+    
+    const formatRub = (val) => new Intl.NumberFormat('ru-RU').format(val) + ' ₽';
+    dealAmountSpan.innerText = formatRub(amount);
+    commissionSpan.innerText = formatRub(commission);
+    sellerAmountSpan.innerText = formatRub(sellerAmount);
+    
+    let metaText = `10% от ${new Intl.NumberFormat('ru-RU').format(amount)} ₽ = ${new Intl.NumberFormat('ru-RU').format(commission)} ₽ комиссии. `;
+    if (amount * 0.1 < 500 && amount >= 500) metaText += `(сработал минимальный порог 500 ₽). `;
+    else if (amount < 500) metaText += `(сумма меньше 500 ₽ — комиссия равна сумме сделки). `;
+    metaText += `Продавец получает чистую сумму.`;
+    calcMetaSpan.innerText = metaText;
+  }
+  
+  if (amountInput) { amountInput.addEventListener('input', updateCalculator); amountInput.addEventListener('change', updateCalculator); }
+  if (refreshBtn) refreshBtn.addEventListener('click', updateCalculator);
+  if (scrollBtn) scrollBtn.addEventListener('click', () => document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' }));
+  updateCalculator();
+
+  // ========== ОТЗЫВЫ (25 шт) ==========
+  const reviewNames = [
+    'Алексей К.', 'Марина В.', 'Денис П.', 'Екатерина Л.', 'Игорь С.', 'Ольга Д.', 'Роман Т.', 'Виктор Н.', 'Анна М.', 'Сергей Г.',
+    'Наталья Р.', 'Артём З.', 'Кристина Ф.', 'Владимир Щ.', 'Татьяна О.', 'Максим Ж.', 'Юлия Е.', 'Андрей Ц.', 'Елена У.', 'Павел Х.',
+    'Валерия Ш.', 'Григорий Ы.', 'Алина Ю.', 'Станислав Я.', 'Вероника А.'
+  ];
+  const reviewTexts = [
+    'Провели сделку на 1.2 млн рублей — всё чётко, комиссия 10% полностью оправдана. Рекомендую!',
+    'Лучший гарант! Разрулил сложный спор с продавцом, вернул предоплату. Спасибо Дмитрию!',
+    'Обращаюсь уже 3 года, всегда надёжно. Комиссия 10% — честная ставка за безопасность.',
+    'Дмитрий помог с криптообменом, сделка на 5 BTC прошла идеально. Отличный гарант!',
+    'Спасибо за оперативность! Закрыли сделку за 2 часа, комиссия 10% без доплат.',
+    'Профессионал своего дела, скрупулёзно проверяет каждую деталь. 20к отзывов не врут.',
+    'После неудачного опыта с другим гарантом, Дмитрий вернул доверие. Безопасно и честно.',
+    'Отличная коммуникация, всегда на связи. Поддержка даже ночью. 10% — адекватно.',
+    'Проверенные отзывы, честные условия. Буду рекомендовать партнёрам.',
+    'Сложный арбитраж между тремя сторонами — Дмитрий решил за 2 дня. Профи.',
+    'Сделка с недвижимостью через гаранта прошла гладко. Комиссия 10% фикс — удобно.',
+    'Конфиденциальность и скорость — главные плюсы. 10/10. Буду обращаться ещё.',
+    'Помог с фриланс-проектом на 450к, все обязательства выполнены. Спасибо!',
+    'Лояльный, всегда идёт навстречу. Мой основной гарант уже 2 года. 10% — ок.',
+    'Всё прозрачно: комиссия 10% обсуждается заранее, нет скрытых платежей.',
+    'Решили вопрос с возвратом средств, я остался доволен результатом.',
+    'Отличный сервис! Сделка по обмену USDT — безопасно и быстро. Рекомендую.',
+    'Дмитрий — авторитет в сообществе, к его слову прислушиваются. 20к+ отзывов подтверждают.',
+    'После работы с ним перестал бояться крупных сделок. Спасибо за профессионализм!',
+    'Понравилось, что всегда присылает подтверждения и чеки. Честный гарант.',
+    'Очень доволен работой! Сделка прошла быстро и без проблем.',
+    'Надёжный гарант, всем советую. 10% — адекватная комиссия.',
+    'Спасибо за помощь в сложной сделке. Арбитраж решил всё честно.',
+    'Буду обращаться ещё. Профессионал с большой буквы.',
+    'Отличный сервис, всё прозрачно и понятно. Рекомендую!'
+  ];
+  const reviewsGrid = document.getElementById('reviewsGrid');
+  for (let i = 0; i < 25; i++) {
+    const name = reviewNames[i % reviewNames.length];
+    const text = reviewTexts[i % reviewTexts.length];
+    const date = new Date(Date.now() - Math.random() * 60 * 24 * 60 * 60 * 1000).toLocaleDateString('ru-RU');
+    reviewsGrid.innerHTML += `<div class="review-card"><div class="review-header"><span class="review-name">${name}</span><span class="review-date">${date}</span></div><div class="review-stars">★★★★★</div><div class="review-text">${text}</div></div>`;
+  }
+
+  // ========== FAQ ==========
+  const faqs = [
+    { q: '🤔 Какие сделки вы проводите?', a: 'Любые: фриланс, криптовалюта (USDT, BTC), недвижимость, карго, даркнет маркет, продажа аккаунтов, доменов, авто, техники.' },
+    { q: '💰 Почему 10%?', a: 'Оптимальная ставка за полную безопасность и оперативное решение споров. Без скрытых доплат, без риск-факторов.' },
+    { q: '⚡ Как быстро вы отвечаете?', a: 'Максимально быстро — я всегда на связи, обычно ответ приходит в течение пары минут. Работаю 24/7.' },
+    { q: '🔒 Безопасно ли?', a: 'Да, я удерживаю средства до полного выполнения условий сделки. Эскроу-сервис 2.0 с юридической защитой.' },
+    { q: '📄 Нужен ли договор?', a: 'При необходимости составляю официальный договор. Для большинства сделок достаточно устной договорённости под гарантом.' },
+    { q: '🌍 Работаете ли с другими странами?', a: 'Да, работаю со всем СНГ и дальним зарубежьем. Все сделки проводятся дистанционно.' },
+    { q: '💸 Какая минимальная сумма сделки?', a: 'Минимальная комиссия — 500 ₽, соответственно минимальная сумма сделки — от 5 000 ₽.' },
+    { q: '🕒 Сколько времени занимает сделка?', a: 'Обычно от 15 минут до нескольких часов, в зависимости от сложности и скорости сторон.' },
+    { q: '📞 Как с вами связаться?', a: 'Только через ВК: vk.me/news_fedorov. Никаких посредников, телеграм-каналов.' },
+    { q: '⭐ Почему вам можно доверять?', a: '20 000+ успешных сделок, 100% положительных отзывов, открытая статистика, работа с 2019 года.' },
+    { q: '🛡️ Что такое эскроу?', a: 'Услуга, при которой гарант удерживает средства до выполнения условий сделки.' },
+    { q: '⚖️ Как работает арбитраж?', a: 'При споре я изучаю доказательства от обеих сторон и принимаю справедливое решение.' },
+    { q: '🔐 Мои данные в безопасности?', a: 'Да, полная конфиденциальность. Данные не передаются третьим лицам.' },
+    { q: '📱 Есть ли мобильное приложение?', a: 'Связь только через ВК — самый быстрый и удобный способ.' },
+    { q: '💳 Какие способы оплаты?', a: 'Банковские карты, переводы, криптовалюта (USDT, BTC), наличные.' },
+    { q: '⏱️ Что если продавец не отвечает?', a: 'Я связываюсь с ним, если нет реакции в течение 48 часов — возвращаю деньги покупателю.' },
+    { q: '📸 Нужны ли скриншоты?', a: 'Да, для арбитража нужны доказательства переписки и оплаты.' },
+    { q: '🎯 Работаете с юридическими лицами?', a: 'Да, заключаю договоры с компаниями и ИП.' },
+    { q: '🔄 Можно ли изменить условия сделки?', a: 'Да, но только с письменного согласия всех сторон.' },
+    { q: '🏁 Как завершить сделку?', a: 'Обе стороны подтверждают выполнение, я перевожу деньги продавцу.' },
+    { q: '🕵️ Анонимные сделки возможны?', a: 'Да, полная анонимность по желанию клиента.' },
+    { q: '📊 Как я могу проверить вашу репутацию?', a: 'У меня открытая статистика, 20 000+ отзывов в ВК.' },
+    { q: '⏰ В какое время лучше писать?', a: 'В любое, я работаю 24/7. Отвечаю даже ночью.' },
+    { q: '💲 Есть ли скидки для постоянных?', a: 'Да, для постоянных клиентов индивидуальные условия.' }
+  ];
+  const faqGrid = document.getElementById('faqGrid');
+  faqs.forEach(f => { faqGrid.innerHTML += `<div class="faq-card"><h4>${f.q}</h4><p>${f.a}</p></div>`; });
+
+  // ========== КЕЙСЫ ==========
+  const cases = [
+    { title: 'Кейс #1: Криптообмен 2.5 млн ₽', desc: 'Покупатель и продавец из разных стран. Сделка закрыта за 2 часа. Комиссия 250 000 ₽.' },
+    { title: 'Кейс #2: Спор по фрилансу', desc: 'Заказчик не принял работу. Арбитраж решил в пользу исполнителя. Выплачено 120 000 ₽.' },
+    { title: 'Кейс #3: Покупка квартиры', desc: 'Сделка на 8 млн ₽ через эскроу. Проверка документов, безопасный расчёт.' },
+    { title: 'Кейс #4: Даркнет маркет', desc: 'Анонимная сделка на 450 000 ₽. Полная конфиденциальность сторон.' },
+    { title: 'Кейс #5: Возврат предоплаты', desc: 'Продавец не отгрузил товар. Через гаранта деньги возвращены за 1 день.' },
+    { title: 'Кейс #6: Карго-доставка', desc: 'Товар из Китая. Гарант удержал оплату до получения на складе.' },
+    { title: 'Кейс #7: Продажа аккаунта', desc: 'Сделка на 1.2 млн ₽. Полная безопасность для обеих сторон.' },
+    { title: 'Кейс #8: Обмен USDT', desc: '100 000 USDT за 3 часа. Безопасно, выгодно, без комиссий от бирж.' },
+    { title: 'Кейс #9: Спор по недвижимости', desc: 'Стороны пришли к соглашению через арбитраж за 2 дня.' },
+    { title: 'Кейс #10: Международный контракт', desc: 'Сделка на 5 млн ₽ с Европой. Полное юридическое сопровождение.' },
+    { title: 'Кейс #11: Продажа домена', desc: 'Дорогой домен за 900 000 ₽. Безопасный обмен через гаранта.' },
+    { title: 'Кейс #12: Спор по крипте', desc: 'Покупатель утверждал, что не получил USDT. Арбитраж показал обратное.' },
+    { title: 'Кейс #13: Авто из-за рубежа', desc: 'Сделка на 3.2 млн ₽. Полный контроль до получения авто в РФ.' },
+    { title: 'Кейс #14: Фриланс-проект', desc: 'Заказчик и исполнитель из разных городов. Проект сдан в срок.' },
+    { title: 'Кейс #15: Обмен валюты', desc: 'Обмен рублей на доллары через гаранта. Лучший курс и безопасность.' }
+  ];
+  const casesGrid = document.getElementById('casesGrid');
+  cases.forEach(c => { casesGrid.innerHTML += `<div class="card"><h3>${c.title}</h3><p class="small-note">${c.desc}</p></div>`; });
+
+  // ========== АНИМАЦИЯ ПРИ ПОЯВЛЕНИИ ==========
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0px)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  sections.forEach(sec => {
+    sec.style.opacity = '0';
+    sec.style.transform = 'translateY(20px)';
+    sec.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(sec);
+  });
+
+  console.log('✅ Сайт гаранта обновлён: 25 отзывов, убраны цифры времени реакции');
+</script>
+</body>
+</html>
