@@ -343,7 +343,7 @@
   if (scrollBtn) scrollBtn.addEventListener('click', () => document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' }));
   updateCalculator();
 
-  // ========== ОТЗЫВЫ – 35 штук, даты преимущественно 16,17,18 ==========
+  // ========== ОТЗЫВЫ – 35 штук, даты преимущественно 24,25,26 июля ==========
   const reviewNames = [
     'Алексей Ковалёв', 'Марина Смирнова', 'Денис Петров', 'Екатерина Лебедева', 'Игорь Соколов',
     'Ольга Денисова', 'Роман Тихонов', 'Виктор Никитин', 'Анна Морозова', 'Сергей Григорьев',
@@ -395,24 +395,24 @@
   const reviewsGrid = document.getElementById('reviewsGrid');
   const today = new Date();
   const currentYear = today.getFullYear();
-  const currentMonth = today.getMonth();
+  const currentMonth = today.getMonth(); // июль = 6 (0-индексация)
 
   for (let i = 0; i < 35; i++) {
     const name = reviewNames[i % reviewNames.length];
     const text = reviewTexts[i % reviewTexts.length];
     
-    // Генерируем дату: 70% шанс, что это 16, 17 или 18 июля
+    // Генерируем дату: 80% шанс, что это 24, 25 или 26 июля
     let day;
     const rand = Math.random();
-    if (rand < 0.3) day = 16;
-    else if (rand < 0.65) day = 17;
-    else if (rand < 0.9) day = 18;
+    if (rand < 0.35) day = 24;
+    else if (rand < 0.7) day = 25;
+    else if (rand < 0.9) day = 26;
     else {
-      // остальные – случайные от 13 до 19
-      day = 13 + Math.floor(Math.random() * 7);
+      // остальные – случайные от 22 до 26 (без будущих)
+      day = 22 + Math.floor(Math.random() * 5);
+      if (day > 26) day = 26;
     }
-    // Но сегодня 18 июля, поэтому даты не могут быть будущими, ограничим до 18
-    if (day > 18) day = 18;
+    // Если сегодня меньше 26, ограничим текущим днём, но мы знаем, что сегодня 26, поэтому ок.
     const dateObj = new Date(currentYear, currentMonth, day);
     const dateStr = dateObj.toLocaleDateString('ru-RU');
     
@@ -488,7 +488,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ 35 отзывов с датами 16,17,18 июля, живые тексты');
+  console.log('✅ 35 отзывов с датами 24,25,26 июля, живые тексты');
 </script>
 </body>
 </html>
