@@ -343,7 +343,7 @@
   if (scrollBtn) scrollBtn.addEventListener('click', () => document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' }));
   updateCalculator();
 
-  // ========== ОТЗЫВЫ – 35 штук, даты преимущественно 24,25,26 июля ==========
+  // ========== ОТЗЫВЫ – 35 штук, даты преимущественно 4 и 5 августа ==========
   const reviewNames = [
     'Алексей Ковалёв', 'Марина Смирнова', 'Денис Петров', 'Екатерина Лебедева', 'Игорь Соколов',
     'Ольга Денисова', 'Роман Тихонов', 'Виктор Никитин', 'Анна Морозова', 'Сергей Григорьев',
@@ -395,24 +395,24 @@
   const reviewsGrid = document.getElementById('reviewsGrid');
   const today = new Date();
   const currentYear = today.getFullYear();
-  const currentMonth = today.getMonth(); // июль = 6 (0-индексация)
+  const currentMonth = today.getMonth(); // август = 7
 
   for (let i = 0; i < 35; i++) {
     const name = reviewNames[i % reviewNames.length];
     const text = reviewTexts[i % reviewTexts.length];
     
-    // Генерируем дату: 80% шанс, что это 24, 25 или 26 июля
+    // Генерируем дату: 90% шанс, что это 4 или 5 августа
     let day;
     const rand = Math.random();
-    if (rand < 0.35) day = 24;
-    else if (rand < 0.7) day = 25;
-    else if (rand < 0.9) day = 26;
+    if (rand < 0.45) day = 4;
+    else if (rand < 0.85) day = 5;
     else {
-      // остальные – случайные от 22 до 26 (без будущих)
-      day = 22 + Math.floor(Math.random() * 5);
-      if (day > 26) day = 26;
+      // небольшая часть на 3 августа (или 2, но не дальше)
+      day = 3 + Math.floor(Math.random() * 3); // 3,4,5
+      if (day > 5) day = 5;
     }
-    // Если сегодня меньше 26, ограничим текущим днём, но мы знаем, что сегодня 26, поэтому ок.
+    // Гарантируем, что день не больше 5 (сегодня 5 августа)
+    if (day > 5) day = 5;
     const dateObj = new Date(currentYear, currentMonth, day);
     const dateStr = dateObj.toLocaleDateString('ru-RU');
     
@@ -488,7 +488,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ 35 отзывов с датами 24,25,26 июля, живые тексты');
+  console.log('✅ 35 отзывов с датами 4 и 5 августа, живые тексты');
 </script>
 </body>
 </html>
