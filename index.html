@@ -295,7 +295,7 @@
     </div>
   </div>
 
-  <!-- ========== ОТЗЫВЫ (35 карточек) – даты 6,7,8 августа, реалистичные, без шаблонов ========== -->
+  <!-- ========== ОТЗЫВЫ (35 карточек) – даты 11 и 12 августа ========== -->
   <div class="section"><h2>📢 Реальные <span class="gradient-text">отзывы</span> (20 000+)</h2><div class="grid grid-3" id="reviewsGrid"></div><div class="flex-center mt-4"><a href="https://vk.me/news_fedorov" target="_blank" class="btn">📂 Смотреть все отзывы в ВК</a></div></div>
 
   <!-- ========== FAQ ========== -->
@@ -339,7 +339,7 @@
   if (scrollBtn) scrollBtn.addEventListener('click', () => document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' }));
   updateCalculator();
 
-  // ========== ОТЗЫВЫ – 35 штук, даты 6,7,8 августа, живые тексты ==========
+  // ========== ОТЗЫВЫ – 35 штук, даты 11 и 12 августа ==========
   const reviewNames = [
     'Алексей Ковалёв', 'Марина Смирнова', 'Денис Петров', 'Екатерина Лебедева', 'Игорь Соколов',
     'Ольга Денисова', 'Роман Тихонов', 'Виктор Никитин', 'Анна Морозова', 'Сергей Григорьев',
@@ -395,14 +395,14 @@
   for (let i = 0; i < 35; i++) {
     const name = reviewNames[i % reviewNames.length];
     const text = reviewTexts[i % reviewTexts.length];
-    // Даты: преимущественно 6,7,8 августа
+    // Даты: преимущественно 11 и 12 августа
     let day;
     const rand = Math.random();
-    if (rand < 0.4) day = 6;
-    else if (rand < 0.7) day = 7;
-    else if (rand < 0.9) day = 8;
+    if (rand < 0.4) day = 11;
+    else if (rand < 0.8) day = 12;
     else {
-      day = (Math.random() < 0.5) ? 5 : 9;
+      // небольшая часть на 10 и 13 для естественности
+      day = (Math.random() < 0.5) ? 10 : 13;
     }
     const dateObj = new Date(currentYear, currentMonth, day);
     const dateStr = dateObj.toLocaleDateString('ru-RU');
@@ -478,7 +478,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Отзывы обновлены: живые разговорные тексты, адекватные суммы, даты 6-8 августа');
+  console.log('✅ Отзывы обновлены: даты 11 и 12 августа, живые тексты.');
 </script>
 </body>
 </html>
