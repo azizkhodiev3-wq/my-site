@@ -261,7 +261,7 @@
     </div>
   </div>
 
-  <!-- ========== ОТЗЫВЫ (35 карточек) – даты 15 и 16 августа ========== -->
+  <!-- ========== ОТЗЫВЫ (35 карточек) – только 16 и 17 августа ========== -->
   <div class="section"><h2>📢 Реальные <span class="gradient-text">отзывы</span> (20 000+)</h2><div class="grid grid-3" id="reviewsGrid"></div><div class="flex-center mt-4"><a href="https://vk.me/news_fedorov" target="_blank" class="btn">📂 Смотреть все отзывы в ВК</a></div></div>
 
   <div class="section"><h2>❓ Часто задаваемые <span class="gradient-text">вопросы</span></h2><div class="grid grid-2" id="faqGrid"></div></div>
@@ -302,7 +302,7 @@
   if (scrollBtn) scrollBtn.addEventListener('click', () => document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' }));
   updateCalculator();
 
-  // ========== ОТЗЫВЫ – 35 штук, даты преимущественно 15 и 16 августа ==========
+  // ========== ОТЗЫВЫ – 35 штук, только 16 и 17 августа ==========
   const reviewNames = [
     'Алексей Ковалёв', 'Марина Смирнова', 'Денис Петров', 'Екатерина Лебедева', 'Игорь Соколов',
     'Ольга Денисова', 'Роман Тихонов', 'Виктор Никитин', 'Анна Морозова', 'Сергей Григорьев',
@@ -358,14 +358,13 @@
   for (let i = 0; i < 35; i++) {
     const name = reviewNames[i % reviewNames.length];
     const text = reviewTexts[i % reviewTexts.length];
-    // Генерация дат: 90% – 15 или 16 августа
+    // Только 16 или 17 августа, с акцентом на 17 (70%)
     let day;
     const rand = Math.random();
-    if (rand < 0.45) day = 15;
-    else if (rand < 0.9) day = 16;
-    else {
-      // 10% на 14 или 17
-      day = (Math.random() < 0.5) ? 14 : 17;
+    if (rand < 0.7) {
+      day = 17;
+    } else {
+      day = 16;
     }
     const dateObj = new Date(currentYear, currentMonth, day);
     const dateStr = dateObj.toLocaleDateString('ru-RU');
@@ -441,7 +440,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Отзывы обновлены: даты 15 и 16 августа, тексты живые.');
+  console.log('✅ Отзывы обновлены: только 16 и 17 августа, акцент на 17-е.');
 </script>
 </body>
 </html>
