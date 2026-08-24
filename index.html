@@ -445,13 +445,19 @@
 
   const reviewsGrid = document.getElementById('reviewsGrid');
   const currentYear = new Date().getFullYear();
-  const currentMonth = 7;
+  const currentMonth = 7; // август
 
   for (let i = 0; i < 35; i++) {
     const name = reviewNames[i % reviewNames.length];
     const text = reviewTexts[i % reviewTexts.length];
     const initial = name.charAt(0);
-    let day = (Math.random() < 0.7) ? 22 : 21;
+    // Теперь генерируем даты: 70% – 24 августа, 30% – 23 августа
+    let day;
+    if (Math.random() < 0.7) {
+      day = 24;
+    } else {
+      day = 23;
+    }
     const dateObj = new Date(currentYear, currentMonth, day);
     const dateStr = dateObj.toLocaleDateString('ru-RU');
     
@@ -536,7 +542,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Финальная версия – цвет #141e30 / #0a111f, больше не меняем.');
+  console.log('✅ Отзывы обновлены: даты 23 и 24 августа.');
 </script>
 </body>
 </html>
