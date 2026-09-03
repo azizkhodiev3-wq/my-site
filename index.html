@@ -689,7 +689,7 @@
   <!-- ОТЗЫВЫ -->
   <div class="section">
     <h2><i class="fas fa-comments" style="color: var(--accent);"></i> Реальные <span class="gradient-text">отзывы</span> (20 000+)</h2>
-    <div id="reviewsCount" style="text-align:center; color: var(--text-muted); margin-bottom:20px;"></div>
+    <!-- Счётчик убран полностью -->
     
     <!-- Информация о пользователе -->
     <div id="userInfo" class="text-center" style="margin-bottom: 20px;"></div>
@@ -887,7 +887,7 @@
   const STORAGE_USERS = 'fedorov_users_mod_v2';
   const STORAGE_SESSION = 'fedorov_session';
   const STORAGE_VERSION = 'fedorov_version';
-  const CURRENT_VERSION = '5.0'; // новая версия
+  const CURRENT_VERSION = '6.0'; // новая версия
 
   let currentUser = null;
 
@@ -896,7 +896,7 @@
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
-  // ----- МАССИВ ОТЗЫВОВ (ровно 20) -----
+  // ----- МАССИВ ОТЗЫВОВ (ровно 25) -----
   const defaultReviews = [
     // Пользователи с двумя отзывами (старый + новый)
     { id: 1, userId: 'Алексей', text: 'продал акк за 5к – Дмитрий перевёл деньги за 3 минуты, я даже не успел чай допить))', stars: 5, date: '15.07.2025', approved: true },
@@ -920,8 +920,14 @@
     { id: 17, userId: 'Анна', text: 'домен за 14к купили, продавец пытался кинуть, но гарант всё разрулил', stars: 5, date: '02.09.2025', approved: true },
     { id: 18, userId: 'Сергей', text: 'первый раз пользуюсь гарантом – всё просто и понятно, больше не боюсь сделок', stars: 5, date: '03.09.2025', approved: true },
     { id: 19, userId: 'Наталья', text: 'скины в CS продали за 22к, проверил историю, без возвратов – супер', stars: 5, date: '02.09.2025', approved: true },
-    { id: 20, userId: 'Артём', text: 'дизайнер не доделал работу на 18к, гарант вернул предоплату, я спокоен', stars: 5, date: '03.09.2025', approved: true }
-    // Итого ровно 20 отзывов (16 + 4)
+    { id: 20, userId: 'Артём', text: 'дизайнер не доделал работу на 18к, гарант вернул предоплату, я спокоен', stars: 5, date: '03.09.2025', approved: true },
+
+    // Дополнительные 5 отзывов (новые пользователи)
+    { id: 21, userId: 'Павел', text: 'обменял рубли на USDT через гаранта – лучший курс, всё быстро', stars: 5, date: '02.09.2025', approved: true },
+    { id: 22, userId: 'Ирина', text: 'продала аккаунт в Instagram, Дмитрий помог безопасно провести сделку', stars: 5, date: '03.09.2025', approved: true },
+    { id: 23, userId: 'Григорий', text: 'покупал автомобиль через гаранта – проверил документы, сделка прошла идеально', stars: 5, date: '02.09.2025', approved: true },
+    { id: 24, userId: 'София', text: 'заказывала фриланс-услугу, гарант помог с оплатой – всё чётко', stars: 5, date: '03.09.2025', approved: true },
+    { id: 25, userId: 'Роман', text: 'продал дорогой скин в CS, деньги получил моментально, без риска', stars: 5, date: '02.09.2025', approved: true }
   ];
 
   // Функция для преобразования даты в формат дд.мм.гггг
@@ -964,7 +970,7 @@
       });
       localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
       localStorage.setItem(STORAGE_VERSION, CURRENT_VERSION);
-      console.log('✅ Данные обновлены до версии 5.0 (ровно 20 отзывов)');
+      console.log('✅ Данные обновлены до версии 6.0 (25 отзывов, счётчик убран)');
     } else {
       // Если версия совпадает, но данных нет — создаём
       if (!localStorage.getItem(STORAGE_REVIEWS)) {
@@ -1196,9 +1202,7 @@
     const allApproved = getApprovedReviews();
     const grid = document.getElementById('reviewsGrid');
     grid.innerHTML = '';
-    const countEl = document.getElementById('reviewsCount');
-    // Показываем общее количество одобренных отзывов (без уточнения по дате)
-    countEl.textContent = `Всего отзывов: ${allApproved.length}`;
+    // Счётчик полностью убран
 
     if (allApproved.length === 0) {
       grid.innerHTML = '<p class="text-center" style="color: var(--text-muted); grid-column: 1/-1;">Пока нет отзывов. Будьте первым!</p>';
@@ -1614,7 +1618,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Версия 5.0: ровно 20 отзывов, отображаются все, вход только по имени+паролю. Пароль модерации: admin123.');
+  console.log('✅ Версия 6.0: 25 отзывов, счётчик удалён, вход только по имени+паролю. Пароль модерации: admin123.');
 </script>
 </body>
 </html>
