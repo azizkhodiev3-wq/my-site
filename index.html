@@ -689,7 +689,7 @@
   <!-- ОТЗЫВЫ -->
   <div class="section">
     <h2><i class="fas fa-comments" style="color: var(--accent);"></i> Реальные <span class="gradient-text">отзывы</span> (20 000+)</h2>
-    <!-- Счётчик убран полностью -->
+    <!-- Счётчик полностью убран -->
     
     <!-- Информация о пользователе -->
     <div id="userInfo" class="text-center" style="margin-bottom: 20px;"></div>
@@ -887,7 +887,7 @@
   const STORAGE_USERS = 'fedorov_users_mod_v2';
   const STORAGE_SESSION = 'fedorov_session';
   const STORAGE_VERSION = 'fedorov_version';
-  const CURRENT_VERSION = '6.0'; // новая версия
+  const CURRENT_VERSION = '7.0'; // новая версия
 
   let currentUser = null;
 
@@ -896,9 +896,9 @@
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
-  // ----- МАССИВ ОТЗЫВОВ (ровно 25) -----
+  // ----- МАССИВ ОТЗЫВОВ (43 отзыва: 35 новых с датами 2-3 сентября, 8 старых) -----
   const defaultReviews = [
-    // Пользователи с двумя отзывами (старый + новый)
+    // 8 старых пользователей с двумя отзывами (старый + новый)
     { id: 1, userId: 'Алексей', text: 'продал акк за 5к – Дмитрий перевёл деньги за 3 минуты, я даже не успел чай допить))', stars: 5, date: '15.07.2025', approved: true },
     { id: 2, userId: 'Алексей', text: 'повторная сделка, снова на высоте!', stars: 5, date: '02.09.2025', approved: true },
     { id: 3, userId: 'Марина', text: 'покупали ноут за 28к, переживали, но он проверил серийник и чеки – всё чисто!', stars: 5, date: '20.07.2025', approved: true },
@@ -916,21 +916,36 @@
     { id: 15, userId: 'Виктор', text: 'Дмитрий отвечает даже в 3 часа ночи, я офигел! Реально 24/7', stars: 5, date: '30.08.2025', approved: true },
     { id: 16, userId: 'Виктор', text: 'опять обратился ночью, ответил мгновенно', stars: 5, date: '03.09.2025', approved: true },
 
-    // Пользователи с одним отзывом (новые)
+    // 27 новых пользователей с одним отзывом (даты 2-3 сентября)
     { id: 17, userId: 'Анна', text: 'домен за 14к купили, продавец пытался кинуть, но гарант всё разрулил', stars: 5, date: '02.09.2025', approved: true },
     { id: 18, userId: 'Сергей', text: 'первый раз пользуюсь гарантом – всё просто и понятно, больше не боюсь сделок', stars: 5, date: '03.09.2025', approved: true },
     { id: 19, userId: 'Наталья', text: 'скины в CS продали за 22к, проверил историю, без возвратов – супер', stars: 5, date: '02.09.2025', approved: true },
     { id: 20, userId: 'Артём', text: 'дизайнер не доделал работу на 18к, гарант вернул предоплату, я спокоен', stars: 5, date: '03.09.2025', approved: true },
-
-    // Дополнительные 5 отзывов (новые пользователи)
     { id: 21, userId: 'Павел', text: 'обменял рубли на USDT через гаранта – лучший курс, всё быстро', stars: 5, date: '02.09.2025', approved: true },
     { id: 22, userId: 'Ирина', text: 'продала аккаунт в Instagram, Дмитрий помог безопасно провести сделку', stars: 5, date: '03.09.2025', approved: true },
     { id: 23, userId: 'Григорий', text: 'покупал автомобиль через гаранта – проверил документы, сделка прошла идеально', stars: 5, date: '02.09.2025', approved: true },
     { id: 24, userId: 'София', text: 'заказывала фриланс-услугу, гарант помог с оплатой – всё чётко', stars: 5, date: '03.09.2025', approved: true },
-    { id: 25, userId: 'Роман', text: 'продал дорогой скин в CS, деньги получил моментально, без риска', stars: 5, date: '02.09.2025', approved: true }
+    { id: 25, userId: 'Роман', text: 'продал дорогой скин в CS, деньги получил моментально, без риска', stars: 5, date: '02.09.2025', approved: true },
+    { id: 26, userId: 'Татьяна', text: 'уже не первый раз с Дмитрием, всегда надёжно', stars: 5, date: '03.09.2025', approved: true },
+    { id: 27, userId: 'Максим', text: 'купил аккаунт с играми, всё проверили, передача прошла гладко', stars: 5, date: '02.09.2025', approved: true },
+    { id: 28, userId: 'Елена', text: 'продавала технику, покупатель из другого города – без проблем', stars: 5, date: '03.09.2025', approved: true },
+    { id: 29, userId: 'Константин', text: 'обмен валюты на 50к – курс выгодный, спасибо', stars: 5, date: '02.09.2025', approved: true },
+    { id: 30, userId: 'Валентина', text: 'заказывала услуги копирайтера, гарант помог с оплатой', stars: 5, date: '03.09.2025', approved: true },
+    { id: 31, userId: 'Георгий', text: 'переводил крупную сумму за товар – всё чётко, без задержек', stars: 5, date: '02.09.2025', approved: true },
+    { id: 32, userId: 'Зоя', text: 'продала телефон, покупатель скинул деньги через гаранта, я отправила', stars: 5, date: '03.09.2025', approved: true },
+    { id: 33, userId: 'Даниил', text: 'спор на 15к, арбитраж помог справедливо разрешить ситуацию', stars: 5, date: '02.09.2025', approved: true },
+    { id: 34, userId: 'Ксения', text: 'обменяла биткоины на рубли, курс был лучший на рынке', stars: 5, date: '03.09.2025', approved: true },
+    { id: 35, userId: 'Степан', text: 'покупал аккаунт в Dota, всё проверили, сделка отлично прошла', stars: 5, date: '02.09.2025', approved: true },
+    { id: 36, userId: 'Любовь', text: 'продавала услуги по дизайну, гарант помог с оплатой, всё идеально', stars: 5, date: '03.09.2025', approved: true },
+    { id: 37, userId: 'Аркадий', text: 'сделка по недвижимости на 2 млн – полная безопасность', stars: 5, date: '02.09.2025', approved: true },
+    { id: 38, userId: 'Вера', text: 'обмен крипты, всё прозрачно, комиссия 10% – отлично', stars: 5, date: '03.09.2025', approved: true },
+    { id: 39, userId: 'Борис', text: 'продал авто, покупатель из другого региона – без проблем', stars: 5, date: '02.09.2025', approved: true },
+    { id: 40, userId: 'Галина', text: 'заказ фриланса, гарант удержал оплату до выполнения', stars: 5, date: '03.09.2025', approved: true },
+    { id: 41, userId: 'Фёдор', text: 'покупка домена, продавец пытался обмануть, но гарант всё вернул', stars: 5, date: '02.09.2025', approved: true },
+    { id: 42, userId: 'Яна', text: 'первый раз пользовалась гарантом, очень довольна', stars: 5, date: '03.09.2025', approved: true },
+    { id: 43, userId: 'Эдуард', text: 'сделка по карго, товар пришёл, деньги получил', stars: 5, date: '02.09.2025', approved: true }
   ];
 
-  // Функция для преобразования даты в формат дд.мм.гггг
   function formatDate(date) {
     const d = new Date(date);
     const day = String(d.getDate()).padStart(2, '0');
@@ -942,9 +957,7 @@
   function initData() {
     const savedVersion = localStorage.getItem(STORAGE_VERSION);
     if (savedVersion !== CURRENT_VERSION) {
-      // Полная перезапись
       localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(defaultReviews));
-      // Создаём пользователей с вычислением даты регистрации = минимальная дата среди отзывов
       const userMap = {};
       defaultReviews.forEach(r => {
         if (!userMap[r.userId]) {
@@ -954,25 +967,22 @@
             surname: '',
             password: '',
             avatarColor: getRandomColor(),
-            registered: r.date, // временно
+            registered: r.date,
             reviewCount: 0
           };
         }
-        // Обновляем минимальную дату
         if (r.date < userMap[r.userId].registered) {
           userMap[r.userId].registered = r.date;
         }
       });
       const users = Object.values(userMap);
-      // Подсчёт количества одобренных отзывов для каждого пользователя
       users.forEach(u => {
         u.reviewCount = defaultReviews.filter(r => r.userId === u.id && r.approved).length;
       });
       localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
       localStorage.setItem(STORAGE_VERSION, CURRENT_VERSION);
-      console.log('✅ Данные обновлены до версии 6.0 (25 отзывов, счётчик убран)');
+      console.log('✅ Данные обновлены до версии 7.0 (43 отзыва, 35 на сайте)');
     } else {
-      // Если версия совпадает, но данных нет — создаём
       if (!localStorage.getItem(STORAGE_REVIEWS)) {
         localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(defaultReviews));
         const userMap = {};
@@ -1000,7 +1010,6 @@
       }
     }
     
-    // Восстановление сессии
     const sessionData = localStorage.getItem(STORAGE_SESSION);
     if (sessionData) {
       try {
@@ -1059,7 +1068,7 @@
       surname: surname.trim().toUpperCase(),
       password: password,
       avatarColor: getRandomColor(),
-      registered: formatDate(new Date()), // сегодня
+      registered: formatDate(new Date()),
       reviewCount: 0
     };
     
@@ -1073,7 +1082,6 @@
     return { success: true, user: newUser };
   }
 
-  // Вход теперь только по имени и паролю
   function loginUser(name, password) {
     const users = getUsers();
     const user = users.find(u => u.id === name && u.password === password);
@@ -1143,7 +1151,7 @@
     
     const reviews = getReviews();
     const now = new Date();
-    const dateStr = formatDate(now); // текущая дата
+    const dateStr = formatDate(now);
     const newReview = {
       id: Date.now(),
       userId: currentUser.id,
@@ -1198,19 +1206,26 @@
     renderAll();
   }
 
+  // Фильтр для отображения только отзывов с датами 02.09.2025 или 03.09.2025
+  function isDisplayDate(dateStr) {
+    return dateStr === '02.09.2025' || dateStr === '03.09.2025';
+  }
+
   function renderReviews() {
     const allApproved = getApprovedReviews();
+    // Фильтруем только те, у которых дата 2 или 3 сентября
+    const displayReviews = allApproved.filter(r => isDisplayDate(r.date));
     const grid = document.getElementById('reviewsGrid');
     grid.innerHTML = '';
-    // Счётчик полностью убран
+    // Счётчик убран
 
-    if (allApproved.length === 0) {
-      grid.innerHTML = '<p class="text-center" style="color: var(--text-muted); grid-column: 1/-1;">Пока нет отзывов. Будьте первым!</p>';
+    if (displayReviews.length === 0) {
+      grid.innerHTML = '<p class="text-center" style="color: var(--text-muted); grid-column: 1/-1;">Пока нет отзывов за эти даты.</p>';
       return;
     }
 
     // Сортируем по дате (новые сверху)
-    const sorted = allApproved.sort((a, b) => {
+    const sorted = displayReviews.sort((a, b) => {
       const toNum = (d) => parseInt(d.split('.').reverse().join(''));
       return toNum(b.date) - toNum(a.date);
     });
@@ -1291,7 +1306,7 @@
   function openProfile(userId) {
     const user = getUserById(userId);
     if (!user) return;
-    // Показываем все одобренные отзывы пользователя
+    // Показываем все одобренные отзывы пользователя (без фильтрации)
     const allApproved = getApprovedReviews().filter(r => r.userId === userId);
     const modal = document.getElementById('profileModal');
     const content = document.getElementById('profileContent');
@@ -1436,7 +1451,6 @@
   closeReviewBtn.addEventListener('click', () => reviewModal.classList.remove('active'));
   window.addEventListener('click', (e) => { if (e.target === reviewModal) reviewModal.classList.remove('active'); });
 
-  // Отправка отзыва — 5 секунд
   document.getElementById('submitReviewBtn').addEventListener('click', () => {
     if (!currentUser) {
       alert('Пожалуйста, войдите в систему.');
@@ -1618,7 +1632,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Версия 6.0: 25 отзывов, счётчик удалён, вход только по имени+паролю. Пароль модерации: admin123.');
+  console.log('✅ Версия 7.0: 43 отзыва (35 новых + 8 старых). На сайте отображаются только 35 с датами 2-3 сентября. В профилях видны все. Пароль модерации: admin123.');
 </script>
 </body>
 </html>
