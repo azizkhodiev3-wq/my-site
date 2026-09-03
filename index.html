@@ -689,7 +689,7 @@
   <!-- ОТЗЫВЫ -->
   <div class="section">
     <h2><i class="fas fa-comments" style="color: var(--accent);"></i> Реальные <span class="gradient-text">отзывы</span> (20 000+)</h2>
-    <!-- Счётчик полностью убран -->
+    <!-- Счётчик убран -->
     
     <!-- Информация о пользователе -->
     <div id="userInfo" class="text-center" style="margin-bottom: 20px;"></div>
@@ -887,7 +887,7 @@
   const STORAGE_USERS = 'fedorov_users_mod_v2';
   const STORAGE_SESSION = 'fedorov_session';
   const STORAGE_VERSION = 'fedorov_version';
-  const CURRENT_VERSION = '7.0'; // новая версия
+  const CURRENT_VERSION = '9.0'; // новая версия
 
   let currentUser = null;
 
@@ -946,6 +946,21 @@
     { id: 43, userId: 'Эдуард', text: 'сделка по карго, товар пришёл, деньги получил', stars: 5, date: '02.09.2025', approved: true }
   ];
 
+  // Фамилии для старых пользователей (первые буквы)
+  const oldSurnames = {
+    'Алексей': 'И.',
+    'Марина': 'П.',
+    'Денис': 'К.',
+    'Екатерина': 'С.',
+    'Игорь': 'В.',
+    'Ольга': 'Н.',
+    'Николай': 'М.',
+    'Виктор': 'Р.'
+  };
+
+  // Список букв для генерации фамилий новым пользователям
+  const letters = ['А','Б','В','Г','Д','Е','Ж','З','И','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Э','Ю','Я'];
+
   function formatDate(date) {
     const d = new Date(date);
     const day = String(d.getDate()).padStart(2, '0');
@@ -961,10 +976,15 @@
       const userMap = {};
       defaultReviews.forEach(r => {
         if (!userMap[r.userId]) {
+          let surname = oldSurnames[r.userId] || '';
+          if (!surname) {
+            // генерируем случайную букву для новых пользователей
+            surname = letters[Math.floor(Math.random() * letters.length)] + '.';
+          }
           userMap[r.userId] = {
             id: r.userId,
             name: r.userId,
-            surname: '',
+            surname: surname,
             password: '',
             avatarColor: getRandomColor(),
             registered: r.date,
@@ -981,17 +1001,21 @@
       });
       localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
       localStorage.setItem(STORAGE_VERSION, CURRENT_VERSION);
-      console.log('✅ Данные обновлены до версии 7.0 (43 отзыва, 35 на сайте)');
+      console.log('✅ Данные обновлены до версии 9.0 (у всех пользователей есть фамилия)');
     } else {
       if (!localStorage.getItem(STORAGE_REVIEWS)) {
         localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(defaultReviews));
         const userMap = {};
         defaultReviews.forEach(r => {
           if (!userMap[r.userId]) {
+            let surname = oldSurnames[r.userId] || '';
+            if (!surname) {
+              surname = letters[Math.floor(Math.random() * letters.length)] + '.';
+            }
             userMap[r.userId] = {
               id: r.userId,
               name: r.userId,
-              surname: '',
+              surname: surname,
               password: '',
               avatarColor: getRandomColor(),
               registered: r.date,
@@ -1065,7 +1089,7 @@
     const newUser = {
       id: userId,
       name: name.trim(),
-      surname: surname.trim().toUpperCase(),
+      surname: surname.trim().toUpperCase() + '.',
       password: password,
       avatarColor: getRandomColor(),
       registered: formatDate(new Date()),
@@ -1113,10 +1137,11 @@
     if (currentUser) {
       const color = currentUser.avatarColor || '#6b7280';
       const initial = currentUser.name.charAt(0).toUpperCase();
+      const displayName = currentUser.name + ' ' + currentUser.surname;
       userInfo.innerHTML = `
         <div class="user-badge">
           <div class="avatar-small" style="background-color: ${color};">${initial}</div>
-          <span>${currentUser.name}</span>
+          <span>${displayName}</span>
           <button id="logoutBtn" class="btn-outline" style="padding:4px 14px; font-size:0.8rem; border:1px solid #ef4444; color:#ef4444; background:transparent; border-radius:30px; cursor:pointer;">Выйти</button>
         </div>
       `;
@@ -1132,7 +1157,7 @@
       registerForm.classList.add('hidden');
       loginForm.classList.add('hidden');
       reviewContainer.style.display = 'block';
-      document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${currentUser.name}`;
+      document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${displayName}`;
       document.getElementById('reviewModalTitle').textContent = '✍️ Оставить отзыв';
     } else {
       userInfo.innerHTML = `<span style="color: var(--text-muted);">Вы не авторизованы. Нажмите "Добавить отзыв" для входа.</span>`;
@@ -1206,25 +1231,21 @@
     renderAll();
   }
 
-  // Фильтр для отображения только отзывов с датами 02.09.2025 или 03.09.2025
   function isDisplayDate(dateStr) {
     return dateStr === '02.09.2025' || dateStr === '03.09.2025';
   }
 
   function renderReviews() {
     const allApproved = getApprovedReviews();
-    // Фильтруем только те, у которых дата 2 или 3 сентября
     const displayReviews = allApproved.filter(r => isDisplayDate(r.date));
     const grid = document.getElementById('reviewsGrid');
     grid.innerHTML = '';
-    // Счётчик убран
 
     if (displayReviews.length === 0) {
       grid.innerHTML = '<p class="text-center" style="color: var(--text-muted); grid-column: 1/-1;">Пока нет отзывов за эти даты.</p>';
       return;
     }
 
-    // Сортируем по дате (новые сверху)
     const sorted = displayReviews.sort((a, b) => {
       const toNum = (d) => parseInt(d.split('.').reverse().join(''));
       return toNum(b.date) - toNum(a.date);
@@ -1235,6 +1256,10 @@
       const avatarColor = user ? user.avatarColor : '#6b7280';
       const initial = review.userId.charAt(0).toUpperCase();
       const starsHtml = '★'.repeat(review.stars) + '☆'.repeat(5 - review.stars);
+      let displayName = review.userId;
+      if (user && user.surname) {
+        displayName = user.name + ' ' + user.surname;
+      }
 
       const card = document.createElement('div');
       card.className = 'review-card';
@@ -1242,7 +1267,7 @@
         <div class="review-header" data-userid="${review.userId}">
           <div class="review-avatar" style="background-color: ${avatarColor};">${initial}</div>
           <div class="review-name-date">
-            <span class="review-name">${review.userId}</span>
+            <span class="review-name">${displayName}</span>
             <span class="review-date">${review.date || 'Недавно'}</span>
           </div>
         </div>
@@ -1306,18 +1331,18 @@
   function openProfile(userId) {
     const user = getUserById(userId);
     if (!user) return;
-    // Показываем все одобренные отзывы пользователя (без фильтрации)
     const allApproved = getApprovedReviews().filter(r => r.userId === userId);
     const modal = document.getElementById('profileModal');
     const content = document.getElementById('profileContent');
     const avatarColor = user.avatarColor || '#6b7280';
     const initial = user.name.charAt(0).toUpperCase();
+    const displayName = user.name + ' ' + user.surname;
 
     let html = `
       <div class="profile-header">
         <div class="profile-avatar-large" style="background-color: ${avatarColor};">${initial}</div>
         <div class="profile-info">
-          <h4>${user.name}</h4>
+          <h4>${displayName}</h4>
           <div class="sub">На сайте с ${user.registered || 'неизвестно'}</div>
           <div class="sub">Всего отзывов: ${allApproved.length}</div>
         </div>
@@ -1390,7 +1415,8 @@
       document.getElementById('regPassword').value = '';
       updateUserDisplay();
       formContainer.style.display = 'block';
-      document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${result.user.name}`;
+      const displayName = result.user.name + ' ' + result.user.surname;
+      document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${displayName}`;
       successContainer.style.display = 'none';
       document.getElementById('reviewText').value = '';
       document.querySelectorAll('input[name="stars"]').forEach(el => el.checked = false);
@@ -1413,7 +1439,8 @@
       document.getElementById('loginPassword').value = '';
       updateUserDisplay();
       formContainer.style.display = 'block';
-      document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${result.user.name}`;
+      const displayName = result.user.name + ' ' + result.user.surname;
+      document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${displayName}`;
       successContainer.style.display = 'none';
       document.getElementById('reviewText').value = '';
       document.querySelectorAll('input[name="stars"]').forEach(el => el.checked = false);
@@ -1431,7 +1458,8 @@
     
     if (currentUser) {
       formContainer.style.display = 'block';
-      document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${currentUser.name}`;
+      const displayName = currentUser.name + ' ' + currentUser.surname;
+      document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${displayName}`;
       document.getElementById('reviewModalTitle').textContent = '✍️ Оставить отзыв';
       authTabs.style.display = 'none';
       registerForm.classList.add('hidden');
@@ -1632,7 +1660,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Версия 7.0: 43 отзыва (35 новых + 8 старых). На сайте отображаются только 35 с датами 2-3 сентября. В профилях видны все. Пароль модерации: admin123.');
+  console.log('✅ Версия 9.0: у всех пользователей есть фамилия (имя + буква.), 35 отзывов на сайте, 8 старых в профилях. Пароль модерации: admin123.');
 </script>
 </body>
 </html>
