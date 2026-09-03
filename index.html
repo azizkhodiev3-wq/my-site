@@ -525,9 +525,6 @@
       font-size: 0.8rem;
       color: white;
     }
-    .review-tag-removed {
-      display: none !important;
-    }
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
       h1 { font-size: 2.5rem; text-align: center; }
@@ -893,47 +890,50 @@
   const STORAGE_REVIEWS = 'fedorov_reviews_mod_v2';
   const STORAGE_USERS = 'fedorov_users_mod_v2';
   const STORAGE_SESSION = 'fedorov_session';
+  const STORAGE_VERSION = 'fedorov_version';
+  const CURRENT_VERSION = '3.0'; // новая версия, гарантированно перезапишет
 
-  // Текущий пользователь
   let currentUser = null;
-
-  function getRandomDate(daysAgo) {
-    const now = new Date();
-    const past = new Date(now);
-    if (daysAgo) {
-      past.setDate(past.getDate() - daysAgo);
-    } else {
-      past.setMonth(past.getMonth() - Math.floor(Math.random() * 4) - 1);
-    }
-    return past.toLocaleDateString('ru-RU');
-  }
 
   function getRandomColor() {
     const colors = ['#3b82f6', '#8b5cf6', '#f59e0b', '#10b981', '#ef4444', '#06b6d4', '#f472b6', '#f97316', '#14b8a6', '#a78bfa', '#34d399', '#fb923c', '#e879f9'];
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
+  // 25 отзывов с уникальными пользователями
   const defaultReviews = [
-    { id: 1, userId: 'Алексей', text: 'продал акк за 5к – Дмитрий перевёл деньги за 3 минуты, я даже не успел чай допить))', stars: 5, date: '02.09.2025', approved: true },
-    { id: 2, userId: 'Марина', text: 'покупали ноут за 28к, переживали, но он проверил серийник и чеки – всё чисто!', stars: 5, date: '01.09.2025', approved: true },
-    { id: 3, userId: 'Денис', text: 'фриланс-заказ на 35к закрыли за 45 минут. Я даже не ожидал такой скорости', stars: 5, date: '28.08.2025', approved: true },
-    { id: 4, userId: 'Екатерина', text: 'обмен usdt на 18к – Дмитрий подсказал лучший курс, без всякого напряга', stars: 5, date: '25.08.2025', approved: true },
-    { id: 5, userId: 'Игорь', text: 'аккаунт с танками взяли за 7к, проверил бан-лист – всё ок', stars: 5, date: '20.08.2025', approved: true },
-    { id: 6, userId: 'Ольга', text: 'спор на 12к решил за день, я уже думал, что всё пропало, а он вернул деньги', stars: 5, date: '18.08.2025', approved: true },
-    { id: 7, userId: 'Николай', text: 'продал ноутбук в Краснодар, покупатель из другого города – всё гладко', stars: 5, date: '15.08.2025', approved: true },
-    { id: 8, userId: 'Виктор', text: 'Дмитрий отвечает даже в 3 часа ночи, я офигел! Реально 24/7', stars: 5, date: '12.08.2025', approved: true },
-    { id: 9, userId: 'Анна', text: 'домен за 14к купили, продавец пытался кинуть, но гарант всё разрулил', stars: 5, date: '10.08.2025', approved: true },
-    { id: 10, userId: 'Сергей', text: 'первый раз пользуюсь гарантом – всё просто и понятно, больше не боюсь сделок', stars: 5, date: '08.08.2025', approved: true },
-    { id: 11, userId: 'Наталья', text: 'скины в CS продали за 22к, проверил историю, без возвратов – супер', stars: 5, date: '05.08.2025', approved: true },
-    { id: 12, userId: 'Артём', text: 'дизайнер не доделал работу на 18к, гарант вернул предоплату, я спокоен', stars: 5, date: '01.08.2025', approved: true },
-    { id: 13, userId: 'Кристина', text: 'обменял крипту на 45к – без проблем, всё прозрачно, комиссия 10% – норм', stars: 5, date: '28.07.2025', approved: true },
-    { id: 14, userId: 'Владимир', text: 'редкий предмет продал за 7к – покупатель нашёлся за 10 минут, круто', stars: 5, date: '25.07.2025', approved: true },
-    { id: 15, userId: 'Татьяна', text: 'уже 3-я сделка с Дмитрием – всегда надёжно, всем советую', stars: 5, date: '20.07.2025', approved: true }
+    { id: 1, userId: 'Алексей', text: 'продал акк за 5к – Дмитрий перевёл деньги за 3 минуты, я даже не успел чай допить))', stars: 5, date: '03.09.2025', approved: true },
+    { id: 2, userId: 'Марина', text: 'покупали ноут за 28к, переживали, но он проверил серийник и чеки – всё чисто!', stars: 5, date: '02.09.2025', approved: true },
+    { id: 3, userId: 'Денис', text: 'фриланс-заказ на 35к закрыли за 45 минут. Я даже не ожидал такой скорости', stars: 5, date: '01.09.2025', approved: true },
+    { id: 4, userId: 'Екатерина', text: 'обмен usdt на 18к – Дмитрий подсказал лучший курс, без всякого напряга', stars: 5, date: '30.08.2025', approved: true },
+    { id: 5, userId: 'Игорь', text: 'аккаунт с танками взяли за 7к, проверил бан-лист – всё ок', stars: 5, date: '28.08.2025', approved: true },
+    { id: 6, userId: 'Ольга', text: 'спор на 12к решил за день, я уже думал, что всё пропало, а он вернул деньги', stars: 5, date: '25.08.2025', approved: true },
+    { id: 7, userId: 'Николай', text: 'продал ноутбук в Краснодар, покупатель из другого города – всё гладко', stars: 5, date: '22.08.2025', approved: true },
+    { id: 8, userId: 'Виктор', text: 'Дмитрий отвечает даже в 3 часа ночи, я офигел! Реально 24/7', stars: 5, date: '20.08.2025', approved: true },
+    { id: 9, userId: 'Анна', text: 'домен за 14к купили, продавец пытался кинуть, но гарант всё разрулил', stars: 5, date: '18.08.2025', approved: true },
+    { id: 10, userId: 'Сергей', text: 'первый раз пользуюсь гарантом – всё просто и понятно, больше не боюсь сделок', stars: 5, date: '15.08.2025', approved: true },
+    { id: 11, userId: 'Наталья', text: 'скины в CS продали за 22к, проверил историю, без возвратов – супер', stars: 5, date: '12.08.2025', approved: true },
+    { id: 12, userId: 'Артём', text: 'дизайнер не доделал работу на 18к, гарант вернул предоплату, я спокоен', stars: 5, date: '10.08.2025', approved: true },
+    { id: 13, userId: 'Кристина', text: 'обменяла крипту на 45к – без проблем, всё прозрачно, комиссия 10% – норм', stars: 5, date: '08.08.2025', approved: true },
+    { id: 14, userId: 'Владимир', text: 'редкий предмет продал за 7к – покупатель нашёлся за 10 минут, круто', stars: 5, date: '05.08.2025', approved: true },
+    { id: 15, userId: 'Татьяна', text: 'уже 3-я сделка с Дмитрием – всегда надёжно, всем советую', stars: 5, date: '01.08.2025', approved: true },
+    { id: 16, userId: 'Максим', text: 'купил аккаунт с играми, всё проверили, передача прошла гладко', stars: 5, date: '28.07.2025', approved: true },
+    { id: 17, userId: 'Елена', text: 'продавала сумку за 8к, покупатель из другого города – без проблем', stars: 5, date: '25.07.2025', approved: true },
+    { id: 18, userId: 'Павел', text: 'обмен валюты на 30к – курс выгодный, спасибо за оперативность', stars: 5, date: '20.07.2025', approved: true },
+    { id: 19, userId: 'Ирина', text: 'заказывала услугу копирайтера, гарант помог с безопасной оплатой', stars: 5, date: '15.07.2025', approved: true },
+    { id: 20, userId: 'Григорий', text: 'переводил 50к за товар – всё чётко, без задержек', stars: 5, date: '10.07.2025', approved: true },
+    { id: 21, userId: 'София', text: 'продала телефон, покупатель скинул деньги через гаранта, я отправил', stars: 5, date: '05.07.2025', approved: true },
+    { id: 22, userId: 'Роман', text: 'решили спор на 15к, арбитраж помог справедливо разрешить ситуацию', stars: 5, date: '01.07.2025', approved: true },
+    { id: 23, userId: 'Алиса', text: 'обменяла биткоины на рубли, курс был лучший на рынке', stars: 5, date: '25.06.2025', approved: true },
+    { id: 24, userId: 'Дмитрий', text: 'покупал аккаунт в CS, всё проверили, сделка прошла отлично', stars: 5, date: '20.06.2025', approved: true },
+    { id: 25, userId: 'Анастасия', text: 'продавала услуги по дизайну, гарант помог с оплатой, всё прошло идеально', stars: 5, date: '15.06.2025', approved: true }
   ];
 
   function initData() {
-    let reviews = localStorage.getItem(STORAGE_REVIEWS);
-    if (!reviews) {
+    // Проверяем версию, если не совпадает — перезаписываем
+    const savedVersion = localStorage.getItem(STORAGE_VERSION);
+    if (savedVersion !== CURRENT_VERSION) {
+      // Полностью перезаписываем
       localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(defaultReviews));
       const userMap = {};
       defaultReviews.forEach(r => {
@@ -944,7 +944,7 @@
             surname: '',
             password: '',
             avatarColor: getRandomColor(),
-            registered: getRandomDate(),
+            registered: r.date, // дата регистрации = дата первого отзыва
             reviewCount: 0
           };
         }
@@ -952,12 +952,14 @@
       });
       const users = Object.values(userMap);
       localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
+      localStorage.setItem(STORAGE_VERSION, CURRENT_VERSION);
+      console.log('✅ Данные обновлены до версии 3.0 (25 отзывов)');
     } else {
-      let users = localStorage.getItem(STORAGE_USERS);
-      if (!users) {
-        const revs = JSON.parse(reviews);
+      // Если версия совпадает, но данных нет — создаём
+      if (!localStorage.getItem(STORAGE_REVIEWS)) {
+        localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(defaultReviews));
         const userMap = {};
-        revs.forEach(r => {
+        defaultReviews.forEach(r => {
           if (!userMap[r.userId]) {
             userMap[r.userId] = {
               id: r.userId,
@@ -965,14 +967,14 @@
               surname: '',
               password: '',
               avatarColor: getRandomColor(),
-              registered: getRandomDate(),
+              registered: r.date,
               reviewCount: 0
             };
           }
           userMap[r.userId].reviewCount++;
         });
-        const userArr = Object.values(userMap);
-        localStorage.setItem(STORAGE_USERS, JSON.stringify(userArr));
+        const users = Object.values(userMap);
+        localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
       }
     }
     
@@ -1021,14 +1023,9 @@
     return users.find(u => u.id === userId);
   }
 
-  // Регистрация
   function registerUser(name, surname, password) {
     const users = getUsers();
     const userId = name.trim();
-    
-    if (users.find(u => u.id === userId)) {
-      return { success: false, message: 'Пользователь с таким именем уже существует.' };
-    }
     
     if (password.length < 4) {
       return { success: false, message: 'Пароль должен содержать минимум 4 символа.' };
@@ -1047,7 +1044,6 @@
     users.push(newUser);
     saveUsers(users);
     
-    // Автоматический вход
     currentUser = newUser;
     localStorage.setItem(STORAGE_SESSION, JSON.stringify(currentUser));
     updateUserDisplay();
@@ -1055,7 +1051,6 @@
     return { success: true, user: newUser };
   }
 
-  // Вход
   function loginUser(name, surname, password) {
     const users = getUsers();
     const userId = name.trim();
@@ -1080,7 +1075,6 @@
     return { success: true, user: user };
   }
 
-  // Выход
   function logoutUser() {
     currentUser = null;
     localStorage.removeItem(STORAGE_SESSION);
@@ -1088,7 +1082,6 @@
     document.getElementById('reviewModal').classList.remove('active');
   }
 
-  // Обновление отображения пользователя
   function updateUserDisplay() {
     const userInfo = document.getElementById('userInfo');
     const reviewContainer = document.getElementById('reviewFormContainer');
@@ -1114,7 +1107,6 @@
           }
         });
       }
-      // Скрываем вкладки авторизации, показываем форму отзыва
       authTabs.style.display = 'none';
       registerForm.classList.add('hidden');
       loginForm.classList.add('hidden');
@@ -1126,7 +1118,6 @@
       reviewContainer.style.display = 'none';
       document.getElementById('reviewModalTitle').textContent = '🔐 Вход или регистрация';
       authTabs.style.display = 'flex';
-      // Показываем вкладки, но не переключаем автоматически
       registerForm.classList.add('hidden');
       loginForm.classList.remove('hidden');
       document.querySelectorAll('.auth-tabs button').forEach(t => t.classList.remove('active'));
@@ -1134,7 +1125,6 @@
     }
   }
 
-  // Добавление отзыва
   function addReview(text, stars) {
     if (!currentUser) return false;
     
@@ -1152,7 +1142,6 @@
     reviews.push(newReview);
     saveReviews(reviews);
     
-    // Обновляем количество отзывов у пользователя
     let users = getUsers();
     const idx = users.findIndex(u => u.id === currentUser.id);
     if (idx !== -1) {
@@ -1167,7 +1156,6 @@
     return true;
   }
 
-  // Модерация
   function approveReview(id) {
     let reviews = getReviews();
     const idx = reviews.findIndex(r => r.id === id);
@@ -1197,7 +1185,6 @@
     renderAll();
   }
 
-  // ================== РЕНДЕРИНГ ==================
   function renderReviews() {
     const reviews = getApprovedReviews();
     const grid = document.getElementById('reviewsGrid');
@@ -1284,7 +1271,6 @@
     }
   }
 
-  // ================== ПРОФИЛЬ ==================
   function openProfile(userId) {
     const user = getUserById(userId);
     if (!user) return;
@@ -1335,7 +1321,6 @@
   const registerForm = document.getElementById('registerForm');
   const loginForm = document.getElementById('loginForm');
   
-  // Вкладки
   document.querySelectorAll('.auth-tabs button').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.auth-tabs button').forEach(t => t.classList.remove('active'));
@@ -1351,7 +1336,6 @@
     });
   });
 
-  // Регистрация
   document.getElementById('registerBtn').addEventListener('click', () => {
     const name = document.getElementById('regName').value.trim();
     const surname = document.getElementById('regSurname').value.trim();
@@ -1364,13 +1348,10 @@
     
     const result = registerUser(name, surname, password);
     if (result.success) {
-      // Очищаем поля регистрации
       document.getElementById('regName').value = '';
       document.getElementById('regSurname').value = '';
       document.getElementById('regPassword').value = '';
-      // Обновляем интерфейс — теперь пользователь авторизован
       updateUserDisplay();
-      // Показываем форму отзыва
       formContainer.style.display = 'block';
       document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${result.user.name}`;
       successContainer.style.display = 'none';
@@ -1382,7 +1363,6 @@
     }
   });
 
-  // Вход
   document.getElementById('loginBtn').addEventListener('click', () => {
     const name = document.getElementById('loginName').value.trim();
     const surname = document.getElementById('loginSurname').value.trim();
@@ -1411,13 +1391,11 @@
   });
 
   openReviewBtn.addEventListener('click', () => {
-    // Сброс состояния
     formContainer.style.display = 'none';
     successContainer.style.display = 'none';
     document.getElementById('reviewText').value = '';
     document.querySelectorAll('input[name="stars"]').forEach(el => el.checked = false);
     
-    // Если пользователь уже авторизован — показываем форму отзыва
     if (currentUser) {
       formContainer.style.display = 'block';
       document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${currentUser.name}`;
@@ -1426,7 +1404,6 @@
       registerForm.classList.add('hidden');
       loginForm.classList.add('hidden');
     } else {
-      // Показываем вкладки авторизации
       authTabs.style.display = 'flex';
       registerForm.classList.add('hidden');
       loginForm.classList.remove('hidden');
@@ -1441,7 +1418,7 @@
   closeReviewBtn.addEventListener('click', () => reviewModal.classList.remove('active'));
   window.addEventListener('click', (e) => { if (e.target === reviewModal) reviewModal.classList.remove('active'); });
 
-  // Отправка отзыва — анимация модерации 8 секунд
+  // Отправка отзыва — 5 секунд
   document.getElementById('submitReviewBtn').addEventListener('click', () => {
     if (!currentUser) {
       alert('Пожалуйста, войдите в систему.');
@@ -1457,14 +1434,13 @@
       return;
     }
     
-    // Показываем спиннер на 8 секунд
     formContainer.style.display = 'none';
     successContainer.style.display = 'none';
     const loadingHtml = `
       <div style="text-align:center; padding:20px;">
         <div class="spinner"></div>
         <p style="color:#cbd5e1;">Отправка отзыва на модерацию...</p>
-        <p style="color:#5b6e8c; font-size:0.85rem; margin-top:8px;">Проверка занимает до 8 секунд</p>
+        <p style="color:#5b6e8c; font-size:0.85rem; margin-top:8px;">Проверка занимает до 5 секунд</p>
       </div>
     `;
     const existingLoader = document.getElementById('reviewLoadingPlaceholder');
@@ -1474,10 +1450,8 @@
     loaderDiv.innerHTML = loadingHtml;
     document.getElementById('reviewModalTitle').after(loaderDiv);
     
-    // Сохраняем отзыв
     addReview(text, stars);
     
-    // Анимация 8 секунд
     setTimeout(() => {
       const loader = document.getElementById('reviewLoadingPlaceholder');
       if (loader) loader.remove();
@@ -1492,7 +1466,7 @@
         const loader2 = document.getElementById('reviewLoadingPlaceholder');
         if (loader2) loader2.remove();
       }, 2000);
-    }, 8000);
+    }, 5000);
   });
 
   // Профиль
@@ -1538,7 +1512,6 @@
   closeModerationBtn.addEventListener('click', () => moderationModal.classList.remove('active'));
   window.addEventListener('click', (e) => { if (e.target === moderationModal) moderationModal.classList.remove('active'); });
 
-  // Активация скрытой модерации
   const statTrigger = document.getElementById('stat20000');
   statTrigger.addEventListener('dblclick', (e) => {
     e.stopPropagation();
@@ -1627,7 +1600,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Добавлена система регистрации/входа. Анимация модерации 8 секунд. Пароль модерации: admin123 (двойной клик по 20 000+ или футеру).');
+  console.log('✅ Версия 3.0: 25 отзывов, уникальные пользователи, дата регистрации = дата первого отзыва. Пароль модерации: admin123.');
 </script>
 </body>
 </html>
