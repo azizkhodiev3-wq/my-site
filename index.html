@@ -730,16 +730,13 @@
         <button id="registerBtn" class="btn-submit btn-submit-gold">Зарегистрироваться</button>
       </div>
 
-      <!-- Форма входа -->
+      <!-- Форма входа (только имя и пароль) -->
       <div class="auth-form hidden" id="loginForm">
         <div class="form-group">
           <label for="loginName">Имя</label>
           <input type="text" id="loginName" placeholder="Введите имя" required>
         </div>
-        <div class="form-group">
-          <label for="loginSurname">Первая буква фамилии</label>
-          <input type="text" id="loginSurname" placeholder="Например: И" maxlength="1" required>
-        </div>
+        <!-- Поле "Первая буква фамилии" удалено -->
         <div class="form-group">
           <label for="loginPassword">Пароль</label>
           <input type="password" id="loginPassword" placeholder="Введите пароль" required>
@@ -1075,21 +1072,12 @@
     return { success: true, user: newUser };
   }
 
-  function loginUser(name, surname, password) {
+  // Вход теперь только по имени и паролю (фамилия не нужна)
+  function loginUser(name, password) {
     const users = getUsers();
-    const userId = name.trim();
-    const user = users.find(u => u.id === userId);
-    
+    const user = users.find(u => u.id === name && u.password === password);
     if (!user) {
-      return { success: false, message: 'Пользователь не найден.' };
-    }
-    
-    if (user.surname !== surname.trim().toUpperCase()) {
-      return { success: false, message: 'Неверная буква фамилии.' };
-    }
-    
-    if (user.password !== password) {
-      return { success: false, message: 'Неверный пароль.' };
+      return { success: false, message: 'Неверное имя или пароль.' };
     }
     
     currentUser = user;
@@ -1221,7 +1209,8 @@
     const grid = document.getElementById('reviewsGrid');
     grid.innerHTML = '';
     const countEl = document.getElementById('reviewsCount');
-    countEl.textContent = `Отзывы за 2–3 сентября: ${displayReviews.length}`;
+    // Убираем упоминание даты, просто показываем количество отображаемых
+    countEl.textContent = `Отзывы: ${displayReviews.length}`;
 
     if (displayReviews.length === 0) {
       grid.innerHTML = '<p class="text-center" style="color: var(--text-muted); grid-column: 1/-1;">Пока нет отзывов за эти даты.</p>';
@@ -1230,7 +1219,6 @@
 
     // Показываем последние (сортировка по дате, новые сверху)
     const sorted = displayReviews.sort((a, b) => {
-      // Преобразуем даты в числа для сравнения (дд.мм.гггг -> ГГГГММДД)
       const toNum = (d) => parseInt(d.split('.').reverse().join(''));
       return toNum(b.date) - toNum(a.date);
     });
@@ -1333,7 +1321,6 @@
     if (allApproved.length === 0) {
       html += `<p style="color: var(--text-muted);">Нет отзывов.</p>`;
     } else {
-      // Сортируем по дате (сначала новые)
       const sorted = allApproved.sort((a, b) => {
         const toNum = (d) => parseInt(d.split('.').reverse().join(''));
         return toNum(b.date) - toNum(a.date);
@@ -1408,18 +1395,14 @@
 
   document.getElementById('loginBtn').addEventListener('click', () => {
     const name = document.getElementById('loginName').value.trim();
-    const surname = document.getElementById('loginSurname').value.trim();
     const password = document.getElementById('loginPassword').value;
     
     if (!name) { alert('Введите имя.'); return; }
-    if (!surname) { alert('Введите первую букву фамилии.'); return; }
-    if (surname.length !== 1) { alert('Введите только одну букву фамилии.'); return; }
     if (!password) { alert('Введите пароль.'); return; }
     
-    const result = loginUser(name, surname, password);
+    const result = loginUser(name, password);
     if (result.success) {
       document.getElementById('loginName').value = '';
-      document.getElementById('loginSurname').value = '';
       document.getElementById('loginPassword').value = '';
       updateUserDisplay();
       formContainer.style.display = 'block';
@@ -1643,7 +1626,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Версия 4.0: все отзывы имеют даты 2-3 сентября, у 8 пользователей есть старые отзывы (июль-август), дата регистрации = дата первого отзыва. Пароль модерации: admin123.');
+  console.log('✅ Версия 4.0: отзывы только 2-3 сентября, вход только по имени+пароль, фамилия только при регистрации. Пароль модерации: admin123.');
 </script>
 </body>
 </html>
