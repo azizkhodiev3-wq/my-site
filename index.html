@@ -736,7 +736,6 @@
           <label for="loginName">Имя</label>
           <input type="text" id="loginName" placeholder="Введите имя" required>
         </div>
-        <!-- Поле "Первая буква фамилии" удалено -->
         <div class="form-group">
           <label for="loginPassword">Пароль</label>
           <input type="password" id="loginPassword" placeholder="Введите пароль" required>
@@ -888,7 +887,7 @@
   const STORAGE_USERS = 'fedorov_users_mod_v2';
   const STORAGE_SESSION = 'fedorov_session';
   const STORAGE_VERSION = 'fedorov_version';
-  const CURRENT_VERSION = '4.0'; // новая версия
+  const CURRENT_VERSION = '5.0'; // новая версия
 
   let currentUser = null;
 
@@ -897,7 +896,7 @@
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
-  // ----- НОВЫЙ МАССИВ ОТЗЫВОВ (25 шт.) -----
+  // ----- МАССИВ ОТЗЫВОВ (ровно 20) -----
   const defaultReviews = [
     // Пользователи с двумя отзывами (старый + новый)
     { id: 1, userId: 'Алексей', text: 'продал акк за 5к – Дмитрий перевёл деньги за 3 минуты, я даже не успел чай допить))', stars: 5, date: '15.07.2025', approved: true },
@@ -917,16 +916,12 @@
     { id: 15, userId: 'Виктор', text: 'Дмитрий отвечает даже в 3 часа ночи, я офигел! Реально 24/7', stars: 5, date: '30.08.2025', approved: true },
     { id: 16, userId: 'Виктор', text: 'опять обратился ночью, ответил мгновенно', stars: 5, date: '03.09.2025', approved: true },
 
-    // Пользователи с одним отзывом (новый)
+    // Пользователи с одним отзывом (новые)
     { id: 17, userId: 'Анна', text: 'домен за 14к купили, продавец пытался кинуть, но гарант всё разрулил', stars: 5, date: '02.09.2025', approved: true },
     { id: 18, userId: 'Сергей', text: 'первый раз пользуюсь гарантом – всё просто и понятно, больше не боюсь сделок', stars: 5, date: '03.09.2025', approved: true },
     { id: 19, userId: 'Наталья', text: 'скины в CS продали за 22к, проверил историю, без возвратов – супер', stars: 5, date: '02.09.2025', approved: true },
-    { id: 20, userId: 'Артём', text: 'дизайнер не доделал работу на 18к, гарант вернул предоплату, я спокоен', stars: 5, date: '03.09.2025', approved: true },
-    { id: 21, userId: 'Кристина', text: 'обменяла крипту на 45к – без проблем, всё прозрачно, комиссия 10% – норм', stars: 5, date: '02.09.2025', approved: true },
-    { id: 22, userId: 'Владимир', text: 'редкий предмет продал за 7к – покупатель нашёлся за 10 минут, круто', stars: 5, date: '03.09.2025', approved: true },
-    { id: 23, userId: 'Татьяна', text: 'уже 3-я сделка с Дмитрием – всегда надёжно, всем советую', stars: 5, date: '02.09.2025', approved: true },
-    { id: 24, userId: 'Максим', text: 'купил аккаунт с играми, всё проверили, передача прошла гладко', stars: 5, date: '03.09.2025', approved: true },
-    { id: 25, userId: 'Елена', text: 'продавала сумку за 8к, покупатель из другого города – без проблем', stars: 5, date: '02.09.2025', approved: true }
+    { id: 20, userId: 'Артём', text: 'дизайнер не доделал работу на 18к, гарант вернул предоплату, я спокоен', stars: 5, date: '03.09.2025', approved: true }
+    // Итого ровно 20 отзывов (16 + 4)
   ];
 
   // Функция для преобразования даты в формат дд.мм.гггг
@@ -969,7 +964,7 @@
       });
       localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
       localStorage.setItem(STORAGE_VERSION, CURRENT_VERSION);
-      console.log('✅ Данные обновлены до версии 4.0 (отзывы 2-3 сентября, у части старые отзывы)');
+      console.log('✅ Данные обновлены до версии 5.0 (ровно 20 отзывов)');
     } else {
       // Если версия совпадает, но данных нет — создаём
       if (!localStorage.getItem(STORAGE_REVIEWS)) {
@@ -1072,7 +1067,7 @@
     return { success: true, user: newUser };
   }
 
-  // Вход теперь только по имени и паролю (фамилия не нужна)
+  // Вход теперь только по имени и паролю
   function loginUser(name, password) {
     const users = getUsers();
     const user = users.find(u => u.id === name && u.password === password);
@@ -1197,28 +1192,21 @@
     renderAll();
   }
 
-  // Фильтр для отображения только отзывов с датой 02.09.2025 или 03.09.2025
-  function isDisplayDate(dateStr) {
-    return dateStr === '02.09.2025' || dateStr === '03.09.2025';
-  }
-
   function renderReviews() {
     const allApproved = getApprovedReviews();
-    // Фильтруем только те, у которых дата 2 или 3 сентября
-    const displayReviews = allApproved.filter(r => isDisplayDate(r.date));
     const grid = document.getElementById('reviewsGrid');
     grid.innerHTML = '';
     const countEl = document.getElementById('reviewsCount');
-    // Убираем упоминание даты, просто показываем количество отображаемых
-    countEl.textContent = `Отзывы: ${displayReviews.length}`;
+    // Показываем общее количество одобренных отзывов (без уточнения по дате)
+    countEl.textContent = `Всего отзывов: ${allApproved.length}`;
 
-    if (displayReviews.length === 0) {
-      grid.innerHTML = '<p class="text-center" style="color: var(--text-muted); grid-column: 1/-1;">Пока нет отзывов за эти даты.</p>';
+    if (allApproved.length === 0) {
+      grid.innerHTML = '<p class="text-center" style="color: var(--text-muted); grid-column: 1/-1;">Пока нет отзывов. Будьте первым!</p>';
       return;
     }
 
-    // Показываем последние (сортировка по дате, новые сверху)
-    const sorted = displayReviews.sort((a, b) => {
+    // Сортируем по дате (новые сверху)
+    const sorted = allApproved.sort((a, b) => {
       const toNum = (d) => parseInt(d.split('.').reverse().join(''));
       return toNum(b.date) - toNum(a.date);
     });
@@ -1299,7 +1287,7 @@
   function openProfile(userId) {
     const user = getUserById(userId);
     if (!user) return;
-    // Показываем все одобренные отзывы пользователя (без фильтрации по дате)
+    // Показываем все одобренные отзывы пользователя
     const allApproved = getApprovedReviews().filter(r => r.userId === userId);
     const modal = document.getElementById('profileModal');
     const content = document.getElementById('profileContent');
@@ -1626,7 +1614,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Версия 4.0: отзывы только 2-3 сентября, вход только по имени+пароль, фамилия только при регистрации. Пароль модерации: admin123.');
+  console.log('✅ Версия 5.0: ровно 20 отзывов, отображаются все, вход только по имени+паролю. Пароль модерации: admin123.');
 </script>
 </body>
 </html>
