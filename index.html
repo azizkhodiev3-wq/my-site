@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    /* Все стили без изменений (такие же, как в предыдущей версии) */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --bg-dark: #141e30;
@@ -48,6 +47,14 @@
       transform: translateY(-3px) scale(1.02);
       background: linear-gradient(135deg, #6a9cff, #3b7bf0);
       box-shadow: 0 8px 35px rgba(79,140,255,0.5);
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      box-shadow: 0 4px 20px rgba(251,191,36,0.4);
+    }
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #fcd34d, #d97706);
+      box-shadow: 0 8px 35px rgba(251,191,36,0.5);
     }
     .grid { display: grid; gap: 24px; }
     .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
@@ -160,6 +167,10 @@
       border-color: var(--accent); transform: translateY(-4px);
       box-shadow: 0 12px 30px -10px rgba(0,0,0,0.4), var(--shadow-glow);
     }
+    .review-card.new-review {
+      border-color: var(--gold);
+      background: rgba(251,191,36,0.05);
+    }
     .review-header { display: flex; align-items: center; gap: 12px; }
     .review-avatar {
       width: 44px; height: 44px; border-radius: 50%;
@@ -215,6 +226,84 @@
     .trust-item .icon { font-size: 1.8rem; color: var(--gold); flex-shrink: 0; width: 2.2rem; text-align: center; }
     .trust-item .text { font-weight: 600; color: #eef2ff; }
     .trust-item .sub { font-size: 0.85rem; color: var(--text-muted); }
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--card-bg);
+      border-radius: 32px;
+      padding: 40px;
+      max-width: 520px;
+      width: 100%;
+      border: 1px solid rgba(79,140,255,0.3);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6), var(--shadow-glow);
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: slideUp 0.3s ease;
+      position: relative;
+    }
+    .modal h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+    .modal .subtitle { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; }
+    .modal .close-btn {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .modal .close-btn:hover { color: white; }
+    .modal label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; color: #a5b4fc; }
+    .modal input, .modal textarea, .modal select {
+      width: 100%;
+      background: #0f172a;
+      border: 2px solid #334155;
+      border-radius: 16px;
+      padding: 12px 16px;
+      font-size: 1rem;
+      color: white;
+      outline: none;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .modal input:focus, .modal textarea:focus, .modal select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(79,140,255,0.2);
+    }
+    .modal textarea { min-height: 100px; resize: vertical; }
+    .modal .stars-input {
+      display: flex;
+      gap: 8px;
+      font-size: 2rem;
+      cursor: pointer;
+      margin: 8px 0 16px;
+    }
+    .modal .stars-input i {
+      transition: color 0.2s, transform 0.15s;
+      color: #334155;
+    }
+    .modal .stars-input i.active,
+    .modal .stars-input i:hover {
+      color: var(--gold);
+      transform: scale(1.1);
+    }
+    .modal .stars-input i:hover { transform: scale(1.2); }
+    .modal .btn { width: 100%; justify-content: center; margin-top: 8px; }
+    .modal .form-group { margin-bottom: 18px; position: relative; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
@@ -233,6 +322,7 @@
       .reason-title { font-size: 1.1rem; }
       .grid-3 { grid-template-columns: 1fr; gap: 20px; }
       .trust-block { padding: 20px; }
+      .modal { padding: 24px; }
     }
     @media (max-width: 480px) {
       .btn { padding: 10px 20px; font-size: 0.85rem; }
@@ -242,6 +332,7 @@
       .review-card { padding: 16px; }
       .review-text { font-size: 0.85rem; }
       .review-avatar { width: 36px; height: 36px; font-size: 0.9rem; }
+      .modal { padding: 20px; }
     }
     .flex { display: flex; }
     .flex-center { display: flex; justify-content: center; align-items: center; }
@@ -378,23 +469,64 @@
     </div>
   </div>
 
-  <!-- ОТЗЫВЫ -->
-  <div class="section"><h2><i class="fas fa-comments" style="color: var(--accent);"></i> Реальные <span class="gradient-text">отзывы</span> (20 000+)</h2><div class="grid grid-3" id="reviewsGrid"></div><div class="flex-center mt-4"><a href="https://vk.me/news_fedorov" target="_blank" class="btn"><i class="fas fa-folder-open"></i> Смотреть все отзывы в ВК</a></div></div>
+  <!-- ===== ОТЗЫВЫ ===== -->
+  <div class="section"><h2><i class="fas fa-comments" style="color: var(--accent);"></i> Реальные <span class="gradient-text">отзывы</span> (20 000+)</h2>
+    <div class="grid grid-3" id="reviewsGrid"></div>
+    <div class="flex-center mt-4" style="gap: 16px; flex-wrap: wrap;">
+      <a href="https://vk.me/news_fedorov" target="_blank" class="btn"><i class="fas fa-folder-open"></i> Смотреть все отзывы в ВК</a>
+      <button id="openReviewModalBtn" class="btn btn-gold"><i class="fas fa-pen"></i> Оставить отзыв</button>
+    </div>
+  </div>
 
-  <!-- FAQ -->
-  <div class="section"><h2><i class="fas fa-question-circle" style="color: var(--accent);"></i> Часто задаваемые <span class="gradient-text">вопросы</span></h2><div class="grid grid-2" id="faqGrid"></div></div>
+  <!-- ===== FAQ ===== -->
+  <div class="section"><h2><i class="fas fa-question-circle" style="color: var(--accent);"></i> Часто задаваемые <span class="gradient-text">вопросы</span></h2>
+    <div class="grid grid-2" id="faqGrid"></div>
+  </div>
 
-  <!-- КЕЙСЫ -->
-  <div class="section"><h2><i class="fas fa-trophy" style="color: var(--accent);"></i> <span class="gradient-text">Кейсы</span> успешных сделок</h2><div class="grid grid-3" id="casesGrid"></div></div>
+  <!-- ===== КЕЙСЫ ===== -->
+  <div class="section"><h2><i class="fas fa-trophy" style="color: var(--accent);"></i> <span class="gradient-text">Кейсы</span> успешных сделок</h2>
+    <div class="grid grid-3" id="casesGrid"></div>
+  </div>
 
-  <!-- КОНТАКТЫ -->
+  <!-- ===== КОНТАКТЫ ===== -->
   <div class="section"><div style="background: linear-gradient(115deg, #0f172a, #030712); border-radius: 48px; padding: 52px 36px; text-align: center; border: 1px solid rgba(79,140,255,0.25); box-shadow: var(--shadow-glow);"><h2 style="margin-bottom: 16px;"><i class="fas fa-rocket" style="color: var(--accent);"></i> Начните безопасную сделку</h2><div style="max-width: 550px; margin: 0 auto 28px auto; color: #94a3b8;">Единственный способ связи — официальный ВК. Фиксированная комиссия 10% (начисляется сверху). Никаких риск-факторов и скрытых платежей.</div><a href="https://vk.me/news_fedorov" target="_blank" class="btn" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); box-shadow: 0 4px 20px rgba(251,191,36,0.4);"><i class="fab fa-vk"></i> Перейти в ВК → @news_fedorov</a><div class="small-note mt-4"><i class="fas fa-check-circle" style="color: #4ade80;"></i> VK ID проверен, страница верифицирована. Все гарантийные обязательства закреплены документально.</div></div></div>
   <div class="footer">© 2025 Дмитрий Федоров | Гарант-услуги 20 000+ отзывов | Фиксированная комиссия 10% (сверху) | Работаем по РФ и СНГ</div>
 </div>
 </main>
 
+<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ОТЗЫВОВ -->
+<div class="modal-overlay" id="reviewModal">
+  <div class="modal">
+    <button class="close-btn" id="closeModalBtn">&times;</button>
+    <h3><i class="fas fa-pen-fancy" style="color: var(--gold);"></i> Оставить отзыв</h3>
+    <p class="subtitle">Поделитесь своим опытом работы с гарантом. Нам важно ваше мнение!</p>
+    <form id="reviewForm">
+      <div class="form-group">
+        <label for="reviewName"><i class="fas fa-user"></i> Ваше имя</label>
+        <input type="text" id="reviewName" placeholder="Например: Алексей" required>
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-star"></i> Ваша оценка</label>
+        <div class="stars-input" id="starsInput">
+          <i class="fas fa-star" data-value="1"></i>
+          <i class="fas fa-star" data-value="2"></i>
+          <i class="fas fa-star" data-value="3"></i>
+          <i class="fas fa-star" data-value="4"></i>
+          <i class="fas fa-star" data-value="5"></i>
+        </div>
+        <input type="hidden" id="reviewRating" value="5">
+      </div>
+      <div class="form-group">
+        <label for="reviewText"><i class="fas fa-comment"></i> Текст отзыва</label>
+        <textarea id="reviewText" placeholder="Расскажите о своём опыте…" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold"><i class="fas fa-paper-plane"></i> Отправить отзыв</button>
+    </form>
+  </div>
+</div>
+
 <script>
-  // КАЛЬКУЛЯТОР
+  // ===== КАЛЬКУЛЯТОР =====
   const amountInput = document.getElementById('amountInput');
   const sellerAmountSpan = document.getElementById('sellerAmountDisplay');
   const commissionSpan = document.getElementById('commissionDisplay');
@@ -402,28 +534,24 @@
   const calcMetaSpan = document.getElementById('calcMeta');
   const refreshBtn = document.getElementById('refreshCalc');
   const scrollBtn = document.getElementById('scrollToCalcBtn');
-  
+
   function updateCalculator() {
     let sellerAmount = parseFloat(amountInput.value) || 0;
     let commission = Math.floor(sellerAmount * 0.1);
     let buyerPayment = sellerAmount + commission;
-    
     const formatRub = (val) => new Intl.NumberFormat('ru-RU').format(val) + ' ₽';
     sellerAmountSpan.innerText = formatRub(sellerAmount);
     commissionSpan.innerText = formatRub(commission);
     buyerPaymentSpan.innerText = formatRub(buyerPayment);
-    
-    let metaText = `10% от ${new Intl.NumberFormat('ru-RU').format(sellerAmount)} ₽ = ${new Intl.NumberFormat('ru-RU').format(commission)} ₽ комиссии. Итого покупатель переводит ${formatRub(buyerPayment)}, продавец получает ${formatRub(sellerAmount)}.`;
-    calcMetaSpan.innerText = metaText;
+    calcMetaSpan.innerText = `10% от ${new Intl.NumberFormat('ru-RU').format(sellerAmount)} ₽ = ${new Intl.NumberFormat('ru-RU').format(commission)} ₽ комиссии. Итого покупатель переводит ${formatRub(buyerPayment)}, продавец получает ${formatRub(sellerAmount)}.`;
   }
-  
   if (amountInput) { amountInput.addEventListener('input', updateCalculator); amountInput.addEventListener('change', updateCalculator); }
   if (refreshBtn) refreshBtn.addEventListener('click', updateCalculator);
   if (scrollBtn) scrollBtn.addEventListener('click', () => document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' }));
   updateCalculator();
 
-  // ОТЗЫВЫ – даты 1 и 2 сентября (акцент на 2-е)
-  const reviewNames = [
+  // ===== БАЗА ОТЗЫВОВ =====
+  const baseReviewNames = [
     'Алексей К.', 'Марина С.', 'Денис П.', 'Екатерина Л.', 'Игорь С.',
     'Ольга Д.', 'Николай С.', 'Виктор Н.', 'Анна М.', 'Сергей Г.',
     'Наталья Р.', 'Артём З.', 'Кристина Ф.', 'Владимир Щ.', 'Татьяна О.',
@@ -432,8 +560,7 @@
     'Дмитрий К.', 'Оксана П.', 'Константин С.', 'Анастасия В.', 'Евгений Б.',
     'Лариса Г.', 'Михаил Н.', 'Светлана О.', 'Никита С.', 'Ирина В.'
   ];
-
-  const reviewTexts = [
+  const baseReviewTexts = [
     'продал акк за 5к – Дмитрий перевёл деньги за 3 минуты, я даже не успел чай допить))',
     'покупали ноут за 28к, переживали, но он проверил серийник и чеки – всё чисто!',
     'фриланс-заказ на 35к закрыли за 45 минут. Я даже не ожидал такой скорости',
@@ -471,40 +598,155 @@
     'обмен биткоина на 60к за 20 минут – я даже не ожидал такой скорости'
   ];
 
-  const reviewsGrid = document.getElementById('reviewsGrid');
+  let reviews = [];
   const currentYear = new Date().getFullYear();
-  const currentMonth = 8; // сентябрь (0-индексация: 8 = сентябрь)
-
-  for (let i = 0; i < 35; i++) {
-    const name = reviewNames[i % reviewNames.length];
-    const text = reviewTexts[i % reviewTexts.length];
-    const initial = name.charAt(0);
-    // Определяем день: 70% – 2 сентября, 30% – 1 сентября
-    let day;
-    if (Math.random() < 0.7) {
-      day = 2;
-    } else {
-      day = 1;
-    }
+  const currentMonth = 8; // сентябрь
+  for (let i = 0; i < baseReviewNames.length; i++) {
+    const day = Math.random() < 0.7 ? 2 : 1;
     const dateObj = new Date(currentYear, currentMonth, day);
     const dateStr = dateObj.toLocaleDateString('ru-RU');
-    
-    reviewsGrid.innerHTML += `
-      <div class="review-card">
-        <div class="review-header">
-          <div class="review-avatar">${initial}</div>
-          <div class="review-name-date">
-            <span class="review-name">${name}</span>
-            <span class="review-date">${dateStr}</span>
-          </div>
-        </div>
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">${text}</div>
-      </div>
-    `;
+    reviews.push({ name: baseReviewNames[i], text: baseReviewTexts[i], date: dateStr, stars: 5 });
   }
 
-  // FAQ
+  const saved = localStorage.getItem('siteReviews');
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        if (parsed.length >= baseReviewNames.length) {
+          reviews = parsed;
+        } else {
+          reviews = [...parsed, ...reviews.slice(parsed.length)];
+        }
+      }
+    } catch (e) {}
+  }
+
+  function renderReviews() {
+    const grid = document.getElementById('reviewsGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    const toShow = reviews.length > 35 ? reviews.slice(-35) : reviews;
+    toShow.forEach((rev) => {
+      const initial = rev.name.charAt(0).toUpperCase();
+      const starsHtml = '★'.repeat(rev.stars || 5) + '☆'.repeat(5 - (rev.stars || 5));
+      const isNew = rev.date === new Date().toLocaleDateString('ru-RU');
+      const cardClass = isNew ? 'review-card new-review' : 'review-card';
+      grid.innerHTML += `
+        <div class="${cardClass}">
+          <div class="review-header">
+            <div class="review-avatar">${initial}</div>
+            <div class="review-name-date">
+              <span class="review-name">${rev.name}</span>
+              <span class="review-date">${rev.date}</span>
+            </div>
+          </div>
+          <div class="review-stars">${starsHtml}</div>
+          <div class="review-text">${rev.text}</div>
+        </div>
+      `;
+    });
+  }
+
+  function saveReviews() {
+    try { localStorage.setItem('siteReviews', JSON.stringify(reviews)); } catch (e) {}
+  }
+
+  renderReviews();
+
+  // ===== МОДАЛЬНОЕ ОКНО =====
+  const modal = document.getElementById('reviewModal');
+  const openBtn = document.getElementById('openReviewModalBtn');
+  const closeBtn = document.getElementById('closeModalBtn');
+  const form = document.getElementById('reviewForm');
+  const nameInput = document.getElementById('reviewName');
+  const textInput = document.getElementById('reviewText');
+  const ratingInput = document.getElementById('reviewRating');
+  const starsContainer = document.getElementById('starsInput');
+  const starElements = starsContainer.querySelectorAll('i');
+
+  openBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    nameInput.focus();
+  });
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    form.reset();
+    ratingInput.value = 5;
+    updateStars(5);
+  }
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  function updateStars(value) {
+    starElements.forEach((star, idx) => {
+      const val = parseInt(star.dataset.value);
+      star.classList.toggle('active', val <= value);
+    });
+    ratingInput.value = value;
+  }
+  starElements.forEach(star => {
+    star.addEventListener('click', () => {
+      const val = parseInt(star.dataset.value);
+      updateStars(val);
+    });
+    star.addEventListener('mouseenter', () => {
+      const val = parseInt(star.dataset.value);
+      starElements.forEach(s => {
+        const sv = parseInt(s.dataset.value);
+        s.style.color = sv <= val ? 'var(--gold)' : '#334155';
+      });
+    });
+    star.addEventListener('mouseleave', () => {
+      const current = parseInt(ratingInput.value);
+      starElements.forEach(s => {
+        const sv = parseInt(s.dataset.value);
+        s.style.color = sv <= current ? 'var(--gold)' : '#334155';
+      });
+    });
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = nameInput.value.trim();
+    const text = textInput.value.trim();
+    const rating = parseInt(ratingInput.value) || 5;
+    if (!name || !text) {
+      alert('Пожалуйста, заполните имя и текст отзыва.');
+      return;
+    }
+    const newReview = {
+      name: name,
+      text: text,
+      stars: rating,
+      date: new Date().toLocaleDateString('ru-RU')
+    };
+    reviews.unshift(newReview);
+    saveReviews();
+    renderReviews();
+    closeModal();
+    // Уведомление с сообщением о модерации
+    const msg = document.createElement('div');
+    msg.style.cssText = `
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: #10b981; color: white; padding: 16px 32px;
+      border-radius: 60px; font-weight: 600; box-shadow: 0 8px 30px rgba(16,185,129,0.4);
+      z-index: 2000; animation: fadeUp 0.4s ease;
+    `;
+    msg.innerHTML = '<i class="fas fa-check-circle"></i> Спасибо! Ваш отзыв отправлен на модерацию. Он появится после проверки.';
+    document.body.appendChild(msg);
+    setTimeout(() => {
+      msg.style.opacity = '0';
+      msg.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => msg.remove(), 500);
+    }, 3000);
+  });
+
+  // ===== FAQ =====
   const faqs = [
     { q: 'Какие сделки вы проводите?', a: 'Любые: фриланс, криптовалюта (USDT, BTC), недвижимость, карго, даркнет маркет, продажа аккаунтов, доменов, авто, техники.' },
     { q: 'Почему 10%?', a: 'Оптимальная ставка за полную безопасность и оперативное решение споров. Комиссия начисляется сверху, без скрытых доплат.' },
@@ -532,9 +774,13 @@
     { q: 'Есть ли скидки для постоянных?', a: 'Да, для постоянных клиентов индивидуальные условия.' }
   ];
   const faqGrid = document.getElementById('faqGrid');
-  faqs.forEach(f => { faqGrid.innerHTML += `<div class="faq-card"><h4><i class="fas fa-question-circle" style="color: var(--accent);"></i> ${f.q}</h4><p>${f.a}</p></div>`; });
+  if (faqGrid) {
+    faqs.forEach(f => {
+      faqGrid.innerHTML += `<div class="faq-card"><h4><i class="fas fa-question-circle" style="color: var(--accent);"></i> ${f.q}</h4><p>${f.a}</p></div>`;
+    });
+  }
 
-  // КЕЙСЫ
+  // ===== КЕЙСЫ =====
   const cases = [
     { title: 'Криптообмен 2.5 млн ₽', desc: 'Покупатель и продавец из разных стран. Сделка закрыта за 2 часа. Комиссия 250 000 ₽ (сверху).' },
     { title: 'Спор по фрилансу', desc: 'Заказчик не принял работу. Арбитраж решил в пользу исполнителя. Выплачено 120 000 ₽.' },
@@ -553,13 +799,15 @@
     { title: 'Обмен валюты', desc: 'Обмен рублей на доллары через гаранта. Лучший курс и безопасность.' }
   ];
   const casesGrid = document.getElementById('casesGrid');
-  const colors = ['#3b82f6','#f59e0b','#10b981','#8b5cf6','#ef4444','#06b6d4','#f472b6','#f97316','#14b8a6','#a78bfa','#34d399','#fbbf24','#60a5fa','#fb923c','#e879f9'];
-  cases.forEach((c, idx) => { 
-    const color = colors[idx % colors.length];
-    casesGrid.innerHTML += `<div class="card"><h3><i class="fas fa-folder-open" style="color: ${color}; margin-right: 8px;"></i> Кейс #${idx+1}: ${c.title}</h3><p class="small-note">${c.desc}</p></div>`; 
-  });
+  if (casesGrid) {
+    const colors = ['#3b82f6','#f59e0b','#10b981','#8b5cf6','#ef4444','#06b6d4','#f472b6','#f97316','#14b8a6','#a78bfa','#34d399','#fbbf24','#60a5fa','#fb923c','#e879f9'];
+    cases.forEach((c, idx) => {
+      const color = colors[idx % colors.length];
+      casesGrid.innerHTML += `<div class="card"><h3><i class="fas fa-folder-open" style="color: ${color}; margin-right: 8px;"></i> Кейс #${idx+1}: ${c.title}</h3><p class="small-note">${c.desc}</p></div>`;
+    });
+  }
 
-  // АНИМАЦИЯ
+  // ===== АНИМАЦИЯ =====
   const sections = document.querySelectorAll('.section');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -577,7 +825,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Отзывы обновлены: 1-2 сентября, тексты живые.');
+  console.log('✅ Все блоки на месте: отзывы, FAQ, кейсы, форма для отзывов с сообщением о модерации.');
 </script>
 </body>
 </html>
