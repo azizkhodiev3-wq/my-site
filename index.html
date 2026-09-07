@@ -21,7 +21,12 @@
       --accent-glow: rgba(59, 130, 246, 0.6);
       --gold: #f59e0b;
       --gold-dark: #d97706;
+      --gold-rich: #d97706;        /* богатый оранжево-золотой */
       --gold-glow: rgba(245, 158, 11, 0.5);
+      --sky-blue: #38bdf8;         /* небесный голубой */
+      --sky-glow: rgba(56, 189, 248, 0.3);
+      --teal: #2dd4bf;             /* бирюзовый (небесный оттенок) */
+      --teal-glow: rgba(45, 212, 191, 0.3);
       --border: #1e3a5f;
       --shadow-glow: 0 0 40px rgba(59,130,246,0.25);
     }
@@ -49,13 +54,23 @@
       box-shadow: 0 8px 40px rgba(59,130,246,0.7);
     }
     .btn-gold {
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      box-shadow: 0 4px 25px rgba(245,158,11,0.5);
+      background: linear-gradient(135deg, var(--gold), var(--gold-rich));
+      box-shadow: 0 4px 25px var(--gold-glow);
       color: #040814;
     }
     .btn-gold:hover {
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      background: linear-gradient(135deg, #fbbf24, var(--gold-rich));
       box-shadow: 0 8px 40px rgba(245,158,11,0.7);
+      transform: translateY(-3px) scale(1.02);
+    }
+    .btn-sky {
+      background: linear-gradient(135deg, var(--sky-blue), #0ea5e9);
+      box-shadow: 0 4px 25px var(--sky-glow);
+      color: #040814;
+    }
+    .btn-sky:hover {
+      background: linear-gradient(135deg, #7dd3fc, #38bdf8);
+      box-shadow: 0 8px 40px var(--sky-glow);
       transform: translateY(-3px) scale(1.02);
     }
     .btn-outline {
@@ -98,12 +113,12 @@
     }
     .stat-card:hover {
       transform: translateY(-6px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 50px rgba(59,130,246,0.3), var(--shadow-glow);
+      border-color: var(--gold);
+      box-shadow: 0 12px 50px rgba(245,158,11,0.3), var(--shadow-glow);
     }
     .stat-number {
       font-size: 3.6rem; font-weight: 800;
-      background: linear-gradient(135deg, #ffffff, #93c5fd);
+      background: linear-gradient(135deg, #ffffff, #93c5fd, var(--sky-blue));
       background-clip: text; -webkit-background-clip: text; color: transparent;
       text-shadow: 0 0 40px rgba(59,130,246,0.3);
       font-variant-numeric: tabular-nums;
@@ -126,6 +141,7 @@
       border: 1px solid rgba(59,130,246,0.3);
       backdrop-filter: blur(4px);
     }
+    .badge i { color: var(--gold); }
     .trust-badge {
       display: inline-flex; align-items: center; gap: 6px;
       background: rgba(59,130,246,0.15);
@@ -140,20 +156,34 @@
     .trust-badge:hover {
       background: rgba(59,130,246,0.25);
       border-color: var(--gold);
-      box-shadow: 0 0 30px rgba(245,158,11,0.2);
+      box-shadow: 0 0 30px var(--gold-glow);
     }
     .trust-badge i { margin-right: 4px; }
     h1 { font-size: 3.8rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; }
-    h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 32px; letter-spacing: -0.01em; text-align: center; }
-    h2 .gradient-text { background: linear-gradient(135deg, #f0f9ff, #60a5fa, #93c5fd); background-clip: text; -webkit-background-clip: text; color: transparent; }
-    .gradient-text { background: linear-gradient(135deg, #f0f9ff, #60a5fa, #93c5fd); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    h2 {
+      font-size: 2.2rem; font-weight: 700; margin-bottom: 32px; letter-spacing: -0.01em;
+      text-align: center;
+    }
+    h2 .gradient-text {
+      background: linear-gradient(135deg, #f0f9ff, #60a5fa, var(--sky-blue), var(--gold));
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #f0f9ff, #60a5fa, var(--sky-blue), var(--gold));
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+    }
     .text-center { text-align: center; }
     .mt-2 { margin-top: 0.5rem; }
     .mt-4 { margin-top: 1rem; }
     .mb-4 { margin-bottom: 1rem; }
     .small-note { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
     hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
-    .footer { text-align: center; padding: 48px 0 40px; font-size: 0.85rem; color: #4b6a8a; border-top: 1px solid rgba(59,130,246,0.15); cursor: pointer; }
+    .footer {
+      text-align: center; padding: 48px 0 40px; font-size: 0.85rem;
+      color: #4b6a8a; border-top: 1px solid rgba(59,130,246,0.15);
+      cursor: pointer;
+      background: radial-gradient(circle at 80% 20%, rgba(56,189,248,0.05), transparent 70%);
+    }
     .calculator-wrapper {
       background: rgba(10,17,40,0.7);
       backdrop-filter: blur(12px);
@@ -166,27 +196,30 @@
       transition: all 0.3s ease;
     }
     .calculator-wrapper:hover {
-      border-color: var(--accent);
-      box-shadow: 0 30px 70px -15px rgba(59,130,246,0.4), var(--shadow-glow);
+      border-color: var(--gold);
+      box-shadow: 0 30px 70px -15px var(--gold-glow), var(--shadow-glow);
     }
     .input-field { margin-bottom: 32px; }
-    .input-field label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #93c5fd; margin-bottom: 12px; }
+    .input-field label {
+      display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: #93c5fd; margin-bottom: 12px;
+    }
     .input-field input {
       width: 100%; background: #0a1128; border: 2px solid #1e3a5f;
       border-radius: 60px; padding: 18px 28px; font-size: 1.4rem;
       color: white; text-align: center; outline: none; transition: all 0.2s;
       font-weight: 600;
     }
-    .input-field input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(59,130,246,0.3); }
+    .input-field input:focus { border-color: var(--gold); box-shadow: 0 0 0 4px var(--gold-glow); }
     .input-field input::placeholder { color: #475569; font-weight: 400; font-size: 1rem; }
     .result-card {
       background: linear-gradient(145deg, #050a1a, #020512);
       border-radius: 48px; padding: 32px 28px; text-align: center;
-      border: 1px solid var(--accent); margin: 20px 0 15px;
+      border: 1px solid var(--gold); margin: 20px 0 15px;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 30px -5px rgba(0,0,0,0.6);
     }
     .commission-badge {
-      font-size: 1rem; color: var(--accent); font-weight: 700;
+      font-size: 1rem; color: var(--gold); font-weight: 700;
       letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase;
     }
     .calc-row {
@@ -196,9 +229,9 @@
     }
     .calc-row .label { color: #94a3b8; font-weight: 500; }
     .calc-row .value { font-weight: 800; color: #eef2ff; font-size: 1.3rem; letter-spacing: -0.2px; }
-    .calc-row.commission .value { color: var(--accent); font-size: 1.6rem; text-shadow: 0 0 30px rgba(59,130,246,0.4); }
+    .calc-row.commission .value { color: var(--gold); font-size: 1.6rem; text-shadow: 0 0 30px var(--gold-glow); }
     .calc-row.seller .value { color: #4ade80; font-size: 1.6rem; }
-    .calc-row.buyer .value { color: var(--gold); font-size: 1.6rem; text-shadow: 0 0 30px rgba(245,158,11,0.3); }
+    .calc-row.buyer .value { color: var(--sky-blue); font-size: 1.6rem; text-shadow: 0 0 30px var(--sky-glow); }
     .review-card {
       background: var(--card-bg); border-radius: 24px; padding: 22px;
       border: 1px solid var(--border); transition: all 0.4s ease;
@@ -206,8 +239,8 @@
       position: relative;
     }
     .review-card:hover {
-      border-color: var(--accent); transform: translateY(-6px);
-      box-shadow: 0 15px 50px -10px rgba(0,0,0,0.6), var(--shadow-glow);
+      border-color: var(--sky-blue); transform: translateY(-6px);
+      box-shadow: 0 15px 50px -10px rgba(0,0,0,0.6), 0 0 40px var(--sky-glow);
     }
     .review-header { display: flex; align-items: center; gap: 12px; cursor: pointer; }
     .review-avatar {
@@ -219,23 +252,23 @@
     .review-name-date { display: flex; flex-direction: column; }
     .review-name { font-weight: 700; font-size: 1rem; }
     .review-date { font-size: 0.7rem; color: #5b6e8c; }
-    .review-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; text-shadow: 0 0 15px rgba(245,158,11,0.3); }
+    .review-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; text-shadow: 0 0 15px var(--gold-glow); }
     .review-text { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; margin-top: 4px; }
     .faq-card {
       background: var(--card-bg); border-radius: 24px; padding: 24px;
       border: 1px solid var(--border); transition: all 0.3s ease;
     }
     .faq-card:hover {
-      border-color: var(--accent); transform: translateY(-4px);
-      box-shadow: 0 12px 40px -10px rgba(0,0,0,0.5), var(--shadow-glow);
+      border-color: var(--teal); transform: translateY(-4px);
+      box-shadow: 0 12px 40px -10px rgba(0,0,0,0.5), 0 0 30px var(--teal-glow);
     }
-    .faq-card h4 { font-size: 1.05rem; margin-bottom: 12px; color: #60a5fa; font-weight: 600; }
+    .faq-card h4 { font-size: 1.05rem; margin-bottom: 12px; color: var(--teal); font-weight: 600; }
     .faq-card h4 i { margin-right: 8px; }
     .faq-card p { color: var(--text-muted); line-height: 1.5; font-size: 0.9rem; }
     .regulation-block {
       background: #050a1a; border-radius: 32px; padding: 32px;
       border-left: 4px solid var(--gold); margin-top: 16px;
-      box-shadow: 0 0 40px rgba(245,158,11,0.08);
+      box-shadow: 0 0 40px var(--gold-glow);
     }
     .regulation-block h4 { color: var(--gold); margin-top: 20px; margin-bottom: 8px; }
     .regulation-block p, .regulation-block li { color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; }
@@ -246,8 +279,8 @@
       transition: all 0.3s ease; text-align: center;
     }
     .reason-card:hover {
-      border-color: var(--gold); transform: translateY(-6px);
-      background: rgba(15,26,47,0.8); box-shadow: 0 12px 50px rgba(245,158,11,0.1);
+      border-color: var(--sky-blue); transform: translateY(-6px);
+      background: rgba(15,26,47,0.8); box-shadow: 0 12px 50px var(--sky-glow);
     }
     .reason-icon { font-size: 2.8rem; margin-bottom: 16px; }
     .reason-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; }
@@ -337,8 +370,8 @@
     }
     .form-group input:focus,
     .form-group textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 4px rgba(59,130,246,0.2);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px var(--gold-glow);
     }
     .form-group textarea {
       resize: vertical;
@@ -363,25 +396,25 @@
     .star-rating label:hover ~ label,
     .star-rating input:checked ~ label {
       color: var(--gold);
-      text-shadow: 0 0 20px rgba(245,158,11,0.5);
+      text-shadow: 0 0 20px var(--gold-glow);
     }
     .btn-submit {
       width: 100%;
       padding: 16px;
       border-radius: 60px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
+      background: linear-gradient(135deg, var(--gold), var(--gold-rich));
+      color: #040814;
       font-weight: 700;
       font-size: 1.1rem;
       border: none;
       cursor: pointer;
       transition: 0.3s;
       margin-top: 8px;
-      box-shadow: 0 4px 20px rgba(59,130,246,0.4);
+      box-shadow: 0 4px 20px var(--gold-glow);
     }
     .btn-submit:hover {
       transform: scale(1.02);
-      box-shadow: 0 8px 35px rgba(59,130,246,0.6);
+      box-shadow: 0 8px 35px rgba(245,158,11,0.6);
     }
     .btn-submit:disabled {
       opacity: 0.6;
@@ -389,11 +422,11 @@
       transform: none;
     }
     .btn-submit-gold {
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      background: linear-gradient(135deg, var(--gold), var(--gold-rich));
       color: #040814;
     }
     .btn-submit-gold:hover {
-      box-shadow: 0 8px 35px rgba(245,158,11,0.5);
+      box-shadow: 0 8px 35px var(--gold-glow);
     }
     .profile-modal .modal-content {
       max-width: 600px;
@@ -471,7 +504,7 @@
     .btn-reject:hover { background: #dc2626; }
     .spinner {
       border: 4px solid rgba(255,255,255,0.1);
-      border-top: 4px solid #3b82f6;
+      border-top: 4px solid var(--gold);
       border-radius: 50%;
       width: 50px;
       height: 50px;
@@ -492,7 +525,7 @@
     }
     .success-icon {
       font-size: 3rem;
-      color: #4ade80;
+      color: var(--teal);
       margin-bottom: 10px;
     }
     .modal-success h3 { color: #f0f9ff; margin-bottom: 8px; }
@@ -592,111 +625,111 @@
   <!-- ХЕРО-СЕКЦИЯ -->
   <div class="section" style="padding-top: 60px;">
     <div class="text-center">
-      <div class="badge"><i class="fas fa-star" style="margin-right: 6px;"></i> ТОП-ГАРАНТ | СТАЖ 6+ ЛЕТ | ФИКС 10%</div>
+      <div class="badge"><i class="fas fa-star"></i> ТОП-ГАРАНТ | СТАЖ 6+ ЛЕТ | ФИКС 10%</div>
       <h1>Дмитрий <span class="gradient-text">Федоров</span></h1>
       <div style="font-size: 1.2rem; margin-top: 16px; max-width: 650px; color: #cbd5e1; margin-left: auto; margin-right: auto;">Ваша безопасность — моя репутация. Провожу сделки любых типов: фриланс, криптовалюта, недвижимость, карго, даркнет маркет.</div>
       
       <div class="flex-center gap-4 flex-wrap" style="margin: 32px 0 24px;">
         <span class="trust-badge"><i class="fas fa-shield-alt"></i> Ваши данные защищены</span>
-        <span class="trust-badge"><i class="fas fa-star"></i> 20 000+ реальных отзывов</span>
-        <span class="trust-badge"><i class="fas fa-clock"></i> Поддержка 24/7</span>
-        <span class="trust-badge"><i class="fas fa-clipboard-list"></i> Публичный рейтинг</span>
+        <span class="trust-badge"><i class="fas fa-star" style="color: var(--gold);"></i> 20 000+ реальных отзывов</span>
+        <span class="trust-badge"><i class="fas fa-clock" style="color: var(--sky-blue);"></i> Поддержка 24/7</span>
+        <span class="trust-badge"><i class="fas fa-clipboard-list" style="color: var(--teal);"></i> Публичный рейтинг</span>
       </div>
 
       <div class="grid grid-4" style="margin: 32px 0 32px;" id="statGrid">
-        <div class="stat-card"><span class="stat-icon" style="color: #fbbf24;"><i class="fas fa-chart-bar"></i></span><div class="stat-number" data-target="20000" id="stat20000">0</div><div class="stat-label">Проведенных сделок+</div></div>
+        <div class="stat-card"><span class="stat-icon" style="color: var(--gold);"><i class="fas fa-chart-bar"></i></span><div class="stat-number" data-target="20000" id="stat20000">0</div><div class="stat-label">Проведенных сделок+</div></div>
         <div class="stat-card"><span class="stat-icon" style="color: #4ade80;"><i class="fas fa-star"></i></span><div class="stat-number" data-target="100">0%</div><div class="stat-label">100% положительных отзывов</div></div>
-        <div class="stat-card"><span class="stat-icon" style="color: #60a5fa;"><i class="fas fa-clock"></i></span><div class="stat-number" data-target="24">0/7</div><div class="stat-label">Оперативная поддержка</div></div>
-        <div class="stat-card"><span class="stat-icon" style="color: #a78bfa;"><i class="fas fa-coins"></i></span><div class="stat-number" data-target="10">0%</div><div class="stat-label">Фиксированная комиссия</div></div>
+        <div class="stat-card"><span class="stat-icon" style="color: var(--sky-blue);"><i class="fas fa-clock"></i></span><div class="stat-number" data-target="24">0/7</div><div class="stat-label">Оперативная поддержка</div></div>
+        <div class="stat-card"><span class="stat-icon" style="color: var(--teal);"><i class="fas fa-coins"></i></span><div class="stat-number" data-target="10">0%</div><div class="stat-label">Фиксированная комиссия</div></div>
       </div>
       <div class="flex-center gap-4" style="flex-wrap: wrap;">
         <a href="https://vk.me/news_fedorov" target="_blank" rel="noopener noreferrer" class="btn btn-gold"><i class="fab fa-vk"></i> Написать в ВК</a>
-        <button id="scrollToCalcBtn" class="btn"><i class="fas fa-calculator"></i> Калькулятор 10%</button>
+        <button id="scrollToCalcBtn" class="btn btn-sky"><i class="fas fa-calculator"></i> Калькулятор 10%</button>
       </div>
-      <p class="small-note mt-4" style="max-width: 550px; margin: 24px auto 0;"><i class="fas fa-check-circle" style="color: #4ade80;"></i> Фиксированная комиссия — 10% от суммы сделки, начисляется сверху.<br><i class="fas fa-check-circle" style="color: #4ade80;"></i> Эскроу-подход, юридическая чистота, прозрачность.</p>
+      <p class="small-note mt-4" style="max-width: 550px; margin: 24px auto 0;"><i class="fas fa-check-circle" style="color: var(--teal);"></i> Фиксированная комиссия — 10% от суммы сделки, начисляется сверху.<br><i class="fas fa-check-circle" style="color: var(--gold);"></i> Эскроу-подход, юридическая чистота, прозрачность.</p>
     </div>
   </div>
 
   <!-- КАЛЬКУЛЯТОР -->
   <div id="calculator" class="section">
-    <h2><i class="fas fa-bolt" style="color: var(--accent);"></i> Калькулятор <span class="gradient-text">комиссии 10%</span></h2>
+    <h2><i class="fas fa-bolt" style="color: var(--gold);"></i> Калькулятор <span class="gradient-text">комиссии 10%</span></h2>
     <div class="calculator-wrapper">
-      <div class="input-field"><label><i class="fas fa-money-bill-wave"></i> Сумма для продавца (₽)</label><input type="number" id="amountInput" placeholder="Введите сумму, которую получит продавец" step="1000"></div>
+      <div class="input-field"><label><i class="fas fa-money-bill-wave" style="color: var(--gold);"></i> Сумма для продавца (₽)</label><input type="number" id="amountInput" placeholder="Введите сумму, которую получит продавец" step="1000"></div>
       <div class="result-card">
         <div class="commission-badge">Фиксированная ставка: 10% — комиссия сверху</div>
         <div class="calc-row seller"><span class="label"><i class="fas fa-user-check"></i> Продавец получит:</span><span class="value" id="sellerAmountDisplay">0 ₽</span></div>
-        <div class="calc-row commission"><span class="label"><i class="fas fa-hand-holding-usd"></i> Комиссия гаранта (10%):</span><span class="value" id="commissionDisplay">0 ₽</span></div>
-        <div class="calc-row buyer"><span class="label"><i class="fas fa-shopping-cart"></i> Покупатель платит:</span><span class="value" id="buyerPaymentDisplay">0 ₽</span></div>
+        <div class="calc-row commission"><span class="label"><i class="fas fa-hand-holding-usd" style="color: var(--gold);"></i> Комиссия гаранта (10%):</span><span class="value" id="commissionDisplay">0 ₽</span></div>
+        <div class="calc-row buyer"><span class="label"><i class="fas fa-shopping-cart" style="color: var(--sky-blue);"></i> Покупатель платит:</span><span class="value" id="buyerPaymentDisplay">0 ₽</span></div>
         <div class="small-note mt-2" id="calcMeta">Введите сумму сделки для расчёта.</div>
       </div>
-      <div class="flex-center mt-4"><button id="refreshCalc" class="btn"><i class="fas fa-sync-alt"></i> Пересчитать</button></div>
-      <hr><div class="small-note text-center"><i class="fas fa-info-circle"></i> Комиссия всегда 10% от суммы сделки, начисляется сверху. Продавец получает сумму сделки полностью.</div>
+      <div class="flex-center mt-4"><button id="refreshCalc" class="btn btn-gold"><i class="fas fa-sync-alt"></i> Пересчитать</button></div>
+      <hr><div class="small-note text-center"><i class="fas fa-info-circle" style="color: var(--sky-blue);"></i> Комиссия всегда 10% от суммы сделки, начисляется сверху. Продавец получает сумму сделки полностью.</div>
     </div>
   </div>
 
   <!-- БЛОК ДОВЕРИЯ -->
   <div class="section">
-    <h2><i class="fas fa-lock" style="color: var(--accent);"></i> Почему <span class="gradient-text">нам доверяют</span></h2>
+    <h2><i class="fas fa-lock" style="color: var(--gold);"></i> Почему <span class="gradient-text">нам доверяют</span></h2>
     <div class="trust-block">
-      <div class="trust-item"><span class="icon" style="color: #3b82f6;"><i class="fas fa-shield-alt"></i></span><div><div class="text">Эскроу-гарант 2.0</div><div class="sub">Средства удерживаются до полного выполнения условий</div></div></div>
-      <div class="trust-item"><span class="icon" style="color: #8b5cf6;"><i class="fas fa-balance-scale"></i></span><div><div class="text">Объективный арбитраж</div><div class="sub">Споры решаются на основе скриншотов, видео и логов</div></div></div>
-      <div class="trust-item"><span class="icon" style="color: #f59e0b;"><i class="fas fa-file-alt"></i></span><div><div class="text">Юридическая защита</div><div class="sub">Составляю договоры, несу ответственность за сделку</div></div></div>
-      <div class="trust-item"><span class="icon" style="color: #10b981;"><i class="fas fa-user-secret"></i></span><div><div class="text">Конфиденциальность</div><div class="sub">Полная анонимность по желанию клиента</div></div></div>
-      <div class="trust-item"><span class="icon" style="color: #ef4444;"><i class="fas fa-star"></i></span><div><div class="text">20 000+ реальных отзывов</div><div class="sub">Все отзывы от реальных клиентов, рейтинг 5.0</div></div></div>
+      <div class="trust-item"><span class="icon" style="color: var(--sky-blue);"><i class="fas fa-shield-alt"></i></span><div><div class="text">Эскроу-гарант 2.0</div><div class="sub">Средства удерживаются до полного выполнения условий</div></div></div>
+      <div class="trust-item"><span class="icon" style="color: var(--gold);"><i class="fas fa-balance-scale"></i></span><div><div class="text">Объективный арбитраж</div><div class="sub">Споры решаются на основе скриншотов, видео и логов</div></div></div>
+      <div class="trust-item"><span class="icon" style="color: var(--teal);"><i class="fas fa-file-alt"></i></span><div><div class="text">Юридическая защита</div><div class="sub">Составляю договоры, несу ответственность за сделку</div></div></div>
+      <div class="trust-item"><span class="icon" style="color: #a78bfa;"><i class="fas fa-user-secret"></i></span><div><div class="text">Конфиденциальность</div><div class="sub">Полная анонимность по желанию клиента</div></div></div>
+      <div class="trust-item"><span class="icon" style="color: var(--gold);"><i class="fas fa-star"></i></span><div><div class="text">20 000+ реальных отзывов</div><div class="sub">Все отзывы от реальных клиентов, рейтинг 5.0</div></div></div>
     </div>
   </div>
 
   <!-- О ГАРАНТЕ -->
   <div class="section">
     <div class="grid grid-2">
-      <div><h2 style="text-align: left;">Почему <span class="gradient-text">20 000+</span> выбирают меня?</h2><ul style="list-style: none; margin-top: 20px;"><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: #4ade80; margin-right: 10px;"></i> <strong>Прозрачная статистика</strong> — подтверждённые отзывы, публичный рейтинг</li><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: #4ade80; margin-right: 10px;"></i> <strong>Эскроу-гарант 2.0</strong> — удерживаю средства до полного выполнения</li><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: #4ade80; margin-right: 10px;"></i> <strong>Регулирование споров</strong> — объективный арбитраж с защитой каждой стороны</li><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: #4ade80; margin-right: 10px;"></i> <strong>Мгновенная реакция</strong> — отвечаю максимально быстро, работаю 24/7</li><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: #4ade80; margin-right: 10px;"></i> <strong>Фиксированные 10%</strong> — комиссия сверху, без скрытых платежей</li></ul><div class="mt-4"><a href="https://vk.me/news_fedorov" target="_blank" class="btn"><i class="fab fa-vk"></i> Получить консультацию</a></div></div>
-      <div class="card text-center"><div style="font-size: 3.5rem;"><i class="fas fa-shield-alt" style="color: var(--accent);"></i></div><h3>Репутация №1</h3><div>20 000+ довольных клиентов</div><div class="mt-2"><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i> <span style="color: var(--gold);">5.0</span> (20 000+ отзывов)</div><div class="small-note mt-2">Проверено временем</div></div>
+      <div><h2 style="text-align: left;">Почему <span class="gradient-text">20 000+</span> выбирают меня?</h2><ul style="list-style: none; margin-top: 20px;"><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: var(--teal); margin-right: 10px;"></i> <strong>Прозрачная статистика</strong> — подтверждённые отзывы, публичный рейтинг</li><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: var(--gold); margin-right: 10px;"></i> <strong>Эскроу-гарант 2.0</strong> — удерживаю средства до полного выполнения</li><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: var(--sky-blue); margin-right: 10px;"></i> <strong>Регулирование споров</strong> — объективный арбитраж с защитой каждой стороны</li><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: #4ade80; margin-right: 10px;"></i> <strong>Мгновенная реакция</strong> — отвечаю максимально быстро, работаю 24/7</li><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: var(--gold); margin-right: 10px;"></i> <strong>Фиксированные 10%</strong> — комиссия сверху, без скрытых платежей</li></ul><div class="mt-4"><a href="https://vk.me/news_fedorov" target="_blank" class="btn btn-gold"><i class="fab fa-vk"></i> Получить консультацию</a></div></div>
+      <div class="card text-center"><div style="font-size: 3.5rem;"><i class="fas fa-shield-alt" style="color: var(--gold);"></i></div><h3>Репутация №1</h3><div>20 000+ довольных клиентов</div><div class="mt-2"><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i> <span style="color: var(--gold);">5.0</span> (20 000+ отзывов)</div><div class="small-note mt-2">Проверено временем</div></div>
     </div>
   </div>
 
   <!-- ПРЕИМУЩЕСТВА -->
-  <div class="section"><h2><i class="fas fa-star" style="color: var(--accent);"></i> Наши <span class="gradient-text">преимущества</span></h2><div class="grid grid-3">
-    <div class="card"><div style="font-size: 2rem; color: #3b82f6;"><i class="fas fa-lock"></i></div><h3>100% безопасность</h3><p class="small-note">Эскроу-сделки с удержанием средств до полного выполнения условий. Защита от мошенничества.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #f59e0b;"><i class="fas fa-bolt"></i></div><h3>Мгновенная реакция</h3><p class="small-note">Всегда на связи, отвечаю в течение пары минут. Работаю 24/7 без выходных.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #10b981;"><i class="fas fa-coins"></i></div><h3>Фикс 10%</h3><p class="small-note">Комиссия начисляется сверху, продавец получает сумму сделки полностью. Честно и прозрачно.</p></div>
+  <div class="section"><h2><i class="fas fa-star" style="color: var(--gold);"></i> Наши <span class="gradient-text">преимущества</span></h2><div class="grid grid-3">
+    <div class="card"><div style="font-size: 2rem; color: var(--sky-blue);"><i class="fas fa-lock"></i></div><h3>100% безопасность</h3><p class="small-note">Эскроу-сделки с удержанием средств до полного выполнения условий. Защита от мошенничества.</p></div>
+    <div class="card"><div style="font-size: 2rem; color: var(--gold);"><i class="fas fa-bolt"></i></div><h3>Мгновенная реакция</h3><p class="small-note">Всегда на связи, отвечаю в течение пары минут. Работаю 24/7 без выходных.</p></div>
+    <div class="card"><div style="font-size: 2rem; color: var(--teal);"><i class="fas fa-coins"></i></div><h3>Фикс 10%</h3><p class="small-note">Комиссия начисляется сверху, продавец получает сумму сделки полностью. Честно и прозрачно.</p></div>
     <div class="card"><div style="font-size: 2rem; color: #8b5cf6;"><i class="fas fa-clipboard-list"></i></div><h3>20 000+ сделок</h3><p class="small-note">Огромный опыт проведения сделок любой сложности. Каждая сделка — под полным контролем.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #ef4444;"><i class="fas fa-star"></i></div><h3>100% отзывов 5★</h3><p class="small-note">Все отзывы реальных клиентов. Проверенная репутация без единого негатива.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #06b6d4;"><i class="fas fa-globe"></i></div><h3>Работа по всему СНГ</h3><p class="small-note">Провожу сделки с клиентами из любых стран. Полная юридическая чистота.</p></div>
+    <div class="card"><div style="font-size: 2rem; color: var(--gold);"><i class="fas fa-star"></i></div><h3>100% отзывов 5★</h3><p class="small-note">Все отзывы реальных клиентов. Проверенная репутация без единого негатива.</p></div>
+    <div class="card"><div style="font-size: 2rem; color: var(--sky-blue);"><i class="fas fa-globe"></i></div><h3>Работа по всему СНГ</h3><p class="small-note">Провожу сделки с клиентами из любых стран. Полная юридическая чистота.</p></div>
     <div class="card"><div style="font-size: 2rem; color: #f472b6;"><i class="fas fa-headset"></i></div><h3>24/7 поддержка</h3><p class="small-note">Всегда на связи в ВК. Отвечаю на любые вопросы в любое время суток.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #f97316;"><i class="fas fa-file-contract"></i></div><h3>Юридическая гарантия</h3><p class="small-note">Составляю официальные договоры. Несу полную ответственность за сделки.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #14b8a6;"><i class="fas fa-user-secret"></i></div><h3>Конфиденциальность</h3><p class="small-note">Полная анонимность по желанию клиента. Данные не передаются третьим лицам.</p></div>
+    <div class="card"><div style="font-size: 2rem; color: var(--gold);"><i class="fas fa-file-contract"></i></div><h3>Юридическая гарантия</h3><p class="small-note">Составляю официальные договоры. Несу полную ответственность за сделки.</p></div>
+    <div class="card"><div style="font-size: 2rem; color: var(--teal);"><i class="fas fa-user-secret"></i></div><h3>Конфиденциальность</h3><p class="small-note">Полная анонимность по желанию клиента. Данные не передаются третьим лицам.</p></div>
   </div></div>
 
   <!-- ПОЧЕМУ ВЫБИРАЮТ -->
   <div class="section">
-    <h2><i class="fas fa-question-circle" style="color: var(--accent);"></i> Почему <span class="gradient-text">выбирают нас?</span></h2>
+    <h2><i class="fas fa-question-circle" style="color: var(--sky-blue);"></i> Почему <span class="gradient-text">выбирают нас?</span></h2>
     <div class="grid grid-3">
-      <div class="reason-card"><div class="reason-icon" style="color: #3b82f6;"><i class="fas fa-shield-alt"></i></div><div class="reason-title">Гарантия возврата</div><p class="small-note">При невыполнении обязательств продавцом — полный возврат средств покупателю в течение 24 часов.</p></div>
-      <div class="reason-card"><div class="reason-icon" style="color: #8b5cf6;"><i class="fas fa-balance-scale"></i></div><div class="reason-title">Честный арбитраж</div><p class="small-note">Беспристрастное рассмотрение споров на основе скриншотов, видео и логов. Решение в пользу правой стороны.</p></div>
-      <div class="reason-card"><div class="reason-icon" style="color: #f59e0b;"><i class="fas fa-file-alt"></i></div><div class="reason-title">Юридическая сила</div><p class="small-note">Составляю договор-оферту или индивидуальный контракт, который защищает обе стороны сделки.</p></div>
-      <div class="reason-card"><div class="reason-icon" style="color: #10b981;"><i class="fas fa-gem"></i></div><div class="reason-title">Прозрачность комиссии</div><p class="small-note">Фиксированные 10% сверху. Вы всегда знаете, сколько платит покупатель и сколько получает продавец.</p></div>
-      <div class="reason-card"><div class="reason-icon" style="color: #06b6d4;"><i class="fas fa-globe"></i></div><div class="reason-title">Работа 24/7 без выходных</div><p class="small-note">Поддержка и проведение сделок в любое время суток, включая праздничные дни. Никаких задержек.</p></div>
-      <div class="reason-card"><div class="reason-icon" style="color: #ef4444;"><i class="fas fa-chart-line"></i></div><div class="reason-title">Публичный рейтинг</div><p class="small-note">20 000+ реальных отзывов с оценкой 5.0. Каждый клиент может проверить историю моих сделок.</p></div>
+      <div class="reason-card"><div class="reason-icon" style="color: var(--gold);"><i class="fas fa-shield-alt"></i></div><div class="reason-title">Гарантия возврата</div><p class="small-note">При невыполнении обязательств продавцом — полный возврат средств покупателю в течение 24 часов.</p></div>
+      <div class="reason-card"><div class="reason-icon" style="color: var(--sky-blue);"><i class="fas fa-balance-scale"></i></div><div class="reason-title">Честный арбитраж</div><p class="small-note">Беспристрастное рассмотрение споров на основе скриншотов, видео и логов. Решение в пользу правой стороны.</p></div>
+      <div class="reason-card"><div class="reason-icon" style="color: var(--teal);"><i class="fas fa-file-alt"></i></div><div class="reason-title">Юридическая сила</div><p class="small-note">Составляю договор-оферту или индивидуальный контракт, который защищает обе стороны сделки.</p></div>
+      <div class="reason-card"><div class="reason-icon" style="color: var(--gold);"><i class="fas fa-gem"></i></div><div class="reason-title">Прозрачность комиссии</div><p class="small-note">Фиксированные 10% сверху. Вы всегда знаете, сколько платит покупатель и сколько получает продавец.</p></div>
+      <div class="reason-card"><div class="reason-icon" style="color: var(--sky-blue);"><i class="fas fa-globe"></i></div><div class="reason-title">Работа 24/7 без выходных</div><p class="small-note">Поддержка и проведение сделок в любое время суток, включая праздничные дни. Никаких задержек.</p></div>
+      <div class="reason-card"><div class="reason-icon" style="color: var(--gold);"><i class="fas fa-chart-line"></i></div><div class="reason-title">Публичный рейтинг</div><p class="small-note">20 000+ реальных отзывов с оценкой 5.0. Каждый клиент может проверить историю моих сделок.</p></div>
     </div>
   </div>
 
   <!-- МЕТОДИКИ -->
   <div class="section">
-    <h2><i class="fas fa-shield-virus" style="color: var(--accent);"></i> Методики проверок: <span class="gradient-text">Steam, игры и не только</span></h2>
+    <h2><i class="fas fa-shield-virus" style="color: var(--teal);"></i> Методики проверок: <span class="gradient-text">Steam, игры и не только</span></h2>
     <div class="grid grid-2">
-      <div class="card"><h3><i class="fas fa-gamepad"></i> Steam / Epic Games / Xbox</h3><p class="small-note">✔️ Проверка возраста аккаунта, история покупок, наличие VAC-банов, смена пароля и почты. ✔️ Передача логина/пароля только после оплаты через гаранта. ✔️ Проверка инвентаря (скины, игры) на чистоту и возвраты.</p></div>
-      <div class="card"><h3><i class="fas fa-key"></i> Ключи и цифровые товары</h3><p class="small-note">✔️ Активация на чистом аккаунте покупателя под видеофиксацию. ✔️ Сверка скриншотов оригинальных писем. ✔️ Проверка региональной привязки и сроков активации.</p></div>
-      <div class="card"><h3><i class="fab fa-bitcoin"></i> Криптовалюта / USDT / BTC</h3><p class="small-note">✔️ Проверка транзакций через блокчейн-эксплорер. ✔️ Удержание средств гарантом до подтверждения получения. ✔️ Арбитраж при неверном адресе или сумме.</p></div>
-      <div class="card"><h3><i class="fas fa-home"></i> Недвижимость / авто / техника</h3><p class="small-note">✔️ Проверка документов (договор, выписка ЕГРН, ПТС). ✔️ Составление предварительного договора с депозитом у гаранта. ✔️ Выездная проверка или видеосвязь с объектом.</p></div>
-      <div class="card"><h3><i class="fas fa-users"></i> Аккаунты соцсетей / домены</h3><p class="small-note">✔️ Проверка на бан-листы и историю. ✔️ Передача доступа через безопасный буфер (VPN, одноразовая почта). ✔️ Гарантия возврата при восстановлении доступа продавцом.</p></div>
-      <div class="card"><h3><i class="fas fa-box"></i> Карго / физический товар</h3><p class="small-note">✔️ Трекинг номер, фото товара перед отправкой. ✔️ Частичная оплата после получения на складе. ✔️ Полный возврат при несоответствии описанию.</p></div>
+      <div class="card"><h3><i class="fas fa-gamepad" style="color: var(--sky-blue);"></i> Steam / Epic Games / Xbox</h3><p class="small-note">✔️ Проверка возраста аккаунта, история покупок, наличие VAC-банов, смена пароля и почты. ✔️ Передача логина/пароля только после оплаты через гаранта. ✔️ Проверка инвентаря (скины, игры) на чистоту и возвраты.</p></div>
+      <div class="card"><h3><i class="fas fa-key" style="color: var(--gold);"></i> Ключи и цифровые товары</h3><p class="small-note">✔️ Активация на чистом аккаунте покупателя под видеофиксацию. ✔️ Сверка скриншотов оригинальных писем. ✔️ Проверка региональной привязки и сроков активации.</p></div>
+      <div class="card"><h3><i class="fab fa-bitcoin" style="color: var(--teal);"></i> Криптовалюта / USDT / BTC</h3><p class="small-note">✔️ Проверка транзакций через блокчейн-эксплорер. ✔️ Удержание средств гарантом до подтверждения получения. ✔️ Арбитраж при неверном адресе или сумме.</p></div>
+      <div class="card"><h3><i class="fas fa-home" style="color: var(--gold);"></i> Недвижимость / авто / техника</h3><p class="small-note">✔️ Проверка документов (договор, выписка ЕГРН, ПТС). ✔️ Составление предварительного договора с депозитом у гаранта. ✔️ Выездная проверка или видеосвязь с объектом.</p></div>
+      <div class="card"><h3><i class="fas fa-users" style="color: var(--sky-blue);"></i> Аккаунты соцсетей / домены</h3><p class="small-note">✔️ Проверка на бан-листы и историю. ✔️ Передача доступа через безопасный буфер (VPN, одноразовая почта). ✔️ Гарантия возврата при восстановлении доступа продавцом.</p></div>
+      <div class="card"><h3><i class="fas fa-box" style="color: var(--gold);"></i> Карго / физический товар</h3><p class="small-note">✔️ Трекинг номер, фото товара перед отправкой. ✔️ Частичная оплата после получения на складе. ✔️ Полный возврат при несоответствии описанию.</p></div>
     </div>
-    <div class="text-center mt-4 small-note"><i class="fas fa-video"></i> Все методики проверок задокументированы. При споре используется видеофиксация, логи и данные из открытых источников.</div>
+    <div class="text-center mt-4 small-note"><i class="fas fa-video" style="color: var(--sky-blue);"></i> Все методики проверок задокументированы. При споре используется видеофиксация, логи и данные из открытых источников.</div>
   </div>
 
   <!-- РЕГЛАМЕНТ -->
   <div class="section">
-    <h2><i class="fas fa-file-pdf" style="color: var(--accent);"></i> Публичный <span class="gradient-text">регламент сервиса</span></h2>
+    <h2><i class="fas fa-file-pdf" style="color: var(--gold);"></i> Публичный <span class="gradient-text">регламент сервиса</span></h2>
     <div class="regulation-block">
       <h4><i class="fas fa-gavel"></i> 1. Общие положения</h4>
       <p>Гарант Дмитрий Федоров предоставляет услуги безопасного проведения сделок между сторонами. Комиссия — фиксированные 10% от суммы сделки, начисляется сверху (покупатель оплачивает сумму сделки + комиссия). Все споры решаются на основе предоставленных доказательств.</p>
@@ -710,13 +743,13 @@
       <p>Гарант не передаёт личные данные третьим лицам. По желанию клиентов сделка может быть полностью анонимной (без паспортных данных).</p>
       <h4><i class="fas fa-ban"></i> 6. Отказ от услуг</h4>
       <p>Гарант вправе отказать в проведении сделки, если она связана с незаконной деятельностью или если одна из сторон ранее была замечена в мошенничестве.</p>
-      <div class="small-note mt-2"><i class="fas fa-info-circle"></i> Актуальная версия регламента: 2.4 от 15.03.2025. Любые изменения публикуются в ВК и в этом разделе.</div>
+      <div class="small-note mt-2"><i class="fas fa-info-circle" style="color: var(--sky-blue);"></i> Актуальная версия регламента: 2.4 от 15.03.2025. Любые изменения публикуются в ВК и в этом разделе.</div>
     </div>
   </div>
 
   <!-- ОТЗЫВЫ -->
   <div class="section">
-    <h2><i class="fas fa-comments" style="color: var(--accent);"></i> Реальные <span class="gradient-text">отзывы</span> (20 000+)</h2>
+    <h2><i class="fas fa-comments" style="color: var(--gold);"></i> Реальные <span class="gradient-text">отзывы</span> (20 000+)</h2>
     <!-- счётчик убран -->
     
     <!-- Информация о пользователе -->
@@ -725,7 +758,7 @@
     <div class="grid grid-3" id="reviewsGrid"></div>
     <div class="flex-center gap-4 mt-4" style="flex-wrap: wrap;">
       <button id="openReviewModal" class="btn btn-gold"><i class="fas fa-pen"></i> Добавить отзыв</button>
-      <a href="https://vk.me/news_fedorov" target="_blank" class="btn"><i class="fas fa-folder-open"></i> Смотреть все в ВК</a>
+      <a href="https://vk.me/news_fedorov" target="_blank" class="btn btn-sky"><i class="fas fa-folder-open"></i> Смотреть все в ВК</a>
     </div>
   </div>
 
@@ -768,7 +801,7 @@
           <label for="loginPassword">Пароль</label>
           <input type="password" id="loginPassword" placeholder="Введите пароль" required>
         </div>
-        <button id="loginBtn" class="btn-submit">Войти</button>
+        <button id="loginBtn" class="btn-submit btn-submit-gold">Войти</button>
       </div>
 
       <!-- Форма отзыва (показывается после входа) -->
@@ -795,7 +828,7 @@
           </div>
         </div>
         <button id="submitReviewBtn" class="btn-submit">Отправить на модерацию</button>
-        <p class="small-note text-center mt-2" style="color: #fbbf24;">Ваш отзыв появится после проверки.</p>
+        <p class="small-note text-center mt-2" style="color: var(--gold);">Ваш отзыв появится после проверки.</p>
       </div>
 
       <!-- Блок успеха -->
@@ -838,13 +871,20 @@
   </div>
 
   <!-- FAQ -->
-  <div class="section"><h2><i class="fas fa-question-circle" style="color: var(--accent);"></i> Часто задаваемые <span class="gradient-text">вопросы</span></h2><div class="grid grid-2" id="faqGrid"></div></div>
+  <div class="section"><h2><i class="fas fa-question-circle" style="color: var(--sky-blue);"></i> Часто задаваемые <span class="gradient-text">вопросы</span></h2><div class="grid grid-2" id="faqGrid"></div></div>
 
   <!-- КЕЙСЫ -->
-  <div class="section"><h2><i class="fas fa-trophy" style="color: var(--accent);"></i> <span class="gradient-text">Кейсы</span> успешных сделок</h2><div class="grid grid-3" id="casesGrid"></div></div>
+  <div class="section"><h2><i class="fas fa-trophy" style="color: var(--gold);"></i> <span class="gradient-text">Кейсы</span> успешных сделок</h2><div class="grid grid-3" id="casesGrid"></div></div>
 
   <!-- КОНТАКТЫ -->
-  <div class="section"><div style="background: linear-gradient(115deg, #0f172a, #030712); border-radius: 48px; padding: 52px 36px; text-align: center; border: 1px solid rgba(59,130,246,0.3); box-shadow: var(--shadow-glow);"><h2 style="margin-bottom: 16px;"><i class="fas fa-rocket" style="color: var(--accent);"></i> Начните безопасную сделку</h2><div style="max-width: 550px; margin: 0 auto 28px auto; color: #94a3b8;">Единственный способ связи — официальный ВК. Фиксированная комиссия 10% (начисляется сверху). Никаких риск-факторов и скрытых платежей.</div><a href="https://vk.me/news_fedorov" target="_blank" class="btn btn-gold" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); box-shadow: 0 4px 25px rgba(245,158,11,0.5);"><i class="fab fa-vk"></i> Перейти в ВК → @news_fedorov</a><div class="small-note mt-4"><i class="fas fa-check-circle" style="color: #4ade80;"></i> VK ID проверен, страница верифицирована. Все гарантийные обязательства закреплены документально.</div></div></div>
+  <div class="section">
+    <div style="background: radial-gradient(circle at 80% 20%, rgba(56,189,248,0.1), transparent 70%), linear-gradient(115deg, #0f172a, #030712); border-radius: 48px; padding: 52px 36px; text-align: center; border: 1px solid rgba(59,130,246,0.3); box-shadow: var(--shadow-glow);">
+      <h2 style="margin-bottom: 16px;"><i class="fas fa-rocket" style="color: var(--gold);"></i> Начните безопасную сделку</h2>
+      <div style="max-width: 550px; margin: 0 auto 28px auto; color: #94a3b8;">Единственный способ связи — официальный ВК. Фиксированная комиссия 10% (начисляется сверху). Никаких риск-факторов и скрытых платежей.</div>
+      <a href="https://vk.me/news_fedorov" target="_blank" class="btn btn-gold" style="background: linear-gradient(135deg, #fbbf24, var(--gold-rich)); box-shadow: 0 4px 25px var(--gold-glow);"><i class="fab fa-vk"></i> Перейти в ВК → @news_fedorov</a>
+      <div class="small-note mt-4"><i class="fas fa-check-circle" style="color: var(--teal);"></i> VK ID проверен, страница верифицирована. Все гарантийные обязательства закреплены документально.</div>
+    </div>
+  </div>
   <div class="footer" id="footer">© 2025 Дмитрий Федоров | Гарант-услуги 20 000+ отзывов | Фиксированная комиссия 10% (сверху) | Работаем по РФ и СНГ</div>
 </div>
 </main>
@@ -915,7 +955,7 @@
   const STORAGE_USERS = 'fedorov_users_mod_v2';
   const STORAGE_SESSION = 'fedorov_session';
   const STORAGE_VERSION = 'fedorov_version';
-  const CURRENT_VERSION = '13.0';
+  const CURRENT_VERSION = '14.0';
 
   let currentUser = null;
 
@@ -925,7 +965,7 @@
   }
 
   const defaultReviews = [
-    // === Первые 8 постоянных клиентов (с двумя отзывами) ===
+    // === Первые 8 постоянных клиентов ===
     { id: 1, userId: 'Алексей', text: 'продал акк за 5к – Дмитрий перевёл деньги за 3 минуты, я даже не успел чай допить))', stars: 5, date: '15.07.2025', approved: true },
     { id: 2, userId: 'Алексей', text: 'снова обратился, продал ещё один аккаунт за 7к – всё так же быстро и надёжно!', stars: 5, date: '06.09.2025', approved: true },
     { id: 3, userId: 'Марина', text: 'покупали ноут за 28к, переживали, но он проверил серийник и чеки – всё чисто!', stars: 5, date: '20.07.2025', approved: true },
@@ -943,7 +983,7 @@
     { id: 15, userId: 'Виктор', text: 'Дмитрий отвечает даже в 3 часа ночи, я офигел! Реально 24/7', stars: 5, date: '30.08.2025', approved: true },
     { id: 16, userId: 'Виктор', text: 'опять обратился ночью по срочной сделке на 9к – ответил мгновенно, закрыли за 10 минут.', stars: 5, date: '07.09.2025', approved: true },
 
-    // === 5 новых повторных клиентов (из предыдущей версии) ===
+    // === 5 новых повторных клиентов ===
     { id: 17, userId: 'Андрей', text: 'купил скин в CS за 4к – продавец сначала тянул, но Дмитрий помог разрешить ситуацию.', stars: 5, date: '12.08.2025', approved: true },
     { id: 18, userId: 'Андрей', text: 'продал скин в CS за 3к – деньги получил моментально, рекомендую!', stars: 5, date: '06.09.2025', approved: true },
     { id: 19, userId: 'Анна', text: 'покупала домен за 10к, продавец пытался надуть, но Дмитрий всё разрулил.', stars: 5, date: '25.07.2025', approved: true },
@@ -1026,7 +1066,7 @@
       });
       localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
       localStorage.setItem(STORAGE_VERSION, CURRENT_VERSION);
-      console.log('✅ Данные обновлены до версии 13.0');
+      console.log('✅ Данные обновлены до версии 14.0 с новыми цветами');
     } else if (!localStorage.getItem(STORAGE_REVIEWS)) {
       localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(defaultReviews));
       const userMap = {};
@@ -1584,7 +1624,7 @@
     { q: 'Есть ли скидки для постоянных?', a: 'Да, для постоянных клиентов индивидуальные условия.' }
   ];
   const faqGrid = document.getElementById('faqGrid');
-  faqs.forEach(f => { faqGrid.innerHTML += `<div class="faq-card"><h4><i class="fas fa-question-circle" style="color: var(--accent);"></i> ${f.q}</h4><p>${f.a}</p></div>`; });
+  faqs.forEach(f => { faqGrid.innerHTML += `<div class="faq-card"><h4><i class="fas fa-question-circle" style="color: var(--sky-blue);"></i> ${f.q}</h4><p>${f.a}</p></div>`; });
 
   // КЕЙСЫ
   const cases = [
@@ -1629,7 +1669,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Сайт готов — цвета стали ярче и насыщеннее! Пароль модерации: admin123.');
+  console.log('✅ Сайт готов — добавлены богатые золотые и небесные акценты! Пароль модерации: admin123.');
 </script>
 </body>
 </html>
