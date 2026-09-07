@@ -5,36 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Дмитрий Федоров | Гарант | 20 000+ отзывов | 10% комиссия</title>
   <meta name="description" content="Дмитрий Федоров — профессиональный гарант с 20 000+ положительных отзывов. Фиксированная комиссия 10% от сделки. Надёжность, скорость, безопасность. Калькулятор услуг и связь ВК.">
-  <meta name="theme-color" content="#141e30">
+  <meta name="theme-color" content="#0a1128">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    /* все стили без изменений, оставляем как было */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg-dark: #141e30;
-      --bg-darker: #0a111f;
-      --card-bg: #0f172a;
-      --text-light: #eef2ff;
+      --bg-dark: #0a1128;
+      --bg-darker: #040814;
+      --card-bg: #0f1a2f;
+      --text-light: #f0f4ff;
       --text-muted: #94a3b8;
-      --accent: #4f8cff;
-      --accent-dark: #2563eb;
-      --accent-glow: rgba(79, 140, 255, 0.4);
-      --gold: #fbbf24;
-      --gold-dark: #f59e0b;
-      --gold-glow: rgba(251, 191, 36, 0.4);
-      --border: #1e293b;
-      --shadow-glow: 0 0 30px rgba(79,140,255,0.15);
+      --accent: #3b82f6;
+      --accent-dark: #1d4ed8;
+      --accent-glow: rgba(59, 130, 246, 0.6);
+      --gold: #f59e0b;
+      --gold-dark: #d97706;
+      --gold-glow: rgba(245, 158, 11, 0.5);
+      --border: #1e3a5f;
+      --shadow-glow: 0 0 40px rgba(59,130,246,0.25);
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at 10% 20%, var(--bg-dark), var(--bg-darker));
+      background: radial-gradient(circle at 20% 30%, #0f2b5c, #040814);
       color: var(--text-light);
       line-height: 1.5;
       scroll-behavior: smooth;
     }
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #111827; border-radius: 10px; }
+    ::-webkit-scrollbar-track { background: #0a1128; border-radius: 10px; }
     ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     .btn {
@@ -42,21 +41,21 @@
       background: linear-gradient(135deg, var(--accent), var(--accent-dark));
       color: white; font-weight: 700; font-size: 1rem; padding: 14px 32px;
       border-radius: 60px; text-decoration: none; transition: all 0.25s ease;
-      border: none; cursor: pointer; box-shadow: 0 4px 20px rgba(79,140,255,0.3);
+      border: none; cursor: pointer; box-shadow: 0 4px 25px rgba(59,130,246,0.5);
     }
     .btn:hover {
       transform: translateY(-3px) scale(1.02);
-      background: linear-gradient(135deg, #6a9cff, #3b7bf0);
-      box-shadow: 0 8px 35px rgba(79,140,255,0.5);
+      background: linear-gradient(135deg, #60a5fa, #2563eb);
+      box-shadow: 0 8px 40px rgba(59,130,246,0.7);
     }
     .btn-gold {
       background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      box-shadow: 0 4px 20px rgba(251,191,36,0.4);
-      color: #0a111f;
+      box-shadow: 0 4px 25px rgba(245,158,11,0.5);
+      color: #040814;
     }
     .btn-gold:hover {
-      background: linear-gradient(135deg, #fcd34d, #f59e0b);
-      box-shadow: 0 8px 35px rgba(251,191,36,0.6);
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      box-shadow: 0 8px 40px rgba(245,158,11,0.7);
       transform: translateY(-3px) scale(1.02);
     }
     .btn-outline {
@@ -66,98 +65,125 @@
       color: var(--text-light);
     }
     .btn-outline:hover {
-      background: rgba(79,140,255,0.1);
+      background: rgba(59,130,246,0.15);
       transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 30px rgba(59,130,246,0.3);
     }
     .grid { display: grid; gap: 24px; }
     .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
     .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
     .grid-4 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
     .card {
-      background: var(--card-bg); border-radius: 28px; padding: 24px;
-      border: 1px solid var(--border); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      background: var(--card-bg);
+      border-radius: 28px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
     .card:hover {
-      border-color: var(--accent); transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 20px 50px -10px rgba(0,0,0,0.6), var(--shadow-glow);
+      border-color: var(--accent);
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 20px 60px -10px rgba(0,0,0,0.8), var(--shadow-glow);
     }
     .stat-card {
-      background: rgba(15,23,42,0.5); backdrop-filter: blur(10px);
-      border-radius: 48px; padding: 24px 36px; text-align: center;
-      border: 1px solid rgba(79,140,255,0.3); transition: all 0.4s ease;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      background: rgba(15,26,47,0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 48px;
+      padding: 24px 36px;
+      text-align: center;
+      border: 1px solid rgba(59,130,246,0.4);
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
     .stat-card:hover {
-      transform: translateY(-6px); border-color: var(--accent);
-      box-shadow: 0 12px 40px rgba(79,140,255,0.2), var(--shadow-glow);
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 50px rgba(59,130,246,0.3), var(--shadow-glow);
     }
     .stat-number {
       font-size: 3.6rem; font-weight: 800;
-      background: linear-gradient(135deg, #ffffff, #a5c9ff);
+      background: linear-gradient(135deg, #ffffff, #93c5fd);
       background-clip: text; -webkit-background-clip: text; color: transparent;
-      text-shadow: 0 0 30px rgba(79,140,255,0.2);
+      text-shadow: 0 0 40px rgba(59,130,246,0.3);
       font-variant-numeric: tabular-nums;
       cursor: default;
     }
     .stat-icon { font-size: 2.4rem; display: block; margin-bottom: 6px; }
     .stat-label { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); margin-top: 8px; }
-    .section { padding: 70px 0 60px; border-bottom: 1px solid rgba(79,140,255,0.12); }
+    .section { padding: 70px 0 60px; border-bottom: 1px solid rgba(59,130,246,0.15); }
     .section:last-child { border-bottom: none; }
     .badge {
-      background: rgba(79,140,255,0.2); padding: 8px 20px; border-radius: 40px;
-      font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 24px;
-      color: #a5c9ff; letter-spacing: 0.3px; border: 1px solid rgba(79,140,255,0.2);
+      background: rgba(59,130,246,0.25);
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 24px;
+      color: #93c5fd;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(59,130,246,0.3);
       backdrop-filter: blur(4px);
     }
     .trust-badge {
       display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(79,140,255,0.12); border: 1px solid rgba(79,140,255,0.2);
-      padding: 8px 18px; border-radius: 40px; font-size: 0.85rem;
-      color: #c7d9ff; backdrop-filter: blur(4px);
+      background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.25);
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #bfdbfe;
+      backdrop-filter: blur(4px);
       transition: all 0.2s;
     }
     .trust-badge:hover {
-      background: rgba(79,140,255,0.2); border-color: var(--gold);
-      box-shadow: 0 0 20px rgba(251,191,36,0.15);
+      background: rgba(59,130,246,0.25);
+      border-color: var(--gold);
+      box-shadow: 0 0 30px rgba(245,158,11,0.2);
     }
     .trust-badge i { margin-right: 4px; }
     h1 { font-size: 3.8rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; }
     h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 32px; letter-spacing: -0.01em; text-align: center; }
-    h2 .gradient-text { background: linear-gradient(135deg, #f0f9ff, #6a9cff, #a5c9ff); background-clip: text; -webkit-background-clip: text; color: transparent; }
-    .gradient-text { background: linear-gradient(135deg, #f0f9ff, #6a9cff, #a5c9ff); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    h2 .gradient-text { background: linear-gradient(135deg, #f0f9ff, #60a5fa, #93c5fd); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .gradient-text { background: linear-gradient(135deg, #f0f9ff, #60a5fa, #93c5fd); background-clip: text; -webkit-background-clip: text; color: transparent; }
     .text-center { text-align: center; }
     .mt-2 { margin-top: 0.5rem; }
     .mt-4 { margin-top: 1rem; }
     .mb-4 { margin-bottom: 1rem; }
     .small-note { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
     hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
-    .footer { text-align: center; padding: 48px 0 40px; font-size: 0.85rem; color: #5b6e8c; border-top: 1px solid rgba(79,140,255,0.12); cursor: pointer; }
+    .footer { text-align: center; padding: 48px 0 40px; font-size: 0.85rem; color: #4b6a8a; border-top: 1px solid rgba(59,130,246,0.15); cursor: pointer; }
     .calculator-wrapper {
-      background: rgba(17,24,39,0.6); backdrop-filter: blur(12px);
-      border-radius: 64px; padding: 48px 40px;
-      border: 1px solid rgba(79,140,255,0.5); max-width: 780px; margin: 0 auto;
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(79,140,255,0.15);
+      background: rgba(10,17,40,0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 64px;
+      padding: 48px 40px;
+      border: 1px solid rgba(59,130,246,0.5);
+      max-width: 780px;
+      margin: 0 auto;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(59,130,246,0.2);
       transition: all 0.3s ease;
     }
     .calculator-wrapper:hover {
-      border-color: var(--accent); box-shadow: 0 30px 60px -15px rgba(79,140,255,0.3), var(--shadow-glow);
+      border-color: var(--accent);
+      box-shadow: 0 30px 70px -15px rgba(59,130,246,0.4), var(--shadow-glow);
     }
     .input-field { margin-bottom: 32px; }
-    .input-field label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #a5b4fc; margin-bottom: 12px; }
+    .input-field label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #93c5fd; margin-bottom: 12px; }
     .input-field input {
-      width: 100%; background: #0f172a; border: 2px solid #334155;
+      width: 100%; background: #0a1128; border: 2px solid #1e3a5f;
       border-radius: 60px; padding: 18px 28px; font-size: 1.4rem;
       color: white; text-align: center; outline: none; transition: all 0.2s;
       font-weight: 600;
     }
-    .input-field input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(79,140,255,0.3); }
+    .input-field input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(59,130,246,0.3); }
     .input-field input::placeholder { color: #475569; font-weight: 400; font-size: 1rem; }
     .result-card {
-      background: linear-gradient(145deg, #0a0f1c, #030712);
+      background: linear-gradient(145deg, #050a1a, #020512);
       border-radius: 48px; padding: 32px 28px; text-align: center;
       border: 1px solid var(--accent); margin: 20px 0 15px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 30px -5px rgba(0,0,0,0.5);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 30px -5px rgba(0,0,0,0.6);
     }
     .commission-badge {
       font-size: 1rem; color: var(--accent); font-weight: 700;
@@ -166,13 +192,13 @@
     .calc-row {
       display: flex; justify-content: space-between; align-items: baseline;
       margin: 16px 0; font-size: 1.1rem;
-      border-bottom: 1px dashed rgba(79,140,255,0.2); padding-bottom: 10px;
+      border-bottom: 1px dashed rgba(59,130,246,0.2); padding-bottom: 10px;
     }
     .calc-row .label { color: #94a3b8; font-weight: 500; }
     .calc-row .value { font-weight: 800; color: #eef2ff; font-size: 1.3rem; letter-spacing: -0.2px; }
-    .calc-row.commission .value { color: var(--accent); font-size: 1.6rem; text-shadow: 0 0 20px rgba(79,140,255,0.3); }
+    .calc-row.commission .value { color: var(--accent); font-size: 1.6rem; text-shadow: 0 0 30px rgba(59,130,246,0.4); }
     .calc-row.seller .value { color: #4ade80; font-size: 1.6rem; }
-    .calc-row.buyer .value { color: var(--gold); font-size: 1.6rem; text-shadow: 0 0 20px rgba(251,191,36,0.2); }
+    .calc-row.buyer .value { color: var(--gold); font-size: 1.6rem; text-shadow: 0 0 30px rgba(245,158,11,0.3); }
     .review-card {
       background: var(--card-bg); border-radius: 24px; padding: 22px;
       border: 1px solid var(--border); transition: all 0.4s ease;
@@ -181,19 +207,19 @@
     }
     .review-card:hover {
       border-color: var(--accent); transform: translateY(-6px);
-      box-shadow: 0 15px 40px -10px rgba(0,0,0,0.5), var(--shadow-glow);
+      box-shadow: 0 15px 50px -10px rgba(0,0,0,0.6), var(--shadow-glow);
     }
     .review-header { display: flex; align-items: center; gap: 12px; cursor: pointer; }
     .review-avatar {
       width: 44px; height: 44px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-weight: 700; font-size: 1.1rem; color: white; flex-shrink: 0;
-      text-transform: uppercase; box-shadow: 0 4px 12px rgba(79,140,255,0.3);
+      text-transform: uppercase; box-shadow: 0 4px 12px rgba(59,130,246,0.4);
     }
     .review-name-date { display: flex; flex-direction: column; }
     .review-name { font-weight: 700; font-size: 1rem; }
     .review-date { font-size: 0.7rem; color: #5b6e8c; }
-    .review-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; text-shadow: 0 0 10px rgba(251,191,36,0.2); }
+    .review-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; text-shadow: 0 0 15px rgba(245,158,11,0.3); }
     .review-text { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; margin-top: 4px; }
     .faq-card {
       background: var(--card-bg); border-radius: 24px; padding: 24px;
@@ -201,37 +227,37 @@
     }
     .faq-card:hover {
       border-color: var(--accent); transform: translateY(-4px);
-      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.4), var(--shadow-glow);
+      box-shadow: 0 12px 40px -10px rgba(0,0,0,0.5), var(--shadow-glow);
     }
     .faq-card h4 { font-size: 1.05rem; margin-bottom: 12px; color: #60a5fa; font-weight: 600; }
     .faq-card h4 i { margin-right: 8px; }
     .faq-card p { color: var(--text-muted); line-height: 1.5; font-size: 0.9rem; }
     .regulation-block {
-      background: #0a0f1c; border-radius: 32px; padding: 32px;
+      background: #050a1a; border-radius: 32px; padding: 32px;
       border-left: 4px solid var(--gold); margin-top: 16px;
-      box-shadow: 0 0 30px rgba(251,191,36,0.05);
+      box-shadow: 0 0 40px rgba(245,158,11,0.08);
     }
     .regulation-block h4 { color: var(--gold); margin-top: 20px; margin-bottom: 8px; }
     .regulation-block p, .regulation-block li { color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; }
     .regulation-block ul { padding-left: 24px; margin: 12px 0; }
     .reason-card {
-      background: rgba(15,23,42,0.4); backdrop-filter: blur(4px);
+      background: rgba(15,26,47,0.5); backdrop-filter: blur(4px);
       border-radius: 28px; padding: 28px; border: 1px solid var(--border);
       transition: all 0.3s ease; text-align: center;
     }
     .reason-card:hover {
       border-color: var(--gold); transform: translateY(-6px);
-      background: rgba(15,23,42,0.7); box-shadow: 0 12px 40px rgba(251,191,36,0.08);
+      background: rgba(15,26,47,0.8); box-shadow: 0 12px 50px rgba(245,158,11,0.1);
     }
     .reason-icon { font-size: 2.8rem; margin-bottom: 16px; }
     .reason-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; }
     .trust-block {
-      background: rgba(15,23,42,0.3); border-radius: 32px; padding: 32px;
-      border: 1px solid rgba(79,140,255,0.15); box-shadow: var(--shadow-glow);
+      background: rgba(10,17,40,0.4); border-radius: 32px; padding: 32px;
+      border: 1px solid rgba(59,130,246,0.2); box-shadow: var(--shadow-glow);
     }
     .trust-item {
       display: flex; align-items: center; gap: 14px; padding: 14px 0;
-      border-bottom: 1px solid rgba(79,140,255,0.08);
+      border-bottom: 1px solid rgba(59,130,246,0.08);
     }
     .trust-item:last-child { border-bottom: none; }
     .trust-item .icon { font-size: 1.8rem; color: var(--gold); flex-shrink: 0; width: 2.2rem; text-align: center; }
@@ -241,8 +267,8 @@
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(6px);
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
       z-index: 1000;
       justify-content: center;
       align-items: center;
@@ -256,8 +282,8 @@
       padding: 40px;
       max-width: 500px;
       width: 90%;
-      border: 1px solid rgba(79,140,255,0.3);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      border: 1px solid rgba(59,130,246,0.4);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.7);
       position: relative;
       animation: fadeUp 0.3s ease;
       max-height: 90vh;
@@ -299,8 +325,8 @@
     .form-group input,
     .form-group textarea {
       width: 100%;
-      background: #0f172a;
-      border: 2px solid #334155;
+      background: #0a1128;
+      border: 2px solid #1e3a5f;
       border-radius: 16px;
       padding: 14px 18px;
       color: white;
@@ -312,7 +338,7 @@
     .form-group input:focus,
     .form-group textarea:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 4px rgba(79,140,255,0.2);
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.2);
     }
     .form-group textarea {
       resize: vertical;
@@ -337,7 +363,7 @@
     .star-rating label:hover ~ label,
     .star-rating input:checked ~ label {
       color: var(--gold);
-      text-shadow: 0 0 15px rgba(251,191,36,0.4);
+      text-shadow: 0 0 20px rgba(245,158,11,0.5);
     }
     .btn-submit {
       width: 100%;
@@ -351,10 +377,11 @@
       cursor: pointer;
       transition: 0.3s;
       margin-top: 8px;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.4);
     }
     .btn-submit:hover {
       transform: scale(1.02);
-      box-shadow: 0 8px 30px rgba(79,140,255,0.4);
+      box-shadow: 0 8px 35px rgba(59,130,246,0.6);
     }
     .btn-submit:disabled {
       opacity: 0.6;
@@ -363,10 +390,10 @@
     }
     .btn-submit-gold {
       background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      color: #0a111f;
+      color: #040814;
     }
     .btn-submit-gold:hover {
-      box-shadow: 0 8px 30px rgba(251,191,36,0.4);
+      box-shadow: 0 8px 35px rgba(245,158,11,0.5);
     }
     .profile-modal .modal-content {
       max-width: 600px;
@@ -420,11 +447,11 @@
       margin-top: 4px;
     }
     .moderation-item {
-      background: rgba(15,23,42,0.6);
+      background: rgba(15,26,47,0.7);
       border-radius: 16px;
       padding: 16px;
       margin-bottom: 12px;
-      border: 1px solid #334155;
+      border: 1px solid #1e3a5f;
     }
     .moderation-item .mod-actions {
       margin-top: 10px;
@@ -444,7 +471,7 @@
     .btn-reject:hover { background: #dc2626; }
     .spinner {
       border: 4px solid rgba(255,255,255,0.1);
-      border-top: 4px solid #4f8cff;
+      border-top: 4px solid #3b82f6;
       border-radius: 50%;
       width: 50px;
       height: 50px;
@@ -495,7 +522,7 @@
     }
     .auth-tabs button.active {
       color: white;
-      background: rgba(79,140,255,0.2);
+      background: rgba(59,130,246,0.2);
     }
     .auth-tabs button:hover {
       color: white;
@@ -510,10 +537,10 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: rgba(79,140,255,0.15);
+      background: rgba(59,130,246,0.18);
       padding: 8px 20px 8px 16px;
       border-radius: 40px;
-      border: 1px solid rgba(79,140,255,0.2);
+      border: 1px solid rgba(59,130,246,0.25);
     }
     .user-badge .avatar-small {
       width: 32px;
@@ -817,7 +844,7 @@
   <div class="section"><h2><i class="fas fa-trophy" style="color: var(--accent);"></i> <span class="gradient-text">Кейсы</span> успешных сделок</h2><div class="grid grid-3" id="casesGrid"></div></div>
 
   <!-- КОНТАКТЫ -->
-  <div class="section"><div style="background: linear-gradient(115deg, #0f172a, #030712); border-radius: 48px; padding: 52px 36px; text-align: center; border: 1px solid rgba(79,140,255,0.25); box-shadow: var(--shadow-glow);"><h2 style="margin-bottom: 16px;"><i class="fas fa-rocket" style="color: var(--accent);"></i> Начните безопасную сделку</h2><div style="max-width: 550px; margin: 0 auto 28px auto; color: #94a3b8;">Единственный способ связи — официальный ВК. Фиксированная комиссия 10% (начисляется сверху). Никаких риск-факторов и скрытых платежей.</div><a href="https://vk.me/news_fedorov" target="_blank" class="btn btn-gold" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); box-shadow: 0 4px 20px rgba(251,191,36,0.4);"><i class="fab fa-vk"></i> Перейти в ВК → @news_fedorov</a><div class="small-note mt-4"><i class="fas fa-check-circle" style="color: #4ade80;"></i> VK ID проверен, страница верифицирована. Все гарантийные обязательства закреплены документально.</div></div></div>
+  <div class="section"><div style="background: linear-gradient(115deg, #0f172a, #030712); border-radius: 48px; padding: 52px 36px; text-align: center; border: 1px solid rgba(59,130,246,0.3); box-shadow: var(--shadow-glow);"><h2 style="margin-bottom: 16px;"><i class="fas fa-rocket" style="color: var(--accent);"></i> Начните безопасную сделку</h2><div style="max-width: 550px; margin: 0 auto 28px auto; color: #94a3b8;">Единственный способ связи — официальный ВК. Фиксированная комиссия 10% (начисляется сверху). Никаких риск-факторов и скрытых платежей.</div><a href="https://vk.me/news_fedorov" target="_blank" class="btn btn-gold" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); box-shadow: 0 4px 25px rgba(245,158,11,0.5);"><i class="fab fa-vk"></i> Перейти в ВК → @news_fedorov</a><div class="small-note mt-4"><i class="fas fa-check-circle" style="color: #4ade80;"></i> VK ID проверен, страница верифицирована. Все гарантийные обязательства закреплены документально.</div></div></div>
   <div class="footer" id="footer">© 2025 Дмитрий Федоров | Гарант-услуги 20 000+ отзывов | Фиксированная комиссия 10% (сверху) | Работаем по РФ и СНГ</div>
 </div>
 </main>
@@ -888,7 +915,7 @@
   const STORAGE_USERS = 'fedorov_users_mod_v2';
   const STORAGE_SESSION = 'fedorov_session';
   const STORAGE_VERSION = 'fedorov_version';
-  const CURRENT_VERSION = '13.0'; // обновлённая версия
+  const CURRENT_VERSION = '13.0';
 
   let currentUser = null;
 
@@ -897,7 +924,6 @@
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
-  // ----- НОВЫЙ МАССИВ ОТЗЫВОВ (54 отзыва: 20 повторных клиентов, 14 однократных) с датами 06.09 и 07.09 -----
   const defaultReviews = [
     // === Первые 8 постоянных клиентов (с двумя отзывами) ===
     { id: 1, userId: 'Алексей', text: 'продал акк за 5к – Дмитрий перевёл деньги за 3 минуты, я даже не успел чай допить))', stars: 5, date: '15.07.2025', approved: true },
@@ -931,27 +957,21 @@
     { id: 27, userId: 'Павел', text: 'обменял рубли на USDT на 30к – курс был отличный, всё быстро.', stars: 5, date: '10.08.2025', approved: true },
     { id: 28, userId: 'Павел', text: 'обменял рубли на USDT на 25к – снова отличный курс, без заморочек.', stars: 5, date: '07.09.2025', approved: true },
 
-    // === Дополнительные повторные клиенты (добавляем) ===
-    // Максим
+    // === Дополнительные повторные клиенты ===
     { id: 29, userId: 'Максим', text: 'продал старый аккаунт в Steam за 3к, деньги получил сразу.', stars: 5, date: '10.07.2025', approved: true },
     { id: 30, userId: 'Максим', text: 'купил аккаунт в Steam за 4500, проверили всё, передача прошла гладко.', stars: 5, date: '06.09.2025', approved: true },
-    // Елена
     { id: 31, userId: 'Елена', text: 'продала косметику за 5к, покупатель из другого города, всё ок.', stars: 5, date: '12.07.2025', approved: true },
     { id: 32, userId: 'Елена', text: 'продала телефон за 8к, покупатель из другого города – без проблем, деньги на карте.', stars: 5, date: '07.09.2025', approved: true },
-    // Константин
     { id: 33, userId: 'Константин', text: 'обменял валюту на 10к, курс был хороший.', stars: 5, date: '18.07.2025', approved: true },
     { id: 34, userId: 'Константин', text: 'обменял валюту на 14к, курс был выгодный, спасибо за оперативность.', stars: 5, date: '06.09.2025', approved: true },
-    // Татьяна
     { id: 35, userId: 'Татьяна', text: 'переводила деньги за услуги 6к, всё прошло гладко.', stars: 5, date: '20.07.2025', approved: true },
     { id: 36, userId: 'Татьяна', text: 'уже не первый раз с Дмитрием, переводила 7к – всегда надёжно и без нервов.', stars: 5, date: '07.09.2025', approved: true },
-    // Ирина
     { id: 37, userId: 'Ирина', text: 'продала аккаунт в Instagram за 4к, безопасно.', stars: 5, date: '22.07.2025', approved: true },
     { id: 38, userId: 'Ирина', text: 'продала аккаунт в Instagram за 6к, Дмитрий помог безопасно провести сделку.', stars: 5, date: '06.09.2025', approved: true },
-    // Григорий
     { id: 39, userId: 'Григорий', text: 'покупал запчасти за 8к, продавец из другого города – всё чётко.', stars: 5, date: '25.07.2025', approved: true },
     { id: 40, userId: 'Григорий', text: 'покупал автозапчасти за 10к, продавец из другого города – гарант проверил документы, всё ок.', stars: 5, date: '07.09.2025', approved: true },
 
-    // === Остальные пользователи с одним отзывом (сентябрь) ===
+    // === Остальные пользователи с одним отзывом ===
     { id: 41, userId: 'Валентина', text: 'заказывала услуги дизайнера за 6к, гарант помог с оплатой – всё чётко.', stars: 5, date: '06.09.2025', approved: true },
     { id: 42, userId: 'Георгий', text: 'переводил деньги за товар 11к – всё быстро, без задержек, как по расписанию.', stars: 5, date: '07.09.2025', approved: true },
     { id: 43, userId: 'Зоя', text: 'продала старый телефон за 5к, покупатель скинул деньги через гаранта, я отправила – легко.', stars: 5, date: '06.09.2025', approved: true },
@@ -968,30 +988,12 @@
     { id: 54, userId: 'Эдуард', text: 'сделка по карго на 12к, товар пришёл, деньги получил – всё супер.', stars: 5, date: '07.09.2025', approved: true }
   ];
 
-  // Фамилии для повторных клиентов (все 20) + остальным сгенерируем
   const fixedSurnames = {
-    'Алексей': 'И.',
-    'Марина': 'П.',
-    'Денис': 'К.',
-    'Екатерина': 'С.',
-    'Игорь': 'В.',
-    'Ольга': 'Н.',
-    'Николай': 'М.',
-    'Виктор': 'Р.',
-    'Андрей': 'А.',
-    'Анна': 'А.',
-    'Сергей': 'С.',
-    'Наталья': 'Н.',
-    'Артём': 'А.',
-    'Павел': 'П.',
-    'Максим': 'М.',
-    'Елена': 'Е.',
-    'Константин': 'К.',
-    'Татьяна': 'Т.',
-    'Ирина': 'И.',
-    'Григорий': 'Г.'
+    'Алексей': 'И.', 'Марина': 'П.', 'Денис': 'К.', 'Екатерина': 'С.', 'Игорь': 'В.',
+    'Ольга': 'Н.', 'Николай': 'М.', 'Виктор': 'Р.', 'Андрей': 'А.', 'Анна': 'А.',
+    'Сергей': 'С.', 'Наталья': 'Н.', 'Артём': 'А.', 'Павел': 'П.', 'Максим': 'М.',
+    'Елена': 'Е.', 'Константин': 'К.', 'Татьяна': 'Т.', 'Ирина': 'И.', 'Григорий': 'Г.'
   };
-
   const letters = ['Б','В','Д','Ж','З','Л','О','У','Ф','Х','Ц','Ч','Ш','Щ','Э','Ю','Я'];
 
   function formatDate(date) {
@@ -1010,22 +1012,13 @@
       defaultReviews.forEach(r => {
         if (!userMap[r.userId]) {
           let surname = fixedSurnames[r.userId] || '';
-          if (!surname) {
-            surname = letters[Math.floor(Math.random() * letters.length)] + '.';
-          }
+          if (!surname) surname = letters[Math.floor(Math.random() * letters.length)] + '.';
           userMap[r.userId] = {
-            id: r.userId,
-            name: r.userId,
-            surname: surname,
-            password: '',
-            avatarColor: getRandomColor(),
-            registered: r.date,
-            reviewCount: 0
+            id: r.userId, name: r.userId, surname: surname, password: '',
+            avatarColor: getRandomColor(), registered: r.date, reviewCount: 0
           };
         }
-        if (r.date < userMap[r.userId].registered) {
-          userMap[r.userId].registered = r.date;
-        }
+        if (r.date < userMap[r.userId].registered) userMap[r.userId].registered = r.date;
       });
       const users = Object.values(userMap);
       users.forEach(u => {
@@ -1033,122 +1026,69 @@
       });
       localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
       localStorage.setItem(STORAGE_VERSION, CURRENT_VERSION);
-      console.log('✅ Данные обновлены до версии 13.0 (даты 06/07.09, 20 повторных клиентов)');
-    } else {
-      if (!localStorage.getItem(STORAGE_REVIEWS)) {
-        localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(defaultReviews));
-        const userMap = {};
-        defaultReviews.forEach(r => {
-          if (!userMap[r.userId]) {
-            let surname = fixedSurnames[r.userId] || '';
-            if (!surname) {
-              surname = letters[Math.floor(Math.random() * letters.length)] + '.';
-            }
-            userMap[r.userId] = {
-              id: r.userId,
-              name: r.userId,
-              surname: surname,
-              password: '',
-              avatarColor: getRandomColor(),
-              registered: r.date,
-              reviewCount: 0
-            };
-          }
-          if (r.date < userMap[r.userId].registered) {
-            userMap[r.userId].registered = r.date;
-          }
-        });
-        const users = Object.values(userMap);
-        users.forEach(u => {
-          u.reviewCount = defaultReviews.filter(r => r.userId === u.id && r.approved).length;
-        });
-        localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
-      }
+      console.log('✅ Данные обновлены до версии 13.0');
+    } else if (!localStorage.getItem(STORAGE_REVIEWS)) {
+      localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(defaultReviews));
+      const userMap = {};
+      defaultReviews.forEach(r => {
+        if (!userMap[r.userId]) {
+          let surname = fixedSurnames[r.userId] || '';
+          if (!surname) surname = letters[Math.floor(Math.random() * letters.length)] + '.';
+          userMap[r.userId] = {
+            id: r.userId, name: r.userId, surname: surname, password: '',
+            avatarColor: getRandomColor(), registered: r.date, reviewCount: 0
+          };
+        }
+        if (r.date < userMap[r.userId].registered) userMap[r.userId].registered = r.date;
+      });
+      const users = Object.values(userMap);
+      users.forEach(u => {
+        u.reviewCount = defaultReviews.filter(r => r.userId === u.id && r.approved).length;
+      });
+      localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
     }
     
     const sessionData = localStorage.getItem(STORAGE_SESSION);
     if (sessionData) {
-      try {
-        currentUser = JSON.parse(sessionData);
-        updateUserDisplay();
-      } catch(e) { currentUser = null; }
+      try { currentUser = JSON.parse(sessionData); updateUserDisplay(); } catch(e) { currentUser = null; }
     }
   }
 
   function getUsers() {
-    try {
-      const data = localStorage.getItem(STORAGE_USERS);
-      return data ? JSON.parse(data) : [];
-    } catch (e) { return []; }
+    try { const data = localStorage.getItem(STORAGE_USERS); return data ? JSON.parse(data) : []; } catch(e) { return []; }
   }
-
-  function saveUsers(users) {
-    localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
-  }
-
+  function saveUsers(users) { localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); }
   function getReviews() {
-    try {
-      const data = localStorage.getItem(STORAGE_REVIEWS);
-      return data ? JSON.parse(data) : [];
-    } catch (e) { return []; }
+    try { const data = localStorage.getItem(STORAGE_REVIEWS); return data ? JSON.parse(data) : []; } catch(e) { return []; }
   }
-
-  function saveReviews(reviews) {
-    localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(reviews));
-  }
-
-  function getApprovedReviews() {
-    return getReviews().filter(r => r.approved === true);
-  }
-
-  function getPendingReviews() {
-    return getReviews().filter(r => r.approved !== true);
-  }
-
-  function getUserById(userId) {
-    const users = getUsers();
-    return users.find(u => u.id === userId);
-  }
+  function saveReviews(reviews) { localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(reviews)); }
+  function getApprovedReviews() { return getReviews().filter(r => r.approved === true); }
+  function getPendingReviews() { return getReviews().filter(r => r.approved !== true); }
+  function getUserById(userId) { const users = getUsers(); return users.find(u => u.id === userId); }
 
   function registerUser(name, surname, password) {
     const users = getUsers();
     const userId = name.trim();
-    
-    if (password.length < 4) {
-      return { success: false, message: 'Пароль должен содержать минимум 4 символа.' };
-    }
-    
+    if (password.length < 4) return { success: false, message: 'Пароль должен содержать минимум 4 символа.' };
     const newUser = {
-      id: userId,
-      name: name.trim(),
-      surname: surname.trim().toUpperCase() + '.',
-      password: password,
-      avatarColor: getRandomColor(),
-      registered: formatDate(new Date()),
-      reviewCount: 0
+      id: userId, name: userId, surname: surname.trim().toUpperCase() + '.',
+      password: password, avatarColor: getRandomColor(), registered: formatDate(new Date()), reviewCount: 0
     };
-    
     users.push(newUser);
     saveUsers(users);
-    
     currentUser = newUser;
     localStorage.setItem(STORAGE_SESSION, JSON.stringify(currentUser));
     updateUserDisplay();
-    
     return { success: true, user: newUser };
   }
 
   function loginUser(name, password) {
     const users = getUsers();
     const user = users.find(u => u.id === name && u.password === password);
-    if (!user) {
-      return { success: false, message: 'Неверное имя или пароль.' };
-    }
-    
+    if (!user) return { success: false, message: 'Неверное имя или пароль.' };
     currentUser = user;
     localStorage.setItem(STORAGE_SESSION, JSON.stringify(currentUser));
     updateUserDisplay();
-    
     return { success: true, user: user };
   }
 
@@ -1205,7 +1145,6 @@
 
   function addReview(text, stars) {
     if (!currentUser) return false;
-    
     const reviews = getReviews();
     const now = new Date();
     const dateStr = formatDate(now);
@@ -1219,7 +1158,6 @@
     };
     reviews.push(newReview);
     saveReviews(reviews);
-    
     let users = getUsers();
     const idx = users.findIndex(u => u.id === currentUser.id);
     if (idx !== -1) {
@@ -1229,7 +1167,6 @@
       currentUser.reviewCount = count;
       localStorage.setItem(STORAGE_SESSION, JSON.stringify(currentUser));
     }
-    
     renderAll();
     return true;
   }
@@ -1692,7 +1629,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Версия 13.0: даты 06/07.09, 20 повторных клиентов, обновлены подписи. Пароль модерации: admin123.');
+  console.log('✅ Сайт готов — цвета стали ярче и насыщеннее! Пароль модерации: admin123.');
 </script>
 </body>
 </html>
