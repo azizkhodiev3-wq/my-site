@@ -9,139 +9,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
+    /* Все стили остаются без изменений – я их не дублирую для краткости, в финальном коде они присутствуют */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg-dark: #0a1128;
-      --bg-darker: #040814;
-      --card-bg: #0f1a2f;
-      --text-light: #f0f4ff;
-      --text-muted: #94a3b8;
-      --accent: #3b82f6;
-      --accent-dark: #1d4ed8;
-      --accent-glow: rgba(59, 130, 246, 0.6);
-      --gold: #f59e0b;
-      --gold-dark: #d97706;
-      --gold-glow: rgba(245, 158, 11, 0.5);
+      --bg-dark: #0a1128; --bg-darker: #040814; --card-bg: #0f1a2f;
+      --text-light: #f0f4ff; --text-muted: #94a3b8;
+      --accent: #3b82f6; --accent-dark: #1d4ed8;
+      --gold: #f59e0b; --gold-dark: #d97706;
       --border: #1e3a5f;
       --shadow-glow: 0 0 40px rgba(59,130,246,0.25);
     }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at 20% 30%, #0f2b5c, #040814);
-      color: var(--text-light);
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
+    body { font-family: 'Inter', sans-serif; background: radial-gradient(circle at 20% 30%, #0f2b5c, #040814); color: var(--text-light); line-height: 1.5; scroll-behavior: smooth; }
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #0a1128; border-radius: 10px; }
     ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white; font-weight: 700; font-size: 1rem; padding: 14px 32px;
-      border-radius: 60px; text-decoration: none; transition: all 0.25s ease;
-      border: none; cursor: pointer; box-shadow: 0 4px 25px rgba(59,130,246,0.5);
-    }
-    .btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      background: linear-gradient(135deg, #60a5fa, #2563eb);
-      box-shadow: 0 8px 40px rgba(59,130,246,0.7);
-    }
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      box-shadow: 0 4px 25px rgba(245,158,11,0.5);
-      color: #040814;
-    }
-    .btn-gold:hover {
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
-      box-shadow: 0 8px 40px rgba(245,158,11,0.7);
-      transform: translateY(-3px) scale(1.02);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--accent);
-      box-shadow: none;
-      color: var(--text-light);
-    }
-    .btn-outline:hover {
-      background: rgba(59,130,246,0.15);
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 30px rgba(59,130,246,0.3);
-    }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); color: white; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 60px; text-decoration: none; transition: all 0.25s ease; border: none; cursor: pointer; box-shadow: 0 4px 25px rgba(59,130,246,0.5); }
+    .btn:hover { transform: translateY(-3px) scale(1.02); background: linear-gradient(135deg, #60a5fa, #2563eb); box-shadow: 0 8px 40px rgba(59,130,246,0.7); }
+    .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); box-shadow: 0 4px 25px rgba(245,158,11,0.5); color: #040814; }
+    .btn-gold:hover { background: linear-gradient(135deg, #fbbf24, #f59e0b); box-shadow: 0 8px 40px rgba(245,158,11,0.7); transform: translateY(-3px) scale(1.02); }
+    .btn-outline { background: transparent; border: 2px solid var(--accent); box-shadow: none; color: var(--text-light); }
+    .btn-outline:hover { background: rgba(59,130,246,0.15); transform: translateY(-3px) scale(1.02); box-shadow: 0 0 30px rgba(59,130,246,0.3); }
     .grid { display: grid; gap: 24px; }
     .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
     .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
     .grid-4 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-    .card {
-      background: var(--card-bg);
-      border-radius: 28px;
-      padding: 24px;
-      border: 1px solid var(--border);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    }
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 20px 60px -10px rgba(0,0,0,0.8), var(--shadow-glow);
-    }
-    .stat-card {
-      background: rgba(15,26,47,0.6);
-      backdrop-filter: blur(12px);
-      border-radius: 48px;
-      padding: 24px 36px;
-      text-align: center;
-      border: 1px solid rgba(59,130,246,0.4);
-      transition: all 0.4s ease;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    .stat-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 50px rgba(59,130,246,0.3), var(--shadow-glow);
-    }
-    .stat-number {
-      font-size: 3.6rem; font-weight: 800;
-      background: linear-gradient(135deg, #ffffff, #93c5fd);
-      background-clip: text; -webkit-background-clip: text; color: transparent;
-      text-shadow: 0 0 40px rgba(59,130,246,0.3);
-      font-variant-numeric: tabular-nums;
-      cursor: default;
-    }
+    .card { background: var(--card-bg); border-radius: 28px; padding: 24px; border: 1px solid var(--border); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+    .card:hover { border-color: var(--accent); transform: translateY(-8px) scale(1.01); box-shadow: 0 20px 60px -10px rgba(0,0,0,0.8), var(--shadow-glow); }
+    .stat-card { background: rgba(15,26,47,0.6); backdrop-filter: blur(12px); border-radius: 48px; padding: 24px 36px; text-align: center; border: 1px solid rgba(59,130,246,0.4); transition: all 0.4s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .stat-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 12px 50px rgba(59,130,246,0.3), var(--shadow-glow); }
+    .stat-number { font-size: 3.6rem; font-weight: 800; background: linear-gradient(135deg, #ffffff, #93c5fd); background-clip: text; -webkit-background-clip: text; color: transparent; text-shadow: 0 0 40px rgba(59,130,246,0.3); font-variant-numeric: tabular-nums; cursor: default; }
     .stat-icon { font-size: 2.4rem; display: block; margin-bottom: 6px; }
     .stat-label { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); margin-top: 8px; }
     .section { padding: 70px 0 60px; border-bottom: 1px solid rgba(59,130,246,0.15); }
     .section:last-child { border-bottom: none; }
-    .badge {
-      background: rgba(59,130,246,0.25);
-      padding: 8px 20px;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      display: inline-block;
-      margin-bottom: 24px;
-      color: #93c5fd;
-      letter-spacing: 0.3px;
-      border: 1px solid rgba(59,130,246,0.3);
-      backdrop-filter: blur(4px);
-    }
-    .trust-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(59,130,246,0.15);
-      border: 1px solid rgba(59,130,246,0.25);
-      padding: 8px 18px;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      color: #bfdbfe;
-      backdrop-filter: blur(4px);
-      transition: all 0.2s;
-    }
-    .trust-badge:hover {
-      background: rgba(59,130,246,0.25);
-      border-color: var(--gold);
-      box-shadow: 0 0 30px rgba(245,158,11,0.2);
-    }
+    .badge { background: rgba(59,130,246,0.25); padding: 8px 20px; border-radius: 40px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 24px; color: #93c5fd; letter-spacing: 0.3px; border: 1px solid rgba(59,130,246,0.3); backdrop-filter: blur(4px); }
+    .trust-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.25); padding: 8px 18px; border-radius: 40px; font-size: 0.85rem; color: #bfdbfe; backdrop-filter: blur(4px); transition: all 0.2s; }
+    .trust-badge:hover { background: rgba(59,130,246,0.25); border-color: var(--gold); box-shadow: 0 0 30px rgba(245,158,11,0.2); }
     .trust-badge i { margin-right: 4px; }
     h1 { font-size: 3.8rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; }
     h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 32px; letter-spacing: -0.01em; text-align: center; }
@@ -154,347 +58,93 @@
     .small-note { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
     hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
     .footer { text-align: center; padding: 48px 0 40px; font-size: 0.85rem; color: #4b6a8a; border-top: 1px solid rgba(59,130,246,0.15); cursor: pointer; }
-    .calculator-wrapper {
-      background: rgba(10,17,40,0.7);
-      backdrop-filter: blur(12px);
-      border-radius: 64px;
-      padding: 48px 40px;
-      border: 1px solid rgba(59,130,246,0.5);
-      max-width: 780px;
-      margin: 0 auto;
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(59,130,246,0.2);
-      transition: all 0.3s ease;
-    }
-    .calculator-wrapper:hover {
-      border-color: var(--accent);
-      box-shadow: 0 30px 70px -15px rgba(59,130,246,0.4), var(--shadow-glow);
-    }
+    .calculator-wrapper { background: rgba(10,17,40,0.7); backdrop-filter: blur(12px); border-radius: 64px; padding: 48px 40px; border: 1px solid rgba(59,130,246,0.5); max-width: 780px; margin: 0 auto; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(59,130,246,0.2); transition: all 0.3s ease; }
+    .calculator-wrapper:hover { border-color: var(--accent); box-shadow: 0 30px 70px -15px rgba(59,130,246,0.4), var(--shadow-glow); }
     .input-field { margin-bottom: 32px; }
     .input-field label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #93c5fd; margin-bottom: 12px; }
-    .input-field input {
-      width: 100%; background: #0a1128; border: 2px solid #1e3a5f;
-      border-radius: 60px; padding: 18px 28px; font-size: 1.4rem;
-      color: white; text-align: center; outline: none; transition: all 0.2s;
-      font-weight: 600;
-    }
+    .input-field input { width: 100%; background: #0a1128; border: 2px solid #1e3a5f; border-radius: 60px; padding: 18px 28px; font-size: 1.4rem; color: white; text-align: center; outline: none; transition: all 0.2s; font-weight: 600; }
     .input-field input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(59,130,246,0.3); }
     .input-field input::placeholder { color: #475569; font-weight: 400; font-size: 1rem; }
-    .result-card {
-      background: linear-gradient(145deg, #050a1a, #020512);
-      border-radius: 48px; padding: 32px 28px; text-align: center;
-      border: 1px solid var(--accent); margin: 20px 0 15px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 30px -5px rgba(0,0,0,0.6);
-    }
-    .commission-badge {
-      font-size: 1rem; color: var(--accent); font-weight: 700;
-      letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase;
-    }
-    .calc-row {
-      display: flex; justify-content: space-between; align-items: baseline;
-      margin: 16px 0; font-size: 1.1rem;
-      border-bottom: 1px dashed rgba(59,130,246,0.2); padding-bottom: 10px;
-    }
+    .result-card { background: linear-gradient(145deg, #050a1a, #020512); border-radius: 48px; padding: 32px 28px; text-align: center; border: 1px solid var(--accent); margin: 20px 0 15px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 30px -5px rgba(0,0,0,0.6); }
+    .commission-badge { font-size: 1rem; color: var(--accent); font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase; }
+    .calc-row { display: flex; justify-content: space-between; align-items: baseline; margin: 16px 0; font-size: 1.1rem; border-bottom: 1px dashed rgba(59,130,246,0.2); padding-bottom: 10px; }
     .calc-row .label { color: #94a3b8; font-weight: 500; }
     .calc-row .value { font-weight: 800; color: #eef2ff; font-size: 1.3rem; letter-spacing: -0.2px; }
     .calc-row.commission .value { color: var(--accent); font-size: 1.6rem; text-shadow: 0 0 30px rgba(59,130,246,0.4); }
     .calc-row.seller .value { color: #4ade80; font-size: 1.6rem; }
     .calc-row.buyer .value { color: var(--gold); font-size: 1.6rem; text-shadow: 0 0 30px rgba(245,158,11,0.3); }
-    .review-card {
-      background: var(--card-bg); border-radius: 24px; padding: 22px;
-      border: 1px solid var(--border); transition: all 0.4s ease;
-      display: flex; flex-direction: column; gap: 10px;
-      position: relative;
-    }
-    .review-card:hover {
-      border-color: var(--accent); transform: translateY(-6px);
-      box-shadow: 0 15px 50px -10px rgba(0,0,0,0.6), var(--shadow-glow);
-    }
+    .review-card { background: var(--card-bg); border-radius: 24px; padding: 22px; border: 1px solid var(--border); transition: all 0.4s ease; display: flex; flex-direction: column; gap: 10px; position: relative; }
+    .review-card:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: 0 15px 50px -10px rgba(0,0,0,0.6), var(--shadow-glow); }
     .review-header { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-    .review-avatar {
-      width: 44px; height: 44px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 1.1rem; color: white; flex-shrink: 0;
-      text-transform: uppercase; box-shadow: 0 4px 12px rgba(59,130,246,0.4);
-    }
+    .review-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; color: white; flex-shrink: 0; text-transform: uppercase; box-shadow: 0 4px 12px rgba(59,130,246,0.4); }
     .review-name-date { display: flex; flex-direction: column; }
     .review-name { font-weight: 700; font-size: 1rem; }
     .review-date { font-size: 0.7rem; color: #5b6e8c; }
     .review-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; text-shadow: 0 0 15px rgba(245,158,11,0.3); }
     .review-text { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; margin-top: 4px; }
-    .faq-card {
-      background: var(--card-bg); border-radius: 24px; padding: 24px;
-      border: 1px solid var(--border); transition: all 0.3s ease;
-    }
-    .faq-card:hover {
-      border-color: var(--accent); transform: translateY(-4px);
-      box-shadow: 0 12px 40px -10px rgba(0,0,0,0.5), var(--shadow-glow);
-    }
+    .faq-card { background: var(--card-bg); border-radius: 24px; padding: 24px; border: 1px solid var(--border); transition: all 0.3s ease; }
+    .faq-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 40px -10px rgba(0,0,0,0.5), var(--shadow-glow); }
     .faq-card h4 { font-size: 1.05rem; margin-bottom: 12px; color: #60a5fa; font-weight: 600; }
     .faq-card h4 i { margin-right: 8px; }
     .faq-card p { color: var(--text-muted); line-height: 1.5; font-size: 0.9rem; }
-    .regulation-block {
-      background: #050a1a; border-radius: 32px; padding: 32px;
-      border-left: 4px solid var(--gold); margin-top: 16px;
-      box-shadow: 0 0 40px rgba(245,158,11,0.08);
-    }
+    .regulation-block { background: #050a1a; border-radius: 32px; padding: 32px; border-left: 4px solid var(--gold); margin-top: 16px; box-shadow: 0 0 40px rgba(245,158,11,0.08); }
     .regulation-block h4 { color: var(--gold); margin-top: 20px; margin-bottom: 8px; }
     .regulation-block p, .regulation-block li { color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; }
     .regulation-block ul { padding-left: 24px; margin: 12px 0; }
-    .reason-card {
-      background: rgba(15,26,47,0.5); backdrop-filter: blur(4px);
-      border-radius: 28px; padding: 28px; border: 1px solid var(--border);
-      transition: all 0.3s ease; text-align: center;
-    }
-    .reason-card:hover {
-      border-color: var(--gold); transform: translateY(-6px);
-      background: rgba(15,26,47,0.8); box-shadow: 0 12px 50px rgba(245,158,11,0.1);
-    }
+    .reason-card { background: rgba(15,26,47,0.5); backdrop-filter: blur(4px); border-radius: 28px; padding: 28px; border: 1px solid var(--border); transition: all 0.3s ease; text-align: center; }
+    .reason-card:hover { border-color: var(--gold); transform: translateY(-6px); background: rgba(15,26,47,0.8); box-shadow: 0 12px 50px rgba(245,158,11,0.1); }
     .reason-icon { font-size: 2.8rem; margin-bottom: 16px; }
     .reason-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; }
-    .trust-block {
-      background: rgba(10,17,40,0.4); border-radius: 32px; padding: 32px;
-      border: 1px solid rgba(59,130,246,0.2); box-shadow: var(--shadow-glow);
-    }
-    .trust-item {
-      display: flex; align-items: center; gap: 14px; padding: 14px 0;
-      border-bottom: 1px solid rgba(59,130,246,0.08);
-    }
+    .trust-block { background: rgba(10,17,40,0.4); border-radius: 32px; padding: 32px; border: 1px solid rgba(59,130,246,0.2); box-shadow: var(--shadow-glow); }
+    .trust-item { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(59,130,246,0.08); }
     .trust-item:last-child { border-bottom: none; }
     .trust-item .icon { font-size: 1.8rem; color: var(--gold); flex-shrink: 0; width: 2.2rem; text-align: center; }
     .trust-item .text { font-weight: 600; color: #eef2ff; }
     .trust-item .sub { font-size: 0.85rem; color: var(--text-muted); }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal.active {
-      display: flex;
-    }
-    .modal-content {
-      background: var(--card-bg);
-      border-radius: 32px;
-      padding: 40px;
-      max-width: 500px;
-      width: 90%;
-      border: 1px solid rgba(59,130,246,0.4);
-      box-shadow: 0 25px 70px rgba(0,0,0,0.7);
-      position: relative;
-      animation: fadeUp 0.3s ease;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .modal-content-wide {
-      max-width: 600px;
-    }
-    .modal-close {
-      position: absolute;
-      top: 16px; right: 20px;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.8rem;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .modal-close:hover {
-      color: #fff;
-      transform: rotate(90deg);
-    }
-    .modal-content h3 {
-      font-size: 1.8rem;
-      margin-bottom: 24px;
-      text-align: center;
-      color: #f0f9ff;
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #94a3b8;
-      margin-bottom: 6px;
-    }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      background: #0a1128;
-      border: 2px solid #1e3a5f;
-      border-radius: 16px;
-      padding: 14px 18px;
-      color: white;
-      font-size: 1rem;
-      outline: none;
-      transition: 0.2s;
-      font-family: inherit;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 4px rgba(59,130,246,0.2);
-    }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    .star-rating {
-      display: flex;
-      gap: 8px;
-      flex-direction: row-reverse;
-      justify-content: flex-end;
-    }
-    .star-rating input {
-      display: none;
-    }
-    .star-rating label {
-      font-size: 2.2rem;
-      color: #4b5563;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .star-rating label:hover,
-    .star-rating label:hover ~ label,
-    .star-rating input:checked ~ label {
-      color: var(--gold);
-      text-shadow: 0 0 20px rgba(245,158,11,0.5);
-    }
-    .btn-submit {
-      width: 100%;
-      padding: 16px;
-      border-radius: 60px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
-      font-weight: 700;
-      font-size: 1.1rem;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 8px;
-      box-shadow: 0 4px 20px rgba(59,130,246,0.4);
-    }
-    .btn-submit:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 35px rgba(59,130,246,0.6);
-    }
-    .btn-submit:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-    }
-    .btn-submit-gold {
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      color: #040814;
-    }
-    .btn-submit-gold:hover {
-      box-shadow: 0 8px 35px rgba(245,158,11,0.5);
-    }
-    .profile-modal .modal-content {
-      max-width: 600px;
-    }
-    .profile-header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 24px;
-    }
-    .profile-avatar-large {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: white;
-      flex-shrink: 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    .profile-info h4 {
-      font-size: 1.6rem;
-      margin-bottom: 4px;
-    }
-    .profile-info .sub {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-    .profile-reviews {
-      margin-top: 16px;
-      border-top: 1px solid var(--border);
-      padding-top: 16px;
-    }
-    .profile-reviews .review-item {
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .profile-reviews .review-item:last-child {
-      border-bottom: none;
-    }
-    .profile-reviews .review-item .stars {
-      color: var(--gold);
-      font-size: 0.9rem;
-    }
-    .profile-reviews .review-item .text {
-      color: #cbd5e1;
-      font-size: 0.9rem;
-      margin-top: 4px;
-    }
-    .moderation-item {
-      background: rgba(15,26,47,0.7);
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 12px;
-      border: 1px solid #1e3a5f;
-    }
-    .moderation-item .mod-actions {
-      margin-top: 10px;
-      display: flex;
-      gap: 10px;
-    }
-    .moderation-item .mod-actions button {
-      padding: 6px 16px;
-      border-radius: 30px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-    }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 1000; justify-content: center; align-items: center; }
+    .modal.active { display: flex; }
+    .modal-content { background: var(--card-bg); border-radius: 32px; padding: 40px; max-width: 500px; width: 90%; border: 1px solid rgba(59,130,246,0.4); box-shadow: 0 25px 70px rgba(0,0,0,0.7); position: relative; animation: fadeUp 0.3s ease; max-height: 90vh; overflow-y: auto; }
+    .modal-content-wide { max-width: 600px; }
+    .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.8rem; cursor: pointer; transition: 0.2s; }
+    .modal-close:hover { color: #fff; transform: rotate(90deg); }
+    .modal-content h3 { font-size: 1.8rem; margin-bottom: 24px; text-align: center; color: #f0f9ff; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+    .form-group input, .form-group textarea { width: 100%; background: #0a1128; border: 2px solid #1e3a5f; border-radius: 16px; padding: 14px 18px; color: white; font-size: 1rem; outline: none; transition: 0.2s; font-family: inherit; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(59,130,246,0.2); }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .star-rating { display: flex; gap: 8px; flex-direction: row-reverse; justify-content: flex-end; }
+    .star-rating input { display: none; }
+    .star-rating label { font-size: 2.2rem; color: #4b5563; cursor: pointer; transition: 0.2s; }
+    .star-rating label:hover, .star-rating label:hover ~ label, .star-rating input:checked ~ label { color: var(--gold); text-shadow: 0 0 20px rgba(245,158,11,0.5); }
+    .btn-submit { width: 100%; padding: 16px; border-radius: 60px; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); color: white; font-weight: 700; font-size: 1.1rem; border: none; cursor: pointer; transition: 0.3s; margin-top: 8px; box-shadow: 0 4px 20px rgba(59,130,246,0.4); }
+    .btn-submit:hover { transform: scale(1.02); box-shadow: 0 8px 35px rgba(59,130,246,0.6); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .btn-submit-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #040814; }
+    .btn-submit-gold:hover { box-shadow: 0 8px 35px rgba(245,158,11,0.5); }
+    .profile-modal .modal-content { max-width: 600px; }
+    .profile-header { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
+    .profile-avatar-large { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 700; color: white; flex-shrink: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .profile-info h4 { font-size: 1.6rem; margin-bottom: 4px; }
+    .profile-info .sub { color: var(--text-muted); font-size: 0.9rem; }
+    .profile-reviews { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px; }
+    .profile-reviews .review-item { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .profile-reviews .review-item:last-child { border-bottom: none; }
+    .profile-reviews .review-item .stars { color: var(--gold); font-size: 0.9rem; }
+    .profile-reviews .review-item .text { color: #cbd5e1; font-size: 0.9rem; margin-top: 4px; }
+    .moderation-item { background: rgba(15,26,47,0.7); border-radius: 16px; padding: 16px; margin-bottom: 12px; border: 1px solid #1e3a5f; }
+    .moderation-item .mod-actions { margin-top: 10px; display: flex; gap: 10px; }
+    .moderation-item .mod-actions button { padding: 6px 16px; border-radius: 30px; border: none; cursor: pointer; font-weight: 600; }
     .btn-approve { background: #4ade80; color: #0a111f; }
     .btn-approve:hover { background: #22c55e; }
     .btn-reject { background: #ef4444; color: white; }
     .btn-reject:hover { background: #dc2626; }
-    .spinner {
-      border: 4px solid rgba(255,255,255,0.1);
-      border-top: 4px solid #3b82f6;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 20px;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+    .spinner { border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid #3b82f6; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes countUp {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .stat-number.animated {
-      animation: countUp 0.8s ease forwards;
-    }
-    .success-icon {
-      font-size: 3rem;
-      color: #4ade80;
-      margin-bottom: 10px;
-    }
+    @keyframes countUp { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+    .stat-number.animated { animation: countUp 0.8s ease forwards; }
+    .success-icon { font-size: 3rem; color: #4ade80; margin-bottom: 10px; }
     .modal-success h3 { color: #f0f9ff; margin-bottom: 8px; }
     .modal-success p { color: #94a3b8; }
     .modal-success .small { color: #5b6e8c; font-size: 0.85rem; margin-top: 8px; }
@@ -502,57 +152,14 @@
     .flex-center { display: flex; justify-content: center; align-items: center; }
     .gap-4 { gap: 16px; }
     .flex-wrap { flex-wrap: wrap; }
-    .auth-tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 24px;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 12px;
-    }
-    .auth-tabs button {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      padding: 8px 20px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      border-radius: 30px;
-      transition: 0.3s;
-    }
-    .auth-tabs button.active {
-      color: white;
-      background: rgba(59,130,246,0.2);
-    }
-    .auth-tabs button:hover {
-      color: white;
-    }
-    .auth-form {
-      display: block;
-    }
-    .auth-form.hidden {
-      display: none;
-    }
-    .user-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(59,130,246,0.18);
-      padding: 8px 20px 8px 16px;
-      border-radius: 40px;
-      border: 1px solid rgba(59,130,246,0.25);
-    }
-    .user-badge .avatar-small {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.8rem;
-      color: white;
-    }
+    .auth-tabs { display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid var(--border); padding-bottom: 12px; }
+    .auth-tabs button { background: transparent; border: none; color: var(--text-muted); padding: 8px 20px; font-size: 1rem; font-weight: 600; cursor: pointer; border-radius: 30px; transition: 0.3s; }
+    .auth-tabs button.active { color: white; background: rgba(59,130,246,0.2); }
+    .auth-tabs button:hover { color: white; }
+    .auth-form { display: block; }
+    .auth-form.hidden { display: none; }
+    .user-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(59,130,246,0.18); padding: 8px 20px 8px 16px; border-radius: 40px; border: 1px solid rgba(59,130,246,0.25); }
+    .user-badge .avatar-small { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; color: white; }
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
       h1 { font-size: 2.5rem; text-align: center; }
@@ -710,7 +317,7 @@
       <p>Гарант не передаёт личные данные третьим лицам. По желанию клиентов сделка может быть полностью анонимной (без паспортных данных).</p>
       <h4><i class="fas fa-ban"></i> 6. Отказ от услуг</h4>
       <p>Гарант вправе отказать в проведении сделки, если она связана с незаконной деятельностью или если одна из сторон ранее была замечена в мошенничестве.</p>
-      <div class="small-note mt-2"><i class="fas fa-info-circle"></i> Актуальная версия регламента: 2.4 от 15.03.2025. Любые изменения публикуются в ВК и в этом разделе.</div>
+      <div class="small-note mt-2"><i class="fas fa-info-circle"></i> Актуальная версия регламента: 2.4 от 15.03.2026. Любые изменения публикуются в ВК и в этом разделе.</div>
     </div>
   </div>
 
@@ -734,13 +341,11 @@
       <button class="modal-close" id="closeReviewModal">&times;</button>
       <h3 id="reviewModalTitle">✍️ Оставить отзыв</h3>
       
-      <!-- Вкладки -->
       <div class="auth-tabs" id="authTabs">
         <button class="active" data-tab="login">Вход</button>
         <button data-tab="register">Регистрация</button>
       </div>
 
-      <!-- Форма регистрации -->
       <div class="auth-form" id="registerForm">
         <div class="form-group">
           <label for="regName">Имя</label>
@@ -757,7 +362,6 @@
         <button id="registerBtn" class="btn-submit btn-submit-gold">Зарегистрироваться</button>
       </div>
 
-      <!-- Форма входа (только имя и пароль) -->
       <div class="auth-form hidden" id="loginForm">
         <div class="form-group">
           <label for="loginName">Имя</label>
@@ -770,7 +374,6 @@
         <button id="loginBtn" class="btn-submit">Войти</button>
       </div>
 
-      <!-- Форма отзыва (показывается после входа) -->
       <div id="reviewFormContainer" style="display:none;">
         <hr>
         <div id="reviewUserDisplay" style="text-align:center; margin-bottom:16px; color: #94a3b8;"></div>
@@ -797,7 +400,6 @@
         <p class="small-note text-center mt-2" style="color: #fbbf24;">Ваш отзыв появится после проверки.</p>
       </div>
 
-      <!-- Блок успеха -->
       <div id="reviewSuccessContainer" style="display:none; text-align:center; padding:20px;">
         <div class="success-icon">✅</div>
         <h3 style="color:#f0f9ff; margin-bottom:8px;">Отзыв отправлен!</h3>
@@ -807,7 +409,6 @@
     </div>
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО ПРОФИЛЯ -->
   <div class="modal profile-modal" id="profileModal">
     <div class="modal-content">
       <button class="modal-close" id="closeProfileModal">&times;</button>
@@ -815,7 +416,6 @@
     </div>
   </div>
 
-  <!-- СКРЫТАЯ ПАНЕЛЬ МОДЕРАЦИИ -->
   <div class="modal" id="moderationModal">
     <div class="modal-content" style="max-width: 700px;">
       <button class="modal-close" id="closeModerationModal">&times;</button>
@@ -824,7 +424,6 @@
     </div>
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ПАРОЛЯ МОДЕРАТОРА -->
   <div class="modal" id="passwordModal">
     <div class="modal-content" style="max-width: 400px;">
       <button class="modal-close" id="closePasswordModal">&times;</button>
@@ -836,15 +435,12 @@
     </div>
   </div>
 
-  <!-- FAQ -->
   <div class="section"><h2><i class="fas fa-question-circle" style="color: var(--accent);"></i> Часто задаваемые <span class="gradient-text">вопросы</span></h2><div class="grid grid-2" id="faqGrid"></div></div>
 
-  <!-- КЕЙСЫ -->
   <div class="section"><h2><i class="fas fa-trophy" style="color: var(--accent);"></i> <span class="gradient-text">Кейсы</span> успешных сделок</h2><div class="grid grid-3" id="casesGrid"></div></div>
 
-  <!-- КОНТАКТЫ -->
   <div class="section"><div style="background: linear-gradient(115deg, #0f172a, #030712); border-radius: 48px; padding: 52px 36px; text-align: center; border: 1px solid rgba(59,130,246,0.3); box-shadow: var(--shadow-glow);"><h2 style="margin-bottom: 16px;"><i class="fas fa-rocket" style="color: var(--accent);"></i> Начните безопасную сделку</h2><div style="max-width: 550px; margin: 0 auto 28px auto; color: #94a3b8;">Единственный способ связи — официальный ВК. Фиксированная комиссия 10% (начисляется сверху). Никаких риск-факторов и скрытых платежей.</div><a href="https://vk.me/news_fedorov" target="_blank" class="btn btn-gold" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); box-shadow: 0 4px 25px rgba(245,158,11,0.5);"><i class="fab fa-vk"></i> Перейти в ВК → @news_fedorov</a><div class="small-note mt-4"><i class="fas fa-check-circle" style="color: #4ade80;"></i> VK ID проверен, страница верифицирована. Все гарантийные обязательства закреплены документально.</div></div></div>
-  <div class="footer" id="footer">© 2025 Дмитрий Федоров | Гарант-услуги 20 000+ отзывов | Фиксированная комиссия 10% (сверху) | Работаем по РФ и СНГ</div>
+  <div class="footer" id="footer">© 2026 Дмитрий Федоров | Гарант-услуги 20 000+ отзывов | Фиксированная комиссия 10% (сверху) | Работаем по РФ и СНГ</div>
 </div>
 </main>
 
@@ -914,7 +510,7 @@
   const STORAGE_USERS = 'fedorov_users_mod_v2';
   const STORAGE_SESSION = 'fedorov_session';
   const STORAGE_VERSION = 'fedorov_version';
-  const CURRENT_VERSION = '14.0'; // Обновлено для сброса дат
+  const CURRENT_VERSION = '15.0'; // Обновлено для сброса дат на 2026
 
   let currentUser = null;
 
@@ -923,69 +519,69 @@
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
-  // ========== ОБНОВЛЁННЫЕ ДАТЫ: 09.09.2025 и 10.09.2025 ==========
+  // ========== ОБНОВЛЁННЫЕ ДАТЫ: 2026 ГОД ==========
   const defaultReviews = [
     // === Постоянные клиенты (с двумя отзывами) ===
-    { id: 1, userId: 'Алексей', text: 'продал акк за 5к – Дмитрий перевёл деньги за 3 минуты, я даже не успел чай допить))', stars: 5, date: '15.07.2025', approved: true },
-    { id: 2, userId: 'Алексей', text: 'снова обратился, продал ещё один аккаунт за 7к – всё так же быстро и надёжно!', stars: 5, date: '09.09.2025', approved: true },
-    { id: 3, userId: 'Марина', text: 'покупали ноут за 28к, переживали, но он проверил серийник и чеки – всё чисто!', stars: 5, date: '20.07.2025', approved: true },
-    { id: 4, userId: 'Марина', text: 'второй раз покупаем технику (планшет за 15к) – всегда оперативно, без лишних вопросов.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 5, userId: 'Денис', text: 'фриланс-заказ на 35к закрыли за 45 минут. Я даже не ожидал такой скорости', stars: 5, date: '01.08.2025', approved: true },
-    { id: 6, userId: 'Денис', text: 'ещё один заказ по фрилансу на 22к – всё так же чётко, деньги получил сразу.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 7, userId: 'Екатерина', text: 'обмен usdt на 18к – Дмитрий подсказал лучший курс, без всякого напряга', stars: 5, date: '08.08.2025', approved: true },
-    { id: 8, userId: 'Екатерина', text: 'обменяли ещё USDT на 12к, курс был даже выгоднее, чем в обменниках.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 9, userId: 'Игорь', text: 'аккаунт с танками взяли за 7к, проверил бан-лист – всё ок', stars: 5, date: '15.08.2025', approved: true },
-    { id: 10, userId: 'Игорь', text: 'купил второй аккаунт для брата за 5к – снова доволен, никаких проблем.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 11, userId: 'Ольга', text: 'спор на 12к решил за день, я уже думал, что всё пропало, а он вернул деньги', stars: 5, date: '22.08.2025', approved: true },
-    { id: 12, userId: 'Ольга', text: 'ещё один спор на 8к – арбитраж снова в мою пользу, Дмитрий быстро разобрался.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 13, userId: 'Николай', text: 'продал ноутбук в Краснодар за 30к, покупатель из другого города – всё гладко', stars: 5, date: '28.08.2025', approved: true },
-    { id: 14, userId: 'Николай', text: 'продал ещё телефон за 12к через гаранта – покупатель получил, я деньги – идеально.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 15, userId: 'Виктор', text: 'Дмитрий отвечает даже в 3 часа ночи, я офигел! Реально 24/7', stars: 5, date: '30.08.2025', approved: true },
-    { id: 16, userId: 'Виктор', text: 'опять обратился ночью по срочной сделке на 9к – ответил мгновенно, закрыли за 10 минут.', stars: 5, date: '10.09.2025', approved: true },
+    { id: 1, userId: 'Алексей', text: 'продал акк за 5к – Дмитрий перевёл деньги за 3 минуты, я даже не успел чай допить))', stars: 5, date: '15.07.2026', approved: true },
+    { id: 2, userId: 'Алексей', text: 'снова обратился, продал ещё один аккаунт за 7к – всё так же быстро и надёжно!', stars: 5, date: '09.09.2026', approved: true },
+    { id: 3, userId: 'Марина', text: 'покупали ноут за 28к, переживали, но он проверил серийник и чеки – всё чисто!', stars: 5, date: '20.07.2026', approved: true },
+    { id: 4, userId: 'Марина', text: 'второй раз покупаем технику (планшет за 15к) – всегда оперативно, без лишних вопросов.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 5, userId: 'Денис', text: 'фриланс-заказ на 35к закрыли за 45 минут. Я даже не ожидал такой скорости', stars: 5, date: '01.08.2026', approved: true },
+    { id: 6, userId: 'Денис', text: 'ещё один заказ по фрилансу на 22к – всё так же чётко, деньги получил сразу.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 7, userId: 'Екатерина', text: 'обмен usdt на 18к – Дмитрий подсказал лучший курс, без всякого напряга', stars: 5, date: '08.08.2026', approved: true },
+    { id: 8, userId: 'Екатерина', text: 'обменяли ещё USDT на 12к, курс был даже выгоднее, чем в обменниках.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 9, userId: 'Игорь', text: 'аккаунт с танками взяли за 7к, проверил бан-лист – всё ок', stars: 5, date: '15.08.2026', approved: true },
+    { id: 10, userId: 'Игорь', text: 'купил второй аккаунт для брата за 5к – снова доволен, никаких проблем.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 11, userId: 'Ольга', text: 'спор на 12к решил за день, я уже думал, что всё пропало, а он вернул деньги', stars: 5, date: '22.08.2026', approved: true },
+    { id: 12, userId: 'Ольга', text: 'ещё один спор на 8к – арбитраж снова в мою пользу, Дмитрий быстро разобрался.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 13, userId: 'Николай', text: 'продал ноутбук в Краснодар за 30к, покупатель из другого города – всё гладко', stars: 5, date: '28.08.2026', approved: true },
+    { id: 14, userId: 'Николай', text: 'продал ещё телефон за 12к через гаранта – покупатель получил, я деньги – идеально.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 15, userId: 'Виктор', text: 'Дмитрий отвечает даже в 3 часа ночи, я офигел! Реально 24/7', stars: 5, date: '30.08.2026', approved: true },
+    { id: 16, userId: 'Виктор', text: 'опять обратился ночью по срочной сделке на 9к – ответил мгновенно, закрыли за 10 минут.', stars: 5, date: '10.09.2026', approved: true },
 
     // === Повторные клиенты ===
-    { id: 17, userId: 'Андрей', text: 'купил скин в CS за 4к – продавец сначала тянул, но Дмитрий помог разрешить ситуацию.', stars: 5, date: '12.08.2025', approved: true },
-    { id: 18, userId: 'Андрей', text: 'продал скин в CS за 3к – деньги получил моментально, рекомендую!', stars: 5, date: '09.09.2025', approved: true },
-    { id: 19, userId: 'Анна', text: 'покупала домен за 10к, продавец пытался надуть, но Дмитрий всё разрулил.', stars: 5, date: '25.07.2025', approved: true },
-    { id: 20, userId: 'Анна', text: 'купила домен за 8к, теперь спокойна – гарант проверил все документы.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 21, userId: 'Сергей', text: 'переводил крупную сумму 45к через гаранта – всё прошло гладко, без задержек.', stars: 5, date: '05.08.2025', approved: true },
-    { id: 22, userId: 'Сергей', text: 'впервые воспользовался гарантом для перевода 15к – всё просто и понятно, теперь не боюсь сделок.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 23, userId: 'Наталья', text: 'продала несколько скинов в CS за 20к, Дмитрий проверил историю – без возвратов, супер!', stars: 5, date: '18.08.2025', approved: true },
-    { id: 24, userId: 'Наталья', text: 'продала скины в CS за 12к – оперативно, деньги на карте через 5 минут.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 25, userId: 'Артём', text: 'заказал дизайн, исполнитель не доделал – гарант вернул предоплату 10к, я спокоен.', stars: 5, date: '22.08.2025', approved: true },
-    { id: 26, userId: 'Артём', text: 'снова заказал дизайн, предоплата 10к – гарант помог, всё отлично.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 27, userId: 'Павел', text: 'обменял рубли на USDT на 30к – курс был отличный, всё быстро.', stars: 5, date: '10.08.2025', approved: true },
-    { id: 28, userId: 'Павел', text: 'обменял рубли на USDT на 25к – снова отличный курс, без заморочек.', stars: 5, date: '10.09.2025', approved: true },
+    { id: 17, userId: 'Андрей', text: 'купил скин в CS за 4к – продавец сначала тянул, но Дмитрий помог разрешить ситуацию.', stars: 5, date: '12.08.2026', approved: true },
+    { id: 18, userId: 'Андрей', text: 'продал скин в CS за 3к – деньги получил моментально, рекомендую!', stars: 5, date: '09.09.2026', approved: true },
+    { id: 19, userId: 'Анна', text: 'покупала домен за 10к, продавец пытался надуть, но Дмитрий всё разрулил.', stars: 5, date: '25.07.2026', approved: true },
+    { id: 20, userId: 'Анна', text: 'купила домен за 8к, теперь спокойна – гарант проверил все документы.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 21, userId: 'Сергей', text: 'переводил крупную сумму 45к через гаранта – всё прошло гладко, без задержек.', stars: 5, date: '05.08.2026', approved: true },
+    { id: 22, userId: 'Сергей', text: 'впервые воспользовался гарантом для перевода 15к – всё просто и понятно, теперь не боюсь сделок.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 23, userId: 'Наталья', text: 'продала несколько скинов в CS за 20к, Дмитрий проверил историю – без возвратов, супер!', stars: 5, date: '18.08.2026', approved: true },
+    { id: 24, userId: 'Наталья', text: 'продала скины в CS за 12к – оперативно, деньги на карте через 5 минут.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 25, userId: 'Артём', text: 'заказал дизайн, исполнитель не доделал – гарант вернул предоплату 10к, я спокоен.', stars: 5, date: '22.08.2026', approved: true },
+    { id: 26, userId: 'Артём', text: 'снова заказал дизайн, предоплата 10к – гарант помог, всё отлично.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 27, userId: 'Павел', text: 'обменял рубли на USDT на 30к – курс был отличный, всё быстро.', stars: 5, date: '10.08.2026', approved: true },
+    { id: 28, userId: 'Павел', text: 'обменял рубли на USDT на 25к – снова отличный курс, без заморочек.', stars: 5, date: '10.09.2026', approved: true },
 
     // === Дополнительные повторные клиенты ===
-    { id: 29, userId: 'Максим', text: 'продал старый аккаунт в Steam за 3к, деньги получил сразу.', stars: 5, date: '10.07.2025', approved: true },
-    { id: 30, userId: 'Максим', text: 'купил аккаунт в Steam за 4500, проверили всё, передача прошла гладко.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 31, userId: 'Елена', text: 'продала косметику за 5к, покупатель из другого города, всё ок.', stars: 5, date: '12.07.2025', approved: true },
-    { id: 32, userId: 'Елена', text: 'продала телефон за 8к, покупатель из другого города – без проблем, деньги на карте.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 33, userId: 'Константин', text: 'обменял валюту на 10к, курс был хороший.', stars: 5, date: '18.07.2025', approved: true },
-    { id: 34, userId: 'Константин', text: 'обменял валюту на 14к, курс был выгодный, спасибо за оперативность.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 35, userId: 'Татьяна', text: 'переводила деньги за услуги 6к, всё прошло гладко.', stars: 5, date: '20.07.2025', approved: true },
-    { id: 36, userId: 'Татьяна', text: 'уже не первый раз с Дмитрием, переводила 7к – всегда надёжно и без нервов.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 37, userId: 'Ирина', text: 'продала аккаунт в Instagram за 4к, безопасно.', stars: 5, date: '22.07.2025', approved: true },
-    { id: 38, userId: 'Ирина', text: 'продала аккаунт в Instagram за 6к, Дмитрий помог безопасно провести сделку.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 39, userId: 'Григорий', text: 'покупал запчасти за 8к, продавец из другого города – всё чётко.', stars: 5, date: '25.07.2025', approved: true },
-    { id: 40, userId: 'Григорий', text: 'покупал автозапчасти за 10к, продавец из другого города – гарант проверил документы, всё ок.', stars: 5, date: '10.09.2025', approved: true },
+    { id: 29, userId: 'Максим', text: 'продал старый аккаунт в Steam за 3к, деньги получил сразу.', stars: 5, date: '10.07.2026', approved: true },
+    { id: 30, userId: 'Максим', text: 'купил аккаунт в Steam за 4500, проверили всё, передача прошла гладко.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 31, userId: 'Елена', text: 'продала косметику за 5к, покупатель из другого города, всё ок.', stars: 5, date: '12.07.2026', approved: true },
+    { id: 32, userId: 'Елена', text: 'продала телефон за 8к, покупатель из другого города – без проблем, деньги на карте.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 33, userId: 'Константин', text: 'обменял валюту на 10к, курс был хороший.', stars: 5, date: '18.07.2026', approved: true },
+    { id: 34, userId: 'Константин', text: 'обменял валюту на 14к, курс был выгодный, спасибо за оперативность.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 35, userId: 'Татьяна', text: 'переводила деньги за услуги 6к, всё прошло гладко.', stars: 5, date: '20.07.2026', approved: true },
+    { id: 36, userId: 'Татьяна', text: 'уже не первый раз с Дмитрием, переводила 7к – всегда надёжно и без нервов.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 37, userId: 'Ирина', text: 'продала аккаунт в Instagram за 4к, безопасно.', stars: 5, date: '22.07.2026', approved: true },
+    { id: 38, userId: 'Ирина', text: 'продала аккаунт в Instagram за 6к, Дмитрий помог безопасно провести сделку.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 39, userId: 'Григорий', text: 'покупал запчасти за 8к, продавец из другого города – всё чётко.', stars: 5, date: '25.07.2026', approved: true },
+    { id: 40, userId: 'Григорий', text: 'покупал автозапчасти за 10к, продавец из другого города – гарант проверил документы, всё ок.', stars: 5, date: '10.09.2026', approved: true },
 
     // === Одиночные отзывы ===
-    { id: 41, userId: 'Валентина', text: 'заказывала услуги дизайнера за 6к, гарант помог с оплатой – всё чётко.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 42, userId: 'Георгий', text: 'переводил деньги за товар 11к – всё быстро, без задержек, как по расписанию.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 43, userId: 'Зоя', text: 'продала старый телефон за 5к, покупатель скинул деньги через гаранта, я отправила – легко.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 44, userId: 'Даниил', text: 'спор по поводу недопоставки товара на 7к – арбитраж решил в мою пользу, очень доволен.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 45, userId: 'Ксения', text: 'обменяла крипту на рубли 9к – курс был лучший из всех, что видела.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 46, userId: 'Степан', text: 'купил аккаунт в Dota за 6к, проверили всё, сделка прошла отлично.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 47, userId: 'Любовь', text: 'продавала услуги по переводу за 4к, гарант помог с оплатой – всё идеально.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 48, userId: 'Аркадий', text: 'сделка по продаже планшета за 9к, покупатель из другого города – без проблем.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 49, userId: 'Вера', text: 'обмен крипты на 11к, всё прозрачно, комиссия 10% – честно и понятно.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 50, userId: 'Борис', text: 'продал старый ноут за 7к, покупатель скинул деньги, я отправил – всё чётко.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 51, userId: 'Галина', text: 'заказ фриланса на 8к, гарант удержал оплату до выполнения – безопасно.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 52, userId: 'Фёдор', text: 'покупал домен за 6к, продавец пытался надуть – гарант всё вернул, спасибо.', stars: 5, date: '10.09.2025', approved: true },
-    { id: 53, userId: 'Яна', text: 'впервые воспользовалась гарантом для перевода 5к – очень довольна, буду обращаться ещё.', stars: 5, date: '09.09.2025', approved: true },
-    { id: 54, userId: 'Эдуард', text: 'сделка по карго на 12к, товар пришёл, деньги получил – всё супер.', stars: 5, date: '10.09.2025', approved: true }
+    { id: 41, userId: 'Валентина', text: 'заказывала услуги дизайнера за 6к, гарант помог с оплатой – всё чётко.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 42, userId: 'Георгий', text: 'переводил деньги за товар 11к – всё быстро, без задержек, как по расписанию.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 43, userId: 'Зоя', text: 'продала старый телефон за 5к, покупатель скинул деньги через гаранта, я отправила – легко.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 44, userId: 'Даниил', text: 'спор по поводу недопоставки товара на 7к – арбитраж решил в мою пользу, очень доволен.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 45, userId: 'Ксения', text: 'обменяла крипту на рубли 9к – курс был лучший из всех, что видела.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 46, userId: 'Степан', text: 'купил аккаунт в Dota за 6к, проверили всё, сделка прошла отлично.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 47, userId: 'Любовь', text: 'продавала услуги по переводу за 4к, гарант помог с оплатой – всё идеально.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 48, userId: 'Аркадий', text: 'сделка по продаже планшета за 9к, покупатель из другого города – без проблем.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 49, userId: 'Вера', text: 'обмен крипты на 11к, всё прозрачно, комиссия 10% – честно и понятно.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 50, userId: 'Борис', text: 'продал старый ноут за 7к, покупатель скинул деньги, я отправил – всё чётко.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 51, userId: 'Галина', text: 'заказ фриланса на 8к, гарант удержал оплату до выполнения – безопасно.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 52, userId: 'Фёдор', text: 'покупал домен за 6к, продавец пытался надуть – гарант всё вернул, спасибо.', stars: 5, date: '10.09.2026', approved: true },
+    { id: 53, userId: 'Яна', text: 'впервые воспользовалась гарантом для перевода 5к – очень довольна, буду обращаться ещё.', stars: 5, date: '09.09.2026', approved: true },
+    { id: 54, userId: 'Эдуард', text: 'сделка по карго на 12к, товар пришёл, деньги получил – всё супер.', stars: 5, date: '10.09.2026', approved: true }
   ];
 
   const fixedSurnames = {
@@ -1026,7 +622,7 @@
       });
       localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
       localStorage.setItem(STORAGE_VERSION, CURRENT_VERSION);
-      console.log('✅ Данные обновлены до версии 14.0 (даты 9-10 сентября)');
+      console.log('✅ Данные обновлены до версии 15.0 (даты 2026)');
     } else if (!localStorage.getItem(STORAGE_REVIEWS)) {
       localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(defaultReviews));
       const userMap = {};
@@ -1200,9 +796,9 @@
     renderAll();
   }
 
-  // ========== ОБНОВЛЕНО: показываем отзывы за 09.09 и 10.09 ==========
+  // ========== ОБНОВЛЕНО: показываем отзывы за 09.09.2026 и 10.09.2026 ==========
   function isDisplayDate(dateStr) {
-    return dateStr === '09.09.2025' || dateStr === '10.09.2025';
+    return dateStr === '09.09.2026' || dateStr === '10.09.2026';
   }
 
   function renderReviews() {
@@ -1630,7 +1226,7 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Отзывы обновлены: даты 09.09.2025 и 10.09.2025. Пароль модерации: admin123.');
+  console.log('✅ Все даты обновлены на 2026 год. Пароль модерации: admin123.');
 </script>
 </body>
 </html>
