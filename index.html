@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Дмитрий Федоров | Гарант | 20 000+ отзывов | 10% комиссия</title>
-  <meta name="description" content="Дмитрий Федоров — профессиональный гарант с 20 000+ положительных отзывов. Фиксированная комиссия 10% от сделки. Надёжность, скорость, безопасность. Калькулятор услуг и связь ВК.">
+  <meta name="description" content="Дмитрий Федоров — профессиональный гарант с 20 000+ положительных отзывов. Фиксированная комиссия 10% от сделки.">
   <meta name="theme-color" content="#0a1128">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -57,7 +57,7 @@
     .small-note { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
     hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
     .footer { text-align: center; padding: 48px 0 40px; font-size: 0.85rem; color: #4b6a8a; border-top: 1px solid rgba(59,130,246,0.15); cursor: pointer; }
-    .calculator-wrapper { background: rgba(10,17,40,0.7); backdrop-filter: blur(12px); border-radius: 64px; padding: 48px 40px; border: 1px solid rgba(59,130,246,0.5); max-width: 780px; margin: 0 auto; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(59,130,246,0.2); transition: all 0.3s ease; }
+    .calculator-wrapper { background: rgba(10,17,40,0.7); backdrop-filter: blur(12px); border-radius: 64px; padding: 48px 40px; border: 1px solid rgba(59,130,246,0.5); max-width: 780px; margin: 0 auto; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6); transition: all 0.3s ease; }
     .calculator-wrapper:hover { border-color: var(--accent); box-shadow: 0 30px 70px -15px rgba(59,130,246,0.4), var(--shadow-glow); }
     .input-field { margin-bottom: 32px; }
     .input-field label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #93c5fd; margin-bottom: 12px; }
@@ -118,7 +118,6 @@
     .star-rating label:hover, .star-rating label:hover ~ label, .star-rating input:checked ~ label { color: var(--gold); text-shadow: 0 0 20px rgba(245,158,11,0.5); }
     .btn-submit { width: 100%; padding: 16px; border-radius: 60px; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); color: white; font-weight: 700; font-size: 1.1rem; border: none; cursor: pointer; transition: 0.3s; margin-top: 8px; box-shadow: 0 4px 20px rgba(59,130,246,0.4); }
     .btn-submit:hover { transform: scale(1.02); box-shadow: 0 8px 35px rgba(59,130,246,0.6); }
-    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
     .btn-submit-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #040814; }
     .btn-submit-gold:hover { box-shadow: 0 8px 35px rgba(245,158,11,0.5); }
     .profile-modal .modal-content { max-width: 600px; }
@@ -142,11 +141,7 @@
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes countUp { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-    .stat-number.animated { animation: countUp 0.8s ease forwards; }
     .success-icon { font-size: 3rem; color: #4ade80; margin-bottom: 10px; }
-    .modal-success h3 { color: #f0f9ff; margin-bottom: 8px; }
-    .modal-success p { color: #94a3b8; }
-    .modal-success .small { color: #5b6e8c; font-size: 0.85rem; margin-top: 8px; }
     .flex { display: flex; }
     .flex-center { display: flex; justify-content: center; align-items: center; }
     .gap-4 { gap: 16px; }
@@ -155,7 +150,6 @@
     .auth-tabs button { background: transparent; border: none; color: var(--text-muted); padding: 8px 20px; font-size: 1rem; font-weight: 600; cursor: pointer; border-radius: 30px; transition: 0.3s; }
     .auth-tabs button.active { color: white; background: rgba(59,130,246,0.2); }
     .auth-tabs button:hover { color: white; }
-    .auth-form { display: block; }
     .auth-form.hidden { display: none; }
     .user-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(59,130,246,0.18); padding: 8px 20px 8px 16px; border-radius: 40px; border: 1px solid rgba(59,130,246,0.25); }
     .user-badge .avatar-small { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; color: white; }
@@ -169,16 +163,10 @@
       .input-field input { font-size: 1.2rem; padding: 14px 20px; }
       .calc-row { font-size: 0.9rem; flex-wrap: wrap; gap: 6px; }
       .calc-row .value { font-size: 1.1rem; }
-      .calc-row.commission .value, .calc-row.seller .value, .calc-row.buyer .value { font-size: 1.3rem; }
-      .regulation-block { padding: 20px; }
-      .reason-card { padding: 20px; }
-      .reason-icon { font-size: 2rem; }
-      .reason-title { font-size: 1.1rem; }
       .grid-3 { grid-template-columns: 1fr; gap: 20px; }
       .trust-block { padding: 20px; }
       .profile-header { flex-direction: column; text-align: center; }
       .modal-content { padding: 24px; }
-      .auth-tabs button { font-size: 0.85rem; padding: 6px 14px; }
     }
     @media (max-width: 480px) {
       .btn { padding: 10px 20px; font-size: 0.85rem; }
@@ -195,20 +183,19 @@
 <main>
 <div class="container">
 
+  <!-- ХЕРО -->
   <div class="section" style="padding-top: 60px;">
     <div class="text-center">
       <div class="badge"><i class="fas fa-star" style="margin-right: 6px;"></i> ТОП-ГАРАНТ | СТАЖ 6+ ЛЕТ | ФИКС 10%</div>
       <h1>Дмитрий <span class="gradient-text">Федоров</span></h1>
       <div style="font-size: 1.2rem; margin-top: 16px; max-width: 650px; color: #cbd5e1; margin-left: auto; margin-right: auto;">Ваша безопасность — моя репутация. Провожу сделки любых типов: фриланс, криптовалюта, недвижимость, карго, даркнет маркет.</div>
-      
       <div class="flex-center gap-4 flex-wrap" style="margin: 32px 0 24px;">
         <span class="trust-badge"><i class="fas fa-shield-alt"></i> Ваши данные защищены</span>
         <span class="trust-badge"><i class="fas fa-star"></i> 20 000+ реальных отзывов</span>
         <span class="trust-badge"><i class="fas fa-clock"></i> Поддержка 24/7</span>
         <span class="trust-badge"><i class="fas fa-clipboard-list"></i> Публичный рейтинг</span>
       </div>
-
-      <div class="grid grid-4" style="margin: 32px 0 32px;" id="statGrid">
+      <div class="grid grid-4" style="margin: 32px 0 32px;">
         <div class="stat-card"><span class="stat-icon" style="color: #fbbf24;"><i class="fas fa-chart-bar"></i></span><div class="stat-number" data-target="20000" id="stat20000">0</div><div class="stat-label">Проведенных сделок+</div></div>
         <div class="stat-card"><span class="stat-icon" style="color: #4ade80;"><i class="fas fa-star"></i></span><div class="stat-number" data-target="100">0%</div><div class="stat-label">100% положительных отзывов</div></div>
         <div class="stat-card"><span class="stat-icon" style="color: #60a5fa;"><i class="fas fa-clock"></i></span><div class="stat-number" data-target="24">0/7</div><div class="stat-label">Оперативная поддержка</div></div>
@@ -222,6 +209,7 @@
     </div>
   </div>
 
+  <!-- КАЛЬКУЛЯТОР -->
   <div id="calculator" class="section">
     <h2><i class="fas fa-bolt" style="color: var(--accent);"></i> Калькулятор <span class="gradient-text">комиссии 10%</span></h2>
     <div class="calculator-wrapper">
@@ -234,10 +222,11 @@
         <div class="small-note mt-2" id="calcMeta">Введите сумму сделки для расчёта.</div>
       </div>
       <div class="flex-center mt-4"><button id="refreshCalc" class="btn"><i class="fas fa-sync-alt"></i> Пересчитать</button></div>
-      <hr><div class="small-note text-center"><i class="fas fa-info-circle"></i> Комиссия всегда 10% от суммы сделки, начисляется сверху. Продавец получает сумму сделки полностью.</div>
+      <hr><div class="small-note text-center"><i class="fas fa-info-circle"></i> Комиссия всегда 10% от суммы сделки. Продавец получает сумму сделки полностью.</div>
     </div>
   </div>
 
+  <!-- ДОВЕРИЕ -->
   <div class="section">
     <h2><i class="fas fa-lock" style="color: var(--accent);"></i> Почему <span class="gradient-text">нам доверяют</span></h2>
     <div class="trust-block">
@@ -249,69 +238,65 @@
     </div>
   </div>
 
+  <!-- О ГАРАНТЕ -->
   <div class="section">
     <div class="grid grid-2">
       <div><h2 style="text-align: left;">Почему <span class="gradient-text">20 000+</span> выбирают меня?</h2><ul style="list-style: none; margin-top: 20px;"><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: #4ade80; margin-right: 10px;"></i> <strong>Прозрачная статистика</strong> — подтверждённые отзывы, публичный рейтинг</li><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: #4ade80; margin-right: 10px;"></i> <strong>Эскроу-гарант 2.0</strong> — удерживаю средства до полного выполнения</li><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: #4ade80; margin-right: 10px;"></i> <strong>Регулирование споров</strong> — объективный арбитраж с защитой каждой стороны</li><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: #4ade80; margin-right: 10px;"></i> <strong>Мгновенная реакция</strong> — отвечаю максимально быстро, работаю 24/7</li><li style="margin-bottom: 18px;"><i class="fas fa-check-circle" style="color: #4ade80; margin-right: 10px;"></i> <strong>Фиксированные 10%</strong> — комиссия сверху, без скрытых платежей</li></ul><div class="mt-4"><a href="https://vk.me/news_fedorov" target="_blank" class="btn"><i class="fab fa-vk"></i> Получить консультацию</a></div></div>
-      <div class="card text-center"><div style="font-size: 3.5rem;"><i class="fas fa-shield-alt" style="color: var(--accent);"></i></div><h3>Репутация №1</h3><div>20 000+ довольных клиентов</div><div class="mt-2"><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i> <span style="color: var(--gold);">5.0</span> (20 000+ отзывов)</div><div class="small-note mt-2">Проверено временем</div></div>
+      <div class="card text-center"><div style="font-size: 3.5rem;"><i class="fas fa-shield-alt" style="color: var(--accent);"></i></div><h3>Репутация №1</h3><div>20 000+ довольных клиентов</div><div class="mt-2"><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i> <span style="color: var(--gold);">5.0</span></div><div class="small-note mt-2">Проверено временем</div></div>
     </div>
   </div>
 
+  <!-- ПРЕИМУЩЕСТВА -->
   <div class="section"><h2><i class="fas fa-star" style="color: var(--accent);"></i> Наши <span class="gradient-text">преимущества</span></h2><div class="grid grid-3">
-    <div class="card"><div style="font-size: 2rem; color: #3b82f6;"><i class="fas fa-lock"></i></div><h3>100% безопасность</h3><p class="small-note">Эскроу-сделки с удержанием средств до полного выполнения условий. Защита от мошенничества.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #f59e0b;"><i class="fas fa-bolt"></i></div><h3>Мгновенная реакция</h3><p class="small-note">Всегда на связи, отвечаю в течение пары минут. Работаю 24/7 без выходных.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #10b981;"><i class="fas fa-coins"></i></div><h3>Фикс 10%</h3><p class="small-note">Комиссия начисляется сверху, продавец получает сумму сделки полностью. Честно и прозрачно.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #8b5cf6;"><i class="fas fa-clipboard-list"></i></div><h3>20 000+ сделок</h3><p class="small-note">Огромный опыт проведения сделок любой сложности. Каждая сделка — под полным контролем.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #ef4444;"><i class="fas fa-star"></i></div><h3>100% отзывов 5★</h3><p class="small-note">Все отзывы реальных клиентов. Проверенная репутация без единого негатива.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #06b6d4;"><i class="fas fa-globe"></i></div><h3>Работа по всему СНГ</h3><p class="small-note">Провожу сделки с клиентами из любых стран. Полная юридическая чистота.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #f472b6;"><i class="fas fa-headset"></i></div><h3>24/7 поддержка</h3><p class="small-note">Всегда на связи в ВК. Отвечаю на любые вопросы в любое время суток.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #f97316;"><i class="fas fa-file-contract"></i></div><h3>Юридическая гарантия</h3><p class="small-note">Составляю официальные договоры. Несу полную ответственность за сделки.</p></div>
-    <div class="card"><div style="font-size: 2rem; color: #14b8a6;"><i class="fas fa-user-secret"></i></div><h3>Конфиденциальность</h3><p class="small-note">Полная анонимность по желанию клиента. Данные не передаются третьим лицам.</p></div>
+    <div class="card"><div style="font-size: 2rem; color: #3b82f6;"><i class="fas fa-lock"></i></div><h3>100% безопасность</h3><p class="small-note">Эскроу-сделки с удержанием средств до полного выполнения условий.</p></div>
+    <div class="card"><div style="font-size: 2rem; color: #f59e0b;"><i class="fas fa-bolt"></i></div><h3>Мгновенная реакция</h3><p class="small-note">Всегда на связи, отвечаю в течение пары минут. Работаю 24/7.</p></div>
+    <div class="card"><div style="font-size: 2rem; color: #10b981;"><i class="fas fa-coins"></i></div><h3>Фикс 10%</h3><p class="small-note">Комиссия начисляется сверху, продавец получает сумму сделки полностью.</p></div>
+    <div class="card"><div style="font-size: 2rem; color: #8b5cf6;"><i class="fas fa-clipboard-list"></i></div><h3>20 000+ сделок</h3><p class="small-note">Огромный опыт проведения сделок любой сложности.</p></div>
+    <div class="card"><div style="font-size: 2rem; color: #ef4444;"><i class="fas fa-star"></i></div><h3>100% отзывов 5★</h3><p class="small-note">Все отзывы реальных клиентов. Репутация без негатива.</p></div>
+    <div class="card"><div style="font-size: 2rem; color: #06b6d4;"><i class="fas fa-globe"></i></div><h3>Работа по всему СНГ</h3><p class="small-note">Провожу сделки с клиентами из любых стран.</p></div>
   </div></div>
 
+  <!-- ПОЧЕМУ ВЫБИРАЮТ -->
   <div class="section">
     <h2><i class="fas fa-question-circle" style="color: var(--accent);"></i> Почему <span class="gradient-text">выбирают нас?</span></h2>
     <div class="grid grid-3">
-      <div class="reason-card"><div class="reason-icon" style="color: #3b82f6;"><i class="fas fa-shield-alt"></i></div><div class="reason-title">Гарантия возврата</div><p class="small-note">При невыполнении обязательств продавцом — полный возврат средств покупателю в течение 24 часов.</p></div>
-      <div class="reason-card"><div class="reason-icon" style="color: #8b5cf6;"><i class="fas fa-balance-scale"></i></div><div class="reason-title">Честный арбитраж</div><p class="small-note">Беспристрастное рассмотрение споров на основе скриншотов, видео и логов. Решение в пользу правой стороны.</p></div>
-      <div class="reason-card"><div class="reason-icon" style="color: #f59e0b;"><i class="fas fa-file-alt"></i></div><div class="reason-title">Юридическая сила</div><p class="small-note">Составляю договор-оферту или индивидуальный контракт, который защищает обе стороны сделки.</p></div>
-      <div class="reason-card"><div class="reason-icon" style="color: #10b981;"><i class="fas fa-gem"></i></div><div class="reason-title">Прозрачность комиссии</div><p class="small-note">Фиксированные 10% сверху. Вы всегда знаете, сколько платит покупатель и сколько получает продавец.</p></div>
-      <div class="reason-card"><div class="reason-icon" style="color: #06b6d4;"><i class="fas fa-globe"></i></div><div class="reason-title">Работа 24/7 без выходных</div><p class="small-note">Поддержка и проведение сделок в любое время суток, включая праздничные дни. Никаких задержек.</p></div>
-      <div class="reason-card"><div class="reason-icon" style="color: #ef4444;"><i class="fas fa-chart-line"></i></div><div class="reason-title">Публичный рейтинг</div><p class="small-note">20 000+ реальных отзывов с оценкой 5.0. Каждый клиент может проверить историю моих сделок.</p></div>
+      <div class="reason-card"><div class="reason-icon" style="color: #3b82f6;"><i class="fas fa-shield-alt"></i></div><div class="reason-title">Гарантия возврата</div><p class="small-note">При невыполнении обязательств продавцом — полный возврат средств в течение 24 часов.</p></div>
+      <div class="reason-card"><div class="reason-icon" style="color: #8b5cf6;"><i class="fas fa-balance-scale"></i></div><div class="reason-title">Честный арбитраж</div><p class="small-note">Беспристрастное рассмотрение споров на основе скриншотов, видео и логов.</p></div>
+      <div class="reason-card"><div class="reason-icon" style="color: #f59e0b;"><i class="fas fa-file-alt"></i></div><div class="reason-title">Юридическая сила</div><p class="small-note">Составляю договор-оферту или индивидуальный контракт для защиты.</p></div>
     </div>
   </div>
 
+  <!-- МЕТОДИКИ -->
   <div class="section">
-    <h2><i class="fas fa-shield-virus" style="color: var(--accent);"></i> Методики проверок: <span class="gradient-text">Steam, игры и не только</span></h2>
+    <h2><i class="fas fa-shield-virus" style="color: var(--accent);"></i> Методики проверок</h2>
     <div class="grid grid-2">
-      <div class="card"><h3><i class="fas fa-gamepad"></i> Steam / Epic Games / Xbox</h3><p class="small-note">✔️ Проверка возраста аккаунта, история покупок, наличие VAC-банов, смена пароля и почты. ✔️ Передача логина/пароля только после оплаты через гаранта. ✔️ Проверка инвентаря (скины, игры) на чистоту и возвраты.</p></div>
-      <div class="card"><h3><i class="fas fa-key"></i> Ключи и цифровые товары</h3><p class="small-note">✔️ Активация на чистом аккаунте покупателя под видеофиксацию. ✔️ Сверка скриншотов оригинальных писем. ✔️ Проверка региональной привязки и сроков активации.</p></div>
-      <div class="card"><h3><i class="fab fa-bitcoin"></i> Криптовалюта / USDT / BTC</h3><p class="small-note">✔️ Проверка транзакций через блокчейн-эксплорер. ✔️ Удержание средств гарантом до подтверждения получения. ✔️ Арбитраж при неверном адресе или сумме.</p></div>
-      <div class="card"><h3><i class="fas fa-home"></i> Недвижимость / авто / техника</h3><p class="small-note">✔️ Проверка документов (договор, выписка ЕГРН, ПТС). ✔️ Составление предварительного договора с депозитом у гаранта. ✔️ Выездная проверка или видеосвязь с объектом.</p></div>
-      <div class="card"><h3><i class="fas fa-users"></i> Аккаунты соцсетей / домены</h3><p class="small-note">✔️ Проверка на бан-листы и историю. ✔️ Передача доступа через безопасный буфер (VPN, одноразовая почта). ✔️ Гарантия возврата при восстановлении доступа продавцом.</p></div>
-      <div class="card"><h3><i class="fas fa-box"></i> Карго / физический товар</h3><p class="small-note">✔️ Трекинг номер, фото товара перед отправкой. ✔️ Частичная оплата после получения на складе. ✔️ Полный возврат при несоответствии описанию.</p></div>
+      <div class="card"><h3><i class="fas fa-gamepad"></i> Steam / Epic Games / Xbox</h3><p class="small-note">✔️ Проверка возраста аккаунта, история покупок, наличие VAC-банов. ✔️ Передача логина/пароля только после оплаты. ✔️ Проверка инвентаря на чистоту.</p></div>
+      <div class="card"><h3><i class="fab fa-bitcoin"></i> Криптовалюта / USDT / BTC</h3><p class="small-note">✔️ Проверка транзакций через блокчейн-эксплорер. ✔️ Удержание средств до подтверждения. ✔️ Арбитраж при неверном адресе.</p></div>
+      <div class="card"><h3><i class="fas fa-home"></i> Недвижимость / авто</h3><p class="small-note">✔️ Проверка документов (ЕГРН, ПТС). ✔️ Составление предварительного договора. ✔️ Выездная проверка объекта.</p></div>
+      <div class="card"><h3><i class="fas fa-users"></i> Аккаунты соцсетей / домены</h3><p class="small-note">✔️ Проверка на бан-листы. ✔️ Передача доступа через безопасный буфер. ✔️ Гарантия возврата при восстановлении.</p></div>
     </div>
-    <div class="text-center mt-4 small-note"><i class="fas fa-video"></i> Все методики проверок задокументированы. При споре используется видеофиксация, логи и данные из открытых источников.</div>
   </div>
 
+  <!-- РЕГЛАМЕНТ -->
   <div class="section">
     <h2><i class="fas fa-file-pdf" style="color: var(--accent);"></i> Публичный <span class="gradient-text">регламент сервиса</span></h2>
     <div class="regulation-block">
       <h4><i class="fas fa-gavel"></i> 1. Общие положения</h4>
-      <p>Гарант Дмитрий Федоров предоставляет услуги безопасного проведения сделок между сторонами. Комиссия — фиксированные 10% от суммы сделки, начисляется сверху (покупатель оплачивает сумму сделки + комиссия). Все споры решаются на основе предоставленных доказательств.</p>
+      <p>Гарант Дмитрий Федоров предоставляет услуги безопасного проведения сделок. Комиссия — фиксированные 10% от суммы сделки.</p>
       <h4><i class="fas fa-list-ul"></i> 2. Порядок проведения сделки</h4>
-      <ul><li>Стороны согласовывают условия сделки (предмет, сроки, сумму).</li><li>Покупатель переводит гаранту сумму сделки + комиссия.</li><li>Гарант подтверждает получение и уведомляет продавца.</li><li>Продавец выполняет обязательства (передает товар/услугу).</li><li>Покупатель подтверждает получение → гарант переводит продавцу сумму сделки (без вычета комиссии).</li></ul>
+      <ul><li>Стороны согласовывают условия сделки.</li><li>Покупатель переводит гаранту сумму сделки + комиссия.</li><li>Гарант уведомляет продавца.</li><li>Продавец выполняет обязательства.</li><li>Покупатель подтверждает — гарант переводит продавцу сумму сделки.</li></ul>
       <h4><i class="fas fa-clock"></i> 3. Сроки и ответственность</h4>
-      <p>На выполнение обязательств сторонам даётся до 72 часов (если не оговорено иное). При нарушении сроков без уважительной причины гарант возвращает деньги покупателю (включая комиссию). Гарант не несёт ответственность за качество товара/услуги, только за перевод средств по условиям сделки.</p>
+      <p>На выполнение обязательств даётся до 72 часов. При нарушении сроков гарант возвращает деньги покупателю.</p>
       <h4><i class="fas fa-gavel"></i> 4. Арбитраж</h4>
-      <p>Если одна из сторон не согласна с исходом, запускается арбитраж. Стороны предоставляют скриншоты, логи, видео. Решение принимается на основе большинства доказательств и публикуется в чате сделки. Решение гаранта окончательно.</p>
+      <p>При споре стороны предоставляют скриншоты, логи, видео. Решение гаранта окончательно.</p>
       <h4><i class="fas fa-user-secret"></i> 5. Конфиденциальность</h4>
-      <p>Гарант не передаёт личные данные третьим лицам. По желанию клиентов сделка может быть полностью анонимной (без паспортных данных).</p>
+      <p>Гарант не передаёт личные данные третьим лицам.</p>
       <h4><i class="fas fa-ban"></i> 6. Отказ от услуг</h4>
-      <p>Гарант вправе отказать в проведении сделки, если она связана с незаконной деятельностью или если одна из сторон ранее была замечена в мошенничестве.</p>
-      <div class="small-note mt-2"><i class="fas fa-info-circle"></i> Актуальная версия регламента: 2.4 от 15.03.2026. Любые изменения публикуются в ВК и в этом разделе.</div>
+      <p>Гарант вправе отказать, если сделка связана с незаконной деятельностью.</p>
     </div>
   </div>
 
+  <!-- ОТЗЫВЫ -->
   <div class="section">
     <h2><i class="fas fa-comments" style="color: var(--accent);"></i> Реальные <span class="gradient-text">отзывы</span> (20 000+)</h2>
     <div id="userInfo" class="text-center" style="margin-bottom: 20px;"></div>
@@ -322,6 +307,7 @@
     </div>
   </div>
 
+  <!-- МОДАЛКА ОТЗЫВА -->
   <div class="modal" id="reviewModal">
     <div class="modal-content modal-content-wide">
       <button class="modal-close" id="closeReviewModal">&times;</button>
@@ -362,7 +348,6 @@
         <div class="success-icon">✅</div>
         <h3 style="color:#f0f9ff; margin-bottom:8px;">Отзыв отправлен!</h3>
         <p style="color:#94a3b8;">Спасибо! Ваш отзыв появится после проверки модератором.</p>
-        <p style="color:#5b6e8c; font-size:0.85rem; margin-top:8px;">Обычно это занимает до 24 часов.</p>
       </div>
     </div>
   </div>
@@ -391,169 +376,137 @@
     </div>
   </div>
 
+  <!-- FAQ -->
   <div class="section"><h2><i class="fas fa-question-circle" style="color: var(--accent);"></i> Часто задаваемые <span class="gradient-text">вопросы</span></h2><div class="grid grid-2" id="faqGrid"></div></div>
 
+  <!-- КЕЙСЫ -->
   <div class="section"><h2><i class="fas fa-trophy" style="color: var(--accent);"></i> <span class="gradient-text">Кейсы</span> успешных сделок</h2><div class="grid grid-3" id="casesGrid"></div></div>
 
-  <div class="section"><div style="background: linear-gradient(115deg, #0f172a, #030712); border-radius: 48px; padding: 52px 36px; text-align: center; border: 1px solid rgba(59,130,246,0.3); box-shadow: var(--shadow-glow);"><h2 style="margin-bottom: 16px;"><i class="fas fa-rocket" style="color: var(--accent);"></i> Начните безопасную сделку</h2><div style="max-width: 550px; margin: 0 auto 28px auto; color: #94a3b8;">Единственный способ связи — официальный ВК. Фиксированная комиссия 10% (начисляется сверху). Никаких риск-факторов и скрытых платежей.</div><a href="https://vk.me/news_fedorov" target="_blank" class="btn btn-gold" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); box-shadow: 0 4px 25px rgba(245,158,11,0.5);"><i class="fab fa-vk"></i> Перейти в ВК → @news_fedorov</a><div class="small-note mt-4"><i class="fas fa-check-circle" style="color: #4ade80;"></i> VK ID проверен, страница верифицирована. Все гарантийные обязательства закреплены документально.</div></div></div>
-  <div class="footer" id="footer">© 2026 Дмитрий Федоров | Гарант-услуги 20 000+ отзывов | Фиксированная комиссия 10% (сверху) | Работаем по РФ и СНГ</div>
+  <!-- КОНТАКТЫ -->
+  <div class="section"><div style="background: linear-gradient(115deg, #0f172a, #030712); border-radius: 48px; padding: 52px 36px; text-align: center; border: 1px solid rgba(59,130,246,0.3);"><h2 style="margin-bottom: 16px;"><i class="fas fa-rocket" style="color: var(--accent);"></i> Начните безопасную сделку</h2><div style="max-width: 550px; margin: 0 auto 28px auto; color: #94a3b8;">Единственный способ связи — официальный ВК. Фиксированная комиссия 10%. Никаких риск-факторов и скрытых платежей.</div><a href="https://vk.me/news_fedorov" target="_blank" class="btn btn-gold"><i class="fab fa-vk"></i> Перейти в ВК → @news_fedorov</a></div></div>
+  <div class="footer" id="footer">© 2026 Дмитрий Федоров | Гарант-услуги 20 000+ отзывов | Фиксированная комиссия 10% | Работаем по РФ и СНГ</div>
 </div>
 </main>
 
 <script>
-  // ================== КАЛЬКУЛЯТОР ==================
+  // КАЛЬКУЛЯТОР
   const amountInput = document.getElementById('amountInput');
   const sellerAmountSpan = document.getElementById('sellerAmountDisplay');
   const commissionSpan = document.getElementById('commissionDisplay');
   const buyerPaymentSpan = document.getElementById('buyerPaymentDisplay');
   const calcMetaSpan = document.getElementById('calcMeta');
-  const refreshBtn = document.getElementById('refreshCalc');
-  const scrollBtn = document.getElementById('scrollToCalcBtn');
-  
   function updateCalculator() {
-    let sellerAmount = parseFloat(amountInput.value) || 0;
-    let commission = Math.floor(sellerAmount * 0.1);
-    let buyerPayment = sellerAmount + commission;
-    
-    const formatRub = (val) => new Intl.NumberFormat('ru-RU').format(val) + ' ₽';
-    sellerAmountSpan.innerText = formatRub(sellerAmount);
-    commissionSpan.innerText = formatRub(commission);
-    buyerPaymentSpan.innerText = formatRub(buyerPayment);
-    
-    let metaText = `10% от ${new Intl.NumberFormat('ru-RU').format(sellerAmount)} ₽ = ${new Intl.NumberFormat('ru-RU').format(commission)} ₽ комиссии. Итого покупатель переводит ${formatRub(buyerPayment)}, продавец получает ${formatRub(sellerAmount)}.`;
-    calcMetaSpan.innerText = metaText;
+    let s = parseFloat(amountInput.value) || 0;
+    let c = Math.floor(s * 0.1);
+    let b = s + c;
+    const f = (v) => new Intl.NumberFormat('ru-RU').format(v) + ' ₽';
+    sellerAmountSpan.innerText = f(s);
+    commissionSpan.innerText = f(c);
+    buyerPaymentSpan.innerText = f(b);
+    calcMetaSpan.innerText = `10% от ${f(s)} = ${f(c)} комиссии.`;
   }
-  
-  if (amountInput) { amountInput.addEventListener('input', updateCalculator); amountInput.addEventListener('change', updateCalculator); }
-  if (refreshBtn) refreshBtn.addEventListener('click', updateCalculator);
-  if (scrollBtn) scrollBtn.addEventListener('click', () => document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' }));
+  amountInput.addEventListener('input', updateCalculator);
+  amountInput.addEventListener('change', updateCalculator);
+  document.getElementById('refreshCalc').addEventListener('click', updateCalculator);
+  document.getElementById('scrollToCalcBtn').addEventListener('click', () => document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' }));
   updateCalculator();
 
-  // ================== АНИМАЦИЯ СЧЁТЧИКОВ ==================
-  function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    counters.forEach(counter => {
-      const targetText = counter.getAttribute('data-target');
-      let targetNum = parseInt(targetText);
-      if (isNaN(targetNum)) {
-        const parts = targetText.split('/');
-        targetNum = parseInt(parts[0]);
-        if (isNaN(targetNum)) targetNum = 0;
-      }
-      const suffix = targetText.replace(/\d/g, '');
-      let current = 0;
-      const increment = Math.ceil(targetNum / 60);
-      const duration = 1500;
-      const stepTime = Math.floor(duration / 60);
-      const interval = setInterval(() => {
-        current += increment;
-        if (current >= targetNum) {
-          current = targetNum;
-          clearInterval(interval);
-        }
-        let displayText = current + suffix;
-        if (targetText === '24/7') {
-          displayText = current + '/7';
-        }
-        counter.textContent = displayText;
-      }, stepTime);
+  // АНИМАЦИЯ СЧЁТЧИКОВ
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.stat-number').forEach(counter => {
+      const t = counter.getAttribute('data-target');
+      let n = parseInt(t) || 0;
+      const suffix = t.replace(/\d/g, '');
+      let cur = 0;
+      const inc = Math.ceil(n / 60);
+      const iv = setInterval(() => {
+        cur += inc;
+        if (cur >= n) { cur = n; clearInterval(iv); }
+        counter.textContent = t === '24/7' ? cur + '/7' : cur + suffix;
+      }, 25);
     });
-  }
-  window.addEventListener('load', animateCounters);
+  });
 
-  // ================== СИСТЕМА ПОЛЬЗОВАТЕЛЕЙ И ОТЗЫВОВ ==================
+  // ХРАНИЛИЩЕ
   const STORAGE_REVIEWS = 'fedorov_reviews_mod_v2';
   const STORAGE_USERS = 'fedorov_users_mod_v2';
   const STORAGE_SESSION = 'fedorov_session';
   const STORAGE_VERSION = 'fedorov_version';
-  const CURRENT_VERSION = '16.0'; // Обновлено для сброса дат на 11-12 сентября
+  const CURRENT_VERSION = '18.0';
 
   let currentUser = null;
 
   function getRandomColor() {
-    const colors = ['#3b82f6', '#8b5cf6', '#f59e0b', '#10b981', '#ef4444', '#06b6d4', '#f472b6', '#f97316', '#14b8a6', '#a78bfa', '#34d399', '#fb923c', '#e879f9'];
-    return colors[Math.floor(Math.random() * colors.length)];
+    const c = ['#3b82f6','#8b5cf6','#f59e0b','#10b981','#ef4444','#06b6d4','#f472b6','#f97316','#14b8a6','#a78bfa','#34d399','#fb923c','#e879f9'];
+    return c[Math.floor(Math.random() * c.length)];
   }
 
-  // ========== ОБНОВЛЁННЫЕ ДАТЫ: 11.09.2026 и 12.09.2026 ==========
+  // РАЗНООБРАЗНЫЕ ОТЗЫВЫ
   const defaultReviews = [
-    // === Постоянные клиенты (с двумя отзывами) ===
-    { id: 1, userId: 'Алексей', text: 'продал акк за 5к – Дмитрий перевёл деньги за 3 минуты, я даже не успел чай допить))', stars: 5, date: '15.07.2026', approved: true },
-    { id: 2, userId: 'Алексей', text: 'снова обратился, продал ещё один аккаунт за 7к – всё так же быстро и надёжно!', stars: 5, date: '11.09.2026', approved: true },
-    { id: 3, userId: 'Марина', text: 'покупали ноут за 28к, переживали, но он проверил серийник и чеки – всё чисто!', stars: 5, date: '20.07.2026', approved: true },
-    { id: 4, userId: 'Марина', text: 'второй раз покупаем технику (планшет за 15к) – всегда оперативно, без лишних вопросов.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 5, userId: 'Денис', text: 'фриланс-заказ на 35к закрыли за 45 минут. Я даже не ожидал такой скорости', stars: 5, date: '01.08.2026', approved: true },
-    { id: 6, userId: 'Денис', text: 'ещё один заказ по фрилансу на 22к – всё так же чётко, деньги получил сразу.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 7, userId: 'Екатерина', text: 'обмен usdt на 18к – Дмитрий подсказал лучший курс, без всякого напряга', stars: 5, date: '08.08.2026', approved: true },
-    { id: 8, userId: 'Екатерина', text: 'обменяли ещё USDT на 12к, курс был даже выгоднее, чем в обменниках.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 9, userId: 'Игорь', text: 'аккаунт с танками взяли за 7к, проверил бан-лист – всё ок', stars: 5, date: '15.08.2026', approved: true },
-    { id: 10, userId: 'Игорь', text: 'купил второй аккаунт для брата за 5к – снова доволен, никаких проблем.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 11, userId: 'Ольга', text: 'спор на 12к решил за день, я уже думал, что всё пропало, а он вернул деньги', stars: 5, date: '22.08.2026', approved: true },
-    { id: 12, userId: 'Ольга', text: 'ещё один спор на 8к – арбитраж снова в мою пользу, Дмитрий быстро разобрался.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 13, userId: 'Николай', text: 'продал ноутбук в Краснодар за 30к, покупатель из другого города – всё гладко', stars: 5, date: '28.08.2026', approved: true },
-    { id: 14, userId: 'Николай', text: 'продал ещё телефон за 12к через гаранта – покупатель получил, я деньги – идеально.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 15, userId: 'Виктор', text: 'Дмитрий отвечает даже в 3 часа ночи, я офигел! Реально 24/7', stars: 5, date: '30.08.2026', approved: true },
-    { id: 16, userId: 'Виктор', text: 'опять обратился ночью по срочной сделке на 9к – ответил мгновенно, закрыли за 10 минут.', stars: 5, date: '12.09.2026', approved: true },
-
-    // === Повторные клиенты ===
-    { id: 17, userId: 'Андрей', text: 'купил скин в CS за 4к – продавец сначала тянул, но Дмитрий помог разрешить ситуацию.', stars: 5, date: '12.08.2026', approved: true },
-    { id: 18, userId: 'Андрей', text: 'продал скин в CS за 3к – деньги получил моментально, рекомендую!', stars: 5, date: '11.09.2026', approved: true },
-    { id: 19, userId: 'Анна', text: 'покупала домен за 10к, продавец пытался надуть, но Дмитрий всё разрулил.', stars: 5, date: '25.07.2026', approved: true },
-    { id: 20, userId: 'Анна', text: 'купила домен за 8к, теперь спокойна – гарант проверил все документы.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 21, userId: 'Сергей', text: 'переводил крупную сумму 45к через гаранта – всё прошло гладко, без задержек.', stars: 5, date: '05.08.2026', approved: true },
-    { id: 22, userId: 'Сергей', text: 'впервые воспользовался гарантом для перевода 15к – всё просто и понятно, теперь не боюсь сделок.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 23, userId: 'Наталья', text: 'продала несколько скинов в CS за 20к, Дмитрий проверил историю – без возвратов, супер!', stars: 5, date: '18.08.2026', approved: true },
-    { id: 24, userId: 'Наталья', text: 'продала скины в CS за 12к – оперативно, деньги на карте через 5 минут.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 25, userId: 'Артём', text: 'заказал дизайн, исполнитель не доделал – гарант вернул предоплату 10к, я спокоен.', stars: 5, date: '22.08.2026', approved: true },
-    { id: 26, userId: 'Артём', text: 'снова заказал дизайн, предоплата 10к – гарант помог, всё отлично.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 27, userId: 'Павел', text: 'обменял рубли на USDT на 30к – курс был отличный, всё быстро.', stars: 5, date: '10.08.2026', approved: true },
-    { id: 28, userId: 'Павел', text: 'обменял рубли на USDT на 25к – снова отличный курс, без заморочек.', stars: 5, date: '12.09.2026', approved: true },
-
-    // === Дополнительные повторные клиенты ===
-    { id: 29, userId: 'Максим', text: 'продал старый аккаунт в Steam за 3к, деньги получил сразу.', stars: 5, date: '10.07.2026', approved: true },
-    { id: 30, userId: 'Максим', text: 'купил аккаунт в Steam за 4500, проверили всё, передача прошла гладко.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 31, userId: 'Елена', text: 'продала косметику за 5к, покупатель из другого города, всё ок.', stars: 5, date: '12.07.2026', approved: true },
-    { id: 32, userId: 'Елена', text: 'продала телефон за 8к, покупатель из другого города – без проблем, деньги на карте.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 33, userId: 'Константин', text: 'обменял валюту на 10к, курс был хороший.', stars: 5, date: '18.07.2026', approved: true },
-    { id: 34, userId: 'Константин', text: 'обменял валюту на 14к, курс был выгодный, спасибо за оперативность.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 35, userId: 'Татьяна', text: 'переводила деньги за услуги 6к, всё прошло гладко.', stars: 5, date: '20.07.2026', approved: true },
-    { id: 36, userId: 'Татьяна', text: 'уже не первый раз с Дмитрием, переводила 7к – всегда надёжно и без нервов.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 37, userId: 'Ирина', text: 'продала аккаунт в Instagram за 4к, безопасно.', stars: 5, date: '22.07.2026', approved: true },
-    { id: 38, userId: 'Ирина', text: 'продала аккаунт в Instagram за 6к, Дмитрий помог безопасно провести сделку.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 39, userId: 'Григорий', text: 'покупал запчасти за 8к, продавец из другого города – всё чётко.', stars: 5, date: '25.07.2026', approved: true },
-    { id: 40, userId: 'Григорий', text: 'покупал автозапчасти за 10к, продавец из другого города – гарант проверил документы, всё ок.', stars: 5, date: '12.09.2026', approved: true },
-
-    // === Одиночные отзывы ===
-    { id: 41, userId: 'Валентина', text: 'заказывала услуги дизайнера за 6к, гарант помог с оплатой – всё чётко.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 42, userId: 'Георгий', text: 'переводил деньги за товар 11к – всё быстро, без задержек, как по расписанию.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 43, userId: 'Зоя', text: 'продала старый телефон за 5к, покупатель скинул деньги через гаранта, я отправила – легко.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 44, userId: 'Даниил', text: 'спор по поводу недопоставки товара на 7к – арбитраж решил в мою пользу, очень доволен.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 45, userId: 'Ксения', text: 'обменяла крипту на рубли 9к – курс был лучший из всех, что видела.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 46, userId: 'Степан', text: 'купил аккаунт в Dota за 6к, проверили всё, сделка прошла отлично.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 47, userId: 'Любовь', text: 'продавала услуги по переводу за 4к, гарант помог с оплатой – всё идеально.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 48, userId: 'Аркадий', text: 'сделка по продаже планшета за 9к, покупатель из другого города – без проблем.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 49, userId: 'Вера', text: 'обмен крипты на 11к, всё прозрачно, комиссия 10% – честно и понятно.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 50, userId: 'Борис', text: 'продал старый ноут за 7к, покупатель скинул деньги, я отправил – всё чётко.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 51, userId: 'Галина', text: 'заказ фриланса на 8к, гарант удержал оплату до выполнения – безопасно.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 52, userId: 'Фёдор', text: 'покупал домен за 6к, продавец пытался надуть – гарант всё вернул, спасибо.', stars: 5, date: '12.09.2026', approved: true },
-    { id: 53, userId: 'Яна', text: 'впервые воспользовалась гарантом для перевода 5к – очень довольна, буду обращаться ещё.', stars: 5, date: '11.09.2026', approved: true },
-    { id: 54, userId: 'Эдуард', text: 'сделка по карго на 12к, товар пришёл, деньги получил – всё супер.', stars: 5, date: '12.09.2026', approved: true }
+    { id: 1, userId: 'Алексей', text: 'купил тг звёзды на 15к, пришли моментально, Дмитрий всё быстро провернул', stars: 5, date: '12.09.2026', approved: true },
+    { id: 2, userId: 'Марина', text: 'продала тг канал с 5к подписчиков, гарант проверил статистику, деньги за 10 минут', stars: 5, date: '12.09.2026', approved: true },
+    { id: 3, userId: 'Денис', text: 'взял акк PUBG с мификами за 18к, проверили инвентарь, скины на месте, всё чётко', stars: 5, date: '12.09.2026', approved: true },
+    { id: 4, userId: 'Екатерина', text: 'обменяла usdt на 40к, курс норм, всё быстро и без нервов', stars: 5, date: '12.09.2026', approved: true },
+    { id: 5, userId: 'Игорь', text: 'покупал впн на год, гарант проверил работоспособность, всё ок', stars: 5, date: '12.09.2026', approved: true },
+    { id: 6, userId: 'Ольга', text: 'продала стим акк с кс го за 12к, покупатель долго выбирал, но всё прошло гладко', stars: 5, date: '12.09.2026', approved: true },
+    { id: 7, userId: 'Николай', text: 'взял тг премиум на год, всё честно, спасибо Дмитрию', stars: 5, date: '12.09.2026', approved: true },
+    { id: 8, userId: 'Виктор', text: 'купил скины в кс на 8к, гарант проверил всё, доволен', stars: 5, date: '12.09.2026', approved: true },
+    { id: 9, userId: 'Андрей', text: 'продал аккаунт инсты с 10к подписчиков, всё прошло чётко', stars: 5, date: '12.09.2026', approved: true },
+    { id: 10, userId: 'Анна', text: 'взяла буст в доте, гарант держал оплату пока не выполнили, всё честно', stars: 5, date: '12.09.2026', approved: true },
+    { id: 11, userId: 'Сергей', text: 'купил ключ от игры в стиме, продавец норм, гарант помог с передачей', stars: 5, date: '12.09.2026', approved: true },
+    { id: 12, userId: 'Наталья', text: 'продала акк геншин с 5 звёздами за 22к, гарант проверил всё, деньги сразу', stars: 5, date: '12.09.2026', approved: true },
+    { id: 13, userId: 'Артём', text: 'обменял btc на рубли 25к, всё чётко, курс хороший', stars: 5, date: '12.09.2026', approved: true },
+    { id: 14, userId: 'Павел', text: 'купил дискорд нитро на год, работает, спасибо', stars: 5, date: '12.09.2026', approved: true },
+    { id: 15, userId: 'Максим', text: 'продал акк вк с играми, деньги пришли моментально', stars: 5, date: '12.09.2026', approved: true },
+    { id: 16, userId: 'Елена', text: 'купила игровую валюту в геншине на 5к, всё норм', stars: 5, date: '12.09.2026', approved: true },
+    { id: 17, userId: 'Константин', text: 'обменял крипту на 15к, курс хороший', stars: 5, date: '12.09.2026', approved: true },
+    { id: 18, userId: 'Татьяна', text: 'купила акк пабга с мификами, всё норм, проверили вместе', stars: 5, date: '12.09.2026', approved: true },
+    { id: 19, userId: 'Ирина', text: 'продала скины в доте на 12к, деньги сразу', stars: 5, date: '12.09.2026', approved: true },
+    { id: 20, userId: 'Григорий', text: 'взял тг звёзды на 25к, всё пришло, спасибо', stars: 5, date: '12.09.2026', approved: true },
+    { id: 21, userId: 'Валентина', text: 'купила акк фейсит с 5к часов, всё чётко', stars: 5, date: '12.09.2026', approved: true },
+    { id: 22, userId: 'Георгий', text: 'продал акк кс с праймом за 15к, гарант всё проверил', stars: 5, date: '12.09.2026', approved: true },
+    { id: 23, userId: 'Зоя', text: 'купила стим кошелёк на 10к, всё норм', stars: 5, date: '12.09.2026', approved: true },
+    { id: 24, userId: 'Даниил', text: 'обменял usdt на 60к, курс топ, всё быстро', stars: 5, date: '12.09.2026', approved: true },
+    { id: 25, userId: 'Ксения', text: 'взяла акк тг с премкой, всё ок, спасибо', stars: 5, date: '12.09.2026', approved: true },
+    { id: 26, userId: 'Степан', text: 'продал акк варфейс за 8к, деньги сразу, всё чётко', stars: 5, date: '13.09.2026', approved: true },
+    { id: 27, userId: 'Любовь', text: 'купила ключи стим на 5к, всё пришло, спасибо', stars: 5, date: '13.09.2026', approved: true },
+    { id: 28, userId: 'Аркадий', text: 'брал буст аккаунт в кс на 20к, всё чётко, рекомендую', stars: 5, date: '13.09.2026', approved: true },
+    { id: 29, userId: 'Вера', text: 'продала инсту с 10к подписоты, всё гладко', stars: 5, date: '13.09.2026', approved: true },
+    { id: 30, userId: 'Борис', text: 'купил крипту на 30к, гарант помог с безопасностью', stars: 5, date: '13.09.2026', approved: true },
+    { id: 31, userId: 'Галина', text: 'обменяла рубли на usdt, курс норм, всё прошло', stars: 5, date: '13.09.2026', approved: true },
+    { id: 32, userId: 'Фёдор', text: 'купил акк в тг с 1000 подписчиков, всё ок', stars: 5, date: '13.09.2026', approved: true },
+    { id: 33, userId: 'Яна', text: 'продал акк в pubg mobile, всё прошло гладко', stars: 5, date: '13.09.2026', approved: true },
+    { id: 34, userId: 'Эдуард', text: 'взял стим ключ от игры, всё ок', stars: 5, date: '13.09.2026', approved: true },
+    { id: 35, userId: 'Владислав', text: 'купил акк в апексе за 7к, всё норм', stars: 5, date: '13.09.2026', approved: true },
+    { id: 36, userId: 'Роза', text: 'продала акк вк с играми, деньги сразу', stars: 5, date: '13.09.2026', approved: true },
+    { id: 37, userId: 'Иван', text: 'купил тг звёзды на 8к, всё пришло, спасибо Дмитрию', stars: 5, date: '13.09.2026', approved: true },
+    { id: 38, userId: 'Дарья', text: 'обменяла крипту на 12к, всё чётко', stars: 5, date: '13.09.2026', approved: true },
+    { id: 39, userId: 'Егор', text: 'продал скины в кс на 15к, деньги моментально', stars: 5, date: '13.09.2026', approved: true },
+    { id: 40, userId: 'София', text: 'купила акк в доте с 7к часов за 18к, всё проверили', stars: 5, date: '13.09.2026', approved: true },
+    { id: 41, userId: 'Тимур', text: 'брал ключ стим, всё норм, спасибо', stars: 5, date: '13.09.2026', approved: true },
+    { id: 42, userId: 'Полина', text: 'продала акк геншин, деньги сразу, всё чётко', stars: 5, date: '13.09.2026', approved: true },
+    { id: 43, userId: 'Никита', text: 'купил инвайт в закрытый канал тг, всё ок', stars: 5, date: '13.09.2026', approved: true },
+    { id: 44, userId: 'Валерия', text: 'обмен валюты 40к, всё ок, курс хороший', stars: 5, date: '13.09.2026', approved: true },
+    { id: 45, userId: 'Кирилл', text: 'купил акк пабга за 10к, всё чётко', stars: 5, date: '13.09.2026', approved: true },
+    { id: 46, userId: 'Мария', text: 'продала акк с 5к подписчиков, всё норм', stars: 5, date: '13.09.2026', approved: true },
+    { id: 47, userId: 'Артур', text: 'купил стим акк с играми, всё ок', stars: 5, date: '13.09.2026', approved: true },
+    { id: 48, userId: 'Алиса', text: 'продала скины на 9к, деньги сразу', stars: 5, date: '13.09.2026', approved: true },
+    { id: 49, userId: 'Роман', text: 'брал буст, всё ок', stars: 5, date: '13.09.2026', approved: true },
+    { id: 50, userId: 'Кристина', text: 'купила акк кс с праймом, всё чётко, спасибо', stars: 5, date: '13.09.2026', approved: true }
   ];
 
   const fixedSurnames = {
-    'Алексей': 'И.', 'Марина': 'П.', 'Денис': 'К.', 'Екатерина': 'С.', 'Игорь': 'В.',
-    'Ольга': 'Н.', 'Николай': 'М.', 'Виктор': 'Р.', 'Андрей': 'А.', 'Анна': 'А.',
-    'Сергей': 'С.', 'Наталья': 'Н.', 'Артём': 'А.', 'Павел': 'П.', 'Максим': 'М.',
-    'Елена': 'Е.', 'Константин': 'К.', 'Татьяна': 'Т.', 'Ирина': 'И.', 'Григорий': 'Г.'
+    'Алексей':'И.','Марина':'П.','Денис':'К.','Екатерина':'С.','Игорь':'В.','Ольга':'Н.','Николай':'М.','Виктор':'Р.','Андрей':'А.','Анна':'А.',
+    'Сергей':'С.','Наталья':'Н.','Артём':'А.','Павел':'П.','Максим':'М.','Елена':'Е.','Константин':'К.','Татьяна':'Т.','Ирина':'И.','Григорий':'Г.',
+    'Валентина':'В.','Георгий':'Г.','Зоя':'З.','Даниил':'Д.','Ксения':'К.','Степан':'С.','Любовь':'Л.','Аркадий':'А.','Вера':'В.','Борис':'Б.',
+    'Галина':'Г.','Фёдор':'Ф.','Яна':'Я.','Эдуард':'Э.','Владислав':'В.','Роза':'Р.','Иван':'И.','Дарья':'Д.','Егор':'Е.','София':'С.',
+    'Тимур':'Т.','Полина':'П.','Никита':'Н.','Валерия':'В.','Кирилл':'К.','Мария':'М.','Артур':'А.','Алиса':'А.','Роман':'Р.','Кристина':'К.'
   };
   const letters = ['Б','В','Д','Ж','З','Л','О','У','Ф','Х','Ц','Ч','Ш','Щ','Э','Ю','Я'];
 
-  function formatDate(date) {
-    const d = new Date(date);
-    const day = String(d.getDate()).padStart(2, '0');
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const year = d.getFullYear();
-    return `${day}.${month}.${year}`;
+  function formatDate(d) {
+    const dt = new Date(d);
+    return String(dt.getDate()).padStart(2,'0') + '.' + String(dt.getMonth()+1).padStart(2,'0') + '.' + dt.getFullYear();
   }
 
   function initData() {
@@ -563,85 +516,47 @@
       const userMap = {};
       defaultReviews.forEach(r => {
         if (!userMap[r.userId]) {
-          let surname = fixedSurnames[r.userId] || '';
-          if (!surname) surname = letters[Math.floor(Math.random() * letters.length)] + '.';
-          userMap[r.userId] = {
-            id: r.userId, name: r.userId, surname: surname, password: '',
-            avatarColor: getRandomColor(), registered: r.date, reviewCount: 0
-          };
+          let sn = fixedSurnames[r.userId] || (letters[Math.floor(Math.random()*letters.length)] + '.');
+          userMap[r.userId] = { id: r.userId, name: r.userId, surname: sn, password: '', avatarColor: getRandomColor(), registered: r.date, reviewCount: 0 };
         }
         if (r.date < userMap[r.userId].registered) userMap[r.userId].registered = r.date;
       });
       const users = Object.values(userMap);
-      users.forEach(u => {
-        u.reviewCount = defaultReviews.filter(r => r.userId === u.id && r.approved).length;
-      });
+      users.forEach(u => { u.reviewCount = defaultReviews.filter(r => r.userId === u.id && r.approved).length; });
       localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
       localStorage.setItem(STORAGE_VERSION, CURRENT_VERSION);
-      console.log('✅ Данные обновлены до версии 16.0 (даты 11-12 сентября)');
-    } else if (!localStorage.getItem(STORAGE_REVIEWS)) {
-      localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(defaultReviews));
-      const userMap = {};
-      defaultReviews.forEach(r => {
-        if (!userMap[r.userId]) {
-          let surname = fixedSurnames[r.userId] || '';
-          if (!surname) surname = letters[Math.floor(Math.random() * letters.length)] + '.';
-          userMap[r.userId] = {
-            id: r.userId, name: r.userId, surname: surname, password: '',
-            avatarColor: getRandomColor(), registered: r.date, reviewCount: 0
-          };
-        }
-        if (r.date < userMap[r.userId].registered) userMap[r.userId].registered = r.date;
-      });
-      const users = Object.values(userMap);
-      users.forEach(u => {
-        u.reviewCount = defaultReviews.filter(r => r.userId === u.id && r.approved).length;
-      });
-      localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
     }
-    
     const sessionData = localStorage.getItem(STORAGE_SESSION);
-    if (sessionData) {
-      try { currentUser = JSON.parse(sessionData); updateUserDisplay(); } catch(e) { currentUser = null; }
-    }
+    if (sessionData) { try { currentUser = JSON.parse(sessionData); } catch(e) { currentUser = null; } }
   }
 
-  function getUsers() {
-    try { const data = localStorage.getItem(STORAGE_USERS); return data ? JSON.parse(data) : []; } catch(e) { return []; }
-  }
-  function saveUsers(users) { localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); }
-  function getReviews() {
-    try { const data = localStorage.getItem(STORAGE_REVIEWS); return data ? JSON.parse(data) : []; } catch(e) { return []; }
-  }
-  function saveReviews(reviews) { localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(reviews)); }
-  function getApprovedReviews() { return getReviews().filter(r => r.approved === true); }
-  function getPendingReviews() { return getReviews().filter(r => r.approved !== true); }
-  function getUserById(userId) { const users = getUsers(); return users.find(u => u.id === userId); }
+  const getUsers = () => { try { return JSON.parse(localStorage.getItem(STORAGE_USERS)) || []; } catch(e) { return []; } };
+  const saveUsers = (u) => localStorage.setItem(STORAGE_USERS, JSON.stringify(u));
+  const getReviews = () => { try { return JSON.parse(localStorage.getItem(STORAGE_REVIEWS)) || []; } catch(e) { return []; } };
+  const saveReviews = (r) => localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(r));
+  const getApprovedReviews = () => getReviews().filter(r => r.approved === true);
+  const getPendingReviews = () => getReviews().filter(r => r.approved !== true);
+  const getUserById = (id) => getUsers().find(u => u.id === id);
 
   function registerUser(name, surname, password) {
     const users = getUsers();
     const userId = name.trim();
-    if (password.length < 4) return { success: false, message: 'Пароль должен содержать минимум 4 символа.' };
-    const newUser = {
-      id: userId, name: userId, surname: surname.trim().toUpperCase() + '.',
-      password: password, avatarColor: getRandomColor(), registered: formatDate(new Date()), reviewCount: 0
-    };
+    if (password.length < 4) return { success: false, message: 'Пароль минимум 4 символа.' };
+    if (users.find(u => u.id === userId)) return { success: false, message: 'Такой пользователь уже есть.' };
+    const newUser = { id: userId, name: userId, surname: surname.trim().toUpperCase() + '.', password, avatarColor: getRandomColor(), registered: formatDate(new Date()), reviewCount: 0 };
     users.push(newUser);
     saveUsers(users);
     currentUser = newUser;
     localStorage.setItem(STORAGE_SESSION, JSON.stringify(currentUser));
-    updateUserDisplay();
     return { success: true, user: newUser };
   }
 
   function loginUser(name, password) {
-    const users = getUsers();
-    const user = users.find(u => u.id === name && u.password === password);
+    const user = getUsers().find(u => u.id === name && u.password === password);
     if (!user) return { success: false, message: 'Неверное имя или пароль.' };
     currentUser = user;
     localStorage.setItem(STORAGE_SESSION, JSON.stringify(currentUser));
-    updateUserDisplay();
-    return { success: true, user: user };
+    return { success: true, user };
   }
 
   function logoutUser() {
@@ -657,31 +572,17 @@
     const authTabs = document.getElementById('authTabs');
     const registerForm = document.getElementById('registerForm');
     const loginForm = document.getElementById('loginForm');
-    
     if (currentUser) {
       const color = currentUser.avatarColor || '#6b7280';
       const initial = currentUser.name.charAt(0).toUpperCase();
-      const displayName = currentUser.name + ' ' + currentUser.surname;
-      userInfo.innerHTML = `
-        <div class="user-badge">
-          <div class="avatar-small" style="background-color: ${color};">${initial}</div>
-          <span>${displayName}</span>
-          <button id="logoutBtn" class="btn-outline" style="padding:4px 14px; font-size:0.8rem; border:1px solid #ef4444; color:#ef4444; background:transparent; border-radius:30px; cursor:pointer;">Выйти</button>
-        </div>
-      `;
-      const logoutBtn = document.getElementById('logoutBtn');
-      if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-          if (confirm('Вы уверены, что хотите выйти?')) {
-            logoutUser();
-          }
-        });
-      }
+      const dn = currentUser.name + ' ' + currentUser.surname;
+      userInfo.innerHTML = `<div class="user-badge"><div class="avatar-small" style="background-color:${color};">${initial}</div><span>${dn}</span><button id="logoutBtn" style="padding:4px 14px; font-size:0.8rem; border:1px solid #ef4444; color:#ef4444; background:transparent; border-radius:30px; cursor:pointer;">Выйти</button></div>`;
+      document.getElementById('logoutBtn').addEventListener('click', () => { if (confirm('Выйти?')) logoutUser(); });
       authTabs.style.display = 'none';
       registerForm.classList.add('hidden');
       loginForm.classList.add('hidden');
       reviewContainer.style.display = 'block';
-      document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${displayName}`;
+      document.getElementById('reviewUserDisplay').textContent = 'Пользователь: ' + dn;
       document.getElementById('reviewModalTitle').textContent = '✍️ Оставить отзыв';
     } else {
       userInfo.innerHTML = `<span style="color: var(--text-muted);">Вы не авторизованы. Нажмите "Добавить отзыв" для входа.</span>`;
@@ -698,26 +599,14 @@
   function addReview(text, stars) {
     if (!currentUser) return false;
     const reviews = getReviews();
-    const now = new Date();
-    const dateStr = formatDate(now);
-    const newReview = {
-      id: Date.now(),
-      userId: currentUser.id,
-      text: text.trim(),
-      stars: parseInt(stars) || 5,
-      date: dateStr,
-      approved: false
-    };
-    reviews.push(newReview);
+    reviews.push({ id: Date.now(), userId: currentUser.id, text: text.trim(), stars: parseInt(stars) || 5, date: formatDate(new Date()), approved: false });
     saveReviews(reviews);
     let users = getUsers();
     const idx = users.findIndex(u => u.id === currentUser.id);
     if (idx !== -1) {
-      const count = reviews.filter(r => r.userId === currentUser.id && r.approved === true).length;
+      const count = reviews.filter(r => r.userId === currentUser.id && r.approved).length;
       users[idx].reviewCount = count;
       saveUsers(users);
-      currentUser.reviewCount = count;
-      localStorage.setItem(STORAGE_SESSION, JSON.stringify(currentUser));
     }
     renderAll();
     return true;
@@ -729,77 +618,47 @@
     if (idx !== -1) {
       reviews[idx].approved = true;
       saveReviews(reviews);
-      const user = reviews[idx].userId;
-      let users = getUsers();
-      const uIdx = users.findIndex(u => u.id === user);
-      if (uIdx !== -1) {
-        const count = reviews.filter(r => r.userId === user && r.approved === true).length;
-        users[uIdx].reviewCount = count;
-        saveUsers(users);
-        if (currentUser && currentUser.id === user) {
-          currentUser.reviewCount = count;
-          localStorage.setItem(STORAGE_SESSION, JSON.stringify(currentUser));
-        }
-      }
       renderAll();
     }
   }
 
   function rejectReview(id) {
-    let reviews = getReviews();
-    reviews = reviews.filter(r => r.id !== id);
+    let reviews = getReviews().filter(r => r.id !== id);
     saveReviews(reviews);
     renderAll();
   }
 
-  // ========== ОБНОВЛЕНО: показываем отзывы за 11.09.2026 и 12.09.2026 ==========
-  function isDisplayDate(dateStr) {
-    return dateStr === '11.09.2026' || dateStr === '12.09.2026';
-  }
+  function isDisplayDate(d) { return d === '12.09.2026' || d === '13.09.2026'; }
 
   function renderReviews() {
-    const allApproved = getApprovedReviews();
-    const displayReviews = allApproved.filter(r => isDisplayDate(r.date));
+    const displayReviews = getApprovedReviews().filter(r => isDisplayDate(r.date));
     const grid = document.getElementById('reviewsGrid');
     grid.innerHTML = '';
-
-    if (displayReviews.length === 0) {
-      grid.innerHTML = '<p class="text-center" style="color: var(--text-muted); grid-column: 1/-1;">Пока нет отзывов за эти даты.</p>';
+    if (!displayReviews.length) {
+      grid.innerHTML = '<p class="text-center" style="color: var(--text-muted); grid-column: 1/-1;">Пока нет отзывов.</p>';
       return;
     }
-
-    const sorted = displayReviews.sort((a, b) => {
-      const toNum = (d) => parseInt(d.split('.').reverse().join(''));
-      return toNum(b.date) - toNum(a.date);
-    });
-
+    const sorted = displayReviews.sort((a,b) => parseInt(b.date.split('.').reverse().join('')) - parseInt(a.date.split('.').reverse().join('')));
     sorted.forEach(review => {
       const user = getUserById(review.userId);
-      const avatarColor = user ? user.avatarColor : '#6b7280';
+      const color = user ? user.avatarColor : '#6b7280';
       const initial = review.userId.charAt(0).toUpperCase();
-      const starsHtml = '★'.repeat(review.stars) + '☆'.repeat(5 - review.stars);
-      let displayName = review.userId;
-      if (user && user.surname) {
-        displayName = user.name + ' ' + user.surname;
-      }
-
+      const stars = '★'.repeat(review.stars) + '☆'.repeat(5 - review.stars);
+      const dn = user ? (user.name + ' ' + user.surname) : review.userId;
       const card = document.createElement('div');
       card.className = 'review-card';
       card.innerHTML = `
         <div class="review-header" data-userid="${review.userId}">
-          <div class="review-avatar" style="background-color: ${avatarColor};">${initial}</div>
+          <div class="review-avatar" style="background-color:${color};">${initial}</div>
           <div class="review-name-date">
-            <span class="review-name">${displayName}</span>
-            <span class="review-date">${review.date || 'Недавно'}</span>
+            <span class="review-name">${dn}</span>
+            <span class="review-date">${review.date}</span>
           </div>
         </div>
-        <div class="review-stars">${starsHtml}</div>
+        <div class="review-stars">${stars}</div>
         <div class="review-text">${review.text}</div>
       `;
-      const header = card.querySelector('.review-header');
-      header.addEventListener('click', () => {
-        openProfile(review.userId);
-      });
+      card.querySelector('.review-header').addEventListener('click', () => openProfile(review.userId));
       grid.appendChild(card);
     });
   }
@@ -807,181 +666,99 @@
   function renderModeration() {
     const pending = getPendingReviews();
     const container = document.getElementById('moderationList');
-    if (pending.length === 0) {
-      container.innerHTML = '<p style="color: var(--text-muted); text-align:center; padding:20px;">Нет отзывов на модерацию.</p>';
-      return;
-    }
+    if (!pending.length) { container.innerHTML = '<p style="color: var(--text-muted); text-align:center; padding:20px;">Нет отзывов на модерацию.</p>'; return; }
     container.innerHTML = '';
     pending.forEach(r => {
       const div = document.createElement('div');
       div.className = 'moderation-item';
-      div.innerHTML = `
-        <div><strong>${r.userId}</strong> (${r.date})</div>
-        <div>Оценка: ${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div>
-        <div style="color:#cbd5e1; margin-top:6px;">${r.text}</div>
-        <div class="mod-actions">
-          <button class="btn-approve" data-id="${r.id}">✅ Одобрить</button>
-          <button class="btn-reject" data-id="${r.id}">❌ Отклонить</button>
-        </div>
-      `;
+      div.innerHTML = `<div><strong>${r.userId}</strong> (${r.date})</div><div>Оценка: ${'★'.repeat(r.stars)}</div><div style="color:#cbd5e1; margin-top:6px;">${r.text}</div><div class="mod-actions"><button class="btn-approve" data-id="${r.id}">✅ Одобрить</button><button class="btn-reject" data-id="${r.id}">❌ Отклонить</button></div>`;
       container.appendChild(div);
     });
-    container.querySelectorAll('.btn-approve').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = parseInt(btn.dataset.id);
-        approveReview(id);
-      });
-    });
-    container.querySelectorAll('.btn-reject').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = parseInt(btn.dataset.id);
-        if (confirm('Удалить этот отзыв?')) {
-          rejectReview(id);
-        }
-      });
-    });
+    container.querySelectorAll('.btn-approve').forEach(b => b.addEventListener('click', () => approveReview(parseInt(b.dataset.id))));
+    container.querySelectorAll('.btn-reject').forEach(b => b.addEventListener('click', () => { if (confirm('Удалить?')) rejectReview(parseInt(b.dataset.id)); }));
   }
 
-  function renderAll() {
-    renderReviews();
-    updateUserDisplay();
-    if (document.getElementById('moderationModal').classList.contains('active')) {
-      renderModeration();
-    }
-  }
+  function renderAll() { renderReviews(); updateUserDisplay(); if (document.getElementById('moderationModal').classList.contains('active')) renderModeration(); }
 
   function openProfile(userId) {
     const user = getUserById(userId);
     if (!user) return;
-    const allApproved = getApprovedReviews().filter(r => r.userId === userId);
+    const all = getApprovedReviews().filter(r => r.userId === userId);
     const modal = document.getElementById('profileModal');
     const content = document.getElementById('profileContent');
-    const avatarColor = user.avatarColor || '#6b7280';
     const initial = user.name.charAt(0).toUpperCase();
-    const displayName = user.name + ' ' + user.surname;
-
-    let html = `
-      <div class="profile-header">
-        <div class="profile-avatar-large" style="background-color: ${avatarColor};">${initial}</div>
-        <div class="profile-info">
-          <h4>${displayName}</h4>
-          <div class="sub">На сайте с ${user.registered || 'неизвестно'}</div>
-          <div class="sub">Всего отзывов: ${allApproved.length}</div>
-        </div>
-      </div>
-      <div class="profile-reviews">
-        <h5>Все отзывы пользователя</h5>
-    `;
-    if (allApproved.length === 0) {
-      html += `<p style="color: var(--text-muted);">Нет отзывов.</p>`;
-    } else {
-      const sorted = allApproved.sort((a, b) => {
-        const toNum = (d) => parseInt(d.split('.').reverse().join(''));
-        return toNum(b.date) - toNum(a.date);
-      });
-      sorted.forEach(r => {
-        const stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
-        html += `
-          <div class="review-item">
-            <div class="stars">${stars}</div>
-            <div class="text">${r.text}</div>
-            <div style="font-size:0.75rem; color: #5b6e8c;">${r.date || 'Недавно'}</div>
-          </div>
-        `;
-      });
-    }
-    html += `</div>`;
+    let html = `<div class="profile-header"><div class="profile-avatar-large" style="background-color:${user.avatarColor};">${initial}</div><div class="profile-info"><h4>${user.name} ${user.surname}</h4><div class="sub">На сайте с ${user.registered}</div><div class="sub">Всего отзывов: ${all.length}</div></div></div><div class="profile-reviews"><h5>Все отзывы пользователя</h5>`;
+    if (!all.length) html += '<p style="color: var(--text-muted);">Нет отзывов.</p>';
+    else all.sort((a,b) => parseInt(b.date.split('.').reverse().join('')) - parseInt(a.date.split('.').reverse().join(''))).forEach(r => {
+      html += `<div class="review-item"><div class="stars">${'★'.repeat(r.stars)}</div><div class="text">${r.text}</div><div style="font-size:0.75rem; color:#5b6e8c;">${r.date}</div></div>`;
+    });
+    html += '</div>';
     content.innerHTML = html;
     modal.classList.add('active');
   }
 
-  // ================== МОДАЛЬНЫЕ ОКНА ==================
+  // МОДАЛКИ
   const reviewModal = document.getElementById('reviewModal');
-  const openReviewBtn = document.getElementById('openReviewModal');
-  const closeReviewBtn = document.getElementById('closeReviewModal');
   const formContainer = document.getElementById('reviewFormContainer');
   const successContainer = document.getElementById('reviewSuccessContainer');
   const authTabs = document.getElementById('authTabs');
   const registerForm = document.getElementById('registerForm');
   const loginForm = document.getElementById('loginForm');
-  
+
   document.querySelectorAll('.auth-tabs button').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.auth-tabs button').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      const target = tab.dataset.tab;
-      if (target === 'register') {
-        registerForm.classList.remove('hidden');
-        loginForm.classList.add('hidden');
-      } else {
-        registerForm.classList.add('hidden');
-        loginForm.classList.remove('hidden');
-      }
+      if (tab.dataset.tab === 'register') { registerForm.classList.remove('hidden'); loginForm.classList.add('hidden'); }
+      else { registerForm.classList.add('hidden'); loginForm.classList.remove('hidden'); }
     });
   });
 
   document.getElementById('registerBtn').addEventListener('click', () => {
-    const name = document.getElementById('regName').value.trim();
-    const surname = document.getElementById('regSurname').value.trim();
-    const password = document.getElementById('regPassword').value;
-    
-    if (!name) { alert('Введите имя.'); return; }
-    if (!surname) { alert('Введите первую букву фамилии.'); return; }
-    if (surname.length !== 1) { alert('Введите только одну букву фамилии.'); return; }
-    if (password.length < 4) { alert('Пароль должен быть минимум 4 символа.'); return; }
-    
-    const result = registerUser(name, surname, password);
-    if (result.success) {
+    const n = document.getElementById('regName').value.trim();
+    const s = document.getElementById('regSurname').value.trim();
+    const p = document.getElementById('regPassword').value;
+    if (!n) return alert('Введите имя.');
+    if (!s) return alert('Введите букву фамилии.');
+    if (s.length !== 1) return alert('Только одна буква.');
+    if (p.length < 4) return alert('Пароль минимум 4 символа.');
+    const res = registerUser(n, s, p);
+    if (res.success) {
       document.getElementById('regName').value = '';
       document.getElementById('regSurname').value = '';
       document.getElementById('regPassword').value = '';
       updateUserDisplay();
       formContainer.style.display = 'block';
-      const displayName = result.user.name + ' ' + result.user.surname;
-      document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${displayName}`;
+      document.getElementById('reviewUserDisplay').textContent = 'Пользователь: ' + res.user.name + ' ' + res.user.surname;
       successContainer.style.display = 'none';
-      document.getElementById('reviewText').value = '';
-      document.querySelectorAll('input[name="stars"]').forEach(el => el.checked = false);
       document.getElementById('reviewModalTitle').textContent = '✍️ Оставить отзыв';
-    } else {
-      alert(result.message);
-    }
+    } else alert(res.message);
   });
 
   document.getElementById('loginBtn').addEventListener('click', () => {
-    const name = document.getElementById('loginName').value.trim();
-    const password = document.getElementById('loginPassword').value;
-    
-    if (!name) { alert('Введите имя.'); return; }
-    if (!password) { alert('Введите пароль.'); return; }
-    
-    const result = loginUser(name, password);
-    if (result.success) {
+    const n = document.getElementById('loginName').value.trim();
+    const p = document.getElementById('loginPassword').value;
+    if (!n || !p) return alert('Заполните поля.');
+    const res = loginUser(n, p);
+    if (res.success) {
       document.getElementById('loginName').value = '';
       document.getElementById('loginPassword').value = '';
       updateUserDisplay();
       formContainer.style.display = 'block';
-      const displayName = result.user.name + ' ' + result.user.surname;
-      document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${displayName}`;
+      document.getElementById('reviewUserDisplay').textContent = 'Пользователь: ' + res.user.name + ' ' + res.user.surname;
       successContainer.style.display = 'none';
-      document.getElementById('reviewText').value = '';
-      document.querySelectorAll('input[name="stars"]').forEach(el => el.checked = false);
       document.getElementById('reviewModalTitle').textContent = '✍️ Оставить отзыв';
-    } else {
-      alert(result.message);
-    }
+    } else alert(res.message);
   });
 
-  openReviewBtn.addEventListener('click', () => {
+  document.getElementById('openReviewModal').addEventListener('click', () => {
     formContainer.style.display = 'none';
     successContainer.style.display = 'none';
     document.getElementById('reviewText').value = '';
     document.querySelectorAll('input[name="stars"]').forEach(el => el.checked = false);
-    
     if (currentUser) {
       formContainer.style.display = 'block';
-      const displayName = currentUser.name + ' ' + currentUser.surname;
-      document.getElementById('reviewUserDisplay').textContent = `Пользователь: ${displayName}`;
+      document.getElementById('reviewUserDisplay').textContent = 'Пользователь: ' + currentUser.name + ' ' + currentUser.surname;
       document.getElementById('reviewModalTitle').textContent = '✍️ Оставить отзыв';
       authTabs.style.display = 'none';
       registerForm.classList.add('hidden');
@@ -994,174 +771,116 @@
       document.querySelector('.auth-tabs button[data-tab="login"]').classList.add('active');
       document.getElementById('reviewModalTitle').textContent = '🔐 Вход или регистрация';
     }
-    
     reviewModal.classList.add('active');
   });
 
-  closeReviewBtn.addEventListener('click', () => reviewModal.classList.remove('active'));
+  document.getElementById('closeReviewModal').addEventListener('click', () => reviewModal.classList.remove('active'));
   window.addEventListener('click', (e) => { if (e.target === reviewModal) reviewModal.classList.remove('active'); });
 
   document.getElementById('submitReviewBtn').addEventListener('click', () => {
-    if (!currentUser) {
-      alert('Пожалуйста, войдите в систему.');
-      return;
-    }
-    
+    if (!currentUser) return alert('Войдите в систему.');
     const text = document.getElementById('reviewText').value.trim();
     const starsEl = document.querySelector('input[name="stars"]:checked');
     const stars = starsEl ? parseInt(starsEl.value) : 5;
-    
-    if (!text) {
-      alert('Пожалуйста, напишите текст отзыва.');
-      return;
-    }
-    
+    if (!text) return alert('Напишите отзыв.');
     formContainer.style.display = 'none';
     successContainer.style.display = 'none';
-    const loadingHtml = `
-      <div style="text-align:center; padding:20px;">
-        <div class="spinner"></div>
-        <p style="color:#cbd5e1;">Отправка отзыва на модерацию...</p>
-        <p style="color:#5b6e8c; font-size:0.85rem; margin-top:8px;">Проверка занимает до 5 секунд</p>
-      </div>
-    `;
-    const existingLoader = document.getElementById('reviewLoadingPlaceholder');
-    if (existingLoader) existingLoader.remove();
+    const existing = document.getElementById('reviewLoadingPlaceholder');
+    if (existing) existing.remove();
     const loaderDiv = document.createElement('div');
     loaderDiv.id = 'reviewLoadingPlaceholder';
-    loaderDiv.innerHTML = loadingHtml;
+    loaderDiv.innerHTML = `<div style="text-align:center; padding:20px;"><div class="spinner"></div><p style="color:#cbd5e1;">Отправка отзыва на модерацию...</p></div>`;
     document.getElementById('reviewModalTitle').after(loaderDiv);
-    
     addReview(text, stars);
-    
     setTimeout(() => {
-      const loader = document.getElementById('reviewLoadingPlaceholder');
-      if (loader) loader.remove();
+      const l = document.getElementById('reviewLoadingPlaceholder');
+      if (l) l.remove();
       successContainer.style.display = 'block';
-      
       setTimeout(() => {
         reviewModal.classList.remove('active');
         successContainer.style.display = 'none';
         formContainer.style.display = 'block';
         document.getElementById('reviewText').value = '';
         document.querySelectorAll('input[name="stars"]').forEach(el => el.checked = false);
-        const loader2 = document.getElementById('reviewLoadingPlaceholder');
-        if (loader2) loader2.remove();
       }, 2000);
-    }, 5000);
+    }, 3000);
   });
 
-  const profileModal = document.getElementById('profileModal');
-  const closeProfileBtn = document.getElementById('closeProfileModal');
-  closeProfileBtn.addEventListener('click', () => profileModal.classList.remove('active'));
-  window.addEventListener('click', (e) => { if (e.target === profileModal) profileModal.classList.remove('active'); });
+  document.getElementById('closeProfileModal').addEventListener('click', () => document.getElementById('profileModal').classList.remove('active'));
+  window.addEventListener('click', (e) => { if (e.target === document.getElementById('profileModal')) document.getElementById('profileModal').classList.remove('active'); });
 
-  // ================== СКРЫТАЯ МОДЕРАЦИЯ ==================
+  // МОДЕРАЦИЯ
   const passwordModal = document.getElementById('passwordModal');
   const moderationModal = document.getElementById('moderationModal');
-  const closeModerationBtn = document.getElementById('closeModerationModal');
-  const closePasswordBtn = document.getElementById('closePasswordModal');
   const moderPassInput = document.getElementById('moderatorPassword');
-  const loginBtn = document.getElementById('moderatorLoginBtn');
-
-  function requestModeratorPassword() {
-    passwordModal.classList.add('active');
-    moderPassInput.value = '';
-    moderPassInput.focus();
-  }
-
-  function loginModerator() {
-    const pwd = moderPassInput.value.trim();
-    if (pwd === 'admin123') {
+  document.getElementById('closeModerationModal').addEventListener('click', () => moderationModal.classList.remove('active'));
+  document.getElementById('closePasswordModal').addEventListener('click', () => passwordModal.classList.remove('active'));
+  window.addEventListener('click', (e) => {
+    if (e.target === moderationModal) moderationModal.classList.remove('active');
+    if (e.target === passwordModal) passwordModal.classList.remove('active');
+  });
+  document.getElementById('moderatorLoginBtn').addEventListener('click', () => {
+    if (moderPassInput.value.trim() === 'admin123') {
       passwordModal.classList.remove('active');
       moderationModal.classList.add('active');
       renderModeration();
-    } else {
-      alert('Неверный пароль!');
-      moderPassInput.value = '';
-      moderPassInput.focus();
-    }
-  }
-
-  loginBtn.addEventListener('click', loginModerator);
-  moderPassInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') loginModerator();
+    } else { alert('Неверный пароль!'); moderPassInput.value = ''; moderPassInput.focus(); }
   });
-  closePasswordBtn.addEventListener('click', () => passwordModal.classList.remove('active'));
-  window.addEventListener('click', (e) => { if (e.target === passwordModal) passwordModal.classList.remove('active'); });
+  moderPassInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') document.getElementById('moderatorLoginBtn').click(); });
+  document.getElementById('stat20000').addEventListener('dblclick', (e) => { e.stopPropagation(); passwordModal.classList.add('active'); moderPassInput.value = ''; moderPassInput.focus(); });
+  document.getElementById('footer').addEventListener('dblclick', (e) => { e.stopPropagation(); passwordModal.classList.add('active'); moderPassInput.value = ''; moderPassInput.focus(); });
 
-  closeModerationBtn.addEventListener('click', () => moderationModal.classList.remove('active'));
-  window.addEventListener('click', (e) => { if (e.target === moderationModal) moderationModal.classList.remove('active'); });
-
-  const statTrigger = document.getElementById('stat20000');
-  statTrigger.addEventListener('dblclick', (e) => {
-    e.stopPropagation();
-    requestModeratorPassword();
-  });
-  const footer = document.getElementById('footer');
-  footer.addEventListener('dblclick', (e) => {
-    e.stopPropagation();
-    requestModeratorPassword();
-  });
-
-  // ================== ИНИЦИАЛИЗАЦИЯ ==================
-  initData();
-  renderAll();
-
-  // ================== FAQ ==================
+  // FAQ
   const faqs = [
-    { q: 'Какие сделки вы проводите?', a: 'Любые: фриланс, криптовалюта (USDT, BTC), недвижимость, карго, даркнет маркет, продажа аккаунтов, доменов, авто, техники.' },
-    { q: 'Почему 10%?', a: 'Оптимальная ставка за полную безопасность и оперативное решение споров. Комиссия начисляется сверху, без скрытых доплат.' },
-    { q: 'Как быстро вы отвечаете?', a: 'Максимально быстро — я всегда на связи, обычно ответ приходит в течение пары минут. Работаю 24/7.' },
-    { q: 'Безопасно ли?', a: 'Да, я удерживаю средства до полного выполнения условий сделки. Эскроу-сервис 2.0 с юридической защитой.' },
-    { q: 'Нужен ли договор?', a: 'При необходимости составляю официальный договор. Для большинства сделок достаточно устной договорённости под гарантом.' },
-    { q: 'Работаете ли с другими странами?', a: 'Да, работаю со всем СНГ и дальним зарубежьем. Все сделки проводятся дистанционно.' },
-    { q: 'Какая минимальная сумма сделки?', a: 'Минимальной суммы нет, комиссия всегда 10% от суммы сделки.' },
-    { q: 'Сколько времени занимает сделка?', a: 'Обычно от 15 минут до нескольких часов, в зависимости от сложности и скорости сторон.' },
-    { q: 'Как с вами связаться?', a: 'Только через ВК: vk.me/news_fedorov. Никаких посредников, телеграм-каналов.' },
-    { q: 'Почему вам можно доверять?', a: '20 000+ успешных сделок, 100% положительных отзывов, открытая статистика, работа с 2019 года.' },
-    { q: 'Что такое эскроу?', a: 'Услуга, при которой гарант удерживает средства до выполнения условий сделки.' },
-    { q: 'Как работает арбитраж?', a: 'При споре я изучаю доказательства от обеих сторон и принимаю справедливое решение.' },
-    { q: 'Мои данные в безопасности?', a: 'Да, полная конфиденциальность. Данные не передаются третьим лицам.' },
-    { q: 'Есть ли мобильное приложение?', a: 'Связь только через ВК — самый быстрый и удобный способ.' },
-    { q: 'Какие способы оплаты?', a: 'Банковские карты, переводы, криптовалюта (USDT, BTC), наличные.' },
-    { q: 'Что если продавец не отвечает?', a: 'Я связываюсь с ним, если нет реакции в течение 48 часов — возвращаю деньги покупателю (включая комиссию).' },
-    { q: 'Нужны ли скриншоты?', a: 'Да, для арбитража нужны доказательства переписки и оплаты.' },
-    { q: 'Работаете с юридическими лицами?', a: 'Да, заключаю договоры с компаниями и ИП.' },
-    { q: 'Можно ли изменить условия сделки?', a: 'Да, но только с письменного согласия всех сторон.' },
-    { q: 'Как завершить сделку?', a: 'Обе стороны подтверждают выполнение, я перевожу деньги продавцу.' },
+    { q: 'Какие сделки вы проводите?', a: 'Любые: фриланс, криптовалюта, недвижимость, карго, аккаунты, домены, авто, техника.' },
+    { q: 'Почему 10%?', a: 'Оптимальная ставка за полную безопасность и оперативное решение споров.' },
+    { q: 'Как быстро вы отвечаете?', a: 'Всегда на связи, обычно ответ приходит в течение пары минут.' },
+    { q: 'Безопасно ли?', a: 'Да, средства удерживаются до полного выполнения условий сделки.' },
+    { q: 'Нужен ли договор?', a: 'При необходимости составляю официальный договор.' },
+    { q: 'Работаете ли с другими странами?', a: 'Да, работаю со всем СНГ и дальним зарубежьем.' },
+    { q: 'Какая минимальная сумма?', a: 'Минимальной суммы нет, комиссия всегда 10%.' },
+    { q: 'Сколько времени занимает сделка?', a: 'От 15 минут до нескольких часов.' },
+    { q: 'Как с вами связаться?', a: 'Только через ВК: vk.me/news_fedorov.' },
+    { q: 'Почему вам можно доверять?', a: '20 000+ сделок, 100% положительных отзывов, работа с 2019 года.' },
+    { q: 'Что такое эскроу?', a: 'Гарант удерживает средства до выполнения условий сделки.' },
+    { q: 'Как работает арбитраж?', a: 'Изучаю доказательства от обеих сторон и принимаю решение.' },
+    { q: 'Мои данные в безопасности?', a: 'Да, полная конфиденциальность.' },
+    { q: 'Какие способы оплаты?', a: 'Карты, переводы, криптовалюта, наличные.' },
+    { q: 'Что если продавец не отвечает?', a: 'Возвращаю деньги покупателю через 48 часов.' },
+    { q: 'Работаете с юрлицами?', a: 'Да, заключаю договоры с компаниями и ИП.' },
     { q: 'Анонимные сделки возможны?', a: 'Да, полная анонимность по желанию клиента.' },
-    { q: 'Как я могу проверить вашу репутацию?', a: 'У меня открытая статистика, 20 000+ отзывов в ВК.' },
-    { q: 'В какое время лучше писать?', a: 'В любое, я работаю 24/7. Отвечаю даже ночью.' },
-    { q: 'Есть ли скидки для постоянных?', a: 'Да, для постоянных клиентов индивидуальные условия.' }
+    { q: 'Как проверить вашу репутацию?', a: 'Открытая статистика, 20 000+ отзывов в ВК.' },
+    { q: 'В какое время лучше писать?', a: 'В любое, я работаю 24/7.' },
+    { q: 'Есть ли скидки для постоянных?', a: 'Да, индивидуальные условия.' }
   ];
   const faqGrid = document.getElementById('faqGrid');
   faqs.forEach(f => { faqGrid.innerHTML += `<div class="faq-card"><h4><i class="fas fa-question-circle" style="color: var(--accent);"></i> ${f.q}</h4><p>${f.a}</p></div>`; });
 
+  // КЕЙСЫ
   const cases = [
-    { title: 'Криптообмен 2.5 млн ₽', desc: 'Покупатель и продавец из разных стран. Сделка закрыта за 2 часа. Комиссия 250 000 ₽ (сверху).' },
-    { title: 'Спор по фрилансу', desc: 'Заказчик не принял работу. Арбитраж решил в пользу исполнителя. Выплачено 120 000 ₽.' },
-    { title: 'Покупка квартиры', desc: 'Сделка на 8 млн ₽ через эскроу. Комиссия 800 000 ₽, покупатель оплатил сверху.' },
-    { title: 'Даркнет маркет', desc: 'Анонимная сделка на 450 000 ₽. Полная конфиденциальность сторон.' },
-    { title: 'Возврат предоплаты', desc: 'Продавец не отгрузил товар. Через гаранта деньги возвращены за 1 день.' },
-    { title: 'Карго-доставка', desc: 'Товар из Китая. Гарант удержал оплату до получения на складе.' },
-    { title: 'Продажа аккаунта', desc: 'Сделка на 1.2 млн ₽. Полная безопасность для обеих сторон.' },
-    { title: 'Обмен USDT', desc: '100 000 USDT за 3 часа. Безопасно, выгодно, комиссия сверху.' },
-    { title: 'Спор по недвижимости', desc: 'Стороны пришли к соглашению через арбитраж за 2 дня.' },
-    { title: 'Международный контракт', desc: 'Сделка на 5 млн ₽ с Европой. Полное юридическое сопровождение.' },
-    { title: 'Продажа домена', desc: 'Дорогой домен за 900 000 ₽. Безопасный обмен через гаранта.' },
-    { title: 'Спор по крипте', desc: 'Покупатель утверждал, что не получил USDT. Арбитраж показал обратное.' },
-    { title: 'Авто из-за рубежа', desc: 'Сделка на 3.2 млн ₽. Полный контроль до получения авто в РФ.' },
-    { title: 'Фриланс-проект', desc: 'Заказчик и исполнитель из разных городов. Проект сдан в срок.' },
-    { title: 'Обмен валюты', desc: 'Обмен рублей на доллары через гаранта. Лучший курс и безопасность.' }
+    { title: 'Криптообмен 2.5 млн ₽', desc: 'Сделка закрыта за 2 часа. Комиссия 250 000 ₽.' },
+    { title: 'Спор по фрилансу', desc: 'Арбитраж в пользу исполнителя. Выплачено 120 000 ₽.' },
+    { title: 'Покупка квартиры', desc: 'Сделка на 8 млн ₽ через эскроу. Комиссия 800 000 ₽.' },
+    { title: 'Даркнет маркет', desc: 'Анонимная сделка на 450 000 ₽.' },
+    { title: 'Возврат предоплаты', desc: 'Деньги возвращены за 1 день.' },
+    { title: 'Карго-доставка', desc: 'Гарант удержал оплату до получения на складе.' },
+    { title: 'Продажа аккаунта', desc: 'Сделка на 1.2 млн ₽. Полная безопасность.' },
+    { title: 'Обмен USDT', desc: '100 000 USDT за 3 часа.' },
+    { title: 'Спор по недвижимости', desc: 'Соглашение через арбитраж за 2 дня.' },
+    { title: 'Международный контракт', desc: 'Сделка на 5 млн ₽ с Европой.' },
+    { title: 'Продажа домена', desc: 'Домен за 900 000 ₽.' },
+    { title: 'Спор по крипте', desc: 'Арбитраж показал обратное.' },
+    { title: 'Авто из-за рубежа', desc: 'Сделка на 3.2 млн ₽.' },
+    { title: 'Фриланс-проект', desc: 'Проект сдан в срок.' },
+    { title: 'Обмен валюты', desc: 'Лучший курс и безопасность.' }
   ];
   const casesGrid = document.getElementById('casesGrid');
   const colors = ['#3b82f6','#f59e0b','#10b981','#8b5cf6','#ef4444','#06b6d4','#f472b6','#f97316','#14b8a6','#a78bfa','#34d399','#fbbf24','#60a5fa','#fb923c','#e879f9'];
-  cases.forEach((c, idx) => { 
-    const color = colors[idx % colors.length];
-    casesGrid.innerHTML += `<div class="card"><h3><i class="fas fa-folder-open" style="color: ${color}; margin-right: 8px;"></i> Кейс #${idx+1}: ${c.title}</h3><p class="small-note">${c.desc}</p></div>`; 
+  cases.forEach((c, i) => {
+    casesGrid.innerHTML += `<div class="card"><h3><i class="fas fa-folder-open" style="color:${colors[i % colors.length]}; margin-right: 8px;"></i> Кейс #${i+1}: ${c.title}</h3><p class="small-note">${c.desc}</p></div>`;
   });
 
+  // АНИМАЦИЯ ПОЯВЛЕНИЯ
   const sections = document.querySelectorAll('.section');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1179,7 +898,9 @@
     observer.observe(sec);
   });
 
-  console.log('✅ Отзывы за 11 и 12 сентября 2026. Пароль модерации: admin123.');
+  initData();
+  renderAll();
+  console.log('✅ Сайт готов. Пароль модерации: admin123');
 </script>
 </body>
 </html>
