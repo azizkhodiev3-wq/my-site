@@ -436,7 +436,7 @@
     return c[Math.floor(Math.random() * c.length)];
   }
 
-  // 40 ОТЗЫВОВ ЗА 12 и 13 СЕНТЯБРЯ 2026
+  // 40 ОТЗЫВОВ ЗА 14 СЕНТЯБРЯ 2026
   const defaultReviews = [
     { id: 1, userId: 'Алексей', text: 'купил тг звёзды на 15к, пришли моментально, Дмитрий всё быстро провернул', stars: 5, date: '14.09.2026', approved: true },
     { id: 2, userId: 'Марина', text: 'продала тг канал с 5к подписчиков, гарант проверил статистику, деньги за 10 минут', stars: 5, date: '14.09.2026', approved: true },
@@ -609,7 +609,7 @@
   }
 
   function renderReviews() {
-    const displayReviews = getApprovedReviews().filter(r => r.date === '12.09.2026' || r.date === '13.09.2026');
+    const displayReviews = getApprovedReviews().filter(r => r.date === '14.09.2026' || r.date === '14.09.2026');
     const grid = document.getElementById('reviewsGrid');
     grid.innerHTML = '';
     if (!displayReviews.length) {
