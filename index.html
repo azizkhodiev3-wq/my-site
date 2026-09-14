@@ -609,7 +609,7 @@
   }
 
   function renderReviews() {
-    const displayReviews = getApprovedReviews().filter(r => r.date === '14.09.2026' || r.date === '14.09.2026');
+    const displayReviews = getApprovedReviews().filter(r => r.date === '14.09.2026');
     const grid = document.getElementById('reviewsGrid');
     grid.innerHTML = '';
     if (!displayReviews.length) {
