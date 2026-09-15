@@ -360,11 +360,11 @@ counter.textContent = t === '24/7' ? cur + '/7' : cur + suffix;
 }, 25);
 });
 });
-const STORAGE_REVIEWS = 'fedorov_reviews_mod_v6';
-const STORAGE_USERS = 'fedorov_users_mod_v6';
+const STORAGE_REVIEWS = 'fedorov_reviews_mod_v7';
+const STORAGE_USERS = 'fedorov_users_mod_v7';
 const STORAGE_SESSION = 'fedorov_session';
 const STORAGE_VERSION = 'fedorov_version';
-const CURRENT_VERSION = '30.0';
+const CURRENT_VERSION = '31.0';
 let currentUser = null;
 function getRandomColor() {
 const c = ['#3b82f6','#8b5cf6','#f59e0b','#10b981','#ef4444','#06b6d4','#f472b6','#f97316','#14b8a6','#a78bfa','#34d399','#fb923c','#e879f9'];
@@ -418,42 +418,42 @@ const defaultReviews = [
 { id: 40, userId: 'София', text: 'доту акк с 7к часов за 18к, всё проверили', stars: 5, date: '15.09.2026', approved: true }
 ];
 const archiveReviews = [
-{ id: 101, userId: 'Марина', text: 'самая первая сделка — продавала акк инсты, 8к. волновалась жутко', stars: 5, date: '19.01.2026', approved: true },
-{ id: 102, userId: 'Марина', text: 'в апреле продала вк паблик с 15к подписоты, всё гладко', stars: 5, date: '27.04.2026', approved: true },
-{ id: 103, userId: 'Марина', text: 'в июле брала тг премиум, всё чётко', stars: 5, date: '08.07.2026', approved: true },
-{ id: 104, userId: 'Игорь', text: 'в марте брал впн, до сих пор работает', stars: 5, date: '14.03.2026', approved: true },
-{ id: 105, userId: 'Игорь', text: 'в августе взял ещё один, на другой девайс', stars: 5, date: '22.08.2026', approved: true },
-{ id: 106, userId: 'Виктор', text: 'в феврале брал нож в кс за 25к, всё чётко', stars: 5, date: '23.02.2026', approved: true },
-{ id: 107, userId: 'Виктор', text: 'в июне продал скины на 12к', stars: 5, date: '17.06.2026', approved: true },
-{ id: 108, userId: 'Виктор', text: 'в августе брал ключ от игры, 2к', stars: 5, date: '30.08.2026', approved: true },
-{ id: 109, userId: 'Сергей', text: 'в январе брал ключ стим, всё быстро', stars: 5, date: '09.01.2026', approved: true },
-{ id: 110, userId: 'Сергей', text: 'в мае обменял юсдт на 15к', stars: 5, date: '17.05.2026', approved: true },
-{ id: 111, userId: 'Сергей', text: 'в сентябре снова ключ, всё ок', stars: 5, date: '07.09.2026', approved: true },
-{ id: 112, userId: 'Павел', text: 'в марте брал тг звёзды, всё пришло быстро', stars: 5, date: '11.03.2026', approved: true },
-{ id: 113, userId: 'Павел', text: 'в июле снова зашёл, дискорд нитро на год', stars: 5, date: '25.07.2026', approved: true },
-{ id: 114, userId: 'Константин', text: 'в феврале менял крипту на 20к, курс был норм', stars: 5, date: '05.02.2026', approved: true },
-{ id: 115, userId: 'Константин', text: 'в июне снова менял, уже на 40к', stars: 5, date: '21.06.2026', approved: true },
-{ id: 116, userId: 'Константин', text: 'в августе менял на 30к, всё быстро', stars: 5, date: '14.08.2026', approved: true },
-{ id: 117, userId: 'Григорий', text: 'в апреле брал тг звёзды на 10к, всё быстро', stars: 5, date: '08.04.2026', approved: true },
-{ id: 118, userId: 'Григорий', text: 'в августе снова, уже на 25к', stars: 5, date: '19.08.2026', approved: true },
-{ id: 119, userId: 'Зоя', text: 'в марте брала стим кошелёк на 5к', stars: 5, date: '16.03.2026', approved: true },
-{ id: 120, userId: 'Зоя', text: 'в июле снова, уже на 10к', stars: 5, date: '28.07.2026', approved: true },
-{ id: 121, userId: 'Степан', text: 'в январе продавал варфейс акк, 5к', stars: 5, date: '22.01.2026', approved: true },
-{ id: 122, userId: 'Степан', text: 'в мае снова акк продал, уже за 12к', stars: 5, date: '14.05.2026', approved: true },
-{ id: 123, userId: 'Степан', text: 'в сентябре третий раз, всё чётко', stars: 5, date: '03.09.2026', approved: true },
-{ id: 124, userId: 'Вера', text: 'в феврале продавала инсту с 5к подписоты', stars: 5, date: '27.02.2026', approved: true },
-{ id: 125, userId: 'Вера', text: 'в июле снова, уже с 10к', stars: 5, date: '15.07.2026', approved: true },
-{ id: 126, userId: 'Фёдор', text: 'в апреле брал тг акк с 500 подписчиков', stars: 5, date: '03.04.2026', approved: true },
-{ id: 127, userId: 'Фёдор', text: 'в августе снова, уже с 1000', stars: 5, date: '26.08.2026', approved: true },
-{ id: 128, userId: 'Владислав', text: 'в марте брал апекс акк за 4к', stars: 5, date: '19.03.2026', approved: true },
-{ id: 129, userId: 'Владислав', text: 'в июне продал акк, всё чётко', stars: 5, date: '11.06.2026', approved: true },
-{ id: 130, userId: 'Владислав', text: 'в сентябре снова апекс, за 7к', stars: 5, date: '06.09.2026', approved: true },
-{ id: 131, userId: 'Дарья', text: 'в мае меняла крипту на 8к', stars: 5, date: '13.05.2026', approved: true },
-{ id: 132, userId: 'Дарья', text: 'в августе снова, на 12к', stars: 5, date: '24.08.2026', approved: true },
-{ id: 133, userId: 'Денис', text: 'в апреле брал акк апекса за 10к, всё чисто было', stars: 5, date: '26.04.2026', approved: true },
-{ id: 134, userId: 'Денис', text: 'в августе снова зашёл, скины доты на 5к', stars: 5, date: '21.08.2026', approved: true },
-{ id: 135, userId: 'Ксения', text: 'в феврале брала тг звёзды на 3к', stars: 5, date: '12.02.2026', approved: true },
-{ id: 136, userId: 'Ксения', text: 'в июле снова, уже на 6к', stars: 5, date: '18.07.2026', approved: true }
+{ id: 101, userId: 'Марина', text: 'продавала акк инсты, 8к. волновалась жутко, но всё прошло', stars: 5, date: '19.01.2026', approved: true },
+{ id: 102, userId: 'Марина', text: 'продала вк паблик с 15к подписоты, всё гладко, спасибо', stars: 5, date: '27.04.2026', approved: true },
+{ id: 103, userId: 'Марина', text: 'брала тг премиум, всё чётко и быстро', stars: 5, date: '08.07.2026', approved: true },
+{ id: 104, userId: 'Игорь', text: 'брал впн, работает отлично, доволен', stars: 5, date: '14.03.2026', approved: true },
+{ id: 105, userId: 'Игорь', text: 'взял ещё один впн, на другой девайс, всё ок', stars: 5, date: '22.08.2026', approved: true },
+{ id: 106, userId: 'Виктор', text: 'брал нож в кс за 25к, всё чётко, гарант проверил', stars: 5, date: '23.02.2026', approved: true },
+{ id: 107, userId: 'Виктор', text: 'продал скины на 12к, деньги сразу', stars: 5, date: '17.06.2026', approved: true },
+{ id: 108, userId: 'Виктор', text: 'брал ключ от игры, 2к, всё быстро', stars: 5, date: '30.08.2026', approved: true },
+{ id: 109, userId: 'Сергей', text: 'брал ключ стим, всё быстро и чётко', stars: 5, date: '09.01.2026', approved: true },
+{ id: 110, userId: 'Сергей', text: 'обменял юсдт на 15к, курс норм', stars: 5, date: '17.05.2026', approved: true },
+{ id: 111, userId: 'Сергей', text: 'снова брал ключ, всё ок', stars: 5, date: '07.09.2026', approved: true },
+{ id: 112, userId: 'Павел', text: 'брал тг звёзды, всё пришло быстро', stars: 5, date: '11.03.2026', approved: true },
+{ id: 113, userId: 'Павел', text: 'дискорд нитро на год, работает, спасибо', stars: 5, date: '25.07.2026', approved: true },
+{ id: 114, userId: 'Константин', text: 'менял крипту на 20к, курс был норм', stars: 5, date: '05.02.2026', approved: true },
+{ id: 115, userId: 'Константин', text: 'менял крипту на 40к, всё чётко', stars: 5, date: '21.06.2026', approved: true },
+{ id: 116, userId: 'Константин', text: 'менял на 30к, всё быстро', stars: 5, date: '14.08.2026', approved: true },
+{ id: 117, userId: 'Григорий', text: 'брал тг звёзды на 10к, всё быстро', stars: 5, date: '08.04.2026', approved: true },
+{ id: 118, userId: 'Григорий', text: 'снова брал звёзды, уже на 25к, всё ок', stars: 5, date: '19.08.2026', approved: true },
+{ id: 119, userId: 'Зоя', text: 'брала стим кошелёк на 5к, всё норм', stars: 5, date: '16.03.2026', approved: true },
+{ id: 120, userId: 'Зоя', text: 'брала на 10к, всё чётко', stars: 5, date: '28.07.2026', approved: true },
+{ id: 121, userId: 'Степан', text: 'продавал варфейс акк, 5к, всё ок', stars: 5, date: '22.01.2026', approved: true },
+{ id: 122, userId: 'Степан', text: 'продал акк за 12к, деньги сразу', stars: 5, date: '14.05.2026', approved: true },
+{ id: 123, userId: 'Степан', text: 'продал ещё акк, всё чётко', stars: 5, date: '03.09.2026', approved: true },
+{ id: 124, userId: 'Вера', text: 'продавала инсту с 5к подписоты, всё гладко', stars: 5, date: '27.02.2026', approved: true },
+{ id: 125, userId: 'Вера', text: 'продала инсту с 10к, всё ок', stars: 5, date: '15.07.2026', approved: true },
+{ id: 126, userId: 'Фёдор', text: 'брал тг акк с 500 подписчиков, всё ок', stars: 5, date: '03.04.2026', approved: true },
+{ id: 127, userId: 'Фёдор', text: 'брал акк с 1000 подписчиков, всё чётко', stars: 5, date: '26.08.2026', approved: true },
+{ id: 128, userId: 'Владислав', text: 'брал апекс акк за 4к, всё ок', stars: 5, date: '19.03.2026', approved: true },
+{ id: 129, userId: 'Владислав', text: 'продал акк, всё чётко', stars: 5, date: '11.06.2026', approved: true },
+{ id: 130, userId: 'Владислав', text: 'брал апекс за 7к, всё норм', stars: 5, date: '06.09.2026', approved: true },
+{ id: 131, userId: 'Дарья', text: 'меняла крипту на 8к, всё быстро', stars: 5, date: '13.05.2026', approved: true },
+{ id: 132, userId: 'Дарья', text: 'меняла на 12к, всё чётко', stars: 5, date: '24.08.2026', approved: true },
+{ id: 133, userId: 'Денис', text: 'брал акк апекса за 10к, всё чисто было', stars: 5, date: '26.04.2026', approved: true },
+{ id: 134, userId: 'Денис', text: 'брал скины доты на 5к, всё ок', stars: 5, date: '21.08.2026', approved: true },
+{ id: 135, userId: 'Ксения', text: 'брала тг звёзды на 3к, всё быстро', stars: 5, date: '12.02.2026', approved: true },
+{ id: 136, userId: 'Ксения', text: 'брала звёзды на 6к, всё чётко', stars: 5, date: '18.07.2026', approved: true }
 ];
 const fixedSurnames = {
 'Алексей':'И.','Марина':'П.','Денис':'К.','Екатерина':'С.','Игорь':'В.','Ольга':'Н.','Николай':'М.','Виктор':'Р.','Андрей':'А.','Анна':'А.',
