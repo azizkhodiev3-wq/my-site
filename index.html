@@ -360,11 +360,11 @@ counter.textContent = t === '24/7' ? cur + '/7' : cur + suffix;
 }, 25);
 });
 });
-const STORAGE_REVIEWS = 'fedorov_reviews_mod_v7';
-const STORAGE_USERS = 'fedorov_users_mod_v7';
+const STORAGE_REVIEWS = 'fedorov_reviews_mod_v8';
+const STORAGE_USERS = 'fedorov_users_mod_v8';
 const STORAGE_SESSION = 'fedorov_session';
 const STORAGE_VERSION = 'fedorov_version';
-const CURRENT_VERSION = '31.0';
+const CURRENT_VERSION = '32.0';
 let currentUser = null;
 function getRandomColor() {
 const c = ['#3b82f6','#8b5cf6','#f59e0b','#10b981','#ef4444','#06b6d4','#f472b6','#f97316','#14b8a6','#a78bfa','#34d399','#fb923c','#e879f9'];
@@ -376,46 +376,46 @@ return String(dt.getDate()).padStart(2,'0') + '.' + String(dt.getMonth()+1).padS
 }
 function getTodayStr() { return formatDate(new Date()); }
 const defaultReviews = [
-{ id: 1, userId: 'Алексей', text: 'звёзд тг взял на 15к, пришли сразу, даже не ожидал что так быстро', stars: 5, date: '15.09.2026', approved: true },
-{ id: 2, userId: 'Марина', text: 'канал продала, 5к подписчиков. Дмитрий статистику глянул, деньги через 10 мин упали', stars: 5, date: '15.09.2026', approved: true },
-{ id: 3, userId: 'Денис', text: 'акк пубга с мификами, 18к. скины все на месте, переживал зря', stars: 5, date: '15.09.2026', approved: true },
-{ id: 4, userId: 'Екатерина', text: 'юсдт на 40к меняла, курс нормальный, без нервов вообще', stars: 5, date: '15.09.2026', approved: true },
-{ id: 5, userId: 'Игорь', text: 'впн на год брал, думал развод. гарант проверил, всё работает', stars: 5, date: '15.09.2026', approved: true },
-{ id: 6, userId: 'Ольга', text: 'стим с ксго продала за 12к. покупатель долго выбирал, но всё ок', stars: 5, date: '15.09.2026', approved: true },
-{ id: 7, userId: 'Николай', text: 'тг премиум на год, всё честно, спасибо', stars: 5, date: '15.09.2026', approved: true },
-{ id: 8, userId: 'Виктор', text: 'скины кс на 8к, проверили всё, доволен', stars: 5, date: '15.09.2026', approved: true },
-{ id: 9, userId: 'Андрей', text: 'инсту с 10к подписоты продал, прошло гладко', stars: 5, date: '15.09.2026', approved: true },
-{ id: 10, userId: 'Анна', text: 'буст в доте, гарант держал оплату пока не выполнили. вот это подход', stars: 5, date: '15.09.2026', approved: true },
-{ id: 11, userId: 'Сергей', text: 'ключ от игры в стиме, продавец норм, гарант помог передать', stars: 5, date: '15.09.2026', approved: true },
-{ id: 12, userId: 'Наталья', text: 'геншин акк с 5 звёздами за 22к, деньги сразу, всё проверили', stars: 5, date: '15.09.2026', approved: true },
-{ id: 13, userId: 'Артём', text: 'бтк на рубли 25к, курс хороший, всё чётко', stars: 5, date: '15.09.2026', approved: true },
-{ id: 14, userId: 'Павел', text: 'дискорд нитро на год, работает, спасибо', stars: 5, date: '15.09.2026', approved: true },
-{ id: 15, userId: 'Максим', text: 'акк вк с играми продал, деньги моментально', stars: 5, date: '15.09.2026', approved: true },
-{ id: 16, userId: 'Елена', text: 'валюту в геншине на 5к, всё норм', stars: 5, date: '15.09.2026', approved: true },
-{ id: 17, userId: 'Константин', text: 'крипту на 15к менял, курс ок', stars: 5, date: '15.09.2026', approved: true },
-{ id: 18, userId: 'Татьяна', text: 'пабг акк с мификами, вместе проверяли, всё норм', stars: 5, date: '15.09.2026', approved: true },
-{ id: 19, userId: 'Ирина', text: 'скины доты на 12к, деньги сразу', stars: 5, date: '15.09.2026', approved: true },
-{ id: 20, userId: 'Григорий', text: 'звёзд тг на 25к, всё пришло, спасибо', stars: 5, date: '15.09.2026', approved: true },
-{ id: 21, userId: 'Валентина', text: 'фейсит акк с 5к часов, всё чётко', stars: 5, date: '15.09.2026', approved: true },
-{ id: 22, userId: 'Георгий', text: 'кс акк с праймом за 15к, гарант всё проверил', stars: 5, date: '15.09.2026', approved: true },
-{ id: 23, userId: 'Зоя', text: 'стим кошелёк на 10к, всё норм', stars: 5, date: '15.09.2026', approved: true },
-{ id: 24, userId: 'Даниил', text: 'юсдт на 60к, курс топ, быстро', stars: 5, date: '15.09.2026', approved: true },
-{ id: 25, userId: 'Ксения', text: 'тг акк с премкой, всё ок, спасибо', stars: 5, date: '15.09.2026', approved: true },
-{ id: 26, userId: 'Степан', text: 'варфейс акк за 8к, деньги сразу', stars: 5, date: '15.09.2026', approved: true },
-{ id: 27, userId: 'Любовь', text: 'ключи стим на 5к, всё пришло', stars: 5, date: '15.09.2026', approved: true },
-{ id: 28, userId: 'Аркадий', text: 'буст акк в кс на 20к, всё чётко, рекомендую', stars: 5, date: '15.09.2026', approved: true },
-{ id: 29, userId: 'Вера', text: 'инсту с 10к подписоты продала, гладко', stars: 5, date: '15.09.2026', approved: true },
-{ id: 30, userId: 'Борис', text: 'крипту на 30к, гарант помог с безопасностью', stars: 5, date: '15.09.2026', approved: true },
-{ id: 31, userId: 'Галина', text: 'рубли на юсдт меняла, курс норм', stars: 5, date: '15.09.2026', approved: true },
-{ id: 32, userId: 'Фёдор', text: 'тг акк с 1000 подписчиков, всё ок', stars: 5, date: '15.09.2026', approved: true },
-{ id: 33, userId: 'Яна', text: 'пабг мобайл акк продала, гладко', stars: 5, date: '15.09.2026', approved: true },
-{ id: 34, userId: 'Эдуард', text: 'стим ключ от игры, всё ок', stars: 5, date: '15.09.2026', approved: true },
-{ id: 35, userId: 'Владислав', text: 'апекс акк за 7к, всё норм', stars: 5, date: '15.09.2026', approved: true },
-{ id: 36, userId: 'Роза', text: 'вк акк с играми продала, деньги сразу', stars: 5, date: '15.09.2026', approved: true },
-{ id: 37, userId: 'Иван', text: 'звёзд тг на 8к, всё пришло, спасибо', stars: 5, date: '15.09.2026', approved: true },
-{ id: 38, userId: 'Дарья', text: 'крипту на 12к меняла, чётко', stars: 5, date: '15.09.2026', approved: true },
-{ id: 39, userId: 'Егор', text: 'скины кс на 15к, деньги моментально', stars: 5, date: '15.09.2026', approved: true },
-{ id: 40, userId: 'София', text: 'доту акк с 7к часов за 18к, всё проверили', stars: 5, date: '15.09.2026', approved: true }
+{ id: 1, userId: 'Алексей', text: 'звёзд тг взял на 15к, пришли сразу, даже не ожидал что так быстро', stars: 5, date: '16.09.2026', approved: true },
+{ id: 2, userId: 'Марина', text: 'канал продала, 5к подписчиков. Дмитрий статистику глянул, деньги через 10 мин упали', stars: 5, date: '16.09.2026', approved: true },
+{ id: 3, userId: 'Денис', text: 'акк пубга с мификами, 18к. скины все на месте, переживал зря', stars: 5, date: '16.09.2026', approved: true },
+{ id: 4, userId: 'Екатерина', text: 'юсдт на 40к меняла, курс нормальный, без нервов вообще', stars: 5, date: '16.09.2026', approved: true },
+{ id: 5, userId: 'Игорь', text: 'впн на год брал, думал развод. гарант проверил, всё работает', stars: 5, date: '16.09.2026', approved: true },
+{ id: 6, userId: 'Ольга', text: 'стим с ксго продала за 12к. покупатель долго выбирал, но всё ок', stars: 5, date: '16.09.2026', approved: true },
+{ id: 7, userId: 'Николай', text: 'тг премиум на год, всё честно, спасибо', stars: 5, date: '16.09.2026', approved: true },
+{ id: 8, userId: 'Виктор', text: 'скины кс на 8к, проверили всё, доволен', stars: 5, date: '16.09.2026', approved: true },
+{ id: 9, userId: 'Андрей', text: 'инсту с 10к подписоты продал, прошло гладко', stars: 5, date: '16.09.2026', approved: true },
+{ id: 10, userId: 'Анна', text: 'буст в доте, гарант держал оплату пока не выполнили. вот это подход', stars: 5, date: '16.09.2026', approved: true },
+{ id: 11, userId: 'Сергей', text: 'ключ от игры в стиме, продавец норм, гарант помог передать', stars: 5, date: '16.09.2026', approved: true },
+{ id: 12, userId: 'Наталья', text: 'геншин акк с 5 звёздами за 22к, деньги сразу, всё проверили', stars: 5, date: '16.09.2026', approved: true },
+{ id: 13, userId: 'Артём', text: 'бтк на рубли 25к, курс хороший, всё чётко', stars: 5, date: '16.09.2026', approved: true },
+{ id: 14, userId: 'Павел', text: 'дискорд нитро на год, работает, спасибо', stars: 5, date: '16.09.2026', approved: true },
+{ id: 15, userId: 'Максим', text: 'акк вк с играми продал, деньги моментально', stars: 5, date: '16.09.2026', approved: true },
+{ id: 16, userId: 'Елена', text: 'валюту в геншине на 5к, всё норм', stars: 5, date: '16.09.2026', approved: true },
+{ id: 17, userId: 'Константин', text: 'крипту на 15к менял, курс ок', stars: 5, date: '16.09.2026', approved: true },
+{ id: 18, userId: 'Татьяна', text: 'пабг акк с мификами, вместе проверяли, всё норм', stars: 5, date: '16.09.2026', approved: true },
+{ id: 19, userId: 'Ирина', text: 'скины доты на 12к, деньги сразу', stars: 5, date: '16.09.2026', approved: true },
+{ id: 20, userId: 'Григорий', text: 'звёзд тг на 25к, всё пришло, спасибо', stars: 5, date: '16.09.2026', approved: true },
+{ id: 21, userId: 'Валентина', text: 'фейсит акк с 5к часов, всё чётко', stars: 5, date: '16.09.2026', approved: true },
+{ id: 22, userId: 'Георгий', text: 'кс акк с праймом за 15к, гарант всё проверил', stars: 5, date: '16.09.2026', approved: true },
+{ id: 23, userId: 'Зоя', text: 'стим кошелёк на 10к, всё норм', stars: 5, date: '16.09.2026', approved: true },
+{ id: 24, userId: 'Даниил', text: 'юсдт на 60к, курс топ, быстро', stars: 5, date: '16.09.2026', approved: true },
+{ id: 25, userId: 'Ксения', text: 'тг акк с премкой, всё ок, спасибо', stars: 5, date: '16.09.2026', approved: true },
+{ id: 26, userId: 'Степан', text: 'варфейс акк за 8к, деньги сразу', stars: 5, date: '16.09.2026', approved: true },
+{ id: 27, userId: 'Любовь', text: 'ключи стим на 5к, всё пришло', stars: 5, date: '16.09.2026', approved: true },
+{ id: 28, userId: 'Аркадий', text: 'буст акк в кс на 20к, всё чётко, рекомендую', stars: 5, date: '16.09.2026', approved: true },
+{ id: 29, userId: 'Вера', text: 'инсту с 10к подписоты продала, гладко', stars: 5, date: '16.09.2026', approved: true },
+{ id: 30, userId: 'Борис', text: 'крипту на 30к, гарант помог с безопасностью', stars: 5, date: '16.09.2026', approved: true },
+{ id: 31, userId: 'Галина', text: 'рубли на юсдт меняла, курс норм', stars: 5, date: '16.09.2026', approved: true },
+{ id: 32, userId: 'Фёдор', text: 'тг акк с 1000 подписчиков, всё ок', stars: 5, date: '16.09.2026', approved: true },
+{ id: 33, userId: 'Яна', text: 'пабг мобайл акк продала, гладко', stars: 5, date: '16.09.2026', approved: true },
+{ id: 34, userId: 'Эдуард', text: 'стим ключ от игры, всё ок', stars: 5, date: '16.09.2026', approved: true },
+{ id: 35, userId: 'Владислав', text: 'апекс акк за 7к, всё норм', stars: 5, date: '16.09.2026', approved: true },
+{ id: 36, userId: 'Роза', text: 'вк акк с играми продала, деньги сразу', stars: 5, date: '16.09.2026', approved: true },
+{ id: 37, userId: 'Иван', text: 'звёзд тг на 8к, всё пришло, спасибо', stars: 5, date: '16.09.2026', approved: true },
+{ id: 38, userId: 'Дарья', text: 'крипту на 12к меняла, чётко', stars: 5, date: '16.09.2026', approved: true },
+{ id: 39, userId: 'Егор', text: 'скины кс на 15к, деньги моментально', stars: 5, date: '16.09.2026', approved: true },
+{ id: 40, userId: 'София', text: 'доту акк с 7к часов за 18к, всё проверили', stars: 5, date: '16.09.2026', approved: true }
 ];
 const archiveReviews = [
 { id: 101, userId: 'Марина', text: 'продавала акк инсты, 8к. волновалась жутко, но всё прошло', stars: 5, date: '19.01.2026', approved: true },
