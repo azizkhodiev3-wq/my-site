@@ -360,11 +360,11 @@ counter.textContent = t === '24/7' ? cur + '/7' : cur + suffix;
 }, 25);
 });
 });
-const STORAGE_REVIEWS = 'fedorov_reviews_mod_v10';
-const STORAGE_USERS = 'fedorov_users_mod_v10';
+const STORAGE_REVIEWS = 'fedorov_reviews_mod_v11';
+const STORAGE_USERS = 'fedorov_users_mod_v11';
 const STORAGE_SESSION = 'fedorov_session';
 const STORAGE_VERSION = 'fedorov_version';
-const CURRENT_VERSION = '34.0';
+const CURRENT_VERSION = '35.0';
 let currentUser = null;
 function getRandomColor() {
 const c = ['#3b82f6','#8b5cf6','#f59e0b','#10b981','#ef4444','#06b6d4','#f472b6','#f97316','#14b8a6','#a78bfa','#34d399','#fb923c','#e879f9'];
@@ -375,6 +375,17 @@ const dt = new Date(d);
 return String(dt.getDate()).padStart(2,'0') + '.' + String(dt.getMonth()+1).padStart(2,'0') + '.' + dt.getFullYear();
 }
 function getTodayStr() { return formatDate(new Date()); }
+function getLatestReviewDate() {
+const reviews = getReviews();
+if (!reviews.length) return getTodayStr();
+let maxDate = reviews[0].date;
+reviews.forEach(r => {
+const [d1,m1,y1] = r.date.split('.').map(Number);
+const [d2,m2,y2] = maxDate.split('.').map(Number);
+if (new Date(y1,m1-1,d1) > new Date(y2,m2-1,d2)) maxDate = r.date;
+});
+return maxDate;
+}
 const defaultReviews = [
 { id: 1, userId: 'Алексей', text: 'скины взял, всё ок. быстро, без воды, реально удобно', stars: 5, date: '18.09.2026', approved: true },
 { id: 2, userId: 'Марина', text: 'канал продала, Дмитрий помог с передачей. деньги сразу, спасибо!', stars: 5, date: '18.09.2026', approved: true },
@@ -564,11 +575,11 @@ return true;
 function approveReview(id) { let reviews = getReviews(); const idx = reviews.findIndex(r => r.id === id); if (idx !== -1) { reviews[idx].approved = true; saveReviews(reviews); renderAll(); } }
 function rejectReview(id) { let reviews = getReviews().filter(r => r.id !== id); saveReviews(reviews); renderAll(); }
 function renderReviews() {
-const today = getTodayStr();
-const displayReviews = getApprovedReviews().filter(r => r.date === today);
+const latest = getLatestReviewDate();
+const displayReviews = getApprovedReviews().filter(r => r.date === latest);
 const grid = document.getElementById('reviewsGrid');
 grid.innerHTML = '';
-if (!displayReviews.length) { grid.innerHTML = '<p class="text-center" style="color: var(--text-muted); grid-column: 1/-1;">Сегодня пока нет отзывов.</p>'; return; }
+if (!displayReviews.length) { grid.innerHTML = '<p class="text-center" style="color: var(--text-muted); grid-column: 1/-1;">Пока нет отзывов.</p>'; return; }
 displayReviews.forEach(review => {
 const user = getUserById(review.userId);
 const color = user ? user.avatarColor : '#6b7280';
@@ -600,7 +611,7 @@ function renderAll() { renderReviews(); updateUserDisplay(); if (document.getEle
 function openProfile(userId) {
 const user = getUserById(userId);
 if (!user) return;
-const today = getTodayStr();
+const latest = getLatestReviewDate();
 const all = getApprovedReviews()
 .filter(r => r.userId === userId)
 .sort((a, b) => {
@@ -616,9 +627,9 @@ if (!all.length) { html += '<p style="color: var(--text-muted); text-align:cente
 else {
 html += '<div class="profile-reviews"><h5 style="margin-bottom:12px; color:#8fa3bf; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px;">История сделок</h5>';
 all.forEach(r => {
-const isToday = r.date === today;
-const cls = isToday ? 'review-item today' : 'review-item';
-const badge = isToday ? '<span class="today-label">сегодня</span>' : '';
+const isLatest = r.date === latest;
+const cls = isLatest ? 'review-item today' : 'review-item';
+const badge = isLatest ? '<span class="today-label">сегодня</span>' : '';
 html += '<div class="'+cls+'"><div class="stars">'+'★'.repeat(r.stars)+badge+'</div><div class="text">'+r.text+'</div><div style="font-size:0.75rem; color:#5b7aa5;">'+r.date+'</div></div>';
 });
 html += '</div>';
