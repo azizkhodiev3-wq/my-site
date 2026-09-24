@@ -360,11 +360,11 @@ counter.textContent = t === '24/7' ? cur + '/7' : cur + suffix;
 }, 25);
 });
 });
-const STORAGE_REVIEWS = 'fedorov_reviews_mod_v16';
-const STORAGE_USERS = 'fedorov_users_mod_v16';
+const STORAGE_REVIEWS = 'fedorov_reviews_mod_v17';
+const STORAGE_USERS = 'fedorov_users_mod_v17';
 const STORAGE_SESSION = 'fedorov_session';
 const STORAGE_VERSION = 'fedorov_version';
-const CURRENT_VERSION = '40.0';
+const CURRENT_VERSION = '41.0';
 let currentUser = null;
 function getRandomColor() {
 const c = ['#3b82f6','#8b5cf6','#f59e0b','#10b981','#ef4444','#06b6d4','#f472b6','#f97316','#14b8a6','#a78bfa','#34d399','#fb923c','#e879f9'];
@@ -460,6 +460,43 @@ const reviews23 = [
 { id: 629, userId: 'Анатолий', text: 'пабг акк с мификами, всё проверили вместе, чисто', stars: 5, date: '23.09.2026', approved: true },
 { id: 630, userId: 'Станислав', text: 'тг канал с 4к подписчиков продал, всё чётко, деньги сразу', stars: 5, date: '23.09.2026', approved: true }
 ];
+const reviews24 = [
+{ id: 701, userId: 'Алексей', text: 'скины кс2 на 30к продал, деньги моментально. всё чётко', stars: 5, date: '24.09.2026', approved: true },
+{ id: 702, userId: 'Марина', text: 'продала вк паблик с 12к подписоты, всё гладко, спасибо', stars: 5, date: '24.09.2026', approved: true },
+{ id: 703, userId: 'Денис', text: 'акк пабга с 3к часов, всё проверили, инвентарь чистый', stars: 5, date: '24.09.2026', approved: true },
+{ id: 704, userId: 'Игорь', text: 'подписку на онлайн-курсы взял, доступ пришёл моментально', stars: 5, date: '24.09.2026', approved: true },
+{ id: 705, userId: 'Сергей', text: 'тг канал с 6к подписчиков продал, всё быстро и чётко', stars: 5, date: '24.09.2026', approved: true },
+{ id: 706, userId: 'Виктор', text: 'кс акк с 3 ножами за 60к, всё проверили, чисто', stars: 5, date: '24.09.2026', approved: true },
+{ id: 707, userId: 'Артём', text: 'взял ключ от новой игры в стиме, всё пришло моментально', stars: 5, date: '24.09.2026', approved: true },
+{ id: 708, userId: 'Константин', text: 'стим кошелёк на 25к пополнил, всё зачислилось быстро', stars: 5, date: '24.09.2026', approved: true },
+{ id: 709, userId: 'Наталья', text: 'акк геншина с 12 5★, всё проверили вместе, всё чисто', stars: 5, date: '24.09.2026', approved: true },
+{ id: 710, userId: 'Анна', text: 'акк бравл старса с 70к кубков продала, всё гладко', stars: 5, date: '24.09.2026', approved: true },
+{ id: 711, userId: 'Ольга', text: 'тг премиум на год, всё быстро, буду ещё обращаться', stars: 5, date: '24.09.2026', approved: true },
+{ id: 712, userId: 'Николай', text: 'звёзды тг на 20к, всё пришло моментально, спасибо', stars: 5, date: '24.09.2026', approved: true },
+{ id: 713, userId: 'Максим', text: 'инсту с 30к подписоты продал, деньги сразу, всё чётко', stars: 5, date: '24.09.2026', approved: true },
+{ id: 714, userId: 'Степан', text: 'варфейс акк за 15к, всё проверили, продавец норм', stars: 5, date: '24.09.2026', approved: true },
+{ id: 715, userId: 'Иван', text: 'нитро дискорд на 2 года взял, всё работает, спасибо', stars: 5, date: '24.09.2026', approved: true },
+{ id: 716, userId: 'Глеб', text: 'помог с договором на фриланс, всё оформили, заказчик оплатил', stars: 5, date: '24.09.2026', approved: true },
+{ id: 717, userId: 'Василиса', text: 'акк вк с 8к подписчиков продала, всё гладко прошло', stars: 5, date: '24.09.2026', approved: true },
+{ id: 718, userId: 'Арсений', text: 'акк фейсит с 10 уровнем и 2.5к elo, всё проверили, чисто', stars: 5, date: '24.09.2026', approved: true },
+{ id: 719, userId: 'Дина', text: 'скины доты на 12к, всё чётко, деньги моментально', stars: 5, date: '24.09.2026', approved: true },
+{ id: 720, userId: 'Роман', text: 'акк апекса с 4к часов и хайлайтами, всё проверили вместе', stars: 5, date: '24.09.2026', approved: true },
+{ id: 721, userId: 'Светлана', text: 'продала вк паблик с 25к подписоты, деньги моментально', stars: 5, date: '24.09.2026', approved: true },
+{ id: 722, userId: 'Оксана', text: 'подписку на нейросеть на год взяла, всё работает, спасибо', stars: 5, date: '24.09.2026', approved: true },
+{ id: 723, userId: 'Валерий', text: 'акк кс2 с праймом и 4к часов, всё проверили, всё чисто', stars: 5, date: '24.09.2026', approved: true },
+{ id: 724, userId: 'Инна', text: 'тг канал с 3к подписчиков продала, деньги сразу, спасибо', stars: 5, date: '24.09.2026', approved: true },
+{ id: 725, userId: 'Юрий', text: 'акк танков с 60+ премов, всё проверили вместе, всё чётко', stars: 5, date: '24.09.2026', approved: true },
+{ id: 726, userId: 'Алиса', text: 'буст доты с 3.5к до 5к ммр, всё выполнили в срок', stars: 5, date: '24.09.2026', approved: true },
+{ id: 727, userId: 'Пётр', text: 'ключ стим от инди-игры, всё быстро, спасибо гаранту', stars: 5, date: '24.09.2026', approved: true },
+{ id: 728, userId: 'Лидия', text: 'продала тг акк с премкой, деньги моментально, всё гладко', stars: 5, date: '24.09.2026', approved: true },
+{ id: 729, userId: 'Анатолий', text: 'акк пубга с мификами и 2к часов, всё проверили, чисто', stars: 5, date: '24.09.2026', approved: true },
+{ id: 730, userId: 'Станислав', text: 'акк геншина с Арлекино, всё проверили, продавец норм', stars: 5, date: '24.09.2026', approved: true },
+{ id: 731, userId: 'Нина', text: 'тг премиум на 2 года взяла, всё быстро, спасибо', stars: 5, date: '24.09.2026', approved: true },
+{ id: 732, userId: 'Виталий', text: 'кс акк с ножом и перчатками за 80к, всё чисто', stars: 5, date: '24.09.2026', approved: true },
+{ id: 733, userId: 'Эльвира', text: 'продала вк паблик с 18к подписоты, деньги сразу', stars: 5, date: '24.09.2026', approved: true },
+{ id: 734, userId: 'Родион', text: 'акк варфейса с 150+ пушками, всё проверили, всё чётко', stars: 5, date: '24.09.2026', approved: true },
+{ id: 735, userId: 'Агния', text: 'подписку на фитнес-приложение взяла, всё работает, спасибо', stars: 5, date: '24.09.2026', approved: true }
+];
 const archiveReviews = [
 { id: 101, userId: 'Алексей', text: 'брал нож в кс, 25к. всё прошло ровно', stars: 5, date: '12.05.2026', approved: true },
 { id: 102, userId: 'Марина', text: 'продавала инсту, 8к подписоты. переживала зря', stars: 5, date: '08.07.2026', approved: true },
@@ -473,30 +510,29 @@ const archiveReviews = [
 { id: 110, userId: 'Анна', text: 'буст в доте брала, всё выполнили в срок', stars: 5, date: '21.06.2026', approved: true },
 { id: 111, userId: 'Ольга', text: 'стим с ксго продала, деньги сразу', stars: 5, date: '09.07.2026', approved: true },
 { id: 112, userId: 'Николай', text: 'премиум тг на год брал, всё быстро', stars: 5, date: '14.05.2026', approved: true },
-{ id: 113, userId: 'Максим', text: 'вк акк с играми продал, деньги моментально', stars: 5, date: '28.06.2026', approved: true },
+{ id: 113, userId: 'Максим', text: 'вк паблик продал, деньги моментально', stars: 5, date: '28.06.2026', approved: true },
 { id: 114, userId: 'Степан', text: 'продавал акк варфейса, 5к, всё ок', stars: 5, date: '07.07.2026', approved: true },
 { id: 115, userId: 'Иван', text: 'брал звёзды тг на 8к, всё пришло', stars: 5, date: '19.05.2026', approved: true },
 { id: 116, userId: 'Екатерина', text: 'меняла бтк на 80к, курс был огонь', stars: 5, date: '05.02.2026', approved: true },
-{ id: 117, userId: 'Екатерина', text: 'потом на 50к ещё обмен, всё быстро', stars: 5, date: '11.07.2026', approved: true },
-{ id: 118, userId: 'Андрей', text: 'тг канал продавал, 6к подписоты', stars: 5, date: '18.05.2026', approved: true },
-{ id: 119, userId: 'Андрей', text: 'потом инсту продал, всё гладко', stars: 5, date: '20.08.2026', approved: true },
-{ id: 120, userId: 'Павел', text: 'нитро дискорд на год, работает', stars: 5, date: '11.03.2026', approved: true },
-{ id: 121, userId: 'Елена', text: 'валюту геншина брала, всё норм', stars: 5, date: '24.07.2026', approved: true },
-{ id: 122, userId: 'Татьяна', text: 'акк пабга с мификами, всё проверили', stars: 5, date: '07.04.2026', approved: true },
-{ id: 123, userId: 'Татьяна', text: 'потом ещё ключ стим брала, всё ок', stars: 5, date: '18.08.2026', approved: true },
-{ id: 124, userId: 'Ирина', text: 'скины доты продавала, деньги сразу', stars: 5, date: '30.05.2026', approved: true },
-{ id: 125, userId: 'Григорий', text: 'звёзды тг на 10к, всё быстро', stars: 5, date: '13.02.2026', approved: true },
-{ id: 126, userId: 'Григорий', text: 'потом на 25к ещё, всё ок', stars: 5, date: '20.07.2026', approved: true },
-{ id: 127, userId: 'Валентина', text: 'фейсит акк с 10 уровнем брала, всё чётко', stars: 5, date: '26.06.2026', approved: true },
-{ id: 128, userId: 'Роман', text: 'акк танков, всё проверили', stars: 5, date: '02.05.2026', approved: true },
-{ id: 129, userId: 'Роман', text: 'потом апекс брал, всё чётко', stars: 5, date: '28.08.2026', approved: true },
-{ id: 130, userId: 'Светлана', text: 'стим с играми продавала, всё гладко', stars: 5, date: '17.03.2026', approved: true },
-{ id: 131, userId: 'Светлана', text: 'потом тг канал продала, деньги сразу', stars: 5, date: '25.07.2026', approved: true },
-{ id: 132, userId: 'Оксана', text: 'юсдт обменяла на 30к, курс норм', stars: 5, date: '29.07.2026', approved: true },
-{ id: 133, userId: 'Валерий', text: 'брал нож кс, всё чётко. спасибо', stars: 5, date: '10.04.2026', approved: true },
-{ id: 134, userId: 'Инна', text: 'продавала юсдт, всё быстро', stars: 5, date: '23.05.2026', approved: true },
-{ id: 135, userId: 'Юрий', text: 'буст доты, всё выполнили в срок', stars: 5, date: '06.08.2026', approved: true },
-{ id: 136, userId: 'Алиса', text: 'инсту с 15к продавала, быстро и без нервов', stars: 5, date: '20.03.2026', approved: true }
+{ id: 117, userId: 'Андрей', text: 'тг канал продавал, 6к подписоты', stars: 5, date: '18.05.2026', approved: true },
+{ id: 118, userId: 'Павел', text: 'нитро дискорд на год, работает', stars: 5, date: '11.03.2026', approved: true },
+{ id: 119, userId: 'Елена', text: 'валюту геншина брала, всё норм', stars: 5, date: '24.07.2026', approved: true },
+{ id: 120, userId: 'Татьяна', text: 'акк пабга с мификами, всё проверили', stars: 5, date: '07.04.2026', approved: true },
+{ id: 121, userId: 'Ирина', text: 'скины доты продавала, деньги сразу', stars: 5, date: '30.05.2026', approved: true },
+{ id: 122, userId: 'Григорий', text: 'звёзды тг на 10к, всё быстро', stars: 5, date: '13.02.2026', approved: true },
+{ id: 123, userId: 'Валентина', text: 'фейсит акк с 10 уровнем брала, всё чётко', stars: 5, date: '26.06.2026', approved: true },
+{ id: 124, userId: 'Роман', text: 'акк танков, всё проверили', stars: 5, date: '02.05.2026', approved: true },
+{ id: 125, userId: 'Светлана', text: 'стим с играми продавала, всё гладко', stars: 5, date: '17.03.2026', approved: true },
+{ id: 126, userId: 'Оксана', text: 'юсдт обменяла на 30к, курс норм', stars: 5, date: '29.07.2026', approved: true },
+{ id: 127, userId: 'Валерий', text: 'брал нож кс, всё чётко. спасибо', stars: 5, date: '10.04.2026', approved: true },
+{ id: 128, userId: 'Инна', text: 'продавала юсдт, всё быстро', stars: 5, date: '23.05.2026', approved: true },
+{ id: 129, userId: 'Юрий', text: 'буст доты, всё выполнили в срок', stars: 5, date: '06.08.2026', approved: true },
+{ id: 130, userId: 'Алиса', text: 'инсту с 15к продавала, быстро и без нервов', stars: 5, date: '20.03.2026', approved: true },
+{ id: 131, userId: 'Нина', text: 'брала тг премиум, всё ок', stars: 5, date: '11.05.2026', approved: true },
+{ id: 132, userId: 'Виталий', text: 'акк варфейса продавал, деньги сразу', stars: 5, date: '02.06.2026', approved: true },
+{ id: 133, userId: 'Эльвира', text: 'продавала вк паблик, всё гладко', stars: 5, date: '19.07.2026', approved: true },
+{ id: 134, userId: 'Родион', text: 'акк кс2 брал, всё проверили', stars: 5, date: '30.04.2026', approved: true },
+{ id: 135, userId: 'Агния', text: 'брала подписку, всё быстро', stars: 5, date: '14.06.2026', approved: true }
 ];
 const fixedSurnames = {
 'Алексей':'И.','Марина':'П.','Денис':'К.','Екатерина':'С.','Игорь':'В.','Ольга':'Н.','Николай':'М.','Виктор':'Р.','Андрей':'А.','Анна':'А.',
@@ -511,7 +547,7 @@ const letters = ['Б','В','Д','Ж','З','Л','О','У','Ф','Х','Ц','Ч','Ш
 function initData() {
 const savedVersion = localStorage.getItem(STORAGE_VERSION);
 if (savedVersion !== CURRENT_VERSION) {
-const allReviews = [...defaultReviews, ...reviews23, ...archiveReviews];
+const allReviews = [...defaultReviews, ...reviews23, ...reviews24, ...archiveReviews];
 localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(allReviews));
 const userMap = {};
 allReviews.forEach(r => {
