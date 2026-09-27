@@ -927,4 +927,83 @@ const moderationModal = document.getElementById('moderationModal');
 const moderPassInput = document.getElementById('moderatorPassword');
 document.getElementById('closeModerationModal').addEventListener('click', () => moderationModal.classList.remove('active'));
 document.getElementById('closePasswordModal').addEventListener('click', () => passwordModal.classList.remove('active'));
-window.addEventListener('click', (e)
+window.addEventListener('click', (e) => {
+if (e.target === moderationModal) moderationModal.classList.remove('active');
+if (e.target === passwordModal) passwordModal.classList.remove('active');
+});
+document.getElementById('moderatorLoginBtn').addEventListener('click', () => {
+if (moderPassInput.value.trim() === 'admin123') {
+passwordModal.classList.remove('active');
+moderationModal.classList.add('active');
+renderModeration();
+} else { alert('Неверный пароль!'); moderPassInput.value = ''; moderPassInput.focus(); }
+});
+moderPassInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') document.getElementById('moderatorLoginBtn').click(); });
+document.getElementById('stat20000').addEventListener('dblclick', (e) => { e.stopPropagation(); passwordModal.classList.add('active'); moderPassInput.value = ''; moderPassInput.focus(); });
+document.getElementById('footer').addEventListener('dblclick', (e) => { e.stopPropagation(); passwordModal.classList.add('active'); moderPassInput.value = ''; moderPassInput.focus(); });
+const faqs = [
+{ q: 'Какие сделки вы проводите?', a: 'Любые: фриланс, криптовалюта, недвижимость, техника, аккаунты, домены, авто, карго.' },
+{ q: 'Почему 10%?', a: 'Оптимальная ставка за полную безопасность и оперативное решение споров.' },
+{ q: 'Как быстро вы отвечаете?', a: 'Всегда на связи, обычно ответ в течение пары минут.' },
+{ q: 'Безопасно ли?', a: 'Да, средства удерживаются до полного выполнения условий.' },
+{ q: 'Нужен ли договор?', a: 'При необходимости составляю официальный договор.' },
+{ q: 'Работаете ли с другими странами?', a: 'Да, работаю со всем СНГ и дальним зарубежьем.' },
+{ q: 'Какая минимальная сумма?', a: 'Минимальной суммы нет, комиссия всегда 10%.' },
+{ q: 'Сколько времени занимает сделка?', a: 'От 15 минут до нескольких часов.' },
+{ q: 'Как с вами связаться?', a: 'Только через ВК: vk.me/news_fedorov.' },
+{ q: 'Почему вам можно доверять?', a: '20 000+ сделок, 100% положительных отзывов.' },
+{ q: 'Что такое эскроу?', a: 'Гарант удерживает средства до выполнения условий сделки.' },
+{ q: 'Как работает арбитраж?', a: 'Изучаю доказательства от обеих сторон и принимаю решение.' },
+{ q: 'Мои данные в безопасности?', a: 'Да, полная конфиденциальность.' },
+{ q: 'Какие способы оплаты?', a: 'Карты, переводы, криптовалюта, наличные.' },
+{ q: 'Что если продавец не отвечает?', a: 'Возвращаю деньги покупателю через 48 часов.' },
+{ q: 'Работаете с юрлицами?', a: 'Да, заключаю договоры с компаниями и ИП.' },
+{ q: 'Анонимные сделки возможны?', a: 'Да, полная анонимность по желанию клиента.' },
+{ q: 'Как проверить вашу репутацию?', a: 'Открытая статистика, 20 000+ отзывов в ВК.' },
+{ q: 'В какое время лучше писать?', a: 'В любое, я работаю 24/7.' },
+{ q: 'Есть ли скидки для постоянных?', a: 'Да, индивидуальные условия.' }
+];
+const faqGrid = document.getElementById('faqGrid');
+faqs.forEach(f => { faqGrid.innerHTML += '<div class="faq-card"><h4><i class="fas fa-question-circle" style="color: var(--accent);"></i> '+f.q+'</h4><p>'+f.a+'</p></div>'; });
+const cases = [
+{ title: 'Криптообмен 2.5 млн ₽', desc: 'Сделка закрыта за 2 часа. Комиссия 250 000 ₽.' },
+{ title: 'Спор по фрилансу', desc: 'Арбитраж в пользу исполнителя. Выплачено 120 000 ₽.' },
+{ title: 'Покупка квартиры', desc: 'Сделка на 8 млн ₽ через эскроу. Комиссия 800 000 ₽.' },
+{ title: 'Обмен крипты', desc: 'Анонимная сделка на 450 000 ₽.' },
+{ title: 'Возврат предоплаты', desc: 'Деньги возвращены за 1 день.' },
+{ title: 'Карго-доставка', desc: 'Гарант удержал оплату до получения на складе.' },
+{ title: 'Продажа аккаунта', desc: 'Сделка на 1.2 млн ₽. Полная безопасность.' },
+{ title: 'Обмен USDT', desc: '100 000 USDT за 3 часа.' },
+{ title: 'Спор по недвижимости', desc: 'Соглашение через арбитраж за 2 дня.' },
+{ title: 'Международный контракт', desc: 'Сделка на 5 млн ₽ с Европой.' },
+{ title: 'Продажа домена', desc: 'Домен за 900 000 ₽.' },
+{ title: 'Спор по крипте', desc: 'Арбитраж показал обратное.' },
+{ title: 'Авто из-за рубежа', desc: 'Сделка на 3.2 млн ₽.' },
+{ title: 'Фриланс-проект', desc: 'Проект сдан в срок.' },
+{ title: 'Обмен валюты', desc: 'Лучший курс и безопасность.' }
+];
+const casesGrid = document.getElementById('casesGrid');
+const colors = ['#3b82f6','#f59e0b','#10b981','#8b5cf6','#ef4444','#06b6d4','#f472b6','#f97316','#14b8a6','#a78bfa','#34d399','#fbbf24','#60a5fa','#fb923c','#e879f9'];
+cases.forEach((c, i) => { casesGrid.innerHTML += '<div class="card"><h3><i class="fas fa-folder-open" style="color:'+colors[i % colors.length]+'; margin-right: 8px;"></i> Кейс #'+(i+1)+': '+c.title+'</h3><p class="small-note">'+c.desc+'</p></div>'; });
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.opacity = '1';
+entry.target.style.transform = 'translateY(0px)';
+observer.unobserve(entry.target);
+}
+});
+}, { threshold: 0.1 });
+sections.forEach(sec => {
+sec.style.opacity = '0';
+sec.style.transform = 'translateY(20px)';
+sec.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+observer.observe(sec);
+});
+initData();
+renderAll();
+console.log('✅ Готово. Пароль модерации: admin123');
+</script>
+</body>
+</html>
