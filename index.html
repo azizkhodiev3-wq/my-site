@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Дмитрий Федоров | Гарант | 20 000+ отзывов | 10% комиссия</title>
-<meta name="description" content="Дмитрий Федоров — профессиональный гарант с 20 000+ положительных отзывов. Фиксированная комиссия 10% от сделки.">
+<title>Дмитрий Федоров| 20 000+ отзывов | 10% комиссия</title>
+<meta name="description" content="Дмитрий Федоров — с 20 000+ положительных отзывов. Фиксированная комиссия 10% от сделки.">
 <meta name="theme-color" content="#0d1f3d">
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -434,11 +434,11 @@ counter.textContent = t === '24/7' ? cur + '/7' : cur + suffix;
 }, 25);
 });
 });
-const STORAGE_REVIEWS = 'fedorov_reviews_mod_v23';
-const STORAGE_USERS = 'fedorov_users_mod_v23';
+const STORAGE_REVIEWS = 'fedorov_reviews_mod_v24';
+const STORAGE_USERS = 'fedorov_users_mod_v24';
 const STORAGE_SESSION = 'fedorov_session';
 const STORAGE_VERSION = 'fedorov_version';
-const CURRENT_VERSION = '47.0';
+const CURRENT_VERSION = '48.0';
 let currentUser = null;
 function getRandomColor() {
 const c = ['#3b82f6','#8b5cf6','#f59e0b','#10b981','#ef4444','#06b6d4','#f472b6','#f97316','#14b8a6','#a78bfa','#34d399','#fb923c','#e879f9'];
@@ -460,42 +460,42 @@ if (new Date(y1,m1-1,d1) > new Date(y2,m2-1,d2)) maxDate = r.date;
 });
 return maxDate;
 }
-const reviews29 = [
-{ id: 1101, userId: 'Алексей', text: 'купил акк доты с 11к часов и топ-500, всё чисто, продавец адекватный', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1102, userId: 'Марина', text: 'продала вк паблик с 55к подписоты, деньги моментально, спасибо', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1103, userId: 'Денис', text: 'брал акк кс2 с 8к часов и 2 ножами, всё проверили вместе', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1104, userId: 'Игорь', text: 'тг канал с 22к подписоты продал, деньги сразу, всё чётко', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1105, userId: 'Сергей', text: 'купил акк апекса с 12к часов, хайлайты на месте, всё чисто', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1106, userId: 'Виктор', text: 'продал акк кс2 с 4 ножами и перчатками, всё проверили, чисто', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1107, userId: 'Артём', text: 'провёл через гаранта крупный фриланс, заказчик оплатил, всё ок', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1108, userId: 'Константин', text: 'купил акк геншина с 25 5★, всё проверили, продавец норм', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1109, userId: 'Наталья', text: 'буст доты до 7к ммр, всё выполнили в срок, спасибо', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1110, userId: 'Анна', text: 'продала инсту с 60к подписоты, деньги моментально, всё гладко', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1111, userId: 'Ольга', text: 'акк пабга с мификами и 7к часов продала, всё чётко', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1112, userId: 'Николай', text: 'варфейс акк с 350+ пушками купил, всё проверили, чисто', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1113, userId: 'Максим', text: 'звёзды тг на 50к взял, пришли моментально, спасибо', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1114, userId: 'Степан', text: 'тг канал с 30к подписоты продал, деньги сразу, всё ок', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1115, userId: 'Иван', text: 'инсту с 25к подписоты продал, всё быстро, спасибо', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1116, userId: 'Глеб', text: 'купил акк танков с 100+ премов, всё проверили вместе', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1117, userId: 'Василиса', text: 'скины кс2 на 65к продала, всё чётко, деньги сразу', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1118, userId: 'Арсений', text: 'акк фейсит с 10 уровнем и 4к elo купил, всё чисто', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1119, userId: 'Дина', text: 'продала акк бравл старса с 100к кубков, всё прошло ровно', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1120, userId: 'Роман', text: 'кс акк с праймом и 10к часов купил, всё проверили, всё чётко', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1121, userId: 'Светлана', text: 'тг канал с 35к подписоты продала, деньги моментально', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1122, userId: 'Оксана', text: 'акк геншина с Арлекино и 12 5★ продала, всё проверили', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1123, userId: 'Валерий', text: 'скины доты на 35к продал, всё быстро, всё чисто', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1124, userId: 'Инна', text: 'вк паблик с 70к подписоты продала, деньги сразу', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1125, userId: 'Юрий', text: 'варфейс акк с 250+ пушками продал, всё чётко', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1126, userId: 'Алиса', text: 'тг акк с премкой и 10к подписчиков продала, всё гладко', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1127, userId: 'Пётр', text: 'купил акк апекса с 13к часов, всё проверили вместе', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1128, userId: 'Лидия', text: 'инсту с 28к подписоты продала, всё быстро, спасибо', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1129, userId: 'Анатолий', text: 'акк пабга с мификами и 6к часов продал, всё чётко', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1130, userId: 'Станислав', text: 'кс акк с ножом и 8к часов купил, всё проверили, чисто', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1131, userId: 'Нина', text: 'тг канал с 25к подписоты продала, деньги моментально', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1132, userId: 'Виталий', text: 'акк доты с 15к часов продал, всё быстро, всё чисто', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1133, userId: 'Эльвира', text: 'вк паблик с 80к подписоты продала, всё гладко, спасибо', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1134, userId: 'Родион', text: 'купил акк кс2 с 3 ножами, всё проверили, всё ок', stars: 5, date: '29.09.2026', approved: true },
-{ id: 1135, userId: 'Агния', text: 'продала акк геншина с 20 5★, всё чётко, деньги сразу', stars: 5, date: '29.09.2026', approved: true }
+const reviews02 = [
+{ id: 1201, userId: 'Алексей', text: 'купил акк кс2 с 9к часов и 2 ножами, всё проверили вместе, чисто', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1202, userId: 'Марина', text: 'продала вк паблик с 65к подписоты, деньги моментально, спасибо', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1203, userId: 'Денис', text: 'брал акк доты с 13к часов и топ-1000, продавец адекватный', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1204, userId: 'Игорь', text: 'тг канал с 28к подписоты продал, всё быстро, деньги сразу', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1205, userId: 'Сергей', text: 'купил акк апекса с 15к часов и хайлайтами, всё чисто', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1206, userId: 'Виктор', text: 'продал акк кс2 с 5 ножами и перчатками, всё проверили', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1207, userId: 'Артём', text: 'закрыл через гаранта фриланс-заказ на 80к, всё чисто', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1208, userId: 'Константин', text: 'купил акк геншина с 30 5★, всё проверили, продавец норм', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1209, userId: 'Наталья', text: 'буст доты до 8к ммр, всё выполнили в срок, спасибо', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1210, userId: 'Анна', text: 'продала инсту с 70к подписоты, деньги моментально', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1211, userId: 'Ольга', text: 'акк пабга с мификами и 8к часов продала, всё гладко', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1212, userId: 'Николай', text: 'варфейс акк с 400+ пушками купил, всё проверили, чисто', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1213, userId: 'Максим', text: 'звёзды тг на 60к взял, пришли моментально, спасибо', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1214, userId: 'Степан', text: 'тг канал с 40к подписоты продал, деньги сразу, всё чётко', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1215, userId: 'Иван', text: 'инсту с 30к подписоты продал, всё быстро, спасибо', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1216, userId: 'Глеб', text: 'купил акк танков с 120+ премов, всё проверили вместе', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1217, userId: 'Василиса', text: 'скины кс2 на 80к продала, всё чётко, деньги сразу', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1218, userId: 'Арсений', text: 'акк фейсит с 10 уровнем и 4.5к elo купил, всё чисто', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1219, userId: 'Дина', text: 'продала акк бравл старса с 120к кубков, всё прошло ровно', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1220, userId: 'Роман', text: 'кс акк с праймом и 12к часов купил, всё проверили, чётко', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1221, userId: 'Светлана', text: 'тг канал с 45к подписоты продала, деньги моментально', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1222, userId: 'Оксана', text: 'акк геншина с Арлекино и 15 5★ продала, всё проверили', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1223, userId: 'Валерий', text: 'скины доты на 40к продал, всё быстро, всё чисто', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1224, userId: 'Инна', text: 'вк паблик с 90к подписоты продала, деньги сразу', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1225, userId: 'Юрий', text: 'варфейс акк с 300+ пушками продал, всё чётко', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1226, userId: 'Алиса', text: 'тг акк с премкой и 12к подписчиков продала, всё гладко', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1227, userId: 'Пётр', text: 'купил акк апекса с 16к часов, всё проверили вместе', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1228, userId: 'Лидия', text: 'инсту с 35к подписоты продала, всё быстро, спасибо', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1229, userId: 'Анатолий', text: 'акк пабга с мификами и 7к часов продал, всё чётко', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1230, userId: 'Станислав', text: 'кс акк с ножом и 10к часов купил, всё проверили, чисто', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1231, userId: 'Нина', text: 'тг канал с 30к подписоты продала, деньги моментально', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1232, userId: 'Виталий', text: 'акк доты с 18к часов продал, всё быстро, всё чисто', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1233, userId: 'Эльвира', text: 'вк паблик с 100к подписоты продала, всё гладко, спасибо', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1234, userId: 'Родион', text: 'купил акк кс2 с 4 ножами, всё проверили, всё ок', stars: 5, date: '02.10.2026', approved: true },
+{ id: 1235, userId: 'Агния', text: 'продала акк геншина с 25 5★, всё чётко, деньги сразу', stars: 5, date: '02.10.2026', approved: true }
 ];
 const archiveReviews = [
 { id: 101, userId: 'Алексей', text: 'нож в кс брал за 30к, всё прошло гладко', stars: 5, date: '07.02.2026', approved: true },
@@ -547,7 +547,7 @@ const letters = ['Б','В','Д','Ж','З','Л','О','У','Ф','Х','Ц','Ч','Ш
 function initData() {
 const savedVersion = localStorage.getItem(STORAGE_VERSION);
 if (savedVersion !== CURRENT_VERSION) {
-const allReviews = [...reviews29, ...archiveReviews];
+const allReviews = [...reviews02, ...archiveReviews];
 localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(allReviews));
 const userMap = {};
 allReviews.forEach(r => {
